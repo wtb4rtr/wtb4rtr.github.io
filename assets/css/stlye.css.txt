@@ -1,0 +1,44 @@
+/* assets/css/style.css */
+
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+  background: #333;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 1rem;
+  justify-content: center;
+}
+nav li + li {
+  margin-left: 1rem;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+nav a:hover {
+  background: #444;
+}
+
+/* Header */
+header {
+  background: #f2f2f2;
+  padding: 2rem;
+  text-align: center;
+}
+header h1 {
+  margin-bottom: 0.5rem;
+}
