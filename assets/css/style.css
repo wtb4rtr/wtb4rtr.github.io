@@ -6,12 +6,20 @@
   margin: 0;
   padding: 0;
 }
+
+/* Base page styling */
 body {
+  background: #fff;           /* Sparkling white page background */
   font-family: sans-serif;
   line-height: 1.6;
 }
 
-/* Navigation */
+/* If you wrap your main content in <main>, ensure it’s also white */
+main {
+  background: #fff;
+}
+
+/* Global Navigation */
 nav {
   background: #333;
 }
@@ -25,15 +33,17 @@ nav li + li {
   margin-left: 1rem;
 }
 nav a {
-  color: #fff;
+  color: #fff !important;     /* Bright white links */
   text-decoration: none;
   padding: 0.5rem 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 nav a:hover {
-  background: #444;
+  background: #444;           /* Slightly lighter on hover */
 }
 
-/* Header */
+/* Plain page header (if you still use it elsewhere) */
 header {
   background: #f2f2f2;
   padding: 2rem;
@@ -43,42 +53,38 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
-
 /* Hero (cover) section */
 .hero {
-  background-image: url('/assets/images/globe.png');
+  position: relative;
+  background-image: url('/assets/images/gis-portfolio/globe.png');
   background-size: cover;
   background-position: center;
-  height: 60vh;                 /* adjust height as needed */
+  height: 60vh;               /* adjust as needed */
   display: flex;
-  align-items: center;          /* vertical centering */
-  justify-content: center;      /* horizontal centering */
+  align-items: center;        /* vertical centering */
+  justify-content: center;    /* horizontal centering */
   text-align: center;
   color: white;
 }
-
 .hero::after {
-  /* dark overlay for contrast */
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.4); /* dark overlay for contrast */
   z-index: 0;
 }
-
 .hero-content {
-  /* ensure text/buttons sit above overlay */
   position: relative;
   z-index: 1;
 }
-
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
   text-shadow: 0 2px 4px rgba(0,0,0,0.7);
 }
 
+/* Hero navigation buttons */
 .hero-nav a {
   display: inline-block;
   margin: 0.5rem;
@@ -90,7 +96,6 @@ header h1 {
   font-weight: bold;
   transition: background 0.3s;
 }
-
 .hero-nav a:hover {
-  background: white;
+  background: #fff;
 }
