@@ -6,13 +6,14 @@
   margin: 0;
   padding: 0;
 }
+
 body {
-  background: #fff;      /* ensure page is pure white */
+  background: #fff;
   font-family: sans-serif;
   line-height: 1.6;
 }
 
-/* Navigation */
+/* Global Navigation */
 nav {
   background: #333;
 }
@@ -29,12 +30,14 @@ nav a {
   color: #fff;
   text-decoration: none;
   padding: 0.5rem 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 nav a:hover {
   background: #444;
 }
 
-/* Header */
+/* Optional plain page header (if used elsewhere) */
 header {
   background: #f2f2f2;
   padding: 2rem;
@@ -44,17 +47,16 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
-/* Hero (cover) section */
+/* Hero (cover) section – full image */
 .hero {
   position: relative;
-  overflow: hidden;  
-  /* clip-path cuts everything outside this ellipse */
-  clip-path: ellipse(50% 40% at 50% 50%);
-  background-color: #fff;  /* white page behind the clipped area */
-  background-image: url('/assets/images/gis-portfolio/zTX5kx7Ec.jpg');
+  width: 100%;
+  background-color: #fff;
+  background-image: url('/assets/images/gis-portfolio/globe.png');
   background-size: cover;
   background-position: center;
-  height: 60vh;               /* adjust as you like */
+  background-repeat: no-repeat;
+  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,12 +65,11 @@ header h1 {
 }
 
 .hero::after {
-  /* dark overlay for contrast */
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
@@ -80,21 +81,21 @@ header h1 {
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+/* Hero navigation buttons */
 .hero-nav a {
   display: inline-block;
   margin: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   color: #333;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
   transition: background 0.3s;
 }
-
 .hero-nav a:hover {
-  background: white;
+  background: #fff;
 }
