@@ -46,7 +46,7 @@ header h1 {
 
 /* Hero (cover) section */
 .hero {
-  background-image: url('/assets/images/globe.jpg');
+  background-image: url('/assets/images/globe.png');
   background-size: cover;
   background-position: center;
   height: 60vh;                 /* adjust height as needed */
