@@ -1,5 +1,3 @@
-/* assets/css/style.css */
-
 /* Reset & base */
 * {
   box-sizing: border-box;
@@ -15,7 +13,8 @@ body {
 
 /* Global Navigation */
 nav {
-  background: #333;
+  background: #000; /* pure black */
+  box-shadow: none;
 }
 nav ul {
   display: flex;
@@ -37,7 +36,7 @@ nav a:hover {
   background: #444;
 }
 
-/* Optional plain page header (if used elsewhere) */
+/* Optional plain page header */
 header {
   background: #f2f2f2;
   padding: 2rem;
@@ -47,7 +46,7 @@ header h1 {
   margin-bottom: 0.5rem;
 }
 
-/* Hero (cover) section – full image */
+/* Hero Section */
 .hero {
   position: relative;
   width: 100%;
@@ -64,27 +63,36 @@ header h1 {
   color: white;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0);
-  z-index: 0;
-}
-
 .hero-content {
   position: relative;
   z-index: 1;
+  padding-bottom: 2rem;
 }
 
+/* Split title into 2 lines with background box */
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  margin-top: 4rem;
+  text-shadow: none;
+}
+
+.hero h1 span {
+  display: block;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+  padding: 0.25rem 1rem;
+  border-radius: 4px;
+  width: fit-content;
+  margin: 0 auto;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Hero navigation buttons */
+.hero-nav {
+  margin-top: 1rem;
+}
+
 .hero-nav a {
   display: inline-block;
   margin: 0.5rem;
