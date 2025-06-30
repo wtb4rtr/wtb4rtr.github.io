@@ -184,21 +184,22 @@ nav a:hover {
 
 /* Wrapper for About Me section */
 .collapsible-intro {
-  max-width: 800px;                  /* Wide readable body */
+  max-width: 800px;            /* Reduce width slightly for tighter margins */
   margin: 2rem auto;
-  padding: 0 0.75rem;                 /* ✅ Add padding to sides */
+  padding: 0 1rem;             /* Slight horizontal side padding */
 }
 
 /* Content panel */
 .collapsible-content {
   background-color: #1a1a1a;
-  padding: 1.5rem;
+  padding: 1rem 2rem;          /* 👈 Wider horizontal padding than top/bottom */
   color: #eee;
   display: none;
   border-radius: 0 0 6px 6px;
   line-height: 1.7;
-  text-align: justify;               /* ✅ FULL JUSTIFY TEXT */
+  text-align: justify;			/* Justifies the text */
 }
+
 
 /* Space between paragraphs */
 .collapsible-content p {
