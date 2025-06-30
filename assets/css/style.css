@@ -156,49 +156,52 @@ nav a:hover {
   color: #000;
 }
 
-/* Collapsible Button Style  (replaces the old block) */
+/* Collapsible Button Style */
 .collapsible-btn {
-  display: block;                    /* full-width button */
-  background-color: #444;            /* dark gray */
+  background-color: #e74c3c;         /* 🔴 Restore red */
   color: white;
   font-size: 1.2rem;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin: 1rem auto;                 /* centered */
+  margin: 1rem auto;
+  display: block;
   text-align: center;
   transition: background-color 0.3s ease;
+  max-width: 300px;                  /* ✅ Keep it centered and narrow */
 }
 
 .collapsible-btn:hover {
-  background-color: #666;            /* lighter gray on hover */
+  background-color: #c0392b;         /* Darker red on hover */
 }
 
-/* ▼ / ▲ icon next to button text */
+/* Icon beside button label */
 .toggle-icon {
   margin-left: 0.5rem;
   font-size: 1rem;
 }
 
+/* Wrapper for About Me section */
+.collapsible-intro {
+  max-width: 900px;                  /* Wide readable body */
+  margin: 2rem auto;
+  padding: 0 1.5rem;                 /* ✅ Add padding to sides */
+}
 
-/* Collapsible Content Styles */
+/* Content panel */
 .collapsible-content {
   background-color: #1a1a1a;
   padding: 1.5rem;
   color: #eee;
-  display: none;  /* Hidden by default */
+  display: none;
   border-radius: 0 0 6px 6px;
   line-height: 1.7;
-  text-align: justify;
+  text-align: justify;               /* ✅ FULL JUSTIFY TEXT */
 }
 
+/* Space between paragraphs */
 .collapsible-content p {
   margin-bottom: 1rem;
 }
 
-/* Optional icon to show ▼ / ▲ in collapsible toggle */
-.toggle-icon {
-  margin-left: 0.5rem;
-  font-size: 1rem;
-}
