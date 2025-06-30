@@ -184,9 +184,9 @@ nav a:hover {
 
 /* Wrapper for About Me section */
 .collapsible-intro {
-  max-width: 800px;            /* Reduce width slightly for tighter margins */
-  margin: 2rem auto;
-  padding: 0 1rem;             /* Slight horizontal side padding */
+  max-width: 70%;         /* Shrinks the width to about 70% of the screen */
+  margin: 2rem auto;      /* Centered with vertical spacing */
+  padding: 0;             /* Remove extra horizontal padding */
 }
 
 /* Content panel */
