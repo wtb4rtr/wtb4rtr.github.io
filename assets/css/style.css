@@ -71,10 +71,11 @@ header h1 {
 
 /* Title Box */
 .hero-title-box {
-  background: rgba(0, 0, 0, 0.7); /* semi-transparent black */
-  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.9); /* darker background */
+  padding: 1.5rem 2.5rem;
   border-radius: 6px;
   display: inline-block;
+  margin-top: 4rem;  /* Push it lower */
   margin-bottom: 1.5rem;
 }
 
@@ -86,13 +87,16 @@ header h1 {
 }
 
 .hero-title-box h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.6rem; /* William T. Brown */
+  font-weight: normal;
 }
 
 .hero-title-box h2 {
-  font-size: 1.5rem;
+  font-size: 2.5rem; /* GIS Portfolio */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
+
 
 /* Hero Navigation Buttons */
 .hero-nav {
