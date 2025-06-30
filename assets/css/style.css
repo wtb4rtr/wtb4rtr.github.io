@@ -6,10 +6,16 @@
 }
 
 body {
-  background: #191919; /* matte black */
   font-family: 'Segoe UI', sans-serif;
-  color: white;
   line-height: 1.6;
+  background: #fff;
+  color: #111;
+}
+
+/* Limit dark theme to homepage */
+body.homepage {
+  background: #0d0d0d; /* matte black */
+  color: white;
 }
 
 /* Top Navigation Bar */
@@ -59,7 +65,7 @@ nav a:hover {
   border-radius: 4px;
 }
 
-/* Hero Homepage Header Section */
+/* Homepage Title Section */
 .hero-header {
   text-align: center;
   padding: 5rem 1rem 3rem;
@@ -69,7 +75,7 @@ nav a:hover {
 .hero-header h1 {
   font-size: 3.5rem;
   font-weight: 300;
-  color: #e0e0e0; /* light gray */
+  color: #e0e0e0;
   letter-spacing: 2px;
   margin-bottom: 1rem;
 }
@@ -77,29 +83,63 @@ nav a:hover {
 .hero-underline {
   width: 200px;
   height: 4px;
-  background-color: #e74c3c; /* Google Sites-style red */
+  background-color: #e74c3c;
   border: none;
   margin: 0 auto;
 }
 
-/* Homepage Heading */
-header {
+/* Hero Section for GIS Portfolio */
+.hero {
+  background-color: #fff;
+  padding: 4rem 2rem 2rem;
   text-align: center;
-  padding: 6rem 2rem;
+  color: #111;
+}
+
+.hero-title-box {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title-box h1,
+.hero-title-box h2 {
+  margin: 0;
   color: white;
+  line-height: 1.2;
 }
 
-header h1 {
-  font-size: 3rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
+.hero-title-box h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
-header hr {
-  width: 200px;
-  height: 4px;
-  background-color: #e74c3c;
-  border: none;
-  margin: 1rem auto;
+.hero-title-box h1 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.hero-nav {
+  margin-top: 1rem;
+}
+
+.hero-nav a {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  border: 2px solid black;
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero-nav a:hover {
+  background: #f2f2f2;
+  color: #000;
 }
