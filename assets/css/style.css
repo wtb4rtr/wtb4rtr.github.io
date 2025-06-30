@@ -12,7 +12,7 @@ body {
   color: #111;
 }
 
-/* Limit dark theme to homepage only */
+/* Dark theme only on the homepage */
 body.homepage {
   background: #0d0d0d; /* matte black */
   color: white;
@@ -69,7 +69,7 @@ nav a:hover {
 .hero-header {
   text-align: center;
   padding: 5rem 1rem 3rem;
-  background-color: #0d0d0d;
+  background-color: #0d0d0d; /* matte black */
 }
 
 .hero-header h1 {
@@ -83,7 +83,7 @@ nav a:hover {
 .hero-underline {
   width: 200px;
   height: 4px;
-  background-color: #e74c3c;
+  background-color: #e74c3c; /* red underline */
   border: none;
   margin: 0 auto;
 }
@@ -102,47 +102,48 @@ nav a:hover {
 
 /* Title Box */
 .hero-title-box {
-  background: rgba(0, 0, 0, 0.7);  /* semi-transparent black */
+  background: rgba(0, 0, 0, 0.85);  /* stronger opacity */
   padding: 1rem 2rem;
   border-radius: 6px;
   display: inline-block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;               /* bring it closer to the buttons */
 }
 
-.hero-title-box h1,
-.hero-title-box h2 {
+/* Title Text */
+.hero-title-box h2,
+.hero-title-box h1 {
   margin: 0;
   color: white;
   line-height: 1.2;
 }
 
 .hero-title-box h2 {
-  font-size: 2.4rem; /* GIS PORTFOLIO */
+  font-size: 2.6rem;      /* make “GIS PORTFOLIO” stand out */
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .hero-title-box h1 {
-  font-size: 1.8rem; /* WILLIAM T. BROWN */
+  font-size: 1.8rem;      /* your name smaller than the title */
   font-weight: 400;
 }
 
 /* Navigation Buttons Below Title Box */
 .hero-nav {
-  margin-top: 1rem;
-  text-align: center;
+  margin-top: 0.5rem;
+  text-align: center;     /* ensure buttons are centered */
 }
 
 .hero-nav a {
   display: inline-block;
   margin: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: #fff;
+  background: #fff;  
   color: #111;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
-  border: 2px solid black;
+  border: 2px solid #000;
   transition: background 0.3s, color 0.3s;
 }
 
