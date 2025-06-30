@@ -33,13 +33,12 @@
   <main class="homepage">
     <section class="hero-intro">
 
-      <div class="collapsible-intro">
-        <button class="collapsible-btn">About Me</button>
-        <div class="collapsible-content">
-          <p>I am a GIS professional and an archaeologist with a Master of Science in GIS from the University of Arizona and a Master of Arts in Archaeology from the University of New Mexico. My career blends nearly four decades of archaeological experience with a focus on GIS technologies for historical and archaeological research. I have worked as a GIS technician since 2022, managing GIS data for archaeological surveys in Colorado and New Mexico, and digitizing and georeferencing historical maps as part of the Shared Churches Project at the University of Arizona. I am proficient in ArcGIS Pro, ArcMap, and SurveyPro 2.0, with a strong track record of producing high-quality, accurate spatial data.</p>
-          <p>Between 1991 and 2013, I held various roles as an Archaeologist/Mapping Crew Chief and Instrument Man, working on major archaeological projects across the U.S., Spain, and Belize. My work included mapping prehistoric Puebloan sites, Maya residences, Upper Paleolithic deposits, and historic sites, utilizing total stations such as Topcon, Leica, and Nikon/TDS. I have led and supervised teams, ensuring precision in data collection, site mapping, and feature plotting. I also coordinated with cultural resource management firms and university research teams on projects of varying complexity.</p>
-          <p>I am a Registered Professional Archaeologist and have directed or supervised field investigations for 19 CRM firms and seven university or research institutions. My experience includes excavating over 50 Ancestral Pueblo sites, Mississippian complexes, Paleolithic caves, and Roman sites, with a strong focus on high-quality documentation and analysis. Additionally, I have specialized skills in osteology, total-station mapping, GIS mapping, and artifact photography, ensuring the highest standards of data integrity and documentation.</p>
-        </div>
+      <button class="collapsible-btn">About Me <span class="toggle-icon">▼</span></button>
+
+      <div class="collapsible-content">
+        <p>I am a GIS professional and an archaeologist with a Master of Science in GIS from the University of Arizona and a Master of Arts in Archaeology from the University of New Mexico. My career blends nearly four decades of archaeological experience with a focus on GIS technologies for historical and archaeological research. I have worked as a GIS technician since 2022, managing GIS data for archaeological surveys in Colorado and New Mexico, and digitizing and georeferencing historical maps as part of the Shared Churches Project at the University of Arizona. I am proficient in ArcGIS Pro, ArcMap, and SurveyPro 2.0, with a strong track record of producing high-quality, accurate spatial data.</p>
+        <p>Between 1991 and 2013, I held various roles as an Archaeologist/Mapping Crew Chief and Instrument Man, working on major archaeological projects across the U.S., Spain, and Belize. My work included mapping prehistoric Puebloan sites, Maya residences, Upper Paleolithic deposits, and historic sites, utilizing total stations such as Topcon, Leica, and Nikon/TDS. I have led and supervised teams, ensuring precision in data collection, site mapping, and feature plotting. I also coordinated with cultural resource management firms and university research teams on projects of varying complexity.</p>
+        <p>I am a Registered Professional Archaeologist and have directed or supervised field investigations for 19 CRM firms and seven university or research institutions. My experience includes excavating over 50 Ancestral Pueblo sites, Mississippian complexes, Paleolithic caves, and Roman sites, with a strong focus on high-quality documentation and analysis. Additionally, I have specialized skills in osteology, total-station mapping, GIS mapping, and artifact photography, ensuring the highest standards of data integrity and documentation.</p>
       </div>
 
     </section>
@@ -49,10 +48,16 @@
   <script>
     const collBtn = document.querySelector('.collapsible-btn');
     const collContent = document.querySelector('.collapsible-content');
+    const icon = document.querySelector('.toggle-icon');
 
     collBtn.addEventListener('click', function () {
-      collContent.style.display = collContent.style.display === 'block' ? 'none' : 'block';
+      const isVisible = collContent.style.display === 'block';
+      collContent.style.display = isVisible ? 'none' : 'block';
+      icon.textContent = isVisible ? '▼' : '▲';
     });
+
+    // Optional: Start with content hidden
+    collContent.style.display = 'none';
   </script>
 
 </body>
