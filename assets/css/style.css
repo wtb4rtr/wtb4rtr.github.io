@@ -156,12 +156,11 @@ nav a:hover {
   color: #000;
 }
 
-/* Collapsible Button Style */
 .collapsible-btn {
-  background-color: #e74c3c;         /* 🔴 Restore red */
+  background-color: #e74c3c;       /* 🔴 Button color */
   color: white;
   font-size: 1.2rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;           /* More horizontal padding */
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -169,8 +168,11 @@ nav a:hover {
   display: block;
   text-align: center;
   transition: background-color 0.3s ease;
-  max-width: 375px;                  /* ✅ Keep it centered and narrow */
+  max-width: 400px;                /* Wider max width */
+  width: fit-content;              /* Fit to content width */
+  white-space: nowrap;            /* Prevent wrapping to second line */
 }
+
 
 .collapsible-btn:hover {
   background-color: #c0392b;         /* Darker red on hover */
