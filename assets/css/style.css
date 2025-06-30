@@ -169,7 +169,7 @@ nav a:hover {
   display: block;
   text-align: center;
   transition: background-color 0.3s ease;
-  max-width: 300px;                  /* ✅ Keep it centered and narrow */
+  max-width: 375px;                  /* ✅ Keep it centered and narrow */
 }
 
 .collapsible-btn:hover {
