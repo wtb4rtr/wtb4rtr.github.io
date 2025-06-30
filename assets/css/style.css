@@ -6,122 +6,100 @@
 }
 
 body {
-  background: #fff;
-  font-family: sans-serif;
+  background: #0d0d0d; /* matte black */
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
   line-height: 1.6;
 }
 
-/* Global Navigation */
+/* Top Navigation Bar */
 nav {
-  background: #000; /* pure black */
-  box-shadow: none;
+  display: flex;
+  align-items: center;
+  background-color: #000; /* deep black nav bar */
+  padding: 0.5rem 2rem;
 }
+
+/* Logo */
+nav img {
+  height: 40px;
+  margin-right: 1rem;
+}
+
+/* Title */
+nav .site-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  margin-right: auto;
+}
+
+/* Navigation Links */
 nav ul {
   display: flex;
   list-style: none;
-  padding: 1rem;
-  justify-content: center;
+  margin-left: auto;
 }
+
 nav li + li {
   margin-left: 1rem;
 }
+
 nav a {
-  color: #fff;
+  color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  font-weight: bold;
   text-transform: uppercase;
+  font-weight: bold;
 }
+
 nav a:hover {
-  background: #444;
-}
-
-/* Restore page-level header styling (for root index.html and others) */
-header {
-  background: #f2f2f2;
-  padding: 2rem;
-  text-align: center;
-}
-header h1 {
-  margin-bottom: 0.5rem;
-}
-
-/* Hero Section */
-.hero {
-  position: relative;
-  width: 100%;
-  background-color: #fff;
-  background-image: url('/assets/images/gis-portfolio/globe.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  padding-bottom: 2rem;
-}
-
-/* Title Box */
-.hero-title-box {
-  background: rgba(0, 0, 0, 0.9); /* darker background */
-  padding: 1.5rem 2.5rem;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 4rem;  /* Push it lower */
-  margin-bottom: 1.5rem;
-}
-
-.hero-title-box h1,
-.hero-title-box h2 {
-  margin: 0;
-  color: white;
-  line-height: 1.2;
-}
-
-.hero-title-box h1 {
-  font-size: 1.6rem;  /* William T. Brown */
-  font-weight: 500;
-  margin: 0;
-  color: white;
-}
-
-.hero-title-box h2 {
-  font-size: 2.4rem;  /* GIS PORTFOLIO */
-  font-weight: 800;
-  margin-bottom: 0.3rem;
-  color: white;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-
-/* Hero Navigation Buttons */
-.hero-nav {
-  margin-top: 1rem;
-}
-
-.hero-nav a {
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: #fff;              /* solid white */
-  color: #111;
-  text-decoration: none;
+  background-color: #1a1a1a;
   border-radius: 4px;
-  font-weight: bold;
-  border: 2px solid black;
-  transition: background 0.3s, color 0.3s;
 }
 
-.hero-nav a:hover {
-  background: #f2f2f2;
-  color: #000;
+/* Hero Homepage Header Section */
+.hero-header {
+  text-align: center;
+  padding: 5rem 1rem 3rem;
+  background-color: #0d0d0d; /* matte black */
+}
+
+.hero-header h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #e0e0e0; /* light gray */
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.hero-underline {
+  width: 200px;
+  height: 4px;
+  background-color: #e74c3c; /* Google Sites-style red */
+  border: none;
+  margin: 0 auto;
+}
+
+/* Homepage Heading */
+header {
+  text-align: center;
+  padding: 6rem 2rem;
+  color: white;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+header hr {
+  width: 200px;
+  height: 4px;
+  background-color: #e74c3c;
+  border: none;
+  margin: 1rem auto;
 }
