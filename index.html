@@ -41,24 +41,41 @@
         <p>I am a Registered Professional Archaeologist and have directed or supervised field investigations for 19 CRM firms and seven university or research institutions. My experience includes excavating over 50 Ancestral Pueblo sites, Mississippian complexes, Paleolithic caves, and Roman sites, with a strong focus on high-quality documentation and analysis. Additionally, I have specialized skills in osteology, total-station mapping, GIS mapping, and artifact photography, ensuring the highest standards of data integrity and documentation.</p>
       </div>
 
-    </section>
+    <!-- Collapsible for GIS/Mapping Resume -->
+		<button class="collapsible-btn">GIS/Mapping Résumé <span class="toggle-icon">▼</span></button>
+			<div class="collapsible-content">
+				<iframe src="https://wtb4rtr.github.io/GIS_Resume.pdf" width="100%" height="600" style="border: none;"></iframe>
+			</div>
+
+	<!-- Collapsible for Archaeology CV -->
+		<button class="collapsible-btn">Archaeology Curriculum Vitae <span class="toggle-icon">▼</span></button>
+			<div class="collapsible-content">
+				<iframe src="https://wtb4rtr.github.io/Archaeology_CV.pdf" width="100%" height="600" style="border: none;"></iframe>
+			</div>
+	</section>
+		
+
   </main>
 
-  <!-- Collapsible JavaScript -->
+  
+  
   <script>
-    const collBtn = document.querySelector('.collapsible-btn');
-    const collContent = document.querySelector('.collapsible-content');
-    const icon = document.querySelector('.toggle-icon');
+  const collapsibles = document.querySelectorAll('.collapsible-btn');
 
-    collBtn.addEventListener('click', function () {
-      const isVisible = collContent.style.display === 'block';
-      collContent.style.display = isVisible ? 'none' : 'block';
+  collapsibles.forEach(btn => {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector('.toggle-icon');
+    
+    content.style.display = 'none'; // Initially collapsed
+
+    btn.addEventListener('click', () => {
+      const isVisible = content.style.display === 'block';
+      content.style.display = isVisible ? 'none' : 'block';
       icon.textContent = isVisible ? '▼' : '▲';
     });
+  });
+	</script>
 
-    // Optional: Start with content hidden
-    collContent.style.display = 'none';
-  </script>
 
 </body>
 </html>
