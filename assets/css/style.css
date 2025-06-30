@@ -190,7 +190,7 @@ nav a:hover {
 }
 
 .collapsible-content {
-  max-width: 900px;              /* ⬅️ Wider by ~2 inches total */
+  max-width: 1200px;              /* ⬅️ Wider by ~2 inches total */
   margin: 0 auto;
   background-color: #1a1a1a;
   padding: 2rem;
