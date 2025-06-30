@@ -184,9 +184,9 @@ nav a:hover {
 
 /* Wrapper for About Me section */
 .collapsible-intro {
-  max-width: 900px;                  /* Wide readable body */
+  max-width: 800px;                  /* Wide readable body */
   margin: 2rem auto;
-  padding: 0 1.5rem;                 /* ✅ Add padding to sides */
+  padding: 0 0.75rem;                 /* ✅ Add padding to sides */
 }
 
 /* Content panel */
@@ -205,3 +205,7 @@ nav a:hover {
   margin-bottom: 1rem;
 }
 
+/* Hide nav title on homepage only */
+body.homepage .site-title {
+  display: none;
+}
