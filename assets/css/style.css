@@ -185,22 +185,23 @@ nav a:hover {
 /* Wrapper for About Me section */
 .collapsible-intro {
   display: flex;
-  justify-content: center;    /* Center the content horizontally */
+  justify-content: center;
   margin: 2rem auto;
 }
 
-/* Inner content box */
+/* Constrain content width inside the wrapper */
 .collapsible-content {
-  width: 700px;                /* 🔒 Fixed width for tight text column */
+  width: 100%;
+  max-width: 700px;              /* Constrain max width to ~2in margins */
   background-color: #1a1a1a;
-  padding: 1.5rem;
+  padding: 2rem;
   color: #eee;
   display: none;
   border-radius: 0 0 6px 6px;
   line-height: 1.7;
   text-align: justify;
+  box-sizing: border-box;       /* Ensure padding doesn’t expand width */
 }
-
 
 
 /* Space between paragraphs */
