@@ -1,4 +1,4 @@
-/* Reset & base layout settings */
+/* Reset & Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,31 +8,31 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
-  background: #fff; /* Default white background */
-  color: #111;      /* Default text color */
+  background: #fff;
+  color: #111;
 }
 
-/* Apply dark theme to homepage only */
+/* Apply dark theme only to homepage */
 body.homepage {
-  background: #0d0d0d; /* Matte black for homepage */
+  background: #0d0d0d; /* Matte black */
   color: white;
 }
 
-/* === Top Navigation Bar === */
+/* Top Navigation Bar */
 nav {
   display: flex;
   align-items: center;
-  background-color: #000; /* Deep black navbar */
+  background-color: #000; /* Deep black */
   padding: 0.5rem 2rem;
 }
 
-/* Logo inside navbar */
+/* Logo */
 nav img {
   height: 40px;
   margin-right: 1rem;
 }
 
-/* Site title next to logo */
+/* Site Title */
 nav .site-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -41,7 +41,7 @@ nav .site-title {
   margin-right: auto;
 }
 
-/* Navigation links */
+/* Navigation Menu Links */
 nav ul {
   display: flex;
   list-style: none;
@@ -65,11 +65,11 @@ nav a:hover {
   border-radius: 4px;
 }
 
-/* === Homepage Hero Title Section === */
+/* Homepage Hero Title Section */
 .hero-header {
   text-align: center;
   padding: 5rem 1rem 3rem;
-  background-color: #0d0d0d;
+  background-color: #0d0d0d; /* Matte black */
 }
 
 .hero-header h1 {
@@ -80,16 +80,15 @@ nav a:hover {
   margin-bottom: 1rem;
 }
 
-/* Red underline under homepage title */
 .hero-underline {
   width: 200px;
   height: 4px;
-  background-color: #e74c3c;
+  background-color: #e74c3c; /* Red underline */
   border: none;
   margin: 0 auto;
 }
 
-/* === GIS Portfolio Hero Section === */
+/* GIS Portfolio Hero Section with Globe Background */
 .hero {
   background-color: #fff;
   background-image: url('/assets/images/gis-portfolio/globe.png');
@@ -101,16 +100,16 @@ nav a:hover {
   color: #111;
 }
 
-/* Box containing "GIS Portfolio" and your name */
+/* Title Box Overlay on Globe */
 .hero-title-box {
-  background: rgba(0, 0, 0, 0.85);  /* Less transparency for better readability */
+  background: rgba(0, 0, 0, 0.85); /* Stronger opacity for visibility */
   padding: 1rem 2rem;
   border-radius: 6px;
   display: inline-block;
-  margin-bottom: 1rem;  /* Move box closer to nav buttons */
+  margin-bottom: 1rem; /* Reduce spacing to bring closer to buttons */
 }
 
-/* Headings inside the title box */
+/* Text Inside Title Box */
 .hero-title-box h2,
 .hero-title-box h1 {
   margin: 0;
@@ -119,25 +118,28 @@ nav a:hover {
 }
 
 .hero-title-box h2 {
-  font-size: 2.6rem;  /* GIS Portfolio (larger, more emphasis) */
+  font-size: 2.6rem; /* “GIS PORTFOLIO” */
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .hero-title-box h1 {
-  font-size: 1.8rem;  /* William T. Brown (smaller) */
+  font-size: 1.8rem; /* “WILLIAM T. BROWN” */
   font-weight: 400;
 }
 
-/* === Buttons Below the GIS Portfolio Title Box === */
+/* Lower Navigation Buttons Section */
 .hero-nav {
   margin-top: 0.5rem;
-  text-align: center;  /* Center align the buttons */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem; /* Adds even spacing between buttons */
 }
 
+/* Individual Navigation Buttons */
 .hero-nav a {
   display: inline-block;
-  margin: 0.5rem;
   padding: 0.75rem 1.5rem;
   background: #fff;
   color: #111;
