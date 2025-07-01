@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="homepage">
-
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -29,8 +28,6 @@
 
   <main class="homepage">
     <section class="hero-intro">
-
-      <!-- Collapsible: About Me -->
       <button class="collapsible-btn">About Me <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
         <p>My name is Bill Brown (M.A., M.S., RPA) and I am a GIS professional and an archaeologist with a Master of Science in GIS from the University of Arizona and a Master of Arts in Archaeology from the University of New Mexico. My career blends nearly four decades of archaeological experience with a focus on GIS technologies for historical and archaeological research. I have worked as a GIS technician since 2022, managing GIS data for archaeological surveys in Colorado and New Mexico, and digitizing and georeferencing historical maps as part of the Shared Churches Project at the University of Arizona. I am proficient in ArcGIS Pro, ArcMap, and SurveyPro 2.0, with a strong track record of producing high-quality, accurate spatial data.</p>
@@ -38,7 +35,6 @@
         <p>I am a Registered Professional Archaeologist and have directed or supervised field investigations for 19 CRM firms and seven university or research institutions. My experience includes excavating over 50 Ancestral Pueblo sites, Mississippian complexes, Paleolithic caves, and Roman sites, with a strong focus on high-quality documentation and analysis. Additionally, I have specialized skills in osteology, total-station mapping, GIS mapping, and artifact photography, ensuring the highest standards of data integrity and documentation.</p>
       </div>
 
-      <!-- Collapsible: Skills -->
       <button class="collapsible-btn">Skills <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
         <ul>
@@ -57,9 +53,28 @@
           <li>Faunal Analysis (Eleven faunal analyses, mostly from the Southwestern US)</li>
         </ul>
       </div>
-
     </section>
   </main>
 
+  <script>
+    const collapsibles = document.querySelectorAll('.collapsible-btn');
+
+    collapsibles.forEach(btn => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.toggle-icon');
+
+      btn.addEventListener('click', () => {
+        const isOpen = content.classList.contains('open');
+
+        if (isOpen) {
+          content.classList.remove('open');
+          icon.textContent = '▼';
+        } else {
+          content.classList.add('open');
+          icon.textContent = '▲';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
