@@ -192,17 +192,17 @@ nav a:hover {
 }
 
 .collapsible-content {
-  max-width: 1200px;              /* ⬅️ Expands the width */
+  max-width: 1200px;
   margin: 0 auto;
-  background-color: #1a1a1a;
+  background-color: #0d0d0d;
   padding: 2rem;
   color: #eee;
   display: none;
-  border-radius: 0 0 6px 6px;
-  line-height: 1.7;
-  text-align: justify;
-  box-sizing: border-box;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  max-height: 0;
 }
+
 
 /* Constrain embedded PDFs inside collapsible sections */
 .collapsible-content iframe {

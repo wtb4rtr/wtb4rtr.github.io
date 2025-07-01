@@ -93,16 +93,28 @@
   collapsibles.forEach(btn => {
     const content = btn.nextElementSibling;
     const icon = btn.querySelector('.toggle-icon');
-    
-    content.style.display = 'none'; // Initially collapsed
+
+    content.style.maxHeight = '0';
+    content.style.paddingTop = '0';
+    content.style.paddingBottom = '0';
 
     btn.addEventListener('click', () => {
-      const isVisible = content.style.display === 'block';
-      content.style.display = isVisible ? 'none' : 'block';
-      icon.textContent = isVisible ? '▼' : '▲';
+      const isVisible = content.style.maxHeight !== '0px';
+      if (isVisible) {
+        content.style.maxHeight = '0';
+        content.style.paddingTop = '0';
+        content.style.paddingBottom = '0';
+        icon.textContent = '▼';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.style.paddingTop = '2rem';
+        content.style.paddingBottom = '2rem';
+        icon.textContent = '▲';
+      }
     });
   });
-	</script>
+</script>
+
 
 
 </body>
