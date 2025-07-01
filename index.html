@@ -8,7 +8,6 @@
 </head>
 <body class="homepage">
 
-  <!-- Top Navigation Bar -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -23,7 +22,6 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
   <header class="hero-header">
     <h1>VIRTUAL BILL BROWN</h1>
     <hr class="hero-underline">
@@ -35,65 +33,33 @@
       <!-- Collapsible: About Me -->
       <button class="collapsible-btn">About Me <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
-        <p>My name is Bill Brown (M.A., M.S., RPA)...</p>
-        <p>Between 1991 and 2013, I held various roles as an Archaeologist...</p>
-        <p>I am a Registered Professional Archaeologist and have directed...</p>
-      </div>
-
-      <!-- Collapsible: Archaeology CV -->
-      <button class="collapsible-btn">Archaeology Curriculum Vitae <span class="toggle-icon">▼</span></button>
-      <div class="collapsible-content">
-        <iframe src="https://wtb4rtr.github.io/Archaeology_CV.pdf"></iframe>
-      </div>
-
-      <!-- Collapsible: GIS Resume -->
-      <button class="collapsible-btn">GIS/Mapping Résumé <span class="toggle-icon">▼</span></button>
-      <div class="collapsible-content">
-        <iframe src="https://wtb4rtr.github.io/GIS_Resume.pdf"></iframe>
+        <p>My name is Bill Brown (M.A., M.S., RPA) and I am a GIS professional and an archaeologist with a Master of Science in GIS from the University of Arizona and a Master of Arts in Archaeology from the University of New Mexico. My career blends nearly four decades of archaeological experience with a focus on GIS technologies for historical and archaeological research. I have worked as a GIS technician since 2022, managing GIS data for archaeological surveys in Colorado and New Mexico, and digitizing and georeferencing historical maps as part of the Shared Churches Project at the University of Arizona. I am proficient in ArcGIS Pro, ArcMap, and SurveyPro 2.0, with a strong track record of producing high-quality, accurate spatial data.</p>
+        <p>Between 1991 and 2013, I held various roles as an Archaeologist/Mapping Crew Chief and Instrument Man, working on major archaeological projects across the U.S., Spain, and Belize. My work included mapping prehistoric Puebloan sites, Maya residences, Upper Paleolithic deposits, and historic sites, utilizing total stations such as Topcon, Leica, and Nikon/TDS. I have led and supervised teams, ensuring precision in data collection, site mapping, and feature plotting. I also coordinated with cultural resource management firms and university research teams on projects of varying complexity.</p>
+        <p>I am a Registered Professional Archaeologist and have directed or supervised field investigations for 19 CRM firms and seven university or research institutions. My experience includes excavating over 50 Ancestral Pueblo sites, Mississippian complexes, Paleolithic caves, and Roman sites, with a strong focus on high-quality documentation and analysis. Additionally, I have specialized skills in osteology, total-station mapping, GIS mapping, and artifact photography, ensuring the highest standards of data integrity and documentation.</p>
       </div>
 
       <!-- Collapsible: Skills -->
       <button class="collapsible-btn">Skills <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
-        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+        <ul>
           <li>ESRI ArcGIS Pro</li>
+          <li>ESRI ArcMap</li>
           <li>QGIS</li>
-          <li>Human Osteology...</li>
+          <li>R Scripting</li>
+          <li>Python Scripting</li>
+          <li>Internet Mapping</li>
+          <li>Total Station Mapping</li>
+          <li>Trimble Data Systems Software</li>
+          <li>Use of Garmin GPS Units</li>
+          <li>Over 30 Years of Excavation Experience</li>
+          <li>Burial Excavation (Excavated over 250 Burials)</li>
+          <li>Human Osteology (Analysis of 302 Burials from Woodland/Mississippian, Maya, Ancestral Puebloan, Roman, Neanderthal, and US Historic)</li>
+          <li>Faunal Analysis (Eleven faunal analyses, mostly from the Southwestern US)</li>
         </ul>
-      </div>
-
-      <!-- Collapsible: Contact Info -->
-      <button class="collapsible-btn">Contact Info <span class="toggle-icon">▼</span></button>
-      <div class="collapsible-content" style="text-align: center;">
-        <p><strong>Address:</strong><br>301 South 4th Street<br>Dolores, CO 81323</p>
-        <p><strong>Phone:</strong><br>(970) 676-1744</p>
-        <p><strong>Email:</strong><br><a href="mailto:wtb4rtr@arizona.edu">wtb4rtr@arizona.edu</a></p>
-        <p><strong>LinkedIn:</strong><br><a href="https://www.linkedin.com/in/wtb2025" target="_blank">www.linkedin.com/in/wtb2025</a></p>
       </div>
 
     </section>
   </main>
-
-  <script>
-  // Select all collapsible buttons
-  document.querySelectorAll('.collapsible-btn').forEach(button => {
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('.toggle-icon');
-
-    button.addEventListener('click', () => {
-      const isOpen = content.classList.contains('open');
-
-      if (isOpen) {
-        content.classList.remove('open');
-        icon.textContent = '▼';
-      } else {
-        content.classList.add('open');
-        icon.textContent = '▲';
-      }
-    });
-  });
-</script>
-
 
 </body>
 </html>
