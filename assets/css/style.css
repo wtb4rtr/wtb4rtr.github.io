@@ -204,16 +204,18 @@ body.homepage .site-title {
   max-width: 1200px;
   margin: 0 auto;
   background-color: #0d0d0d; /* Match page background */
-  padding: 0 2rem; /* Only horizontal padding initially */
+  padding: 0 2rem;
   color: #eee;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s ease, padding 0.5s ease;
   border-radius: 6px;
+  text-align: justify; /* Ensure justified text alignment */
 }
 
 .collapsible-content.open {
   padding: 2rem; /* Restore vertical padding on open */
+  max-height: 5000px; /* Arbitrary large value to allow full expansion */
 }
 
 .collapsible-content p {

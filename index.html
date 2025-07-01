@@ -88,39 +88,22 @@
 
   <!-- JavaScript to Handle Collapsible Behavior -->
   <script>
-  const collapsibles = document.querySelectorAll('.collapsible-btn');
+    const collapsibles = document.querySelectorAll('.collapsible-btn');
 
-  collapsibles.forEach(btn => {
-    const content = btn.nextElementSibling;
-    const icon = btn.querySelector('.toggle-icon');
+    collapsibles.forEach(btn => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.toggle-icon');
 
-    // Set initial styles for animation
-    content.style.maxHeight = '0';
-    content.style.overflow = 'hidden';
+      // Start collapsed
+      content.style.display = 'none';
 
-    btn.addEventListener('click', () => {
-      const isExpanded = content.style.maxHeight !== '0px' && content.style.maxHeight !== '';
-
-      if (isExpanded) {
-        // Collapse the content
-        content.style.maxHeight = '0';
-        content.classList.remove('open');
-        icon.textContent = '▼';
-      } else {
-        // Temporarily set height to 'auto' to measure scrollHeight
-        content.style.maxHeight = 'none';
-        const fullHeight = content.scrollHeight + 'px';
-        content.style.maxHeight = '0'; // Reset
-        setTimeout(() => {
-          content.style.maxHeight = fullHeight;
-        }, 10);
-
-        content.classList.add('open');
-        icon.textContent = '▲';
-      }
+      btn.addEventListener('click', () => {
+        const isVisible = content.style.display === 'block';
+        content.style.display = isVisible ? 'none' : 'block';
+        icon.textContent = isVisible ? '▼' : '▲';
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
