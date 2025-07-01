@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="homepage">
+  <!-- Navigation -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -21,63 +22,70 @@
     </ul>
   </nav>
 
+  <!-- Header Title -->
   <header class="hero-header">
     <h1>VIRTUAL BILL BROWN</h1>
     <hr class="hero-underline">
   </header>
 
+  <!-- Content -->
   <main class="homepage">
     <section class="hero-intro">
       <button class="collapsible-btn">About Me <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
         <p>My name is Bill Brown (M.A., M.S., RPA)...</p>
-        <!-- Truncated for brevity -->
+        <!-- Full content omitted here -->
       </div>
 
       <button class="collapsible-btn">Archaeology Curriculum Vitae <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
-        <iframe src="https://wtb4rtr.github.io/Archaeology_CV.pdf"></iframe>
+        <iframe src="https://wtb4rtr.github.io/Archaeology_CV.pdf" width="100%" height="600" style="border: none;"></iframe>
       </div>
 
       <button class="collapsible-btn">GIS/Mapping Résumé <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
-        <iframe src="https://wtb4rtr.github.io/GIS_Resume.pdf"></iframe>
+        <iframe src="https://wtb4rtr.github.io/GIS_Resume.pdf" width="100%" height="600" style="border: none;"></iframe>
       </div>
 
       <button class="collapsible-btn">Skills <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content">
-        <ul><li>ESRI ArcGIS Pro</li><li>ESRI ArcMap</li>...</ul>
+        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+          <li>ESRI ArcGIS Pro</li>
+          <!-- Additional skills omitted here -->
+        </ul>
       </div>
 
       <button class="collapsible-btn">Contact Info <span class="toggle-icon">▼</span></button>
       <div class="collapsible-content" style="text-align: center;">
         <p><strong>Address:</strong><br>301 South 4th Street<br>Dolores, CO 81323</p>
         <p><strong>Phone:</strong><br>(970) 676-1744</p>
-        <p><strong>Email:</strong><br><a href="mailto:wtb4rtr@arizona.edu">wtb4rtr@arizona.edu</a></p>
-        <p><strong>LinkedIn:</strong><br><a href="https://www.linkedin.com/in/wtb2025">www.linkedin.com/in/wtb2025</a></p>
+        <p><strong>Email:</strong><br><a href="mailto:wtb4rtr@arizona.edu" style="color: #e74c3c;">wtb4rtr@arizona.edu</a></p>
+        <p><strong>LinkedIn:</strong><br><a href="https://www.linkedin.com/in/wtb2025" target="_blank" style="color: #e74c3c;">www.linkedin.com/in/wtb2025</a></p>
       </div>
     </section>
   </main>
 
+  <!-- JavaScript -->
   <script>
     const collapsibles = document.querySelectorAll('.collapsible-btn');
 
     collapsibles.forEach(btn => {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.toggle-icon');
+
       btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        const icon = btn.querySelector('.toggle-icon');
+        const isOpen = content.classList.contains('open');
 
-        if (content.classList.contains('open')) {
-          content.classList.remove('open');
-          content.style.maxHeight = null;
-          icon.textContent = '▼';
-        } else {
-          document.querySelectorAll('.collapsible-content.open').forEach(openSection => {
-            openSection.classList.remove('open');
-            openSection.style.maxHeight = null;
-            openSection.previousElementSibling.querySelector('.toggle-icon').textContent = '▼';
-          });
+        document.querySelectorAll('.collapsible-content').forEach(c => {
+          c.classList.remove('open');
+          c.style.maxHeight = null;
+        });
 
+        document.querySelectorAll('.toggle-icon').forEach(i => {
+          i.textContent = '▼';
+        });
+
+        if (!isOpen) {
           content.classList.add('open');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.textContent = '▲';
