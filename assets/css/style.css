@@ -215,7 +215,7 @@ body.homepage .site-title {
 
 .collapsible-content.open {
   padding: 2rem; /* Restore vertical padding on open */
-  max-height: 5000px; /* Arbitrary large value to allow full expansion */
+  max-height: 5000px; /* Large height to accommodate content */
 }
 
 .collapsible-content p {
