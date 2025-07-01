@@ -1,6 +1,8 @@
-/* Reset & Base Styles */
+/* ========================================================
+   GLOBAL RESET & BASE STYLES
+   ======================================================== */
 * {
-  box-sizing: border-box; /* Ensures padding and borders don't exceed element width */
+  box-sizing: border-box; /* Include padding and border in element's total width/height */
   margin: 0;
   padding: 0;
 }
@@ -8,48 +10,47 @@
 body {
   font-family: 'Segoe UI', sans-serif; /* Clean sans-serif font */
   line-height: 1.6;
-  background: #fff; /* Default background color */
-  color: #111; /* Default text color */
+  background: #fff; /* Light background for general pages */
+  color: #111; /* Default dark text color */
 }
 
-/* Dark theme applied only on homepage via body class */
+/* Apply dark theme only on the homepage */
 body.homepage {
   background: #0d0d0d; /* Matte black background */
-  color: white;        /* White text for dark mode */
+  color: white; /* White text for contrast */
 }
 
-/* Top Navigation Bar Styles */
+/* ========================================================
+   NAVIGATION BAR STYLES
+   ======================================================== */
 nav {
-  display: flex;               /* Align items horizontally */
-  align-items: center;         /* Vertically center items */
-  background-color: #000;      /* Deep black navbar */
-  padding: 0.5rem 2rem;        /* Spacing around navbar content */
+  display: flex; /* Align nav children in a row */
+  align-items: center; /* Vertically center items */
+  background-color: #000; /* Deep black navbar */
+  padding: 0.5rem 2rem; /* Padding around navbar content */
 }
 
-/* Logo in the Navigation Bar */
 nav img {
-  height: 40px;         /* Consistent logo size */
-  margin-right: 1rem;   /* Space between logo and title */
+  height: 40px; /* Logo height */
+  margin-right: 1rem; /* Space between logo and text */
 }
 
-/* Site Title (Virtual Bill Brown) */
 nav .site-title {
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 1px;
   color: white;
-  margin-right: auto;  /* Push rest of nav items to the right */
+  margin-right: auto; /* Push nav links to the right */
 }
 
-/* Navigation Links */
 nav ul {
   display: flex;
-  list-style: none;     /* Remove default list bullets */
-  margin-left: auto;    /* Align navigation to right side */
+  list-style: none; /* Remove bullet points */
+  margin-left: auto;
 }
 
 nav li + li {
-  margin-left: 1rem;    /* Space between nav links */
+  margin-left: 1rem; /* Space between links */
 }
 
 nav a {
@@ -61,21 +62,28 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; /* Slightly lighter hover */
   border-radius: 4px;
 }
 
-/* Homepage Title Banner Section */
+/* Hide nav title only on homepage */
+body.homepage .site-title {
+  display: none;
+}
+
+/* ========================================================
+   HERO TITLE BANNER SECTION
+   ======================================================== */
 .hero-header {
   text-align: center;
   padding: 5rem 1rem 3rem;
-  background-color: #0d0d0d;  /* Matches homepage background */
+  background-color: #0d0d0d; /* Matches homepage background */
 }
 
 .hero-header h1 {
   font-size: 3.5rem;
   font-weight: 300;
-  color: #e0e0e0;        /* Light gray title text */
+  color: #e0e0e0; /* Light gray */
   letter-spacing: 2px;
   margin-bottom: 1rem;
 }
@@ -83,15 +91,17 @@ nav a:hover {
 .hero-underline {
   width: 200px;
   height: 4px;
-  background-color: #e74c3c; /* Red underline */
+  background-color: #e74c3c; /* Red accent underline */
   border: none;
   margin: 0 auto;
 }
 
-/* GIS Portfolio Hero Section Background */
+/* ========================================================
+   MAIN HERO SECTION (WITH BACKGROUND IMAGE)
+   ======================================================== */
 .hero {
   background-color: #fff;
-  background-image: url('/assets/images/gis-portfolio/globe.png'); /* Background image */
+  background-image: url('/assets/images/gis-portfolio/globe.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -100,16 +110,17 @@ nav a:hover {
   color: #111;
 }
 
-/* Box for the Title and Subtitle */
+/* ========================================================
+   HERO TITLE BOX (NAME AND PORTFOLIO TITLE)
+   ======================================================== */
 .hero-title-box {
-  background: rgba(0, 0, 0, 0.85);  /* Semi-transparent black */
+  background: rgba(0, 0, 0, 0.85);
   padding: 1rem 2rem;
   border-radius: 6px;
   display: inline-block;
-  margin-bottom: 1rem; /* Space between box and nav buttons */
+  margin-bottom: 1rem;
 }
 
-/* Title text inside the hero title box */
 .hero-title-box h2,
 .hero-title-box h1 {
   margin: 0;
@@ -118,24 +129,25 @@ nav a:hover {
 }
 
 .hero-title-box h2 {
-  font-size: 2.6rem;    /* GIS PORTFOLIO */
+  font-size: 2.6rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .hero-title-box h1 {
-  font-size: 1.8rem;    /* William T. Brown */
+  font-size: 1.8rem;
   font-weight: 400;
 }
 
-/* Center container for lower nav bar */
+/* ========================================================
+   LOWER HERO NAVIGATION (BUTTON BAR)
+   ======================================================== */
 .hero-nav-container {
   text-align: center;
 }
 
-/* Lower nav bar for section buttons */
 .hero-nav {
-  display: inline-block;  /* Ensures it fits content and centers with container */
+  display: inline-block;
 }
 
 .hero-nav a {
@@ -156,68 +168,65 @@ nav a:hover {
   color: #000;
 }
 
+/* ========================================================
+   COLLAPSIBLE SECTION BUTTON
+   ======================================================== */
 .collapsible-btn {
-  background-color: #e74c3c;       /* 🔴 Button color */
+  background-color: #e74c3c; /* Button red */
   color: white;
   font-size: 1.2rem;
-  padding: 0.75rem 2rem;           /* More horizontal padding */
+  padding: 0.75rem 2rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin: 1rem auto;
+  margin: 2rem auto; /* Extra vertical spacing between buttons */
   display: block;
   text-align: center;
   transition: background-color 0.3s ease;
-  max-width: 400px;                /* Wider max width */
-  width: fit-content;              /* Fit to content width */
-  white-space: nowrap;            /* Prevent wrapping to second line */
+  max-width: 400px;
+  width: fit-content;
+  white-space: nowrap; /* Prevent line breaks */
 }
-
 
 .collapsible-btn:hover {
-  background-color: #c0392b;         /* Darker red on hover */
+  background-color: #c0392b; /* Darker red on hover */
 }
 
-/* Icon beside button label */
 .toggle-icon {
   margin-left: 0.5rem;
   font-size: 1rem;
 }
 
-/* Wrapper for About Me section */
-.collapsible-intro {
-  display: flex;
-  justify-content: center;
-  margin: 2rem auto;
-}
-
+/* ========================================================
+   COLLAPSIBLE CONTENT PANEL
+   ======================================================== */
 .collapsible-content {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #0d0d0d;
-  padding: 2rem;
+  background-color: #0d0d0d; /* Match page background */
+  padding: 0 2rem; /* Only horizontal padding initially */
   color: #eee;
-  display: none;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
   max-height: 0;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  border-radius: 6px;
 }
 
+.collapsible-content.open {
+  padding: 2rem; /* Restore vertical padding on open */
+}
 
-/* Constrain embedded PDFs inside collapsible sections */
+.collapsible-content p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* If iframe used (for PDFs) */
 .collapsible-content iframe {
   max-width: 1200px;
   margin: 0 auto;
   display: block;
-}
-
-
-/* Space between paragraphs */
-.collapsible-content p {
-  margin-bottom: 1rem;
-}
-
-/* Hide nav title on homepage only */
-body.homepage .site-title {
-  display: none;
+  width: 100%;
+  height: 600px;
+  border: none;
 }
