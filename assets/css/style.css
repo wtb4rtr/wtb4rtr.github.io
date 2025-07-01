@@ -189,8 +189,7 @@ body.homepage .site-title {
   font-size: 1rem;
 }
 
-
-  /* ========================================================
+/* ========================================================
    COLLAPSIBLE CONTENT STYLES
    ======================================================== */
 .collapsible-content {
@@ -204,14 +203,14 @@ body.homepage .site-title {
   transition: max-height 0.5s ease, padding 0.5s ease;
   border-radius: 6px;
   text-align: justify;
-  display: block; /* Always block to allow animation */
+  display: none;
 }
 
-/* When open, set a large max-height to allow full expansion */
 .collapsible-content.open {
+  display: block;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  max-height: 5000px; /* Large enough to fit full content */
+  max-height: 5000px;
   overflow: visible;
 }
 
@@ -233,8 +232,6 @@ body.homepage .site-title {
   line-height: 1.8;
 }
 
-
-/* Center contact info */
 .collapsible-content[style*="text-align: center"] {
   text-align: center !important;
 }
