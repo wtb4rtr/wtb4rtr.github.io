@@ -74,30 +74,26 @@
     </section>
   </main>
 
-  <!-- JavaScript for collapsible behavior -->
   <script>
-    document.querySelectorAll('.collapsible-btn').forEach(btn => {
-      const content = btn.nextElementSibling;
-      const icon = btn.querySelector('.toggle-icon');
+  // Select all collapsible buttons
+  document.querySelectorAll('.collapsible-btn').forEach(button => {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('.toggle-icon');
 
-      btn.addEventListener('click', () => {
-        const isOpen = content.classList.contains('open');
+    button.addEventListener('click', () => {
+      const isOpen = content.classList.contains('open');
 
-        document.querySelectorAll('.collapsible-content').forEach(c => {
-          c.style.maxHeight = null;
-          c.classList.remove('open');
-        });
-
-        document.querySelectorAll('.toggle-icon').forEach(i => i.textContent = '▼');
-
-        if (!isOpen) {
-          content.classList.add('open');
-          content.style.maxHeight = content.scrollHeight + "px";
-          icon.textContent = '▲';
-        }
-      });
+      if (isOpen) {
+        content.classList.remove('open');
+        icon.textContent = '▼';
+      } else {
+        content.classList.add('open');
+        icon.textContent = '▲';
+      }
     });
-  </script>
+  });
+</script>
+
 
 </body>
 </html>
