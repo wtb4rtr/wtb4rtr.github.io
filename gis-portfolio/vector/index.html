@@ -21,22 +21,23 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* move content higher */
     align-items: center;
+    padding-top: 5rem; /* spacing below nav bar */
   }
 
   body.vector-page .hero-content {
     text-align: center;
     z-index: 2;
+    margin-bottom: 1rem; /* less space between title and nav */
   }
 
   body.vector-page .hero-title-box {
     background: #fdf6e3;
-    padding: 2.5rem 5rem;
+    padding: 2rem 4rem;
     border-radius: 12px;
     display: inline-block;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
-    margin-bottom: 1rem;
     border: 2px solid #c44500;
   }
 
@@ -49,7 +50,6 @@
     position: relative;
   }
 
-  /* Optional divider bar under title */
   body.vector-page .hero-title-box h1::after {
     content: "";
     display: block;
@@ -61,8 +61,8 @@
   }
 
   body.vector-page .hero-nav-container {
-    position: absolute;
-    bottom: 3rem;
+    position: relative;
+    margin-top: 1rem;
     width: 100%;
     text-align: center;
     z-index: 2;
@@ -73,6 +73,7 @@
     display: inline-block;
     padding: 1rem 2rem;
     border-radius: 6px;
+    border: 2px solid #8b0000; /* crimson border */
   }
 
   body.vector-page .hero-nav a {
@@ -84,13 +85,15 @@
     color: black;
     font-weight: bold;
     border-radius: 4px;
-    transition: background 0.2s;
+    transition: background 0.2s, border 0.2s;
   }
 
   body.vector-page .hero-nav a:hover {
     background: #e0d3ba;
+    border: 1px solid #8b0000;
   }
 </style>
+
 
 </head>
 <body class="vector-page">
