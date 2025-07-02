@@ -7,70 +7,91 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 
   <!-- Page-specific styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
-    body.vector-page .hero {
-      background: url("/assets/images/gis-portfolio/vector/topo.jpg") no-repeat center center fixed;
-      background-size: cover;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+  /* Cinzel for title */
+  body.vector-page h1 {
+    font-family: 'Cinzel', serif;
+  }
 
-    body.vector-page .hero-content {
-      text-align: center;
-      z-index: 2;
-    }
+  body.vector-page .hero {
+    background: url("/assets/images/gis-portfolio/vector/topo.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    body.vector-page .hero-title-box {
-      background: rgba(255, 255, 255, 0.95); /* less transparent */
-      padding: 2rem 4rem;
-      border-radius: 12px;
-      display: inline-block;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-      margin-bottom: 2rem;
-    }
+  body.vector-page .hero-content {
+    text-align: center;
+    z-index: 2;
+  }
 
-    body.vector-page .hero-title-box h1 {
-      margin: 0;
-      font-size: 4rem;
-      color: #111;
-      letter-spacing: 1px;
-    }
+  body.vector-page .hero-title-box {
+    background: #fdf6e3;
+    padding: 2.5rem 5rem;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+    margin-bottom: 1rem;
+    border: 2px solid #c44500;
+  }
 
-    body.vector-page .hero-nav-container {
-      position: absolute;
-      bottom: 8rem; /* raised much higher */
-      width: 100%;
-      text-align: center;
-      z-index: 2;
-    }
+  body.vector-page .hero-title-box h1 {
+    margin: 0;
+    font-size: 5rem;
+    color: #2c2c2c;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+  }
 
-    body.vector-page .hero-nav {
-      background-color: black;
-      display: inline-block;
-      padding: 1rem 2rem;
-      border-radius: 6px;
-    }
+  /* Optional divider bar under title */
+  body.vector-page .hero-title-box h1::after {
+    content: "";
+    display: block;
+    margin: 1rem auto 0 auto;
+    width: 100px;
+    height: 4px;
+    background: #c44500;
+    border-radius: 2px;
+  }
 
-    body.vector-page .hero-nav a {
-      display: inline-block;
-      margin: 0 0.75rem;
-      padding: 0.75rem 1.25rem;
-      background: white;
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
+  body.vector-page .hero-nav-container {
+    position: absolute;
+    bottom: 3rem;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
 
-    body.vector-page .hero-nav a:hover {
-      background: #eee;
-    }
-  </style>
+  body.vector-page .hero-nav {
+    background-color: black;
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+  }
+
+  body.vector-page .hero-nav a {
+    display: inline-block;
+    margin: 0 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: white;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  body.vector-page .hero-nav a:hover {
+    background: #e0d3ba;
+  }
+</style>
+
 </head>
 <body class="vector-page">
 
