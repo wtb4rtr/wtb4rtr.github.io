@@ -4,11 +4,59 @@
   <meta charset="UTF-8">
   <title>GIS Portfolio – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-<!-- VECTOR ANALYSES PAGE TEST PUSH -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to your global stylesheet -->
 
+  <!-- Inline CSS to expand background image to full screen -->
+  <style>
+    /* Style the hero section to display a full-screen background image */
+    .hero {
+      background-image: url("/assets/images/gis-portfolio/globe.png"); /* Your background image: globe.png */
+      background-size: cover;             /* Ensures the image stretches to cover the entire hero section */
+      background-repeat: no-repeat;       /* Prevents the image from tiling */
+      background-position: center center; /* Centers the image horizontally and vertically */
+      background-attachment: fixed;       /* Keeps the background fixed during scroll (parallax effect) */
+      height: 100vh;                      /* Makes the hero section fill 100% of the viewport height */
+      display: flex;                      /* Use flexbox for layout */
+      flex-direction: column;            /* Stack children vertically */
+      justify-content: center;           /* Vertically center the content */
+      align-items: center;               /* Horizontally center the content */
+      position: relative;                /* Enables absolute positioning of nested elements if needed */
+      text-align: center;                /* Centers text inside */
+    }
+
+    /* Style the title box inside the hero section */
+    .hero-title-box {
+      background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+      padding: 2rem 3rem;                   /* Space inside the box */
+      border-radius: 12px;                  /* Rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    }
+
+    /* Style the lower navigation container */
+    .hero-nav-container {
+      margin-top: 2rem;       /* Space above the nav links */
+    }
+
+    /* Style the navigation links in the lower nav */
+    .hero-nav a {
+      margin: 0 1rem;                         /* Space between buttons */
+      padding: 0.75rem 1.5rem;                /* Padding inside buttons */
+      background-color: rgba(255, 255, 255, 0.8); /* Button background */
+      color: #2c2c2c;                         /* Text color */
+      text-decoration: none;                  /* Remove underline */
+      font-weight: bold;                      /* Bold text */
+      border-radius: 6px;                     /* Rounded corners */
+      transition: background 0.3s ease;       /* Smooth hover effect */
+    }
+
+    /* Button hover effect */
+    .hero-nav a:hover {
+      background-color: rgba(255, 255, 255, 1); /* Full opacity on hover */
+    }
+  </style>
+</head>
+
+<body>
   <!-- Global Navigation Bar -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
@@ -24,7 +72,7 @@
     </ul>
   </nav>
 
-  <!-- Hero Section with Boxed Title -->
+  <!-- Hero Section with Full-Page Background Image -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
@@ -49,12 +97,5 @@
   <main>
     <!-- Add any section-specific content here -->
   </main>
-<!-- TEMP: Help GitHub Pages detect /vector/ route -->
-<div style="text-align:center; margin-top: 3rem;">
-  <a href="/gis-portfolio/vector/" style="color: red; font-weight: bold;">
-    TEST VECTOR PAGE LINK
-  </a>
-</div>
-
 </body>
 </html>
