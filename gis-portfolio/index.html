@@ -4,54 +4,80 @@
   <meta charset="UTF-8">
   <title>GIS Portfolio – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to your global stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
 
-  <!-- Inline CSS to expand background image to full screen -->
+  <!-- Inline CSS to customize hero section and buttons -->
   <style>
-    /* Style the hero section to display a full-screen background image */
+    /* Full-screen hero section with globe background */
     .hero {
-      background-image: url("/assets/images/gis-portfolio/globe.png"); /* Your background image: globe.png */
-      background-size: cover;             /* Ensures the image stretches to cover the entire hero section */
-      background-repeat: no-repeat;       /* Prevents the image from tiling */
-      background-position: center center; /* Centers the image horizontally and vertically */
-      background-attachment: fixed;       /* Keeps the background fixed during scroll (parallax effect) */
-      height: 100vh;                      /* Makes the hero section fill 100% of the viewport height */
-      display: flex;                      /* Use flexbox for layout */
-      flex-direction: column;            /* Stack children vertically */
-      justify-content: center;           /* Vertically center the content */
-      align-items: center;               /* Horizontally center the content */
-      position: relative;                /* Enables absolute positioning of nested elements if needed */
-      text-align: center;                /* Centers text inside */
+      background-image: url("/assets/images/gis-portfolio/globe.png"); /* Globe background image */
+      background-size: cover;             /* Scale image to cover the hero */
+      background-repeat: no-repeat;       /* Prevent repeat */
+      background-position: center center; /* Center horizontally and vertically */
+      background-attachment: fixed;       /* Fixed during scroll */
+      height: 100vh;                      /* Full viewport height */
+      display: flex;                      /* Use flexbox */
+      flex-direction: column;            /* Stack vertically */
+      justify-content: center;           /* Center vertically */
+      align-items: center;               /* Center horizontally */
+      position: relative;                /* Needed for positioning inner elements */
+      text-align: center;                /* Center text inside */
     }
 
-    /* Style the title box inside the hero section */
+    /* Title box styling */
     .hero-title-box {
-      background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
-      padding: 2rem 3rem;                   /* Space inside the box */
-      border-radius: 12px;                  /* Rounded corners */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+      background: rgba(0, 0, 0, 0.88);    /* Deep black with slight transparency */
+      padding: 2rem 3rem;                /* Padding around title text */
+      border-radius: 12px;               /* Rounded corners */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Strong shadow for lift */
     }
 
-    /* Style the lower navigation container */
+    /* Section title: GIS PORTFOLIO */
+    .hero-title-box h2 {
+      margin: 0;                         /* Remove margin */
+      font-size: 2.2rem;                 /* Slightly larger font */
+      color: #fff;                       /* Bright white text */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Shadow improves legibility */
+    }
+
+    /* Subtitle: name */
+    .hero-title-box h1 {
+      margin: 0.75rem 0 0 0;             /* Space above */
+      font-size: 1.4rem;                 /* Slightly larger name */
+      color: #ccc;                       /* Light gray name text */
+      letter-spacing: 1px;               /* Spread letters */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Shadow for contrast */
+    }
+
+    /* Lower nav container */
     .hero-nav-container {
-      margin-top: 2rem;       /* Space above the nav links */
+      margin-top: 2rem;                  /* Space above buttons */
     }
 
-    /* Style the navigation links in the lower nav */
+    /* Nav button row styling */
+    .hero-nav {
+      display: flex;                     /* Horizontal layout */
+      gap: 1rem;                         /* Space between buttons */
+      flex-wrap: wrap;                   /* Wrap on smaller screens */
+      justify-content: center;          /* Center nav */
+    }
+
+    /* Individual nav button styling */
     .hero-nav a {
-      margin: 0 1rem;                         /* Space between buttons */
-      padding: 0.75rem 1.5rem;                /* Padding inside buttons */
-      background-color: rgba(255, 255, 255, 0.8); /* Button background */
-      color: #2c2c2c;                         /* Text color */
-      text-decoration: none;                  /* Remove underline */
-      font-weight: bold;                      /* Bold text */
-      border-radius: 6px;                     /* Rounded corners */
-      transition: background 0.3s ease;       /* Smooth hover effect */
+      margin: 0;                                   /* Remove default margins */
+      padding: 0.75rem 1.5rem;                     /* Inner spacing */
+      background-color: #ffffff;                   /* Bright white background */
+      color: #2c2c2c;                              /* Dark gray text */
+      text-decoration: none;                       /* No underline */
+      font-weight: bold;                           /* Bold font */
+      border-radius: 6px;                          /* Rounded corners */
+      transition: background 0.3s ease, transform 0.2s; /* Hover effect */
     }
 
-    /* Button hover effect */
+    /* Hover effect for nav buttons */
     .hero-nav a:hover {
-      background-color: rgba(255, 255, 255, 1); /* Full opacity on hover */
+      background-color: #f2f2f2;                   /* Slightly dimmer white */
+      transform: scale(1.05);                      /* Slight zoom */
     }
   </style>
 </head>
@@ -72,8 +98,9 @@
     </ul>
   </nav>
 
-  <!-- Hero Section with Full-Page Background Image -->
+  <!-- Hero Section -->
   <section class="hero">
+    <!-- Title Box -->
     <div class="hero-content">
       <div class="hero-title-box">
         <h2>GIS PORTFOLIO</h2>
@@ -81,7 +108,7 @@
       </div>
     </div>
 
-    <!-- Lower nav linking to each portfolio section -->
+    <!-- Section Navigation -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
         <a href="/gis-portfolio/vector/">VECTOR ANALYSES</a>
@@ -95,7 +122,7 @@
 
   <!-- Main content -->
   <main>
-    <!-- Add any section-specific content here -->
+    <!-- Reserved for future portfolio content -->
   </main>
 </body>
 </html>
