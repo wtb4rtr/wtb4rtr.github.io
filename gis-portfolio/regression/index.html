@@ -82,18 +82,18 @@
     }
 
     body.regression-page .hero-nav a {
-  display: block;
-  background: #2f4f4f;
-  color: #2f4f4f;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  position: relative;
-  z-index: 1;
-  transition: background 0.2s, transform 0.2s;
-  border: none;     /* removes thin border */
-  outline: none;    /* removes focus outline */
+  display: block;                 /* Makes each nav link take up the full width of its container, stacking vertically */
+  background: #2f4f4f;            /* Sets the background color to dark slate gray */
+  color: #2f4f4f;                 /* Sets the text color to match background (may be overridden by inner span or pseudo-elements) */
+  font-weight: bold;             /* Makes the text bold */
+  text-decoration: none;         /* Removes the underline from links */
+  padding: 0.75rem 1.5rem;       /* Adds spacing inside the button: top/bottom = 0.75rem, left/right = 1.5rem */
+  border-radius: 4px;            /* Rounds the corners of the button */
+  position: relative;            /* Allows absolutely-positioned pseudo-elements to be placed relative to this element */
+  z-index: 1;                    /* Ensures this element sits above its pseudo-elements or siblings with lower z-index */
+  transition: background 0.2s, transform 0.2s; /* Smooth animation when background or transform changes on hover/focus */
+  border: none;                  /* Removes any default border (often added by browsers to links/buttons) */
+  outline: none;                 /* Removes focus outlines that some browsers add by default */
 }
 
     body.regression-page .hero-nav a::before {
@@ -110,7 +110,7 @@
     }
 
     body.regression-page .hero-nav a:hover {
-      background: #e0d3ba;
+      background: #dcdcdc;
       border: 1px solid #c0c0c0;
       color: #c0c0c0;
     }
