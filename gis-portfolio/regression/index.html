@@ -97,17 +97,18 @@
 }
 
     body.regression-page .hero-nav a::before {
-      content: '';
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
-      background: #fffaf5;
-      border: 2px solid #c0c0c0;
-      z-index: -1;
-      border-radius: 2px;
-    }
+  content: '';                         /* Required to generate the pseudo-element */
+  position: absolute;                  /* Allows precise placement inside the button */
+  top: 4px;                            /* Inset from top edge */
+  left: 4px;                           /* Inset from left edge */
+  right: 4px;                          /* Inset from right edge */
+  bottom: 4px;                         /* Inset from bottom edge */
+  background: #dcdcdc;                 /* Matches title box background (gainsboro) */
+  border: 2px solid #2f4f4f;           /* Optional: dark slate gray border */
+  z-index: -1;                         /* Sits behind the button text */
+  border-radius: 2px;                  /* Slight rounding on the inner box corners */
+}
+
 
     body.regression-page .hero-nav a:hover {
       background: #dcdcdc;
