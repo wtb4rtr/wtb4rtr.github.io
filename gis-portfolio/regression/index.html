@@ -11,109 +11,116 @@
 
   <!-- Page-specific styles -->
   <style>
+    /* Set custom serif font (Playfair Display) for the page's main title */
     body.regression-page h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Playfair Display', serif; /* Elegant serif font for title */
     }
 
+    /* Main hero section with background image */
     body.regression-page .hero {
-      background-image: url("/assets/images/gis-portfolio/regression/regress.png");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-attachment: scroll;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding-top: 3rem;
+      background-image: url("/assets/images/gis-portfolio/regression/regress.png"); /* Regression diagram image */
+      background-size: cover;           /* Stretch to cover full section */
+      background-repeat: no-repeat;     /* Do not repeat image */
+      background-position: center top;  /* Align center horizontally, top vertically */
+      background-attachment: scroll;    /* Allow scrolling with page */
+      height: 100vh;                    /* Full viewport height */
+      position: relative;               /* Establish positioning context */
+      display: flex;                    /* Use flexbox layout */
+      flex-direction: column;          /* Stack children vertically */
+      justify-content: flex-start;     /* Align content at the top */
+      align-items: center;             /* Center items horizontally */
+      padding-top: 3rem;               /* Top padding under nav */
     }
 
+    /* Container for centered title */
     body.regression-page .hero-content {
-      text-align: center;
-      z-index: 2;
-      margin-bottom: 1rem;
+      text-align: center;              /* Center text */
+      z-index: 2;                      /* Layer above background */
+      margin-bottom: 1rem;             /* Space below title */
     }
 
+    /* Style for the title background box */
     body.regression-page .hero-title-box {
-      background: #dcdcdc;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      display: inline-block;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
-      border: 2px solid #dcdcdc;
+      background: #dcdcdc;             /* Light gray background (gainsboro) */
+      padding: 1rem 2rem;              /* Internal spacing */
+      border-radius: 12px;             /* Rounded corners */
+      display: inline-block;           /* Fit tightly to content */
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); /* Drop shadow for depth */
+      border: 2px solid #dcdcdc;       /* Border to match background */
     }
 
+    /* Main title styling */
     body.regression-page .hero-title-box h1 {
-      margin: 0;
-      font-size: 3.3rem;
-      color: #2c2c2c;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      position: relative;
+      margin: 0;                       /* Remove default spacing */
+      font-size: 3.3rem;               /* Set large title size */
+      color: #2c2c2c;                  /* Dark gray text */
+      letter-spacing: 1px;             /* Slight spacing between letters */
+      text-transform: uppercase;       /* Capital letters */
+      position: relative;              /* Anchor underline below */
     }
 
+    /* Decorative underline below title */
     body.regression-page .hero-title-box h1::after {
-      content: "";
-      display: block;
-      margin: 1rem auto 0 auto;
-      width: 80px;
-      height: 4px;
-      background: #c44500; /* deep crimson/maroon */
-      border-radius: 2px;
+      content: "";                     /* Generate line */
+      display: block;                  /* Block-level element */
+      margin: 1rem auto 0 auto;        /* Space above, centered */
+      width: 80px;                     /* Width of line */
+      height: 4px;                     /* Thickness of line */
+      background: #aa2e45;             /* Crimson/maroon color */
+      border-radius: 2px;              /* Rounded ends */
     }
 
+    /* Container for vertical nav list */
     body.regression-page .hero-nav-container {
-      position: absolute;
-      top: 10rem;
-      right: 2rem;
-      z-index: 2;
+      position: absolute;              /* Manual placement */
+      top: 10rem;                      /* Distance from top of hero */
+      right: 2rem;                     /* Align to right margin */
+      z-index: 2;                      /* Layer above background */
+      text-align: right;               /* Align label to right */
     }
 
+    /* Optional label above links */
+    body.regression-page .hero-nav-container::before {
+      content: "Explore Projects:";    /* Label text */
+      color: #ccc;                     /* Light gray color */
+      font-size: 0.9rem;               /* Smaller font */
+      margin-bottom: 0.5rem;           /* Space below label */
+      display: block;                  /* Ensure new line */
+    }
+
+    /* Container box for nav links */
     body.regression-page .hero-nav {
-      background-color: #2f4f4f;
-      padding: 1rem;
-      border-radius: 6px;
-      border: 2px solid #2f4f4f;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      background-color: #2f4f4f;       /* Slate gray box */
+      padding: 1rem;                   /* Internal spacing */
+      border-radius: 6px;              /* Rounded corners */
+      border: 2px solid #2f4f4f;       /* Border same as background */
+      display: flex;                   /* Flex layout */
+      flex-direction: column;          /* Stack items vertically */
+      gap: 1rem;                       /* Space between buttons */
     }
 
+    /* Style for each nav link button */
     body.regression-page .hero-nav a {
-  display: block;                 /* Makes each nav link take up the full width of its container, stacking vertically */
-  background: #2f4f4f;            /* Sets the background color to dark slate gray */
-  color: #1a2421;                 /* Sets the text color to match background (may be overridden by inner span or pseudo-elements) */
-  font-weight: bold;             /* Makes the text bold */
-  text-decoration: none;         /* Removes the underline from links */
-  padding: 0.75rem 1.5rem;       /* Adds spacing inside the button: top/bottom = 0.75rem, left/right = 1.5rem */
-  border-radius: 4px;            /* Rounds the corners of the button */
-  position: relative;            /* Allows absolutely-positioned pseudo-elements to be placed relative to this element */
-  z-index: 1;                    /* Ensures this element sits above its pseudo-elements or siblings with lower z-index */
-  transition: background 0.2s, transform 0.2s; /* Smooth animation when background or transform changes on hover/focus */
-  border: none;                  /* Removes any default border (often added by browsers to links/buttons) */
-  outline: none;                 /* Removes focus outlines that some browsers add by default */
-}
+      display: block;                  /* Full-width block button */
+      background: #dcdcdc;             /* Same as title box */
+      color: #2f4f4f;                  /* Text color: dark slate */
+      font-weight: bold;              /* Bold text */
+      text-decoration: none;          /* Remove underline */
+      padding: 0.75rem 1.5rem;         /* Padding inside button */
+      border-radius: 4px;              /* Rounded corners */
+      position: relative;              /* For pseudo-elements */
+      z-index: 1;                      /* Above inner box */
+      transition: background 0.2s, transform 0.2s; /* Hover animation */
+      border: none;                    /* Remove border */
+      outline: none;                   /* Remove focus outline */
+      box-shadow: none;                /* No shadows */
+    }
 
-    body.regression-page .hero-nav a::before {
-  content: '';                         /* Required to generate the pseudo-element */
-  position: absolute;                  /* Allows precise placement inside the button */
-  top: 4px;                            /* Inset from top edge */
-  left: 4px;                           /* Inset from left edge */
-  right: 4px;                          /* Inset from right edge */
-  bottom: 4px;                         /* Inset from bottom edge */
-  background: #dcdcdc;                 /* Matches title box background (gainsboro) */
-  border: 2px solid #2f4f4f;           /* Optional: dark slate gray border */
-  z-index: -1;                         /* Sits behind the button text */
-  border-radius: 2px;                  /* Slight rounding on the inner box corners */
-}
-
-
+    /* Hover effect for buttons */
     body.regression-page .hero-nav a:hover {
-      background: #dcdcdc;
-      border: 1px solid #c0c0c0;
-      color: #c0c0c0;
+      background: #f5f5f5;             /* Lighter gray on hover */
+      color: #000;                     /* Black text on hover */
+      transform: translateX(2px);      /* Subtle shift right */
     }
   </style>
 </head>
@@ -134,15 +141,16 @@
     </ul>
   </nav>
 
-  <!-- Hero Section with Boxed Title -->
+  <!-- Hero Section -->
   <section class="hero">
+    <!-- Title Box -->
     <div class="hero-content">
       <div class="hero-title-box">
         <h1>REGRESSION ANALYSES</h1>
       </div>
     </div>
 
-    <!-- Vertical Right Nav -->
+    <!-- Right-hand Vertical Nav -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
         <a href="mayaisotopes/">MAYA ISOTOPES</a>
@@ -151,7 +159,7 @@
     </div>
   </section>
 
-  <!-- Main content area -->
+  <!-- Future Content -->
   <main>
     <!-- Page-specific content goes here -->
   </main>
