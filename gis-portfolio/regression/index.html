@@ -5,117 +5,115 @@
   <title>Regression Analyses – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
   <!-- Page-specific styles -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-<style>
-  /* Cinzel for title */
-  body.regression-page h1 {
-    font-family: 'Cinzel', serif;
-  }
+  <style>
+    body.regression-page h1 {
+      font-family: 'Cinzel', serif;
+    }
 
-  body.regression-page .hero {
-    background: url("/assets/images/gis-portfolio/regression/regress.jpg") no-repeat center top fixed;
-    background-size: cover;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* move content higher */
-    align-items: center;
-    padding-top: 5rem;
-  }
+    body.regression-page .hero {
+      background: url("/assets/images/gis-portfolio/regression/regress.jpg") no-repeat center top fixed;
+      background-size: cover;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 5rem;
+    }
 
-  body.regression-page .hero-content {
-    text-align: center;
-    z-index: 2;
-    margin-bottom: 1rem;
-  }
+    body.regression-page .hero-content {
+      text-align: center;
+      z-index: 2;
+      margin-bottom: 1rem;
+    }
 
-  body.regression-page .hero-title-box {
-    background: #fdf6e3;
-    padding: 2rem 4rem;
-    border-radius: 12px;
-    display: inline-block;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
-    border: 2px solid #c44500;
-  }
+    body.regression-page .hero-title-box {
+      background: #fdf6e3;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+      border: 2px solid #c44500;
+    }
 
-  body.regression-page .hero-title-box h1 {
-    margin: 0;
-    font-size: 5rem;
-    color: #2c2c2c;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    position: relative;
-  }
+    body.regression-page .hero-title-box h1 {
+      margin: 0;
+      font-size: 3.3rem; /* Reduced from 5rem */
+      color: #2c2c2c;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+    }
 
-  body.regression-page .hero-title-box h1::after {
-    content: "";
-    display: block;
-    margin: 1rem auto 0 auto;
-    width: 100px;
-    height: 4px;
-    background: #c44500;
-    border-radius: 2px;
-  }
+    body.regression-page .hero-title-box h1::after {
+      content: "";
+      display: block;
+      margin: 1rem auto 0 auto;
+      width: 100px;
+      height: 4px;
+      background: #c44500;
+      border-radius: 2px;
+    }
 
-  body.regression-page .hero-nav-container {
-    position: relative;
-    margin-top: 1rem;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-  }
+    body.regression-page .hero-nav-container {
+      position: relative;
+      margin-top: 1rem;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+    }
 
-  body.regression-page .hero-nav {
-    background-color: #a32638;
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 6px;
-    border: 2px solid #a32638;
-  }
+    body.regression-page .hero-nav {
+      background-color: #a32638;
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 6px;
+      border: 2px solid #a32638;
+    }
 
-  body.regression-page .hero-nav a {
-    display: inline-block;
-    margin: 0 1rem;
-    padding: 0.75rem 1.5rem;
-    background: #aa2e45;
-    color: #aa2e45; /* crimson/maroon text */
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    transition: background 0.2s, transform 0.2s;
-    position: relative;
-    z-index: 1;
-  }
+    body.regression-page .hero-nav a {
+      display: inline-block;
+      margin: 0 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #aa2e45;
+      color: #aa2e45;
+      font-weight: bold;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 1;
+    }
 
-  /* Add cream-colored inner box */
-  body.regression-page .hero-nav a::before {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    right: 4px;
-    bottom: 4px;
-    background: #fffaf5;
-    border: 2px solid #aa2e45;
-    z-index: -1;
-    border-radius: 2px;
-  }
+    body.regression-page .hero-nav a::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      background: #fffaf5;
+      border: 2px solid #aa2e45;
+      z-index: -1;
+      border-radius: 2px;
+    }
 
-  body.regression-page .hero-nav a:hover {
-    background: #e0d3ba;
-    border: 1px solid #8b0000;
-    color: #8b0000;
-  }
-</style>
-
-
-
+    body.regression-page .hero-nav a:hover {
+      background: #e0d3ba;
+      border: 1px solid #8b0000;
+      color: #8b0000;
+    }
+  </style>
 </head>
-<body class="regression-page">
 
+<body class="regression-page">
   <!-- Global Navigation Bar -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
@@ -139,11 +137,11 @@
       </div>
     </div>
 
-    <!-- Updated Lower Nav -->
+    <!-- Lower Nav -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
-		<a href="mayaisotopes/">MAYA ISOTOPES</a>
-		<a href="berncoairpol/">BERNCO AIR POLLUTION</a>
+        <a href="mayaisotopes/">MAYA ISOTOPES</a>
+        <a href="berncoairpol/">BERNCO AIR POLLUTION</a>
       </nav>
     </div>
   </section>
@@ -152,6 +150,5 @@
   <main>
     <!-- Page-specific content goes here -->
   </main>
-
 </body>
 </html>
