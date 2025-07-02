@@ -80,13 +80,35 @@
   display: inline-block;
   margin: 0 1rem;
   padding: 0.75rem 1.5rem;
-  background: #aa2e45;
-  color: #fffaf5;
+  background: #aa2e45; /* crimson/maroon background */
+  color: #fffaf5; /* cream-colored text */
   font-weight: bold;
   text-decoration: none;
-  border: 2px solid #a32638; /* changed from black to Alabama Crimson */
+  border: none; /* remove the outer border first */
   border-radius: 4px;
   transition: background 0.2s, transform 0.2s;
+  position: relative;
+}
+
+/* Add cream-colored inner box */
+body.vector-page .hero-nav a::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: #fffaf5; /* cream interior */
+  border: 2px solid #aa2e45; /* match button bg color */
+  z-index: 0;
+  border-radius: 2px;
+}
+
+/* Text sits on top */
+body.vector-page .hero-nav a span {
+  position: relative;
+  z-index: 1;
+  color: #aa2e45; /* crimson/maroon text */
 }
 
 
@@ -126,8 +148,9 @@
     <!-- Updated Lower Nav -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
-        <a href="vector/">MAYA SETTLEMENT PATTERNS</a>
-        <a href="raster/">SHARED CHURCHES PROJECT</a>
+       <a href="vector/"><span>MAYA SETTLEMENT PATTERNS</span></a>
+	   <a href="raster/"><span>SHARED CHURCHES PROJECT</span></a>
+
       </nav>
     </div>
   </section>
