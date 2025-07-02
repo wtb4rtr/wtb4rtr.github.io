@@ -1,15 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Vector Analyses – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Global stylesheet -->
   <link rel="stylesheet" href="/assets/css/style.css">
+
   <!-- Page-specific styles -->
   <style>
-    /* Only apply to this page */
     body.vector-page .hero {
       background: url("/assets/images/gis-portfolio/vector/topo.jpg") no-repeat center center fixed;
       background-size: cover;
@@ -20,42 +18,57 @@
       justify-content: center;
       align-items: center;
     }
+
     body.vector-page .hero-content {
       text-align: center;
-      z-index: 1;
+      z-index: 2;
     }
+
     body.vector-page .hero-title-box {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 1rem 2rem;
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.95); /* less transparent */
+      padding: 2rem 4rem;
+      border-radius: 12px;
       display: inline-block;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
       margin-bottom: 2rem;
     }
+
     body.vector-page .hero-title-box h1 {
       margin: 0;
       font-size: 4rem;
-      color: #333;
+      color: #111;
+      letter-spacing: 1px;
     }
+
     body.vector-page .hero-nav-container {
       position: absolute;
-      bottom: 2rem;
+      bottom: 8rem; /* raised much higher */
       width: 100%;
       text-align: center;
-      z-index: 1;
+      z-index: 2;
     }
+
+    body.vector-page .hero-nav {
+      background-color: black;
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 6px;
+    }
+
     body.vector-page .hero-nav a {
       display: inline-block;
-      margin: 0 1rem;
-      padding: 0.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.8);
+      margin: 0 0.75rem;
+      padding: 0.75rem 1.25rem;
+      background: white;
       text-decoration: none;
-      color: #333;
+      color: black;
       font-weight: bold;
       border-radius: 4px;
       transition: background 0.2s;
     }
+
     body.vector-page .hero-nav a:hover {
-      background: rgba(255, 255, 255, 1);
+      background: #eee;
     }
   </style>
 </head>
@@ -84,7 +97,7 @@
       </div>
     </div>
 
-    <!-- Lower nav (will add more buttons later) -->
+    <!-- Updated Lower Nav -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
         <a href="vector/">MAYA SETTLEMENT PATTERNS</a>
