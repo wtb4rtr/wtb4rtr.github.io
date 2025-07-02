@@ -76,16 +76,18 @@
       top: 10rem;                      /* Distance from top of hero */
       right: 2rem;                     /* Align to right margin */
       z-index: 2;                      /* Layer above background */
-      text-align: right;               /* Align label to right */
+      display: flex;                   /* Stack label + nav */
+      flex-direction: column;          /* Vertical alignment */
+      align-items: center;             /* Keep nav links centered */
     }
 
-    /* Optional label above links */
-    body.regression-page .hero-nav-container::before {
-      content: "Explore Projects:";    /* Label text */
+    /* Real label above nav buttons, now left-aligned inside container */
+    body.regression-page .hero-nav-label {
+      align-self: flex-start;          /* Align just the label to the left */
       color: #ccc;                     /* Light gray color */
-      font-size: 0.9rem;               /* Smaller font */
-      margin-bottom: 0.5rem;           /* Space below label */
-      display: block;                  /* Ensure new line */
+      font-size: 0.9rem;               /* Slightly smaller than normal text */
+      margin-bottom: 0.5rem;           /* Space between label and nav box */
+      padding-left: 0.25rem;           /* Soft indent */
     }
 
     /* Container box for nav links */
@@ -150,8 +152,9 @@
       </div>
     </div>
 
-    <!-- Right-hand Vertical Nav -->
+    <!-- Right-hand Vertical Nav with real label element -->
     <div class="hero-nav-container">
+      <div class="hero-nav-label">Explore Projects:</div> <!-- Now left-aligned above nav -->
       <nav class="hero-nav">
         <a href="mayaisotopes/">MAYA ISOTOPES</a>
         <a href="berncoairpol/">BERNCO AIR POLLUTION</a>
