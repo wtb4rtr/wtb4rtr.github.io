@@ -77,6 +77,41 @@
       line-height: 1.6;
       color: #333;
     }
+	
+	/* Section with old map background and centered content */
+.map-section {
+  background: url("/assets/images/survey-mapping/oldmap.jpg"); /* Background image file */
+  background-size: cover;              /* Scale to fill section */
+  background-position: center center;  /* Center the image */
+  background-repeat: no-repeat;        /* Prevent tiling */
+  padding: 4rem 2rem;                  /* Space above/below the section */
+  display: flex;                       /* Flex container */
+  justify-content: center;            /* Horizontally center content */
+  align-items: center;                /* Vertically center content */
+  flex-direction: column;             /* Stack elements vertically */
+}
+
+/* Container holding the map and caption */
+.map-container {
+  max-width: 960px;                    /* Optional max width for readability */
+  width: 100%;                         /* Full width on small screens */
+  background: rgba(255, 255, 255, 0.92); /* Light opaque box for legibility */
+  padding: 1rem 2rem;                  /* Internal padding */
+  border-radius: 10px;                 /* Rounded corners */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Drop shadow */
+  text-align: center;                 /* Center-align title and map */
+}
+
+/* Title above the map */
+.map-title {
+  font-size: 1.75rem;                  /* Slightly smaller than page title */
+  color: #2c2c2c;                      /* Dark gray text */
+  margin-bottom: 1rem;                /* Space below title */
+  font-weight: bold;                  /* Bold text */
+  letter-spacing: 1px;                /* Slight tracking */
+  text-transform: uppercase;          /* All caps for emphasis */
+}
+
   </style>
 </head>
 
@@ -104,6 +139,23 @@
       </div>
     </div>
   </section>
+
+<!-- Section with background and embedded Google Map -->
+<section class="map-section">
+  <div class="map-container">
+    <!-- Caption/Title above the embedded map -->
+    <h2 class="map-title">Where I’ve Mapped</h2>
+    
+    <!-- Google My Map iframe embed -->
+    <iframe 
+      src="https://www.google.com/maps/d/embed?mid=1eCE7iulBFrUk2cZ5bNzIaDaL7n7ctU8&ehbc=2E312F" 
+      width="100%" 
+      height="480" 
+      style="border: 2px solid #333; border-radius: 10px;">
+    </iframe>
+  </div>
+</section>
+
 
   <!-- Main content area -->
   <main>
