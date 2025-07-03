@@ -6,96 +6,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
 
-  <!-- Page-specific styles BLAHBLAH-->
+  <!-- Inline CSS for this page -->
   <style>
-    /* Ensure full width layout without horizontal scroll */
+    /* Reset and prevent scrollbars due to overflow */
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevents horizontal scroll caused by full-width images */
     }
 
-    /* Background image and layout for hero section */
+    /* Hero (Title) Section */
     body.survey-page .hero {
-      background-image: url("/assets/images/survey-mapping/mapcover.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      height: 60vh;
+      background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Background image */
+      background-size: cover;            /* Ensure full coverage */
+      background-repeat: no-repeat;      /* No tiling */
+      background-position: center center;/* Center both vertically and horizontally */
+      background-attachment: fixed;      /* Optional parallax effect */
+      height: 60vh;                      /* 60% of viewport height */
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-top: 2rem;
       align-items: center;
       text-align: center;
     }
 
-    /* Title box styling */
+    /* Title box for the page header */
     body.survey-page .hero-title-box {
-      background: #738678; /* Xanadu */
-      padding: 0.75rem 1rem;
-      border-radius: 12px;
+      background: #738678;               /* Xanadu green-gray */
+      padding: 0.75rem 1rem;             /* Padding around the title text */
+      border-radius: 12px;               /* Rounded corners */
     }
 
-    /* Page title styling */
+    /* H1 inside the title box */
     body.survey-page .hero-title-box h1 {
       margin: 0;
       font-size: 3.5rem;
       color: #ffffff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Drop shadow for contrast */
     }
 
-    /* Main content layout */
-    body.survey-page main {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .project-section {
-      margin-bottom: 4rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 3rem;
-    }
-
-    .project-section h2 {
-      font-size: 1.75rem;
-      color: #a32638;
-      margin-bottom: 1rem;
-    }
-
-    .project-section img {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .project-section p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    /* Divider with parchment background */
+    /* Divider section with parchment image */
     .divider {
-      width: 100vw;
-      height: 160px;
+      width: 100vw; /* Full browser width */
+      height: 160px; /* Fixed height */
       background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center;
       background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      border-top: 4px solid #8B4000;
+      border-top: 4px solid #8B4000;   /* Ochre border */
       border-bottom: 4px solid #8B4000;
-      opacity: 0.85;
+      opacity: 0.85; /* Slightly faded look */
     }
 
+    /* Centered text inside the divider */
     .divider-text {
       font-family: 'Playfair Display', serif;
       font-size: 1.75rem;
@@ -106,33 +70,32 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
 
-    /* Map section full-width background fix */
+    /* Map section with old map background stretched full width */
     .map-section {
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      width: 100vw;
+      width: 100vw; /* Full viewport width */
+      min-height: 100vh; /* Take up full screen height */
       background: url("/assets/images/survey-mapping/oldmap.jpg") no-repeat center center;
-      background-size: cover;
+      background-size: cover; /* Ensure it fills container */
       background-attachment: scroll;
-      padding: 4rem 0;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      padding: 4rem 0;
     }
 
+    /* Inner container for iframe and title */
     .map-container {
+      width: 90%;
       max-width: 960px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.92); /* Light box for contrast */
       padding: 1rem 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
       text-align: center;
     }
 
+    /* Map title above iframe */
     .map-title {
       font-size: 1.75rem;
       color: #2c2c2c;
@@ -141,11 +104,49 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
+
+    /* Project display section */
+    body.survey-page main {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Individual project section */
+    .project-section {
+      margin-bottom: 4rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 3rem;
+    }
+
+    /* Heading for each project */
+    .project-section h2 {
+      font-size: 1.75rem;
+      color: #a32638;
+      margin-bottom: 1rem;
+    }
+
+    /* Project map or photo */
+    .project-section img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    /* Description paragraph */
+    .project-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
   </style>
 </head>
 
 <body class="survey-page">
-  <!-- Global Navigation Bar -->
+  <!-- Global Navigation -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -160,7 +161,7 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Title Section -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
@@ -169,7 +170,7 @@
     </div>
   </section>
 
-  <!-- Divider -->
+  <!-- Divider Banner -->
   <div class="divider">
     <div class="divider-text">Explore Where I've Mapped</div>
   </div>
@@ -187,8 +188,9 @@
     </div>
   </section>
 
-  <!-- Project List -->
+  <!-- Main Body Content -->
   <main>
+    <!-- 🧭 Sample Project Block -->
     <section class="project-section">
       <h2>Southwest Colorado Mapping Project (2023)</h2>
       <img src="/assets/images/survey-mapping/example-map.jpg" alt="Map of Southwest Colorado">
@@ -197,6 +199,7 @@
       </p>
     </section>
 
+    <!-- ➕ Add more projects as needed -->
     <section class="project-section">
       <h2>San Pedro River Survey (2022)</h2>
       <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="San Pedro River Survey Map">
