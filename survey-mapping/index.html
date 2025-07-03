@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <title>Survey/Mapping – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
 
+  <!-- Page-specific styles -->
   <style>
+    /* Ensure full-width layout without scroll bars */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      background: #ffffff;
     }
 
+    /* Hero section with background image and top-aligned title */
     body.survey-page .hero {
       background-image: url("/assets/images/survey-mapping/mapcover.jpg");
       background-size: cover;
@@ -23,17 +25,20 @@
       height: 60vh;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;  /* Keeps title high on the page */
       align-items: center;
       text-align: center;
+      padding-top: 2rem;
     }
 
+    /* Title box styling */
     body.survey-page .hero-title-box {
-      background: #738678;
+      background: #738678;                /* Xanadu (earthy tone) */
       padding: 0.75rem 1rem;
       border-radius: 12px;
-      margin-top: 2rem;
     }
 
+    /* Page title inside title box */
     body.survey-page .hero-title-box h1 {
       margin: 0;
       font-size: 3.5rem;
@@ -41,24 +46,28 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     }
 
+    /* Main content area for projects */
     body.survey-page main {
       padding: 4rem 2rem;
       max-width: 900px;
       margin: 0 auto;
     }
 
+    /* Each individual project block */
     .project-section {
       margin-bottom: 4rem;
       border-bottom: 1px solid #ccc;
       padding-bottom: 3rem;
     }
 
+    /* Project title */
     .project-section h2 {
       font-size: 1.75rem;
-      color: #a32638;
+      color: #a32638;  /* Crimson accent */
       margin-bottom: 1rem;
     }
 
+    /* Project map or image */
     .project-section img {
       width: 100%;
       max-width: 800px;
@@ -68,6 +77,7 @@
       margin-bottom: 1rem;
     }
 
+    /* Project description text */
     .project-section p {
       font-size: 1rem;
       line-height: 1.6;
@@ -77,6 +87,7 @@
 </head>
 
 <body class="survey-page">
+  <!-- Global Navigation Bar -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -91,7 +102,7 @@
     </ul>
   </nav>
 
-  <!-- Hero section -->
+  <!-- Hero Section with title -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
@@ -100,7 +111,7 @@
     </div>
   </section>
 
-  <!-- Main content -->
+  <!-- Main content section for projects -->
   <main>
     <section class="project-section">
       <h2>Southwest Colorado Mapping Project (2023)</h2>
