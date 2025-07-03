@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet BLAHBLAH-->
 
   <style>
-    /* Ensure entire page uses full width BLAHBLAH*/
+    /* Ensure entire page uses full width */
     html, body {
       margin: 0;
       padding: 0;
@@ -74,19 +74,24 @@
       color: #333;
     }
 
-  .map-section {
+ .map-section {
   position: relative;
-  width: 100vw; /* Force full viewport width */
-  margin-left: calc(-50vw + 50%); /* Cancel out parent container centering */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
   background: url("/assets/images/survey-mapping/oldmap.jpg") no-repeat center center;
-  background-size: cover; /* Make image fill the entire background area */
+  background-size: cover;
   background-attachment: scroll;
-  padding: 4rem 0; /* Vertical padding — adjust later if needed */
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
+
 
 
 
