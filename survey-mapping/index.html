@@ -6,75 +6,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
 
-  <!-- Inline styles for full-screen background and design -->
+  <!-- Page-specific styles -->
   <style>
-    /* Hero section with full-screen background */
-    .hero {
-      background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Use the survey/mapping image */
-      background-size: cover;                /* Stretch image to fill the container */
-      background-repeat: no-repeat;          /* Prevent tiling */
-      background-position: center center;    /* Center the image */
-      background-attachment: fixed;          /* Create subtle parallax effect */
-      height: 100vh;                         /* Full viewport height */
-      display: flex;                         /* Flexbox layout for centering */
-      flex-direction: column;                /* Stack title and nav vertically */
-      justify-content: center;               /* Vertically center content */
-      align-items: center;                   /* Horizontally center content */
-      position: relative;                    /* For absolute child positioning if needed */
-      text-align: center;                    /* Center text alignment */
+    /* Apply unique styles only on the Survey/Mapping page */
+    body.survey-page .hero {
+      background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Background image for this section */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
-    /* Title box for headline and name */
-.hero-title-box {
-  background: #a32638;           		 /* Set your solid color here (e.g., #000 for black or #2f4f4f for slate gray) */
-  padding: 2rem 3rem;                    /* Space around text */
-  border-radius: 12px;                   /* Rounded corners */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);/* Soft shadow for lift */
-}
+    /* Title box styling */
+    body.survey-page .hero-title-box {
+      background: #a32638;                  /* Solid crimson background */
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
 
-
-    /* Page title (section) */
-    .hero-title-box h2 {
+    /* Page title (now using <h1>) */
+    body.survey-page .hero-title-box h1 {
       margin: 0;
-      font-size: 2.25rem;                    /* Bigger font for visibility */
-      color: #fff;                           /* Bright white title */
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for contrast */
+      font-size: 5.5rem;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
-    /* Subtitle with author name */
-    .hero-title-box h1 {
-      margin: 0.5rem 0 0 0;
-      font-size: 1.35rem;
-      color: #ccc;                           /* Soft gray name text */
-      letter-spacing: 1px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Slight contrast */
+    /* Main content area below hero */
+    body.survey-page main {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    /* Lower navigation container */
-    .hero-nav-container {
-      margin-top: 2rem;                      /* Space above nav links */
+    /* Each project block */
+    .project-section {
+      margin-bottom: 4rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 3rem;
     }
 
-    /* Button-style links */
-    .hero-nav a {
-      margin: 0 1rem;                        /* Space between buttons */
-      padding: 0.75rem 1.5rem;               /* Padding inside each button */
-      background-color: #ffffff;             /* Bright white background */
-      color: #2c2c2c;                        /* Dark gray text */
-      text-decoration: none;                 /* Remove underlines */
-      font-weight: bold;                     /* Bold text */
-      border-radius: 6px;                    /* Rounded corners */
-      transition: background 0.3s ease;      /* Smooth hover transition */
+    /* Project title */
+    .project-section h2 {
+      font-size: 1.75rem;
+      color: #a32638;
+      margin-bottom: 1rem;
     }
 
-    /* Button hover behavior */
-    .hero-nav a:hover {
-      background-color: #f1f1f1;             /* Slightly dimmed hover effect */
+    /* Project image (map placeholder) */
+    .project-section img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    /* Project paragraph */
+    .project-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
     }
   </style>
 </head>
 
-<body>
+<body class="survey-page">
   <!-- Global Navigation Bar -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
@@ -90,27 +95,36 @@
     </ul>
   </nav>
 
-  <!-- Hero Section with Background Image -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
-        <h2>SURVEY/MAPPING</h2>
-        <h1>WILLIAM T. BROWN</h1>
+        <h1>SURVEY/MAPPING</h1>
       </div>
-    </div>
-
-    <!-- Lower nav (optional – can add links here later) -->
-    <div class="hero-nav-container">
-      <nav class="hero-nav">
-        <a href="#">EXAMPLE LINK 1</a>
-        <a href="#">EXAMPLE LINK 2</a>
-      </nav>
     </div>
   </section>
 
-  <!-- Page content -->
+  <!-- Main content area -->
   <main>
-    <!-- Insert future content here -->
+    <!-- 🧩 Sample project layout block -->
+    <section class="project-section">
+      <h2>Southwest Colorado Mapping Project (2023)</h2>
+      <img src="/assets/images/survey-mapping/example-map.jpg" alt="Map of Southwest Colorado">
+      <p>
+        This project involved field-based total station mapping of Ancestral Pueblo sites across Montezuma County, Colorado. The focus was on establishing control points, recording architectural features, and integrating results with a broader regional settlement model. A total of 38 sites were documented in collaboration with CRM partners.
+      </p>
+    </section>
+
+    <!-- 🧩 Duplicate the block above for additional projects -->
+    <section class="project-section">
+      <h2>San Pedro River Survey (2022)</h2>
+      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="San Pedro River Survey Map">
+      <p>
+        Conducted intensive pedestrian survey along the upper San Pedro River corridor. Survey teams recorded ephemeral artifact scatters, irrigation features, and historic trails. Results were published in a project report submitted to the BLM.
+      </p>
+    </section>
+
+    <!-- Add more project sections as needed... -->
   </main>
 </body>
 </html>
