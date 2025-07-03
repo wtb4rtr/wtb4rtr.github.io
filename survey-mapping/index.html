@@ -111,6 +111,15 @@
   text-transform: uppercase;          /* All caps for emphasis */
 }
 
+/* Divider between title and map sections */
+body.survey-page .divider {
+  background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center;
+  background-size: cover;            /* Ensures it fills the width responsively */
+  height: 150px;                     /* Vertical thickness of the divider */
+  margin: 2rem 0;                    /* Adds space above and below the divider */
+}
+
+
 <!--blahblah>
   </style>
 </head>
@@ -139,6 +148,10 @@
       </div>
     </div>
   </section>
+  
+  <!-- Parchment-style divider -->
+<section class="transition-band"></section>
+
 
 <!-- Section with background and embedded Google Map -->
 <section class="map-section">
