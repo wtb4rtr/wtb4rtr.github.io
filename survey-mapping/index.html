@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Survey/Mapping – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet BLAHBLAH-->
 
   <style>
     /* Ensure entire page uses full width BLAHBLAH*/
@@ -74,18 +74,20 @@
       color: #333;
     }
 
-    .map-section {
-  width: 100%;
-  margin: 0;
-  padding: 4rem 0;
-  background-image: url("/assets/images/survey-mapping/oldmap.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
+  .map-section {
+  position: relative;
+  width: 100vw; /* Force full viewport width */
+  margin-left: calc(-50vw + 50%); /* Cancel out parent container centering */
+  background: url("/assets/images/survey-mapping/oldmap.jpg") no-repeat center center;
+  background-size: cover; /* Make image fill the entire background area */
+  background-attachment: scroll;
+  padding: 4rem 0; /* Vertical padding — adjust later if needed */
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
+
 
 
 .map-container {
