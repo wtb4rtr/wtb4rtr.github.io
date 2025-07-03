@@ -111,15 +111,32 @@
   text-transform: uppercase;          /* All caps for emphasis */
 }
 
-/* Full-width parchment divider between sections */
+/* Divider section with faded parchment background and decorative borders */
 .divider {
-  width: 100vw;                          /* Viewport width: ensures full screen width */
-  height: 160px;                         /* Adjust height as needed */
+  width: 100vw; /* Full browser width */
+  height: 160px; /* Divider height */
   background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center;
-  background-size: cover;                /* Stretch the parchment to fill the div */
-  margin: 0;                             /* Remove any gaps */
-  padding: 0;
+  background-size: cover; /* Scale image to fill container */
+  display: flex; /* Enable flex layout for centering text */
+  align-items: center; /* Vertically center the text */
+  justify-content: center; /* Horizontally center the text */
+  position: relative; /* Enable positioning of pseudo-element */
+  border-top: 4px solid #8B4000;  /* Top border in dark ochre brown */
+  border-bottom: 4px solid #8B4000; /* Bottom border in dark ochre brown */
+  opacity: 0.85; /* Slight fade to blend parchment better */
 }
+
+/* Text label centered in the divider */
+.divider-text {
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  font-size: 1.75rem; /* Size for impact */
+  color: #2c2c2c; /* Deep gray for readability */
+  background: rgba(255, 255, 255, 0.75); /* Soft white background for contrast */
+  padding: 0.5rem 1.25rem; /* Space around text */
+  border-radius: 8px; /* Rounded corners for badge effect */
+  box-shadow: 0 0 10px rgba(0,0,0,0.15); /* Subtle lift */
+}
+
 
   </style>
 </head>
@@ -150,8 +167,11 @@
   </section>
   
   
-<!-- Full-width parchment divider -->
-<div class="divider"></div>
+<!-- Divider with parchment background and label -->
+<div class="divider">
+  <div class="divider-text">Explore Where I've Mapped</div>
+</div>
+
 
 
 
