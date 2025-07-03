@@ -95,6 +95,18 @@
   padding: 0;
 }
 
+/* Container for embedded map */
+.map-container {
+  max-width: 960px;                     /* Keeps the map from stretching too wide */
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9); /* Light background for contrast */
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+}
+
+
 /* Divider Section with Parchment Background and Thin Maroon Border */
 .divider {
   width: 100%;
@@ -155,10 +167,18 @@
   <div class="divider-text">WHERE I'VE MAPPED</div>
 </div>
 
-<!-- Map Section with Background Image Only -->
+<!-- Map Section with Background -->
 <section class="map-section">
-  <!-- Google Map embed will go here later -->
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/d/embed?mid=1eCE7iulBFrUk2cZ5bNzIaDaL7n7ctU8&ehbc=2E312F" 
+      width="100%" 
+      height="480" 
+      style="border: 2px solid #8B0000; border-radius: 10px;">
+    </iframe>
+  </div>
 </section>
+
 
 
 
