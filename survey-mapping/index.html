@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <title>Survey/Mapping – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet BLAHBLAH-->
-
+  <link rel="stylesheet" href="/assets/css/style.css">
   <style>
-    /* Ensure entire page uses full width */
+    /* Reset browser default spacing */
     html, body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
     }
 
+    /* Hero Section */
     body.survey-page .hero {
       background-image: url("/assets/images/survey-mapping/mapcover.jpg");
       background-size: cover;
@@ -23,9 +22,10 @@
       height: 60vh;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      text-align: center;
       padding-top: 2rem;
+      text-align: center;
     }
 
     body.survey-page .hero-title-box {
@@ -41,71 +41,26 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     }
 
-    body.survey-page main {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .project-section {
-      margin-bottom: 4rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 3rem;
-    }
-
-    .project-section h2 {
-      font-size: 1.75rem;
-      color: #a32638;
-      margin-bottom: 1rem;
-    }
-
-    .project-section img {
+    /* FULL WIDTH Map Section with oldmap.jpg */
+    .map-section {
       width: 100%;
-      max-width: 800px;
-      height: auto;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      margin: 0;
+      padding: 4rem 0;
+      background: url("/assets/images/survey-mapping/oldmap.jpg") no-repeat center center;
+      background-size: 100% 100%;
+      background-attachment: scroll;
     }
 
-    .project-section p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
+    .map-container {
+      max-width: 960px;
+      width: 90%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
-
- .map-section {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  background: url("/assets/images/survey-mapping/oldmap.jpg") no-repeat center center;
-  background-size: cover;
-  background-attachment: scroll;
-  padding: 4rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-
-
-
-.map-container {
-  width: 100%;
-  max-width: 960px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  text-align: center;
-}
-
-
 
     .map-title {
       font-size: 1.75rem;
@@ -115,34 +70,11 @@
       letter-spacing: 1px;
       text-transform: uppercase;
     }
-
-    .divider {
-      width: 100vw;
-      height: 160px;
-      background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center;
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-top: 4px solid #8B4000;
-      border-bottom: 4px solid #8B4000;
-      opacity: 0.85;
-    }
-
-    .divider-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.75rem;
-      color: #2c2c2c;
-      background: rgba(255, 255, 255, 0.75);
-      padding: 0.5rem 1.25rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.15);
-    }
   </style>
 </head>
 
 <body class="survey-page">
+  <!-- NAV -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -157,6 +89,7 @@
     </ul>
   </nav>
 
+  <!-- TITLE HERO -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
@@ -165,39 +98,17 @@
     </div>
   </section>
 
-  <div class="divider">
-    <div class="divider-text">Explore Where I've Mapped</div>
-  </div>
-
+  <!-- MAP SECTION FULL WIDTH -->
   <section class="map-section">
-  <div class="map-container">
-    <h2 class="map-title">Where I’ve Mapped</h2>
-    <iframe 
-      src="https://www.google.com/maps/d/embed?mid=1eCE7iulBFrUk2cZ5bNzIaDaL7n7ctU8&ehbc=2E312F" 
-      width="100%" 
-      height="480" 
-      style="border: 2px solid #333; border-radius: 10px;">
-    </iframe>
-  </div>
-</section>
-
-
-  <main>
-    <section class="project-section">
-      <h2>Southwest Colorado Mapping Project (2023)</h2>
-      <img src="/assets/images/survey-mapping/example-map.jpg" alt="Map of Southwest Colorado">
-      <p>
-        This project involved field-based total station mapping of Ancestral Pueblo sites across Montezuma County, Colorado. The focus was on establishing control points, recording architectural features, and integrating results with a broader regional settlement model. A total of 38 sites were documented in collaboration with CRM partners.
-      </p>
-    </section>
-
-    <section class="project-section">
-      <h2>San Pedro River Survey (2022)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="San Pedro River Survey Map">
-      <p>
-        Conducted intensive pedestrian survey along the upper San Pedro River corridor. Survey teams recorded ephemeral artifact scatters, irrigation features, and historic trails. Results were published in a project report submitted to the BLM.
-      </p>
-    </section>
-  </main>
+    <div class="map-container">
+      <h2 class="map-title">Where I’ve Mapped</h2>
+      <iframe 
+        src="https://www.google.com/maps/d/embed?mid=1eCE7iulBFrUk2cZ5bNzIaDaL7n7ctU8&ehbc=2E312F" 
+        width="100%" 
+        height="480" 
+        style="border: 2px solid #333; border-radius: 10px;">
+      </iframe>
+    </div>
+  </section>
 </body>
 </html>
