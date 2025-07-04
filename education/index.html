@@ -4,26 +4,19 @@
   <meta charset="UTF-8">
   <title>Education – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background-color: #000;
-      color: white;
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
 
+  <style>
+    /* NAV BAR */
     nav {
       display: flex;
       align-items: center;
       background-color: #000;
       padding: 0.5rem 2rem;
     }
-
     nav img {
       height: 40px;
       margin-right: 1rem;
     }
-
     nav .site-title {
       font-size: 1.5rem;
       font-weight: bold;
@@ -31,17 +24,14 @@
       color: white;
       margin-right: auto;
     }
-
     nav ul {
       display: flex;
       list-style: none;
       margin-left: auto;
     }
-
     nav li + li {
       margin-left: 1rem;
     }
-
     nav a {
       color: white;
       text-decoration: none;
@@ -49,85 +39,91 @@
       text-transform: uppercase;
       font-weight: bold;
     }
-
     nav a:hover {
       background-color: #1a1a1a;
       border-radius: 4px;
     }
 
-    .hero {
-      text-align: center;
-      padding: 1rem 0;
+    /* GENERAL STYLES */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #000;
+      color: #fff; /* Bright white text */
+      font-family: 'Segoe UI', sans-serif;
     }
 
+    /* HERO IMAGE */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 2rem;
+    }
     .hero img.hero-image {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
     }
 
-    .divider-label {
+    /* SECTION HEADINGS */
+    .section-title {
       text-align: center;
-      font-size: 1.4rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 2rem; /* Increased font size */
       font-weight: bold;
-      color: #ccc;
-      margin: 2rem 0 1rem;
+      color: #ffffff; /* Bright white */
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
+    /* LOGOS SECTION */
     .education-logos {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 2rem;
-      padding: 1rem;
     }
-
     .logo-row {
       display: flex;
       justify-content: center;
       gap: 2rem;
+      flex-wrap: wrap;
     }
-
     .logo-container {
       text-align: center;
       max-width: 300px;
     }
-
     .logo-container img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
-
     .logo-caption {
       margin-top: 0.5rem;
-      font-size: 0.95rem;
-      color: #ddd;
+      font-size: 0.9rem;
+      color: #ffffff; /* Bright white */
     }
 
-    .education-transcripts {
+    /* TRANSCRIPTS SECTION */
+    .transcript-section {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
       gap: 2rem;
-      padding: 2rem;
-      background-color: #000;
       flex-wrap: wrap;
+      padding: 2rem;
     }
-
     .transcript-container {
       width: 350px;
-      background-color: #111;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+      height: 500px;
+      border: none;
     }
   </style>
 </head>
-<body class="education-page">
-  <!-- Navigation TEST-->
+<body>
+  <!-- NAVIGATION BAR -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -142,15 +138,13 @@
     </ul>
   </nav>
 
-  <!-- Belushi Image -->
+  <!-- HERO IMAGE SECTION -->
   <section class="hero">
     <img src="/assets/images/education/col1.jpg" alt="Belushi" class="hero-image">
   </section>
 
-  <!-- Divider: Universities Attended -->
-  <div class="divider-label">Universities Attended</div>
-
-  <!-- University Logos -->
+  <!-- UNIVERSITIES ATTENDED SECTION -->
+  <div class="section-title">Universities Attended</div>
   <section class="education-logos">
     <div class="logo-row">
       <div class="logo-container">
@@ -162,26 +156,20 @@
         <div class="logo-caption">University of New Mexico, May 2007: Master of Arts, Archaeology. GPA: 4.03</div>
       </div>
     </div>
-    <div class="logo-container">
-      <img src="/assets/images/education/rtr.jpg" alt="Alabama Logo">
-      <div class="logo-caption">University of Alabama, May 1991: Bachelor of Arts, Archaeology and History. ROLL TIDE!</div>
+    <div class="logo-row">
+      <div class="logo-container">
+        <img src="/assets/images/education/rtr.jpg" alt="Alabama Logo">
+        <div class="logo-caption">University of Alabama, May 1991: Bachelor of Arts, Archaeology and History ROLL TIDE!</div>
+      </div>
     </div>
   </section>
 
-  <!-- Divider: Transcripts -->
-  <div class="divider-label">Transcripts</div>
-
-  <!-- Transcript PDFs -->
-  <section class="education-transcripts">
-    <div class="transcript-container">
-      <iframe src="/assets/docs/ariztranscript.pdf" title="Arizona Transcript" width="100%" height="500px"></iframe>
-    </div>
-    <div class="transcript-container">
-      <iframe src="/assets/docs/unmtranscript.pdf" title="UNM Transcript" width="100%" height="500px"></iframe>
-    </div>
-    <div class="transcript-container">
-      <iframe src="/assets/docs/alabamatranscript.pdf" title="Alabama Transcript" width="100%" height="500px"></iframe>
-    </div>
+  <!-- TRANSCRIPTS SECTION -->
+  <div class="section-title">Transcripts</div>
+  <section class="transcript-section">
+    <iframe class="transcript-container" src="/assets/pdfs/ariztrans.pdf"></iframe>
+    <iframe class="transcript-container" src="/assets/pdfs/unmtrans.pdf"></iframe>
+    <iframe class="transcript-container" src="/assets/pdfs/alatrans.pdf"></iframe>
   </section>
 </body>
 </html>
