@@ -1,144 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Excavation – William’s GIS Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+  <title>Excavation – William’s GIS Portfolio</title> <!-- Page title shown in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Enable responsive scaling -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to global site-wide CSS -->
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <!-- Google Fonts TEST-->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"> <!-- Load Oswald bold font -->
 
-  <!-- Page-specific styles -->
+  <!-- Page-specific styles for Bioarchaeology page -->
   <style>
-/* Bioarchaeology page title font */
-body.bioarch-page h1 {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-}
+    /* Use bold Oswald font for h1 elements */
+    body.bioarch-page h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+    }
 
-/* Hero section background image and layout */
-body.bioarch-page .hero {
-  background-image: url("/assets/images/bioarchaeology/bones1.jpg"); /* update as needed */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-attachment: scroll;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 1rem;
-}
+    /* Hero section with full background image */
+    body.bioarch-page .hero {
+      background-image: url("/assets/images/bioarchaeology/bones1.jpg"); /* Image for top section */
+      background-size: cover;              /* Make image fill entire area */
+      background-repeat: no-repeat;        /* Don't repeat image */
+      background-position: center top;     /* Center horizontally, top vertically */
+      background-attachment: scroll;       /* Scrolls with page */
+      height: 100vh;                       /* Full height of viewport */
+      position: relative;                  /* Set context for absolute-positioned children */
+      display: flex;                       /* Flexbox layout */
+      flex-direction: column;              /* Stack children vertically */
+      justify-content: flex-start;         /* Align top vertically */
+      align-items: center;                 /* Center horizontally */
+      padding-top: 1rem;                   /* Padding to separate from nav */
+    }
 
-/* Centered title container */
-body.bioarch-page .hero-content {
-  text-align: center;
-  z-index: 2;
-  margin-bottom: 1rem;
-}
+    /* Container for centered title box */
+    body.bioarch-page .hero-content {
+      text-align: center;                  /* Center text horizontally */
+      z-index: 2;                          /* Ensure above background */
+      margin-bottom: 1rem;                 /* Space below title */
+    }
 
-/* Title box with slate + bone colors */
-body.bioarch-page .hero-title-box {
-  background: #2f4f4f;             /* Dark Slate Gray */
-  padding: 0.5rem 1.25rem;
-  border-radius: 12px;
-  display: inline-block;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-  border: 3px solid #f8f8dc;       /* Bone White border */
-}
+    /* Title box style */
+    body.bioarch-page .hero-title-box {
+      background: #2f4f4f;                 /* Dark Slate Gray background */
+      padding: 0.5rem 1.25rem;             /* Internal spacing */
+      border-radius: 12px;                 /* Rounded corners */
+      display: inline-block;               /* Fit tightly to text */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Drop shadow */
+      border: 3px solid #f8f8dc;           /* Bone white border */
+    }
 
-/* Title text */
-body.bioarch-page .hero-title-box h1 {
-  margin: 0;
-  font-size: 3.5rem;
-  color: #f8f8dc;                  /* Bone White */
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  position: relative;
-  text-shadow: 2px 2px #00000040;  /* Optional: subtle shadow */
-}
+    /* Title text inside box */
+    body.bioarch-page .hero-title-box h1 {
+      margin: 0;                           /* Remove default spacing */
+      font-size: 3.5rem;                   /* Large title size */
+      color: #f8f8dc;                      /* Bone white color */
+      letter-spacing: 2px;                 /* Letter spacing for effect */
+      text-transform: uppercase;           /* All caps title */
+      position: relative;                  /* Needed for underline (::after) */
+      text-shadow: 2px 2px #00000040;      /* Subtle dark shadow */
+    }
 
-/* Decorative underline */
-body.bioarch-page .hero-title-box h1::after {
-  content: "";
-  display: block;
-  margin: 0.5rem auto 0 auto;
-  width: 200px;
-  height: 3.5px;
-  background: #f8f8dc;
-  border-radius: 2px;
-}
+    /* Decorative underline under the title */
+    body.bioarch-page .hero-title-box h1::after {
+      content: "";                         /* Create a pseudo element */
+      display: block;                      /* Block element so it breaks line */
+      margin: 0.5rem auto 0 auto;          /* Space above, center horizontally */
+      width: 200px;                        /* Underline width */
+      height: 3.5px;                       /* Underline thickness */
+      background: #f8f8dc;                 /* Bone white color */
+      border-radius: 2px;                  /* Rounded ends */
+    }
 
-/* Updated style for Explore Projects label */
-body.bioarch-page .hero-nav-label {
-  font-family: 'Arial Black', Gadget, sans-serif; /* Bold, heavy font */
-  color: #080808;                  /* Vampire Black text */
-  font-size: 1.2rem;               /* Slightly larger text */
-  margin-bottom: 0.5rem;           /* Space below label */
-  text-align: left;                /* Left-aligned text */
-  align-self: flex-start;          /* Align label to the left within flex column */
-  padding-left: 0.25rem;           /* Nudge inward from left edge */
-  text-transform: uppercase;       /* Optional: makes it shouty */
-  letter-spacing: 0.5px;           /* Slight spacing for clarity */
-}
+    /* Label above nav bar */
+    body.bioarch-page .hero-nav-label {
+      font-family: 'Arial Black', Gadget, sans-serif; /* Bold text style */
+      color: #080808;                        /* Vampire Black text */
+      font-size: 1.2rem;                     /* Slightly larger than body text */
+      margin-bottom: 0.5rem;                 /* Space below label */
+      text-align: left;                      /* Align text to left */
+      align-self: flex-start;                /* Align to left within flex column */
+      padding-left: 0.25rem;                 /* Slight inward nudge */
+      text-transform: uppercase;             /* All caps */
+      letter-spacing: 0.5px;                 /* Slight spacing */
+    }
 
+    /* Right-side vertical nav container */
+    body.bioarch-page .hero-nav-container {
+      position: absolute;                    /* Manually placed in hero */
+      top: 2rem;                             /* Distance from top of section */
+      right: 1rem;                           /* Distance from right edge */
+      z-index: 2;                            /* Keep above background */
+      display: flex;                         /* Use flexbox */
+      flex-direction: column;                /* Stack items vertically */
+      align-items: center;                   /* Center contents horizontally */
+    }
 
-/* Right-hand nav container */
-body.bioarch-page .hero-nav-container {
-  position: absolute;
-  top: 2rem;
-  right: 1rem;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    /* Nav box that holds project links */
+    body.bioarch-page .hero-nav {
+      background-color: #080808;             /* Vampire Black background */
+      padding: 0.75rem;                      /* Internal spacing */
+      border-radius: 8px;                    /* Rounded corners */
+      border: 2px solid #f8f8dc;             /* Bone white border */
+      display: flex;                         /* Flexbox layout */
+      flex-direction: column;                /* Stack nav links */
+      gap: 0.5rem;                           /* Space between buttons */
+    }
 
-/* Nav box with dark background */
-body.bioarch-page .hero-nav {
-  background-color: #080808;       /* Vampire Black */
-  padding: 0.75rem;
-  border-radius: 8px;
-  border: 2px solid #f8f8dc;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+    /* Individual nav link buttons */
+    body.bioarch-page .hero-nav a {
+      display: block;                        /* Make links block-level */
+      background: #f8f8dc;                   /* Bone/Ivory background */
+      color: #2f4f4f;                        /* Slate-colored text */
+      font-weight: 600;                      /* Semi-bold text */
+      text-decoration: none;                 /* Remove underline */
+      padding: 0.5rem 1rem;                  /* Space inside button */
+      border-radius: 6px;                    /* Rounded edges */
+      transition: all 0.2s ease-in-out;      /* Smooth hover */
+      border: none;                          /* No border */
+      outline: none;                         /* Remove focus outline */
+      box-shadow: none;                      /* Flat look */
+      font-family: 'Oswald', sans-serif;     /* Use Oswald font */
+    }
 
-/* Nav links styled as bone-colored buttons */
-body.bioarch-page .hero-nav a {
-  display: block;
-  background: #f8f8dc;             /* Bone/Ivory */
-  color: #2f4f4f;                  /* Slate text */
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  font-family: 'Oswald', sans-serif;
-}
-
-/* Hover effect: shift + color change */
-body.bioarch-page .hero-nav a:hover {
-  background: #2f4f4f;             /* Slate hover background */
-  color: #f8f8dc;                  /* Bone White text */
-  transform: translateX(3px);
-}
-</style>
-
+    /* Hover effect for nav links */
+    body.bioarch-page .hero-nav a:hover {
+      background: #2f4f4f;                   /* Dark Slate background on hover */
+      color: #f8f8dc;                        /* Bone white text */
+      transform: translateX(3px);            /* Shift right slightly */
+    }
+  </style>
 </head>
 
 <body class="bioarch-page">
-  <!-- Global Navigation Bar -->
+  <!-- 🔼 Top Navigation Bar -->
   <nav>
-    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
-    <div class="site-title">Virtual Bill Brown</div>
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo image -->
+    <div class="site-title">Virtual Bill Brown</div> <!-- Site title -->
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
@@ -150,32 +148,34 @@ body.bioarch-page .hero-nav a:hover {
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- 🦴 Hero Section with Background and Title -->
   <section class="hero">
-    <!-- Title Box -->
+    <!-- 🔠 Title Content -->
     <div class="hero-content">
       <div class="hero-title-box">
         <h1>BIOARCHAEOLOGY</h1>
       </div>
     </div>
 
-    <!-- Right-hand Vertical Nav -->
+    <!-- 📚 Right-hand Vertical Navigation for Subsections -->
     <div class="hero-nav-container">
-		<div class="hero-nav-label">Explore Projects:</div>
-			<nav class="hero-nav">
-				<a href="maya/">MAYA</a>
-				<a href="southwest/">SOUTHWEST</a>
-				<a href="miss/">MISSISSIPPIAN</a>
-				<a href="paleo/">OLD WORLD PALEO</a>
-				<a href="historic/">HISTORIC CEMETERIES</a>
-				<a href="europe/">EUROPE</a>
-				<a href="faunal/">FAUNAL</a>
-  </nav>
-</div>
+      <!-- Section label -->
+      <div class="hero-nav-label">Explore Projects:</div>
 
+      <!-- Vertical navigation buttons -->
+      <nav class="hero-nav">
+        <a href="maya/">MAYA</a>
+        <a href="southwest/">SOUTHWEST</a>
+        <a href="miss/">MISSISSIPPIAN</a>
+        <a href="paleo/">OLD WORLD PALEO</a>
+        <a href="historic/">HISTORIC CEMETERIES</a>
+        <a href="europe/">EUROPE</a>
+        <a href="faunal/">FAUNAL</a>
+      </nav>
+    </div>
   </section>
 
-  <!-- Future Content -->
+  <!-- 📄 Main Page Content Area -->
   <main>
     <!-- Page-specific content goes here -->
   </main>
