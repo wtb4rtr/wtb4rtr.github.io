@@ -17,60 +17,38 @@
 
     /* Hero section with background image and top-aligned title */
     body.education-page .hero {
-  background-image: url("/assets/images/education/col1.jpg"); /* Replace with actual path */
-  background-size: contain;           /* Show entire image */
-  background-repeat: no-repeat;       /* Don't tile it */
-  background-position: center center; /* Center it both directions */
-  background-color: #080808;             /* 🔥 Black outside the image */
-  background-attachment: scroll;
-  height: 100vh;                      /* Full screen height */
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: flex;                   /* Lay out columns side by side */
+  justify-content: center;        /* Center everything horizontally */
+  align-items: center;            /* Align all vertically */
+  background-color: #000;         /* Black background */
+  padding: 2rem;
+  height: 100vh;
+  gap: 2rem;                      /* Space between columns */
 }
 
+.side-column {
+  display: flex;
+  flex-direction: column;         /* Stack images vertically */
+  gap: 1rem;                      /* Space between stacked images */
+  max-height: 90vh;
+}
+
+.side-column img,
+.hero-image {
+  max-width: 150px;               /* Adjust this to fit your design */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Optional: limit center image height to match side columns */
+.center-column .hero-image {
+  max-height: 90vh;
+}
 
     
 
-    /* Main content area for projects */
-    body.education-page main {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* Each individual project block */
-    .project-section {
-      margin-bottom: 4rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 3rem;
-    }
-
-    /* Project title */
-    .project-section h2 {
-      font-size: 1.75rem;
-      color: #a32638;  /* Crimson accent */
-      margin-bottom: 1rem;
-    }
-
-    /* Project map or image */
-    .project-section img {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    /* Project description text */
-    .project-section p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
-    }
+   
 	
 
 
@@ -126,13 +104,27 @@
   </nav>
 
   <!-- Hero Section with title -->
-  <section class="hero">
-    <div class="hero-content">
-      
-       
-      
-    </div>
-  </section>
+ <section class="hero">
+  <!-- Left Column: 3 stacked images -->
+  <div class="side-column">
+    <img src="/assets/images/education/rtr.jpg" alt="RTR Logo">
+    <img src="/assets/images/education/unmlogo.jpg" alt="UNM Logo">
+    <img src="/assets/images/education/arizlogo.jpg" alt="University of Arizona Logo">
+  </div>
+
+  <!-- Center Column: Belushi image -->
+  <div class="center-column">
+    <img src="/assets/images/education/col1.jpg" alt="Belushi" class="hero-image">
+  </div>
+
+  <!-- Right Column: 3 stacked images -->
+  <div class="side-column">
+    <img src="/assets/images/education/alatrans.png" alt="Alabama Transparent Logo">
+    <img src="/assets/images/education/unmtrans.png" alt="UNM Transparent Logo">
+    <img src="/assets/images/education/ariztrans.png" alt="Arizona Transparent Logo">
+  </div>
+</section>
+
 
 <!-- Divider Section -->
 <div class="divider">
