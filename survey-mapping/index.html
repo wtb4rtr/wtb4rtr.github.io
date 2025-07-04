@@ -100,7 +100,18 @@
   box-shadow: 0 0 30px rgba(0,0,0,0.25);
   width: 90%;
   max-width: 960px;
-  text-align: center;
+
+  /* add this: */
+  margin: 0 auto;            /* centers the container block */
+  text-align: center;        /* keeps inline children centered */
+}
+
+.map-container iframe {
+  display: block;            /* treat it as a block so margin auto works */
+  width: 100%;               /* fill the container’s width */
+  height: 480px;             /* or whatever height you prefer */
+  border: 2px solid #8B0000; /* you can leave your inline styles here if you like */
+  border-radius: 10px;
 }
 
 
