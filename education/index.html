@@ -81,30 +81,44 @@
     .education-logos {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 3rem;
       padding-top: 2vh;
       padding-bottom: 2rem;
       background-color: #000;
     }
 
-    .education-logos img {
-      max-width: 200px;
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-container img {
+      max-width: 260px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    }
+
+    .logo-caption {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #ccc;
+      text-align: center;
+      font-weight: 600;
     }
 
     /* ========== TRANSCRIPT SECTION ========== */
     .education-transcripts {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      padding: 2rem 0;
+      gap: 3rem;
+      padding: 3rem 2rem;
       background-color: #000;
     }
 
     .education-transcripts img {
-      max-width: 240px;
+      max-width: 320px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 0 12px rgba(0,0,0,0.5);
@@ -128,19 +142,28 @@
     </ul>
   </nav>
 
-  <!-- ========== HERO SECTION ========== -->
+  <!-- ========== HERO SECTION (Belushi Image) ========== -->
   <section class="hero">
     <img src="/assets/images/education/col1.jpg" alt="Belushi" class="hero-image">
   </section>
 
-  <!-- ========== LOGO SECTION: Arizona | UNM | Alabama ========== -->
+  <!-- ========== LOGO SECTION ========== -->
   <section class="education-logos">
-    <img src="/assets/images/education/arizlogo.jpg" alt="Arizona Logo">
-    <img src="/assets/images/education/unmlogo.jpg" alt="UNM Logo">
-    <img src="/assets/images/education/rtr.jpg" alt="RTR Logo">
+    <div class="logo-container">
+      <img src="/assets/images/education/arizlogo.jpg" alt="Arizona Logo">
+      <div class="logo-caption">University of Arizona</div>
+    </div>
+    <div class="logo-container">
+      <img src="/assets/images/education/unmlogo.jpg" alt="UNM Logo">
+      <div class="logo-caption">University of New Mexico</div>
+    </div>
+    <div class="logo-container">
+      <img src="/assets/images/education/rtr.jpg" alt="Alabama Logo">
+      <div class="logo-caption">University of Alabama</div>
+    </div>
   </section>
 
-  <!-- ========== TRANSCRIPT SECTION: Arizona | UNM | Alabama ========== -->
+  <!-- ========== TRANSCRIPT SECTION ========== -->
   <section class="education-transcripts">
     <img src="/assets/images/education/ariztrans.png" alt="Arizona Transcript">
     <img src="/assets/images/education/unmtrans.png" alt="UNM Transcript">
