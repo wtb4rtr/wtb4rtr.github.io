@@ -8,14 +8,20 @@
 
   <!-- Page-specific styles TEST-->
   <style>
-    /* Ensure full-width layout without scroll bars */
+    	/* Ensure full-width layout without scroll bars */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
     }
 
-    /* Hero section with background image and top-aligned title */
+    body.education-page {
+  background-image: none !important;
+  background-color: #000;
+}
+
+	
+	/* Hero section with background image and top-aligned title */
     body.education-page .hero {
   display: flex;                   /* Lay out columns side by side */
   justify-content: center;        /* Center everything horizontally */
