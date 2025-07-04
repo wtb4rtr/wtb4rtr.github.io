@@ -199,19 +199,24 @@
   <div class="section-title">Transcripts</div>
   <section class="education-transcripts">
     <div class="transcript-container">
-      <iframe src="/assets/docs/ariztranscript.pdf" title="Arizona Transcript" width="100%" height="500px"></iframe>
+      <iframe data-src="/assets/docs/ariztranscript.pdf" title="Arizona Transcript" width="100%" height="500px"></iframe>
     </div>
     <div class="transcript-container">
-      <iframe src="/assets/docs/unmtranscript.pdf" title="UNM Transcript" width="100%" height="500px"></iframe>
+      <iframe data-src="/assets/docs/unmtranscript.pdf" title="UNM Transcript" width="100%" height="500px"></iframe>
     </div>
     <div class="transcript-container">
-      <iframe src="/assets/docs/alabamatranscript.pdf" title="Alabama Transcript" width="100%" height="500px"></iframe>
+      <iframe data-src="/assets/docs/alabamatranscript.pdf" title="Alabama Transcript" width="100%" height="500px"></iframe>
     </div>
   </section>
   <script>
-  window.onload = function () {
-    window.scrollTo(0, 0);
-  };
+  window.addEventListener('load', function () {
+    const iframes = document.querySelectorAll('.education-transcripts iframe');
+    iframes.forEach(iframe => {
+      iframe.src = iframe.getAttribute('data-src');
+    });
+    window.scrollTo(0, 0); // Force scroll to top after iframes injected
+  });
 </script>
+
 </body>
 </html>
