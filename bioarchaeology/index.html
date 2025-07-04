@@ -11,113 +11,113 @@
 
   <!-- Page-specific styles -->
   <style>
-    body.bioarch-page h1 {
-      font-family: 'Oswald', sans-serif;       /* Set bold Oswald font for title */
-      font-weight: 700;                        /* Ensure bold styling */
-    }
+/* Bioarchaeology page title font */
+body.bioarch-page h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
 
-    /* Main hero section with background image */
-    body.bioarch-page .hero {
-      background-image: url("/assets/images/bioarchaeology/bones1.jpg"); /* Background image for the hero section */
-      background-size: cover;           /* Stretch image to fill container */
-      background-repeat: no-repeat;     /* Do not repeat image */
-      background-position: center top;  /* Center horizontally, align top vertically */
-      background-attachment: scroll;    /* Background scrolls with page */
-      height: 100vh;                    /* Full viewport height */
-      position: relative;               /* Establish stacking context */
-      display: flex;                    /* Use flex layout */
-      flex-direction: column;           /* Stack children vertically */
-      justify-content: flex-start;      /* Align content at the top */
-      align-items: center;              /* Center items horizontally */
-      padding-top: 1rem;                /* Add space under nav bar */
-    }
+/* Hero section background image and layout */
+body.bioarch-page .hero {
+  background-image: url("/assets/images/bioarchaeology/your-image.jpg"); /* update as needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: scroll;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 1rem;
+}
 
-    /* Container for centered title */
-    body.bioarch-page .hero-content {
-      text-align: center;              /* Center the text */
-      z-index: 2;                      /* Place above background */
-      margin-bottom: 1rem;             /* Space below title */
-    }
+/* Centered title container */
+body.bioarch-page .hero-content {
+  text-align: center;
+  z-index: 2;
+  margin-bottom: 1rem;
+}
 
-    /* Style for the title background box */
-    body.bioarch-page .hero-title-box {
-      background: #a32638;             /* Crimson red background */
-      padding: 0.5rem 1rem;            /* Internal spacing */
-      border-radius: 12px;             /* Rounded corners */
-      display: inline-block;           /* Shrink to fit content */
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); /* Soft shadow */
-      border: 3px solid #fffff0;       /* Ivory border */
-    }
+/* Title box with slate + bone colors */
+body.bioarch-page .hero-title-box {
+  background: #2f4f4f;             /* Dark Slate Gray */
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid #f8f8dc;       /* Bone White border */
+}
 
-    /* Main title styling */
-    body.bioarch-page .hero-title-box h1 {
-      margin: 0;                       /* Remove default margin */
-      font-size: 3.5rem;               /* Large font size */
-      color: #fffff0;                  /* Ivory text */
-      letter-spacing: 2px;             /* Space between letters */
-      text-transform: uppercase;       /* Uppercase text */
-      position: relative;              /* Needed for underline effect */
-    }
+/* Title text */
+body.bioarch-page .hero-title-box h1 {
+  margin: 0;
+  font-size: 3.5rem;
+  color: #f8f8dc;                  /* Bone White */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 2px 2px #00000040;  /* Optional: subtle shadow */
+}
 
-    /* Decorative underline below title */
-    body.bioarch-page .hero-title-box h1::after {
-      content: "";                     /* Empty content for styling */
-      display: block;                  /* Block-level element */
-      margin: 0.5rem auto 0 auto;      /* Space above and center align */
-      width: 200px;                    /* Line width */
-      height: 3.5px;                   /* Line thickness */
-      background: #fffff0;             /* Ivory underline */
-      border-radius: 2px;              /* Slightly rounded edges */
-    }
+/* Decorative underline */
+body.bioarch-page .hero-title-box h1::after {
+  content: "";
+  display: block;
+  margin: 0.5rem auto 0 auto;
+  width: 200px;
+  height: 3.5px;
+  background: #f8f8dc;
+  border-radius: 2px;
+}
 
-    /* Container for vertical nav list */
-    body.bioarch-page .hero-nav-container {
-      position: absolute;              /* Position relative to hero */
-      top: 2rem;                       /* From top edge */
-      right: 1rem;                     /* From right edge */
-      z-index: 2;                      /* Appear above background */
-      display: flex;                   /* Flex layout */
-      flex-direction: column;          /* Stack vertically */
-      align-items: center;            /* Center horizontally */
-    }
+/* Right-hand nav container */
+body.bioarch-page .hero-nav-container {
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    /* Container box for nav links */
-    body.bioarch-page .hero-nav {
-      background-color: #a32638;       /* Crimson red box */
-      padding: 0.5rem;                 /* Internal padding */
-      border-radius: 6px;              /* Rounded corners */
-      border: 2px solid #a32638;       /* Border same as background */
-      display: flex;                   /* Flex layout */
-      flex-direction: column;          /* Vertical alignment */
-      gap: 0.5rem;                     /* Space between buttons */
-    }
+/* Nav box with dark background */
+body.bioarch-page .hero-nav {
+  background-color: #080808;       /* Vampire Black */
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 2px solid #f8f8dc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
-    /* Style for each nav link button */
-    body.bioarch-page .hero-nav a {
-      display: block;                  /* Full-width clickable area */
-      background: #fffff0;             /* Ivory background */
-      color: #080808;                  /* Vampire Black text */
-      font-weight: bold;               /* Bold text */
-      text-decoration: none;           /* No underline */
-      padding: 0.5rem 1rem;            /* Inner spacing */
-      border-radius: 4px;              /* Rounded edges */
-      position: relative;              /* For pseudo elements */
-      z-index: 1;                      /* Ensure above background */
-      transition: background 0.2s, transform 0.2s; /* Smooth hover */
-      border: none;                    /* No border */
-      outline: none;                   /* Remove focus outline */
-      box-shadow: none;                /* No default shadow */
-    }
+/* Nav links styled as bone-colored buttons */
+body.bioarch-page .hero-nav a {
+  display: block;
+  background: #f8f8dc;             /* Bone/Ivory */
+  color: #2f4f4f;                  /* Slate text */
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-family: 'Oswald', sans-serif;
+}
 
-    /* Hover effect for buttons */
-    body.bioarch-page .hero-nav a:hover {
-      background: #d4af37;             /* Gold background on hover */
-      color: #080808;                  /* Vampire Black text */
-      border: 1px solid #080808;       /* Add subtle border */
-      transform: translateX(2px);      /* Shift right slightly */
-      transition: all 0.2s ease-in-out;/* Smooth all properties */
-    }
-  </style>
+/* Hover effect: shift + color change */
+body.bioarch-page .hero-nav a:hover {
+  background: #2f4f4f;             /* Slate hover background */
+  color: #f8f8dc;                  /* Bone White text */
+  transform: translateX(3px);
+}
+</style>
+
 </head>
 
 <body class="bioarch-page">
