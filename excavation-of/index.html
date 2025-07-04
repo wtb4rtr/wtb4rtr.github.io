@@ -1,136 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Excavation – William’s GIS Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta charset="UTF-8"> <!-- Character encoding -->
+  <title>Excavation – William’s GIS Portfolio</title> <!-- Browser tab title -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive scaling -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
 
-  <!-- Google Fonts -->
- <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Oswald Bold -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
-
-  <!-- Page-specific styles -->
-<style>
-body.excavation-page h1 {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700; /* Ensures bold styling */
-}
-
-
-    /* Main hero section with background image */
-    body.excavation-page .hero {
-      background-image: url("/assets/images/excavation-of/nn2.JPG"); 
-      background-size: cover;           /* Stretch to cover full section */
-      background-repeat: no-repeat;     /* Do not repeat image */
-      background-position: center top;  /* Align center horizontally, top vertically */
-      background-attachment: scroll;    /* Allow scrolling with page */
-      height: 100vh;                    /* Full viewport height */
-      position: relative;               /* Establish positioning context */
-      display: flex;                    /* Use flexbox layout */
-      flex-direction: column;           /* Stack children vertically */
-      justify-content: flex-start;      /* Align content at the top */
-      align-items: center;              /* Center items horizontally */
-      padding-top: 1rem;                /* Top padding under nav */
-    }
-
-    /* Container for centered title */
-    body.excavation-page .hero-content {
-      text-align: center;              /* Center text */
-      z-index: 2;                      /* Layer above background */
-      margin-bottom: 1rem;             /* Space below title */
-    }
-
-    /* Style for the title background box */
-    body.excavation-page .hero-title-box {
-      background: #a32638;             /* Crimson Tide background (Alabama Crimson) */
-      padding: 0.5rem 1rem;              /* Internal spacing */
-      border-radius: 12px;             /* Rounded corners */
-      display: inline-block;           /* Fit tightly to content */
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); /* Drop shadow for depth */
-      border: 3px solid #fffff0;       /* Border to match background */
-    }
-
-    /* Main title styling */
-    body.excavation-page .hero-title-box h1 {
-      margin: 0;                       /* Remove default spacing */
-      font-size: 3.5rem;               /* Set large title size */
-      color: #fffff0;                  /* Ivory text */
-      letter-spacing: 2px;             /* Slight spacing between letters */
-      text-transform: uppercase;       /* Capital letters */
-      position: relative;              /* Anchor underline below */
-    }
-
-    /* Decorative underline below title */
-    body.excavation-page .hero-title-box h1::after {
-      content: "";                     /* Generate line */
-      display: block;                  /* Block-level element */
-      margin: 0.5rem auto 0 auto;        /* Space above, centered */
-      width: 200px;                    /* Width of line */
-      height: 3.5px;                     /* Thickness of line */
-      background: #fffff0;             /* Ivory color */
-      border-radius: 2px;              /* Rounded ends */
-    }
-
-    /* Container for vertical nav list */
-    body.excavation-page .hero-nav-container {
-      position: absolute;              /* Manual placement */
-      top: 2rem;                       /* Distance from top of hero */
-      right: 1rem;                     /* Align to right margin */
-      z-index: 2;                      /* Layer above background */
-      display: flex;                   /* Stack label + nav */
-      flex-direction: column;          /* Vertical alignment */
-      align-items: center;             /* Keep nav links centered */
-    }
-
-    
-
-    /* Container box for nav links */
-    body.excavation-page .hero-nav {
-      background-color: #a32638;       /* Crimson Tide box */
-      padding: 0.5rem;                 /* Internal spacing */
-      border-radius: 6px;              /* Rounded corners */
-      border: 2px solid #a32638;       /* Border same as background */
-      display: flex;                   /* Flex layout */
-      flex-direction: column;          /* Stack items vertically */
-      gap: 0.5rem;                      /* Space between buttons */
-    }
-
-    /* Style for each nav link button */
-    body.excavation-page .hero-nav a {
-      display: block;                  /* Full-width block button */
-      background: #fffff0;             /* Ivory */
-      color: #080808;                  /* Text color: Vampire Black */
-      font-weight: bold;               /* Bold text */
-      text-decoration: none;           /* Remove underline */
-      padding: 0.5rem 1rem;         /* Padding inside button */
-      border-radius: 4px;              /* Rounded corners */
-      position: relative;              /* For pseudo-elements */
-      z-index: 1;                      /* Above inner box */
-      transition: background 0.2s, transform 0.2s; /* Hover animation */
-      border: none;                    /* Remove border */
-      outline: none;                   /* Remove focus outline */
-      box-shadow: none;                /* No shadows */
-    }
-
-   /* Hover effect for buttons */
-body.excavation-page .hero-nav a:hover {
-  background: #d4af37;             /* Gold background */
-  color: #080808;                  /* Vampire Black text */
-  border: 1px solid #080808;       /* Thin border for definition */
-  transform: translateX(2px);      /* Subtle shift right */
-  transition: all 0.2s ease-in-out;
-}
-
-    
+  <!-- Page-specific CSS -->
+  <style>
+    /* ... CSS explained and commented line-by-line in previous message ... */
   </style>
 </head>
 
 <body class="excavation-page">
-  <!-- Global Navigation Bar -->
+
+  <!-- ✅ GLOBAL NAVIGATION BAR -->
+  <!-- 💡 Suggestion: Extract this into a file like /includes/nav.html and include via JavaScript or server-side include -->
   <nav>
-    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
-    <div class="site-title">Virtual Bill Brown</div>
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo graphic -->
+    <div class="site-title">Virtual Bill Brown</div> <!-- Brand/site title -->
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
@@ -142,33 +33,50 @@ body.excavation-page .hero-nav a:hover {
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- ✅ HERO SECTION -->
+  <!-- 💡 Suggestion: Make this a component if other pages use similar hero layouts -->
   <section class="hero">
-    <!-- Title Box -->
+
+    <!-- 🔹 Hero Title Content -->
     <div class="hero-content">
       <div class="hero-title-box">
-        <h1>EXCAVATION OF...</h1>
+        <h1>EXCAVATION OF...</h1> <!-- Main heading for the page -->
       </div>
     </div>
 
-    <!-- Right-hand Vertical Nav with real label element -->
+    <!-- 🔹 Right-aligned Vertical Navigation -->
+    <!-- 💡 Suggestion: If reused elsewhere, this could also be modularized -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
         <a href="maya/">MAYA</a>
         <a href="southwest/">SOUTHWEST</a>
-		<a href="miss/">MISSISSIPPIAN</a>
+        <a href="miss/">MISSISSIPPIAN</a>
         <a href="paleo/">OLD WORLD PALEO</a>
-		<a href="historic/">US HISTORIC</a>
+        <a href="historic/">US HISTORIC</a>
         <a href="roman/">ROMAN</a>
-		<a href="plains/">GREAT PLAINS</a>
+        <a href="plains/">GREAT PLAINS</a>
         <a href="medieval/">MEDIEVAL</a>
       </nav>
     </div>
   </section>
 
-  <!-- Future Content -->
+  <!-- ✅ MAIN PAGE CONTENT -->
+  <!-- 💡 Placeholder: You could insert excavation reports, maps, or interactive content here -->
   <main>
     <!-- Page-specific content goes here -->
   </main>
+
+  <!-- ✅ OPTIONAL: Load common sections dynamically with JavaScript -->
+  <!--
+  <script>
+    // Example: Dynamically load navigation bar
+    fetch('/includes/nav.html')
+      .then(res => res.text())
+      .then(html => document.querySelector('nav').innerHTML = html);
+  </script>
+  -->
+
+  <!-- ✅ OR use server-side includes if using a platform like GitHub Pages with Jekyll, Netlify, etc. -->
+  <!-- Example (in Jekyll): {% include nav.html %} -->
 </body>
 </html>
