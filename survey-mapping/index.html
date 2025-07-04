@@ -84,29 +84,24 @@
       color: #333;
     }
 	
-	/* Map Section Background Setup */
-.map-section {
+	.map-section {
   width: 100%;
-  min-height: 600px; /* Adjust height as needed */
-  background: url("/assets/images/survey-mapping/oldmap2.jpg") no-repeat center center;
-  background-size: cover; /* Fill the section without stretching */
-  background-attachment: scroll; /* Standard scroll behavior */
-  margin: 0;
-  padding: 0;
+  background: url("/assets/images/survey-mapping/oldmap.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;      /* centers vertically if needed */
+  padding: 3rem 0;
 }
 
-/* Container for embedded map */
 .map-container {
-  max-width: 960px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px rgba(0,0,0,0.25);
+  width: 90%;
+  max-width: 960px;
   text-align: center;
-
-  margin-top: 2rem;     /* Space above the map */
-  margin-bottom: 2rem;  /* Space below the map */
 }
 
 
