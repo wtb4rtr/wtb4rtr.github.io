@@ -1,27 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"> <!-- Character encoding -->
-  <title>Excavation – William’s GIS Portfolio</title> <!-- Browser tab title -->
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive scaling -->
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
+  <meta charset="UTF-8">
+  <title>Excavation – William’s GIS Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- Google Fonts: Oswald Bold -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
-  <!-- Page-specific CSS -->
+  <!-- Page-specific styles -->
   <style>
-    /* ... CSS explained and commented line-by-line in previous message ... */
+    body.excavation-page h1 {
+      font-family: 'Oswald', sans-serif;       /* Set bold Oswald font for title */
+      font-weight: 700;                        /* Ensure bold styling */
+    }
+
+    /* Main hero section with background image */
+    body.excavation-page .hero {
+      background-image: url("/assets/images/excavation-of/nn2.JPG"); /* Background image for the hero section */
+      background-size: cover;           /* Stretch image to fill container */
+      background-repeat: no-repeat;     /* Do not repeat image */
+      background-position: center top;  /* Center horizontally, align top vertically */
+      background-attachment: scroll;    /* Background scrolls with page */
+      height: 100vh;                    /* Full viewport height */
+      position: relative;               /* Establish stacking context */
+      display: flex;                    /* Use flex layout */
+      flex-direction: column;           /* Stack children vertically */
+      justify-content: flex-start;      /* Align content at the top */
+      align-items: center;              /* Center items horizontally */
+      padding-top: 1rem;                /* Add space under nav bar */
+    }
+
+    /* Container for centered title */
+    body.excavation-page .hero-content {
+      text-align: center;              /* Center the text */
+      z-index: 2;                      /* Place above background */
+      margin-bottom: 1rem;             /* Space below title */
+    }
+
+    /* Style for the title background box */
+    body.excavation-page .hero-title-box {
+      background: #a32638;             /* Crimson red background */
+      padding: 0.5rem 1rem;            /* Internal spacing */
+      border-radius: 12px;             /* Rounded corners */
+      display: inline-block;           /* Shrink to fit content */
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); /* Soft shadow */
+      border: 3px solid #fffff0;       /* Ivory border */
+    }
+
+    /* Main title styling */
+    body.excavation-page .hero-title-box h1 {
+      margin: 0;                       /* Remove default margin */
+      font-size: 3.5rem;               /* Large font size */
+      color: #fffff0;                  /* Ivory text */
+      letter-spacing: 2px;             /* Space between letters */
+      text-transform: uppercase;       /* Uppercase text */
+      position: relative;              /* Needed for underline effect */
+    }
+
+    /* Decorative underline below title */
+    body.excavation-page .hero-title-box h1::after {
+      content: "";                     /* Empty content for styling */
+      display: block;                  /* Block-level element */
+      margin: 0.5rem auto 0 auto;      /* Space above and center align */
+      width: 200px;                    /* Line width */
+      height: 3.5px;                   /* Line thickness */
+      background: #fffff0;             /* Ivory underline */
+      border-radius: 2px;              /* Slightly rounded edges */
+    }
+
+    /* Container for vertical nav list */
+    body.excavation-page .hero-nav-container {
+      position: absolute;              /* Position relative to hero */
+      top: 2rem;                       /* From top edge */
+      right: 1rem;                     /* From right edge */
+      z-index: 2;                      /* Appear above background */
+      display: flex;                   /* Flex layout */
+      flex-direction: column;          /* Stack vertically */
+      align-items: center;            /* Center horizontally */
+    }
+
+    /* Container box for nav links */
+    body.excavation-page .hero-nav {
+      background-color: #a32638;       /* Crimson red box */
+      padding: 0.5rem;                 /* Internal padding */
+      border-radius: 6px;              /* Rounded corners */
+      border: 2px solid #a32638;       /* Border same as background */
+      display: flex;                   /* Flex layout */
+      flex-direction: column;          /* Vertical alignment */
+      gap: 0.5rem;                     /* Space between buttons */
+    }
+
+    /* Style for each nav link button */
+    body.excavation-page .hero-nav a {
+      display: block;                  /* Full-width clickable area */
+      background: #fffff0;             /* Ivory background */
+      color: #080808;                  /* Vampire Black text */
+      font-weight: bold;               /* Bold text */
+      text-decoration: none;           /* No underline */
+      padding: 0.5rem 1rem;            /* Inner spacing */
+      border-radius: 4px;              /* Rounded edges */
+      position: relative;              /* For pseudo elements */
+      z-index: 1;                      /* Ensure above background */
+      transition: background 0.2s, transform 0.2s; /* Smooth hover */
+      border: none;                    /* No border */
+      outline: none;                   /* Remove focus outline */
+      box-shadow: none;                /* No default shadow */
+    }
+
+    /* Hover effect for buttons */
+    body.excavation-page .hero-nav a:hover {
+      background: #d4af37;             /* Gold background on hover */
+      color: #080808;                  /* Vampire Black text */
+      border: 1px solid #080808;       /* Add subtle border */
+      transform: translateX(2px);      /* Shift right slightly */
+      transition: all 0.2s ease-in-out;/* Smooth all properties */
+    }
   </style>
 </head>
 
 <body class="excavation-page">
-
-  <!-- ✅ GLOBAL NAVIGATION BAR -->
-  <!-- 💡 Suggestion: Extract this into a file like /includes/nav.html and include via JavaScript or server-side include -->
+  <!-- Global Navigation Bar -->
   <nav>
-    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo graphic -->
-    <div class="site-title">Virtual Bill Brown</div> <!-- Brand/site title -->
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
+    <div class="site-title">Virtual Bill Brown</div>
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
@@ -33,19 +136,16 @@
     </ul>
   </nav>
 
-  <!-- ✅ HERO SECTION -->
-  <!-- 💡 Suggestion: Make this a component if other pages use similar hero layouts -->
+  <!-- Hero Section -->
   <section class="hero">
-
-    <!-- 🔹 Hero Title Content -->
+    <!-- Title Box -->
     <div class="hero-content">
       <div class="hero-title-box">
-        <h1>EXCAVATION OF...</h1> <!-- Main heading for the page -->
+        <h1>EXCAVATION OF...</h1>
       </div>
     </div>
 
-    <!-- 🔹 Right-aligned Vertical Navigation -->
-    <!-- 💡 Suggestion: If reused elsewhere, this could also be modularized -->
+    <!-- Right-hand Vertical Nav -->
     <div class="hero-nav-container">
       <nav class="hero-nav">
         <a href="maya/">MAYA</a>
@@ -60,23 +160,9 @@
     </div>
   </section>
 
-  <!-- ✅ MAIN PAGE CONTENT -->
-  <!-- 💡 Placeholder: You could insert excavation reports, maps, or interactive content here -->
+  <!-- Future Content -->
   <main>
     <!-- Page-specific content goes here -->
   </main>
-
-  <!-- ✅ OPTIONAL: Load common sections dynamically with JavaScript -->
-  <!--
-  <script>
-    // Example: Dynamically load navigation bar
-    fetch('/includes/nav.html')
-      .then(res => res.text())
-      .then(html => document.querySelector('nav').innerHTML = html);
-  </script>
-  -->
-
-  <!-- ✅ OR use server-side includes if using a platform like GitHub Pages with Jekyll, Netlify, etc. -->
-  <!-- Example (in Jekyll): {% include nav.html %} -->
 </body>
 </html>
