@@ -2,12 +2,171 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Excavation – Virtual Bill Brown</title>
+  <title>Survey/Mapping – William’s GIS Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
 
+  <!-- Page-specific styles -->
+  <style>
+    /* Ensure full-width layout without scroll bars */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Hero section with background image and top-aligned title */
+    body.survey-page .hero {
+      background-image: url("/assets/images/survey-mapping/mapcover.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;  /* Keeps title high on the page */
+      align-items: center;
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    /* Title box styling */
+    body.survey-page .hero-title-box {
+      background: #738678;                /* Xanadu (earthy tone) */
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+    }
+
+    /* Page title inside title box */
+    body.survey-page .hero-title-box h1 {
+      margin: 0;
+      font-size: 3.5rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Main content area for projects */
+    body.survey-page main {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Each individual project block */
+    .project-section {
+      margin-bottom: 4rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 3rem;
+    }
+
+    /* Project title */
+    .project-section h2 {
+      font-size: 1.75rem;
+      color: #a32638;  /* Crimson accent */
+      margin-bottom: 1rem;
+    }
+
+    /* Project map or image */
+    .project-section img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    /* Project description text */
+    .project-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+	
+body.survey-page .map-section {
+  /* background */
+  background-image: url("/assets/images/survey-mapping/oldmap2.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  /* fixed height + flex centering */
+  width: 100%;
+  height: 700px;          /* you asked for 700px */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+}
+
+body.survey-page .map-section .map-embed {
+  width: 90%;             /* adjust as desired */
+  max-width: 960px;
+  height: 600px;          /* leave some “frame” around it */
+  border: 2px solid #8B0000;
+  border-radius: 10px;
+  display: block;
+}
+
+
+
+
+
+.map-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.25);
+  width: 90%;
+  max-width: 960px;
+
+  /* add this: */
+  margin: 0 auto;            /* centers the container block */
+  text-align: center;        /* keeps inline children centered */
+}
+
+.map-container iframe {
+  display: block;            /* treat it as a block so margin auto works */
+  width: 100%;               /* fill the container’s width */
+  height: 480px;             /* or whatever height you prefer */
+  border: 2px solid #8B0000; /* you can leave your inline styles here if you like */
+  border-radius: 10px;
+}
+
+
+
+
+/* Divider Section with Parchment Background and Thin Maroon Border */
+.divider {
+  width: 100%;
+  height: 100px;
+  background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid #8B0000;   /* Thin top border */
+  border-bottom: 2px solid #8B0000; /* Thin bottom border */
+}
+
+/* Divider Text (Match Hero Title Font) */
+.divider-text {
+  font-family: 'Playfair Display', serif; /* Match title font */
+  font-size: 2.75rem;                    /* Increased size */
+  font-weight: bold;
+  color: #8B0000;                        /* Maroon */
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+
+
+  </style>
+</head>
+
+<body class="survey-page">
   <!-- Global Navigation Bar -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
@@ -23,15 +182,51 @@
     </ul>
   </nav>
 
-  <!-- Page Header -->
-  <header>
-    <h1>EXCAVATION OF...</h1>
-  </header>
+  <!-- Hero Section with title -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-title-box">
+        <h1>EXCAVATION OF...</h1>
+      </div>
+    </div>
+  </section>
 
-  <!-- Main content -->
+<!-- Divider Section -->
+<div class="divider">
+  <div class="divider-text">MAPPING PROJECTS</div>
+</div>
+
+<section class="map-section">
+  <iframe
+    class="map-embed"
+    src="https://www.google.com/maps/d/embed?mid=1eCE7iulBFrUk2cZ5bNzIaDaL7n7ctU8&ehbc=2E312F"
+    allowfullscreen>
+  </iframe>
+</section>
+
+
+
+
+
+
+
+  <!-- Main content section for projects -->
   <main>
-    <p>This section will highlight major excavation projects and findings.</p>
-  </main>
+    <section class="project-section">
+      <h2>Southwest Colorado Mapping Project (2023)</h2>
+      <img src="/assets/images/survey-mapping/example-map.jpg" alt="Map of Southwest Colorado">
+      <p>
+        This project involved field-based total station mapping of Ancestral Pueblo sites across Montezuma County, Colorado. The focus was on establishing control points, recording architectural features, and integrating results with a broader regional settlement model. A total of 38 sites were documented in collaboration with CRM partners.
+      </p>
+    </section>
 
+    <section class="project-section">
+      <h2>San Pedro River Survey (2022)</h2>
+      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="San Pedro River Survey Map">
+      <p>
+        Conducted intensive pedestrian survey along the upper San Pedro River corridor. Survey teams recorded ephemeral artifact scatters, irrigation features, and historic trails. Results were published in a project report submitted to the BLM.
+      </p>
+    </section>
+  </main>
 </body>
 </html>
