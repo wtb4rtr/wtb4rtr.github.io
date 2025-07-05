@@ -8,174 +8,135 @@
   <style>
     /* ==== Base Page Styles ==== */
     body {
-      margin: 0; /* Remove default margin */
-      padding: 0; /* Remove default padding */
-      background-color: #000; /* Black background */
-      color: #fff; /* Bright white text */
-      font-family: Arial, sans-serif; /* Sans-serif font for clean display */
+      margin: 0;                   /* Remove default browser margin */
+      padding: 0;                  /* Remove default browser padding */
+      background-color: #000;      /* Set page background to black */
+      color: #fff;                 /* Use bright white for all text */
+      font-family: Arial, sans-serif; /* Use a clean, sans-serif font */
     }
 
-    /* ==== Transcripts Section with Embedded PDFs ==== */
-.education-transcripts {
-  display: flex;                /* Flex row */
-  justify-content: center;      /* Center content horizontally */
-  gap: 4rem;                    /* Space between iframes */
-  padding: 1rem;                /* Top/bottom padding */
-  flex-wrap: wrap;              /* Allow wrapping on small screens */
-  background-color: #000;       /* Match site background */
-  min-height: 550px;            /* Reserve space so it won’t shift */
-  overflow-anchor: none;        /* 🚫 Disable scroll anchoring here */
-}
-
-	
-	html, body {
-	   scroll-behavior: auto !important;
-       scroll-padding-top: 0 !important;
-	}
-
-	body.loading {
-	overflow: hidden;
-	}
-
-	
-	/* ==== Navigation Bar ==== */
+    /* ==== Navigation Bar ==== */
     nav {
-      display: flex; /* Horizontal flex container */
-      align-items: center; /* Vertically center logo and title */
-      background-color: #000; /* Black background */
-      padding: 0.5rem 2rem; /* Padding top/bottom and left/right */
+      display: flex;               /* Arrange items in a row */
+      align-items: center;         /* Vertically center logo and links */
+      background-color: #000;      /* Black background behind the nav */
+      padding: 0.5rem 2rem;        /* Vertical and horizontal padding */
     }
 
     nav img {
-      height: 40px; /* Logo height */
-      margin-right: 1rem; /* Space between logo and title */
+      height: 40px;                /* Fix logo height */
+      margin-right: 1rem;          /* Space between logo and site title */
     }
 
     nav .site-title {
-      font-size: 1.5rem; /* Larger text for site title */
-      font-weight: bold; /* Bold text */
-      letter-spacing: 1px; /* Space between letters */
-      color: white; /* White text */
-      margin-right: auto; /* Push nav links to the right */
+      font-size: 1.5rem;           /* Larger font for title */
+      font-weight: bold;           /* Bold weight */
+      letter-spacing: 1px;         /* Extra spacing between letters */
+      color: white;                /* White text */
+      margin-right: auto;          /* Push navigation links to the right */
     }
 
     nav ul {
-      display: flex; /* Horizontal nav items */
-      list-style: none; /* Remove bullet points */
-      margin-left: auto; /* Push list to the right */
+      display: flex;               /* Horizontal list layout */
+      list-style: none;            /* Remove bullet points */
+      margin-left: auto;           /* Ensure it stays on the right */
     }
 
     nav li + li {
-      margin-left: 1rem; /* Space between nav links */
+      margin-left: 1rem;           /* Space between each nav link */
     }
 
     nav a {
-      color: white; /* White link text */
-      text-decoration: none; /* Remove underlines */
-      padding: 0.5rem 1rem; /* Padding inside links */
-      text-transform: uppercase; /* ALL CAPS */
-      font-weight: bold; /* Bold text */
+      color: white;                /* White link text */
+      text-decoration: none;       /* No underlines on links */
+      padding: 0.5rem 1rem;        /* Clickable padding area */
+      text-transform: uppercase;   /* Uppercase text */
+      font-weight: bold;           /* Bold weight for clarity */
     }
 
     nav a:hover {
-      background-color: #1a1a1a; /* Slightly lighter background on hover */
-      border-radius: 4px; /* Rounded corners on hover */
+      background-color: #1a1a1a;   /* Slight hover background */
+      border-radius: 4px;          /* Rounded corners on hover */
     }
 
     /* ==== Hero Section (Belushi Image) ==== */
     .hero {
-      display: flex; /* Flex container */
-      justify-content: center; /* Center the image horizontally */
-      align-items: flex-start; /* Align image to the top */
-      padding-top: 0; /* Space above image */
+      display: flex;               /* Flex container for centering */
+      justify-content: center;     /* Center horizontally */
+      align-items: flex-start;     /* Align to top vertically */
+      padding-top: 0;              /* No extra top padding */
     }
 
     .hero img.hero-image {
-      max-width: 100%; /* Responsive width */
-      height: auto; /* Maintain aspect ratio */
-      border-radius: 8px; /* Rounded corners */
+      max-width: 100%;             /* Scale down if needed */
+      height: auto;                /* Maintain aspect ratio */
+      border-radius: 8px;          /* Rounded image corners */
     }
 
-    /* ==== Section Headings (Universities Attended / Transcripts) ==== */
+    /* ==== Section Headings ==== */
     .section-title {
-      text-align: center; /* Centered heading text */
-      font-size: 3rem; /* Larger font size */
-      font-weight: bold; /* Bold text */
-      color: #ffffff; /* Bright white */
-      margin-top: 6rem; /* Space above section */
-      margin-bottom: 1rem; /* Space below heading */
-      text-transform: uppercase; /* ALL CAPS */
+      text-align: center;          /* Center the heading */
+      font-size: 3rem;             /* Large font size */
+      font-weight: bold;           /* Bold weight */
+      color: #ffffff;              /* Bright white color */
+      margin-top: 6rem;            /* Space above the heading */
+      margin-bottom: 1rem;         /* Space below the heading */
+      text-transform: uppercase;   /* Uppercase letters */
     }
 
     /* ==== University Logos Layout ==== */
     .education-logos {
-      display: flex; /* Flex container */
-      flex-direction: column; /* Stack rows vertically */
-      align-items: center; /* Center contents horizontally */
-      gap: 4rem; /* Vertical space between rows */
+      display: flex;               /* Flex container */
+      flex-direction: column;      /* Stack rows vertically */
+      align-items: center;         /* Center items horizontally */
+      gap: 4rem;                   /* Vertical space between rows */
     }
 
     .logo-row {
-      display: flex; /* Row of logos */
-      justify-content: center; /* Center the row */
-      gap: 10rem; /* Space between logos */
-      flex-wrap: wrap; /* Wrap logos if screen is narrow */
+      display: flex;               /* Horizontal row of logos */
+      justify-content: center;     /* Center the logos */
+      gap: 10rem;                  /* Space between each logo */
+      flex-wrap: wrap;             /* Wrap on small screens */
     }
 
     .logo-container {
-      text-align: center; /* Center image and caption */
-      max-width: 500px; /* Max width for layout control */
+      text-align: center;          /* Center image and caption */
+      max-width: 500px;            /* Prevent logos from growing too wide */
     }
 
     .logo-container img {
-      width: 100%; /* Fill container */
-      height: auto; /* Maintain aspect ratio */
-      border-radius: 6px; /* Rounded corners */
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle glow */
+      width: 100%;                 /* Fill the container width */
+      height: auto;                /* Maintain aspect ratio */
+      border-radius: 6px;          /* Rounded corners */
+      box-shadow: 0 0 10px rgba(255,255,255,0.3); /* Subtle glow effect */
     }
 
     .logo-caption {
-      margin-top: 0.5rem; /* Space between image and text */
-      font-size: 1.4rem; /* Caption font size */
-      color: #ffffff; /* Bright white */
+      margin-top: 0.5rem;          /* Space between image and caption */
+      font-size: 1.4rem;           /* Caption font size */
+      color: #ffffff;              /* Bright white text */
     }
 
-    /* ==== Transcripts Section with Embedded PDFs ==== */
+    /* ==== Transcripts Section ==== */
     .education-transcripts {
-      display: flex; /* Flex row */
-      justify-content: center; /* Center content horizontally */
-      gap: 4rem; /* Space between iframes */
-      padding: 1rem; /* Top/bottom padding */
-      flex-wrap: wrap; /* Allow wrapping on small screens */
-      background-color: #000; /* Match site background */
-	  min-height: 550px; /* ⬅ Reserve space to stop scroll jump */
+      display: flex;               /* Horizontal layout for containers */
+      justify-content: center;     /* Center containers */
+      gap: 4rem;                   /* Space between containers */
+      padding: 1rem;               /* Vertical padding */
+      flex-wrap: wrap;             /* Wrap on narrow screens */
+      background-color: #000;      /* Match overall background */
     }
 
     .transcript-container {
-	 flex: 1 1 1000px; /* Allow it to grow to 1000px */
-     max-width: 1000px; /* Enforce upper limit */
-     border-radius: 8px;
-     overflow: hidden;
-     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-	}
-
-   .transcript-container iframe {
-    width: 100%;
-    height: 300px;
-    border: none;
-}
-
+      max-width: 1000px;           /* Cap the width of each transcript area */
+      border-radius: 8px;          /* Rounded corners */
+      overflow: hidden;            /* Hide any overflow */
+      box-shadow: 0 0 15px rgba(255,255,255,0.1); /* Light shadow */
+    }
   </style>
 </head>
 
 <body>
-   <input 
-    type="text" 
-    id="initialFocus" 
-    autofocus 
-    style="position:absolute; top:0; left:0; width:1px; height:1px; opacity:0; pointer-events:none;"
-  >
-  
   <!-- ==== Navigation Bar ==== -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
@@ -191,7 +152,7 @@
     </ul>
   </nav>
 
-  <!-- ==== Hero Image: Belushi ==== -->
+  <!-- ==== Hero Section ==== -->
   <section class="hero">
     <img src="/assets/images/education/col1.jpg" alt="Belushi" class="hero-image">
   </section>
@@ -203,11 +164,15 @@
     <div class="logo-row">
       <div class="logo-container">
         <img src="/assets/images/education/arizlogo.jpg" alt="Arizona Logo">
-        <div class="logo-caption">University of Arizona, May 2025: Master of Science, GIS. GPA: 4.00</div>
+        <div class="logo-caption">
+          University of Arizona, May 2025: Master of Science, GIS. GPA: 4.00
+        </div>
       </div>
       <div class="logo-container">
         <img src="/assets/images/education/unmlogo.jpg" alt="UNM Logo">
-        <div class="logo-caption">University of New Mexico, May 2007: Master of Arts, Archaeology. GPA: 4.03</div>
+        <div class="logo-caption">
+          University of New Mexico, May 2007: Master of Arts, Archaeology. GPA: 4.03
+        </div>
       </div>
     </div>
 
@@ -215,51 +180,50 @@
     <div class="logo-row">
       <div class="logo-container">
         <img src="/assets/images/education/rtr.jpg" alt="Alabama Logo">
-        <div class="logo-caption">University of Alabama, May 1991: Bachelor of Arts, Archaeology and History. ROLL TIDE!</div>
+        <div class="logo-caption">
+          University of Alabama, May 1991: Bachelor of Arts, Archaeology and History. ROLL TIDE!
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ==== Transcripts Section ==== -->
   <div class="section-title">Transcripts</div>
-<section class="education-transcripts">
-  <div class="transcript-container">
-    <button class="load-transcript" data-src="/assets/docs/ariztranscript.pdf">
-      View Arizona Transcript
-    </button>
-  </div>
-  <div class="transcript-container">
-    <button class="load-transcript" data-src="/assets/docs/unmtranscript.pdf">
-      View UNM Transcript
-    </button>
-  </div>
-  <div class="transcript-container">
-    <button class="load-transcript" data-src="/assets/docs/alabamatranscript.pdf">
-      View Alabama Transcript
-    </button>
-  </div>
-</section>
+  <section class="education-transcripts">
+    <div class="transcript-container">
+      <button class="load-transcript" data-src="/assets/docs/ariztranscript.pdf">
+        View Arizona Transcript
+      </button>
+    </div>
+    <div class="transcript-container">
+      <button class="load-transcript" data-src="/assets/docs/unmtranscript.pdf">
+        View UNM Transcript
+      </button>
+    </div>
+    <div class="transcript-container">
+      <button class="load-transcript" data-src="/assets/docs/alabamatranscript.pdf">
+        View Alabama Transcript
+      </button>
+    </div>
+  </section>
 
+  <!-- ==== Transcript Loading Script ==== -->
+  <script>
+    // Attach click handlers to each button
+    document.querySelectorAll('.load-transcript').forEach(button => {
+      button.addEventListener('click', () => {
+        // Create and configure the iframe
+        const iframe = document.createElement('iframe');
+        iframe.src    = button.dataset.src; // PDF URL from data-src
+        iframe.title  = button.textContent.trim();
+        iframe.width  = '100%';
+        iframe.height = '500px';
+        iframe.style.border = 'none';
 
- <script>
-  document.querySelectorAll('.load-transcript').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Build and insert the iframe on demand
-      const iframe = document.createElement('iframe');
-      iframe.src    = btn.dataset.src;
-      iframe.title  = btn.textContent;
-      iframe.width  = '100%';
-      iframe.height = '500px';
-      iframe.style.border = 'none';
-
-      // Swap the button out for the loaded PDF
-      btn.parentNode.replaceChild(iframe, btn);
+        // Replace the button with the PDF iframe
+        button.parentNode.replaceChild(iframe, button);
+      });
     });
-  });
-</script>
-
-
-
-
+  </script>
 </body>
 </html>
