@@ -15,7 +15,20 @@
       font-family: Arial, sans-serif; /* Sans-serif font for clean display */
     }
 
-    html, body {
+    /* ==== Transcripts Section with Embedded PDFs ==== */
+.education-transcripts {
+  display: flex;                /* Flex row */
+  justify-content: center;      /* Center content horizontally */
+  gap: 4rem;                    /* Space between iframes */
+  padding: 1rem;                /* Top/bottom padding */
+  flex-wrap: wrap;              /* Allow wrapping on small screens */
+  background-color: #000;       /* Match site background */
+  min-height: 550px;            /* Reserve space so it won’t shift */
+  overflow-anchor: none;        /* 🚫 Disable scroll anchoring here */
+}
+
+	
+	html, body {
 	   scroll-behavior: auto !important;
        scroll-padding-top: 0 !important;
 	}
