@@ -222,49 +222,42 @@
 
   <!-- ==== Transcripts Section ==== -->
   <div class="section-title">Transcripts</div>
-<section class="education-transcripts" id="transcript-section">
-  <!-- Empty containers to populate via JS -->
+<section class="education-transcripts">
+  <div class="transcript-container">
+    <button class="load-transcript" data-src="/assets/docs/ariztranscript.pdf">
+      View Arizona Transcript
+    </button>
+  </div>
+  <div class="transcript-container">
+    <button class="load-transcript" data-src="/assets/docs/unmtranscript.pdf">
+      View UNM Transcript
+    </button>
+  </div>
+  <div class="transcript-container">
+    <button class="load-transcript" data-src="/assets/docs/alabamatranscript.pdf">
+      View Alabama Transcript
+    </button>
+  </div>
 </section>
 
+
  <script>
-  // Turn off built-in scroll restoration
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
+  document.querySelectorAll('.load-transcript').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Build and insert the iframe on demand
+      const iframe = document.createElement('iframe');
+      iframe.src    = btn.dataset.src;
+      iframe.title  = btn.textContent;
+      iframe.width  = '100%';
+      iframe.height = '500px';
+      iframe.style.border = 'none';
 
-  window.addEventListener('load', function () {
-    // First, jump to top on full page load
-    window.scrollTo(0, 0);
-
-    // Wait a bit, then inject the iframes...
-    setTimeout(() => {
-      const pdfs = [
-        { src: "/assets/docs/ariztranscript.pdf", title: "Arizona Transcript" },
-        { src: "/assets/docs/unmtranscript.pdf", title: "UNM Transcript" },
-        { src: "/assets/docs/alabamatranscript.pdf", title: "Alabama Transcript" }
-      ];
-      const container = document.getElementById('transcript-section');
-
-      pdfs.forEach(pdf => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'transcript-container';
-
-        const iframe = document.createElement('iframe');
-        iframe.src    = pdf.src;
-        iframe.title  = pdf.title;
-        iframe.width  = "100%";
-        iframe.height = "500px";
-        iframe.style.border = "none";
-
-        wrapper.appendChild(iframe);
-        container.appendChild(wrapper);
-      });
-
-      // **NOW** that everything’s in the DOM, force scroll back to top
-      window.scrollTo(0, 0);
-    }, 500);
+      // Swap the button out for the loaded PDF
+      btn.parentNode.replaceChild(iframe, btn);
+    });
   });
 </script>
+
 
 
 
