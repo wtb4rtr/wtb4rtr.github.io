@@ -20,6 +20,10 @@
        scroll-padding-top: 0 !important;
 	}
 
+	body.loading {
+	overflow: hidden;
+	}
+
 	
 	/* ==== Navigation Bar ==== */
     nav {
@@ -209,15 +213,23 @@
       <iframe data-src="/assets/docs/alabamatranscript.pdf" title="Alabama Transcript" width="100%" height="500px"></iframe>
     </div>
   </section>
-  <script>
+ <script>
+  document.body.classList.add("loading"); // Disable scroll right away
+
   window.addEventListener('load', function () {
     const iframes = document.querySelectorAll('.education-transcripts iframe');
     iframes.forEach(iframe => {
       iframe.src = iframe.getAttribute('data-src');
     });
-    window.scrollTo(0, 0); // Force scroll to top after iframes injected
+
+    // Delay scroll-to-top until after the PDFs begin loading
+    setTimeout(() => {
+      window.scrollTo(0, 0); // Reset scroll position
+      document.body.classList.remove("loading"); // Re-enable scrolling
+    }, 100); // Adjust timing as needed
   });
 </script>
+
 
 </body>
 </html>
