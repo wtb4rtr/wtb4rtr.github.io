@@ -1,94 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Artifact Photography – William’s GIS Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet -->
+  <meta charset="UTF-8"> <!-- Set character encoding -->
+  <title>Artifact Photography – William’s GIS Portfolio</title> <!-- Page title in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive scaling -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to shared/global stylesheet -->
 
   <!-- Page-specific styles -->
   <style>
-    /* Ensure full-width layout without scroll bars */
+    /* ==== Ensure full-width layout without horizontal scrollbars ==== */
     html, body {
-      margin: 0;               /* Remove default margins */
-      padding: 0;              /* Remove default padding */
-      overflow-x: hidden;      /* Prevent horizontal scrolling */
+      margin: 0;             /* Remove default margin */
+      padding: 0;            /* Remove default padding */
+      overflow-x: hidden;    /* Prevent horizontal scrolling */
     }
 
-    /* Hero section with background image and top-aligned title */
-    body.survey-page .hero {
-      background-image: url("/assets/images/artifact-photography/presto.jpg"); /* Set background image */
-      background-size: cover;          /* Ensure image covers entire section */
-      background-repeat: no-repeat;    /* Do not repeat the image */
-      background-position: center;     /* Center image in container */
-      background-attachment: fixed;    /* Make image fixed during scroll */
-      height: 100vh;                   /* Full viewport height */
-      display: flex;                   /* Use flexbox layout */
-      flex-direction: column;          /* Stack children vertically */
-      justify-content: flex-start;     /* Align children to top */
-      align-items: center;             /* Center horizontally */
-      text-align: center;              /* Center text inside */
-      padding-top: 2rem;               /* Space above content */
+    /* ==== Hero section with background image and top-aligned title ==== */
+    body.artphoto-page .hero {
+      background-image: url("/assets/images/artifact-photography/presto.jpg"); /* Background image */
+      background-size: cover;           /* Cover entire section */
+      background-repeat: no-repeat;     /* Prevent image repetition */
+      background-position: center;      /* Center the image */
+      background-attachment: fixed;     /* Fixed image on scroll (parallax effect) */
+      height: 100vh;                    /* Full viewport height */
+      display: flex;                    /* Use Flexbox for layout */
+      flex-direction: column;          /* Stack elements vertically */
+      justify-content: flex-start;     /* Align content to top of section */
+      align-items: center;             /* Center content horizontally */
+      text-align: center;              /* Center text alignment */
+      padding-top: 2rem;               /* Space above the title box */
     }
 
-    /* Title box styling */
-    body.survey-page .hero-title-box {
-      background: #738678;             /* Earthy background color (Xanadu) */
-      padding: 0.75rem 1rem;           /* Inner spacing */
+    /* ==== Title box styling ==== */
+    body.artphoto-page .hero-title-box {
+      background: #f8f8ff;             /* Background color: Ghost White */
+      padding: 0.75rem 1rem;           /* Padding: top/bottom and left/right */
       border-radius: 12px;             /* Rounded corners */
     }
 
-    /* Page title inside title box */
-    body.survey-page .hero-title-box h1 {
+    /* ==== Page title inside title box ==== */
+    body.artphoto-page .hero-title-box h1 {
       margin: 0;                       /* Remove default margin */
       font-size: 3.5rem;               /* Large font size */
       color: #ffffff;                  /* White text */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for contrast */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for contrast */
     }
 
-    /* Main content area for projects */
-    body.survey-page main {
-      padding: 4rem 2rem;              /* Top/bottom and side padding */
-      max-width: 900px;                /* Limit width of content */
-      margin: 0 auto;                  /* Center content horizontally */
-    }
-
-    /* Each individual project block */
-    .project-section {
-      margin-bottom: 4rem;             /* Space below each project */
-      border-bottom: 1px solid #ccc;   /* Divider line */
-      padding-bottom: 3rem;            /* Space under content */
-    }
-
-    /* Project title */
-    .project-section h2 {
-      font-size: 1.75rem;              /* Heading size */
-      color: #a32638;                  /* Crimson accent */
-      margin-bottom: 1rem;             /* Space below title */
-    }
-
-    /* Project map or image */
-    .project-section img {
-      width: 100%;                     /* Full width of container */
-      max-width: 800px;                /* Limit to 800px max */
-      height: auto;                    /* Maintain aspect ratio */
-      border: 2px solid #ccc;          /* Gray border */
-      border-radius: 8px;              /* Rounded corners */
-      margin-bottom: 1rem;             /* Space below image */
-    }
-
-    /* Project description text */
-    .project-section p {
-      font-size: 1rem;                 /* Base font size */
-      line-height: 1.6;                /* Comfortable line spacing */
-      color: #333;                     /* Dark gray text */
-    }
-	
+    
   </style>
 </head>
 
-<body class="survey-page">
-  <!-- Global Navigation Bar -->
+<body class="artphoto-page"> <!-- Page-specific class for scoping styles -->
+
+  <!-- ==== Global Navigation Bar ==== -->
   <nav>
     <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
     <div class="site-title">Virtual Bill Brown</div>
@@ -103,7 +67,7 @@
     </ul>
   </nav>
 
-  <!-- Hero Section with title -->
+  <!-- ==== Hero Section with Title ==== -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
