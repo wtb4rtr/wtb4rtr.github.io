@@ -31,12 +31,14 @@
       padding-top: 2rem;                /* Space above the title box */
     }
 
-    /* ==== Title box styling ==== */
-    body.artphoto-page .hero-title-box {
-      background: #f8f8ff;             /* Background color: Ghost White */
-      padding: 0.75rem 1rem;           /* Padding: top/bottom and left/right */
-      border-radius: 12px;             /* Rounded corners */
-    }
+    .artphoto-page .hero-title-box {
+	  background: rgba(255, 255, 255, 0.85); /* Soft translucent white */
+	  padding: 0.75rem 1rem;
+	  border-radius: 12px;
+	  border: 1px solid rgba(0, 0, 0, 0.15); /* Optional thin border for definition */
+	  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Soft depth effect */
+	}
+
 
     /* ==== Page title inside title box ==== */
     body.artphoto-page .hero-title-box h1 {
@@ -84,12 +86,15 @@
       font-family: 'Oswald', sans-serif;     /* Use Oswald font */
     }
 
-    /* Hover effect for nav links */
-    body.artphoto-page .hero-nav a:hover {
-      background: #2f4f4f;                   /* Dark Slate background on hover */
-      color: #f8f8dc;                        /* Bone white text */
-      transform: translateX(3px);            /* Shift right slightly */
-    }
+    .artphoto-page .load-transcript {
+	  transition: transform 0.2s ease, background-color 0.2s ease;
+	}
+
+	.artphoto-page .load-transcript:hover {
+	  transform: scale(1.05); /* Slight enlargement */
+	  background-color: #333; /* Optional darker background */
+	}
+
 
   </style>
 </head>
