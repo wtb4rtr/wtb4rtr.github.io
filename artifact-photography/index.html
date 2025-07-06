@@ -8,161 +8,81 @@
 
   <!-- Page-specific styles -->
   <style>
-    /* Ensure full-width layout without scroll bars */
+    /* ==== Reset and base layout ==== */
     html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      margin: 0;                /* Remove default margin around the page */
+      padding: 0;               /* Remove default padding around the page */
+      overflow-x: hidden;       /* Prevent horizontal scroll due to wide elements */
     }
 
-    /* Hero section with background image and top-aligned title */
+    /* ==== Hero Section Styles ==== */
     body.survey-page .hero {
-      background-image: url("/assets/images/artifact-photography/presto.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;  /* Keeps title high on the page */
-      align-items: center;
-      text-align: center;
-      padding-top: 2rem;
+      background-image: url("/assets/images/artifact-photography/presto.jpg"); /* Hero background image */
+      background-size: cover;               /* Stretch image to cover entire section */
+      background-repeat: no-repeat;         /* Don't repeat the background */
+      background-position: center;          /* Center image horizontally/vertically */
+      background-attachment: fixed;         /* Keep background image fixed during scroll */
+      height: 100vh;                        /* Hero takes full height of viewport */
+      display: flex;                        /* Use Flexbox layout */
+      flex-direction: column;              /* Stack children vertically */
+      justify-content: flex-start;         /* Align content to top */
+      align-items: center;                 /* Center content horizontally */
+      text-align: center;                  /* Center text inside the section */
+      padding-top: 2rem;                   /* Add space at top for visual breathing room */
     }
 
-    /* Title box styling */
+    /* ==== Hero Title Box ==== */
     body.survey-page .hero-title-box {
-      background: #738678;                /* Xanadu (earthy tone) */
-      padding: 0.75rem 1rem;
-      border-radius: 12px;
+      background: #738678;                 /* Earthy green-gray tone */
+      padding: 0.75rem 1rem;               /* Inner spacing: top/bottom + sides */
+      border-radius: 12px;                 /* Rounded corners for the box */
     }
 
-    /* Page title inside title box */
+    /* ==== Hero Heading Text ==== */
     body.survey-page .hero-title-box h1 {
-      margin: 0;
-      font-size: 3.5rem;
-      color: #ffffff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      margin: 0;                           /* Remove default h1 margin */
+      font-size: 3.5rem;                   /* Large title size */
+      color: #ffffff;                      /* White text color */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Soft black shadow for contrast */
     }
 
-    /* Main content area for projects */
+    /* ==== Main Content Layout ==== */
     body.survey-page main {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 4rem 2rem;                  /* Space inside content block */
+      max-width: 900px;                    /* Max readable width for large screens */
+      margin: 0 auto;                      /* Center the main content */
     }
 
-    /* Each individual project block */
+    /* ==== Project Sections ==== */
     .project-section {
-      margin-bottom: 4rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 3rem;
+      margin-bottom: 4rem;                 /* Space between each project section */
+      border-bottom: 1px solid #ccc;       /* Horizontal line for visual separation */
+      padding-bottom: 3rem;                /* Space below the content before next section */
     }
 
-    /* Project title */
+    /* ==== Project Section Headings ==== */
     .project-section h2 {
-      font-size: 1.75rem;
-      color: #a32638;  /* Crimson accent */
-      margin-bottom: 1rem;
+      font-size: 1.75rem;                  /* Heading size for project titles */
+      color: #a32638;                      /* Crimson color for emphasis */
+      margin-bottom: 1rem;                 /* Space below heading */
     }
 
-    /* Project map or image */
+    /* ==== Project Images ==== */
     .project-section img {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      width: 100%;                         /* Responsive image width */
+      max-width: 800px;                    /* Prevent image from getting too large */
+      height: auto;                        /* Maintain aspect ratio */
+      border: 2px solid #ccc;              /* Light border around image */
+      border-radius: 8px;                  /* Rounded corners for soft look */
+      margin-bottom: 1rem;                 /* Space between image and text */
     }
 
-    /* Project description text */
+    /* ==== Project Descriptions ==== */
     .project-section p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
+      font-size: 1rem;                     /* Standard readable font size */
+      line-height: 1.6;                    /* Line spacing for readability */
+      color: #333;                         /* Dark gray text color for readability */
     }
-	
-body.survey-page .map-section {
-  /* background */
-  background-image: url("/assets/images/survey-mapping/oldmap2.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-
-  /* fixed height + flex centering */
-  width: 100%;
-  height: 700px;          /* you asked for 700px */
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center;     /* center vertically */
-}
-
-body.survey-page .map-section .map-embed {
-  width: 90%;             /* adjust as desired */
-  max-width: 960px;
-  height: 600px;          /* leave some “frame” around it */
-  border: 2px solid #8B0000;
-  border-radius: 10px;
-  display: block;
-}
-
-
-
-
-
-.map-container {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.25);
-  width: 90%;
-  max-width: 960px;
-
-  /* add this: */
-  margin: 0 auto;            /* centers the container block */
-  text-align: center;        /* keeps inline children centered */
-}
-
-.map-container iframe {
-  display: block;            /* treat it as a block so margin auto works */
-  width: 100%;               /* fill the container’s width */
-  height: 480px;             /* or whatever height you prefer */
-  border: 2px solid #8B0000; /* you can leave your inline styles here if you like */
-  border-radius: 10px;
-}
-
-
-
-
-/* Divider Section with Parchment Background and Thin Maroon Border */
-.divider {
-  width: 100%;
-  height: 100px;
-  background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  border-top: 2px solid #8B0000;   /* Thin top border */
-  border-bottom: 2px solid #8B0000; /* Thin bottom border */
-}
-
-/* Divider Text (Match Hero Title Font) */
-.divider-text {
-  font-family: 'Playfair Display', serif; /* Match title font */
-  font-size: 2.75rem;                    /* Increased size */
-  font-weight: bold;
-  color: #8B0000;                        /* Maroon */
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-
-
   </style>
 </head>
 
@@ -190,8 +110,5 @@ body.survey-page .map-section .map-embed {
       </div>
     </div>
   </section>
-
-
-
 </body>
 </html>
