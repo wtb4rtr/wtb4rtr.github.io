@@ -59,16 +59,17 @@
       align-items: center;                   /* Center contents horizontally */
     }
 
-    /* Nav box that holds project links */
     body.artphoto-page .hero-nav {
-      background-color: #f8f8ff;             /* Ghost White background */
-      padding: 0.75rem;                      /* Internal spacing */
-      border-radius: 8px;                    /* Rounded corners */
-      border: 2px solid #000000;             /* Bone white border */
-      display: flex;                         /* Flexbox layout */
-      flex-direction: column;                /* Stack nav links */
-      gap: 0.5rem;                           /* Space between buttons */
-    }
+  background: rgba(255, 255, 255, 0.85);  /* Match title bar background */
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);  /* Subtle border for definition */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional depth like title bar */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 
     /* Individual nav link buttons */
     body.artphoto-page .hero-nav a {
