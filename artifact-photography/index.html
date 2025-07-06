@@ -1,114 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"> <!-- Set character encoding -->
-  <title>Artifact Photography – William’s GIS Portfolio</title> <!-- Page title in browser tab -->
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive scaling -->
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to shared/global stylesheet -->
+  <meta charset="UTF-8"> <!-- Set character encoding for proper text rendering -->
+  <title>Artifact Photography – William’s GIS Portfolio</title> <!-- Title shown in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures responsive scaling on mobile -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to site-wide shared CSS -->
 
-  <!-- Page-specific styles -->
+  <!-- ========== Page-Specific Styles ========== -->
   <style>
-    /* ==== Ensure full-width layout without horizontal scrollbars ==== */
+    /* ===== Remove default spacing and prevent sideways scrolling ===== */
     html, body {
-      margin: 0;             /* Remove default margin */
-      padding: 0;            /* Remove default padding */
-      overflow-x: hidden;    /* Prevent horizontal scrolling */
+      margin: 0;             /* Remove browser default margins */
+      padding: 0;            /* Remove browser default padding */
+      overflow-x: hidden;    /* Prevent horizontal scrollbars */
     }
 
-    /* ==== Hero section with background image and top-aligned title ==== */
+    /* ===== HERO SECTION: Full-page background image with top-aligned content ===== */
     body.artphoto-page .hero {
-      background-image: url("/assets/images/artifact-photography/presto.jpg"); /* Background image */
-      background-size: cover;           /* Cover entire section */
-      background-repeat: no-repeat;     /* Prevent image repetition */
-      background-position: center;      /* Center the image */
-      background-attachment: fixed;     /* Fixed image on scroll (parallax effect) */
-      height: 100vh;                    /* Full viewport height */
-      display: flex;                    /* Use Flexbox for layout */
-      flex-direction: column;           /* Stack elements vertically */
-      justify-content: flex-start;      /* Align content to top of section */
+      background-image: url("/assets/images/artifact-photography/presto.jpg"); /* Full-screen background image */
+      background-size: cover;           /* Scale image to cover entire section */
+      background-repeat: no-repeat;     /* Prevent repeating the image */
+      background-position: center;      /* Center image horizontally and vertically */
+      background-attachment: fixed;     /* Parallax effect: image stays fixed as user scrolls */
+      height: 100vh;                    /* Hero section takes full height of the viewport */
+      display: flex;                    /* Flexbox layout */
+      flex-direction: column;           /* Stack children vertically */
+      justify-content: flex-start;      /* Align content to the top of the container */
       align-items: center;              /* Center content horizontally */
-      text-align: center;               /* Center text alignment */
-      padding-top: 2rem;                /* Space above the title box */
+      text-align: center;               /* Center-align all text inside */
+      padding-top: 2rem;                /* Padding above title box */
     }
 
+    /* ===== TITLE BOX: Holds page title text ===== */
     .artphoto-page .hero-title-box {
-	  background: rgba(255, 255, 255, 0.85); /* Soft translucent white */
-	  padding: 0.75rem 1rem;
-	  border-radius: 12px;
-	  border: 1px solid rgba(0, 0, 0, 0.15); /* Optional thin border for definition */
-	  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Soft depth effect */
-	}
+      background: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
+      padding: 0.75rem 1rem;                /* Inner padding around text */
+      border-radius: 12px;                  /* Rounded corners */
+      border: 1px solid rgba(0, 0, 0, 0.15); /* Very subtle border for structure */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Drop shadow for subtle lift */
+    }
 
-
-    /* ==== Page title inside title box ==== */
+    /* ===== TITLE TEXT STYLING ===== */
     body.artphoto-page .hero-title-box h1 {
-      margin: 0;                       /* Remove default margin */
-      font-size: 3.5rem;               /* Large font size */
-      color: #100c08;                  /* Smoky Black text */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle shadow for contrast */
+      margin: 0;                             /* Remove margin around heading */
+      font-size: 3.5rem;                     /* Large title text */
+      color: #100c08;                        /* Smoky Black */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Shadow for readability */
     }
-	
-	/* Right-side vertical nav container */
+
+    /* ===== NAV CONTAINER: Absolute position, right side of hero ===== */
     body.artphoto-page .hero-nav-container {
-      position: absolute;                    /* Manually placed in hero */
-      top: 6rem;                             /* Distance from top of section */
-      right: 1rem;                           /* Distance from right edge */
-      z-index: 2;                            /* Keep above background */
-      display: flex;                         /* Use flexbox */
-      flex-direction: column;                /* Stack items vertically */
-      align-items: center;                   /* Center contents horizontally */
+      position: absolute;              /* Remove from normal flow, position manually */
+      top: 6rem;                       /* Distance from top of viewport */
+      right: 1rem;                     /* Distance from right edge of screen */
+      z-index: 2;                      /* Keep on top of background image */
+      display: flex;                   /* Flex layout */
+      flex-direction: column;          /* Stack vertically */
+      align-items: center;             /* Center content horizontally */
     }
 
+    /* ===== NAV BOX: Holds navigation buttons ===== */
     body.artphoto-page .hero-nav {
-  background: rgba(255, 255, 255, 0.85);  /* Match title bar background */
-  padding: 0.75rem;
-  border-radius: 8px;
- border: 2.5px solid #100c08;  /* Opaque Smoky Black border */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional depth like title bar */
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-
-    /* Individual nav link buttons */
-    body.artphoto-page .hero-nav a {
-      display: block;                        /* Make links block-level */
-      background: #100c08;                   /* Smoky Black background */
-      color: #f8f8ff;                        /* Ghost White text */
-      font-weight: 600;                      /* Semi-bold text */
-      text-decoration: none;                 /* Remove underline */
-      padding: 0.5rem 1rem;                  /* Space inside button */
-      border-radius: 6px;                    /* Rounded edges */
-      transition: all 0.2s ease-in-out;      /* Smooth hover */
-      border: none;                          /* No border */
-      outline: none;                         /* Remove focus outline */
-      box-shadow: none;                      /* Flat look */
-      font-family: 'Oswald', sans-serif;     /* Use Oswald font */
+      background: rgba(255, 255, 255, 0.85);      /* Match title box with semi-transparency */
+      padding: 0.75rem;                           /* Internal spacing */
+      border-radius: 8px;                         /* Rounded corners */
+      border: 2.5px solid #100c08;                /* Solid Smoky Black border */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);  /* Subtle shadow like title box */
+      display: flex;                              /* Flexbox layout */
+      flex-direction: column;                     /* Stack nav buttons vertically */
+      gap: 0.5rem;                                /* Space between buttons */
     }
 
+    /* ===== NAV LINKS ===== */
+    body.artphoto-page .hero-nav a {
+      display: block;                        /* Each link takes up full width of parent */
+      background: #100c08;                   /* Button background: Smoky Black */
+      color: #f8f8ff;                        /* Text color: Ghost White */
+      font-weight: 600;                      /* Medium-bold text */
+      text-decoration: none;                 /* Remove underline */
+      padding: 0.5rem 1rem;                  /* Padding inside button */
+      border-radius: 6px;                    /* Rounded corners */
+      transition: all 0.2s ease-in-out;      /* Smooth transition for hover */
+      border: none;                          /* No visible border */
+      outline: none;                         /* Prevent focus outline */
+      box-shadow: none;                      /* Initially flat button (no shadow) */
+      font-family: 'Oswald', sans-serif;     /* Use Oswald font for bold uppercase style */
+    }
+
+    /* ===== HOVER TRANSITION (redundant but harmless duplicate selector) ===== */
     .artphoto-page .hero-nav a {
-	  transition: transform 0.2s ease, background-color 0.2s ease;
-	}
+      transition: transform 0.2s ease, background-color 0.2s ease; /* Define transition animation */
+    }
 
-	.artphoto-page .hero-nav a:hover {
-      transform: scale(1.15); /* Slight grow */
-      background-color: #777; /* Optional slight lighten */
-	  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add soft depth on hover */
-	}
-
-
-
+    /* ===== HOVER EFFECTS ===== */
+    .artphoto-page .hero-nav a:hover {
+      transform: scale(1.15);                             /* Grows slightly when hovered */
+      background-color: #777;                             /* Slightly lighter background on hover */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);           /* Lift the button with a deeper shadow */
+    }
   </style>
 </head>
 
-<body class="artphoto-page"> <!-- Page-specific class for scoping styles -->
+<!-- ===== BEGIN BODY CONTENT ===== -->
+<body class="artphoto-page"> <!-- Adds page-specific class to scope CSS -->
 
-  <!-- ==== Global Navigation Bar ==== -->
+  <!-- ===== SITE-WIDE NAVIGATION BAR ===== -->
   <nav>
-    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
-    <div class="site-title">Virtual Bill Brown</div>
-    <ul>
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo image -->
+    <div class="site-title">Virtual Bill Brown</div> <!-- Site title -->
+    <ul> <!-- Navigation links -->
       <li><a href="/">Home</a></li>
       <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
       <li><a href="/survey-mapping/">Survey/Mapping</a></li>
@@ -119,21 +119,17 @@
     </ul>
   </nav>
 
-  <!-- ==== Hero Section with Title ==== -->
+  <!-- ===== HERO SECTION: Title and Vertical Nav ===== -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-title-box">
-        <h1>ARTIFACT PHOTOGRAPHY</h1>
+    <div class="hero-content"> <!-- Container for centered hero content -->
+      <div class="hero-title-box"> <!-- Styled box for page title -->
+        <h1>ARTIFACT PHOTOGRAPHY</h1> <!-- Title text -->
       </div>
     </div>
-	
-	 <!-- 📚 Right-hand Vertical Navigation for Subsections -->
-    <div class="hero-nav-container">
-      
-      
 
-      <!-- Vertical navigation buttons -->
-      <nav class="hero-nav">
+    <!-- ===== VERTICAL NAVIGATION PANEL (Right side of hero) ===== -->
+    <div class="hero-nav-container">
+      <nav class="hero-nav"> <!-- Vertical nav button group -->
         <a href="maya/">MAYA ARTIFACTS</a>
         <a href="historic/">HISTORIC ARTIFACTS</a>
         <a href="bones/">OSTEOLOGY PHOTOS</a>
