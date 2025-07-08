@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+  <title>European Bioarchaeology – William’s GIS Portfolio</title> <!-- Page title shown in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Enable responsive scaling -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to global site-wide CSS -->
+
+  <!-- Google Fonts TEST-->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"> <!-- Load Oswald bold font -->
+
+  <!-- Page-specific styles for Bioarchaeology page -->
+  <style>
+    /* Use bold Oswald font for h1 elements */
+    body.eurobioarch-page h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+    }
+
+    /* Hero section with full background image */
+    body.eurobioarch-page .hero {
+      background-image: url("/assets/images/"); /* Image for top section */
+      background-size: cover;              /* Make image fill entire area */
+      background-repeat: no-repeat;        /* Don't repeat image */
+      background-position: center top;     /* Center horizontally, top vertically */
+      background-attachment: scroll;       /* Scrolls with page */
+      height: 100vh;                       /* Full height of viewport */
+      position: relative;                  /* Set context for absolute-positioned children */
+      display: flex;                       /* Flexbox layout */
+      flex-direction: column;              /* Stack children vertically */
+      justify-content: flex-start;         /* Align top vertically */
+      align-items: center;                 /* Center horizontally */
+      padding-top: 1rem;                   /* Padding to separate from nav */
+    }
+
+    /* Container for centered title box */
+    body.eurobioarch-page .hero-content {
+      text-align: center;                  /* Center text horizontally */
+      z-index: 2;                          /* Ensure above background */
+      margin-bottom: 1rem;                 /* Space below title */
+    }
+
+    /* Title box style */
+    body.eurobioarch-page .hero-title-box {
+      background: #2f4f4f;                 /* Dark Slate Gray background */
+      padding: 0.5rem 1.25rem;             /* Internal spacing */
+      border-radius: 12px;                 /* Rounded corners */
+      display: inline-block;               /* Fit tightly to text */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Drop shadow */
+      border: 3px solid #f8f8dc;           /* Bone white border */
+    }
+
+    /* Title text inside box */
+    body.eurobioarch-page .hero-title-box h1 {
+      margin: 0;                           /* Remove default spacing */
+      font-size: 3.5rem;                   /* Large title size */
+      color: #f8f8dc;                      /* Bone white color */
+      letter-spacing: 2px;                 /* Letter spacing for effect */
+      text-transform: uppercase;           /* All caps title */
+      position: relative;                  /* Needed for underline (::after) */
+      text-shadow: 2px 2px #00000040;      /* Subtle dark shadow */
+    }
+
+    /* Decorative underline under the title */
+    body.eurobioarch-page .hero-title-box h1::after {
+      content: "";                         /* Create a pseudo element */
+      display: block;                      /* Block element so it breaks line */
+      margin: 0.5rem auto 0 auto;          /* Space above, center horizontally */
+      width: 200px;                        /* Underline width */
+      height: 3.5px;                       /* Underline thickness */
+      background: #f8f8dc;                 /* Bone white color */
+      border-radius: 2px;                  /* Rounded ends */
+    }
+
+    
+  </style>
+</head>
+
+<body class="eurobioarch-page">
+  <!-- 🔼 Top Navigation Bar -->
+  <nav>
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo image -->
+    <div class="site-title">Virtual Bill Brown</div> <!-- Site title -->
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
+      <li><a href="/survey-mapping/">Survey/Mapping</a></li>
+      <li><a href="/excavation-of/">Excavation Of…</a></li>
+      <li><a href="/bioarchaeology/">Bioarchaeology</a></li>
+      <li><a href="/education/">Education</a></li>
+      <li><a href="/artifact-photography/">Artifact Photography</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🦴 Hero Section with Background and Title -->
+<section class="hero">
+  <!-- 🔠 Title Content -->
+  <div class="hero-content">
+    <div class="hero-title-box">
+      <h1>EUROPEAN BIOARCHAEOLOGY</h1>
+    </div>
+
+    <!-- Page under construction notice -->
+    <div style="margin-top: 1rem; font-size: 3.5rem; color: #000000; font-family: 'Oswald', sans-serif;">
+      Page Under Construction, Check Back Soon!!
+    </div>
+  </div>
+</section>
+
+  <!-- 📄 Main Page Content Area -->
+  <main>
+   <!-- Page-specific content goes here -->
+  </main>
+</body>
+</html>
