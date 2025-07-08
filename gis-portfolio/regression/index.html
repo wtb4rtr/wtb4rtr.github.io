@@ -1,137 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Regression Analyses – William’s GIS Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+  <title>Mississippian Bioarchaeology – William’s GIS Portfolio</title> <!-- Page title shown in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Enable responsive scaling -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Link to global site-wide CSS -->
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Google Fonts TEST-->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet"> <!-- Load Oswald bold font -->
 
-  <!-- Page-specific styles -->
+  <!-- Page-specific styles for Bioarchaeology page -->
   <style>
-    /* Set custom serif font (Playfair Display) for the page's main title */
-    body.regression-page h1 {
-      font-family: 'Playfair Display', serif; /* Elegant serif font for title */
+    /* Use bold Oswald font for h1 elements */
+    body.missbioarch-page h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
     }
 
-    /* Main hero section with background image */
-    body.regression-page .hero {
-      background-image: url("/assets/images/gis-portfolio/regression/regress.png"); /* Regression diagram image */
-      background-size: cover;           /* Stretch to cover full section */
-      background-repeat: no-repeat;     /* Do not repeat image */
-      background-position: center top;  /* Align center horizontally, top vertically */
-      background-attachment: scroll;    /* Allow scrolling with page */
-      height: 100vh;                    /* Full viewport height */
-      position: relative;               /* Establish positioning context */
-      display: flex;                    /* Use flexbox layout */
-      flex-direction: column;          /* Stack children vertically */
-      justify-content: flex-start;     /* Align content at the top */
-      align-items: center;             /* Center items horizontally */
-      padding-top: 3rem;               /* Top padding under nav */
+    /* Hero section with full background image */
+    body.missbioarch-page .hero {
+      background-image: url("/assets/images/"); /* Image for top section */
+      background-size: cover;              /* Make image fill entire area */
+      background-repeat: no-repeat;        /* Don't repeat image */
+      background-position: center top;     /* Center horizontally, top vertically */
+      background-attachment: scroll;       /* Scrolls with page */
+      height: 100vh;                       /* Full height of viewport */
+      position: relative;                  /* Set context for absolute-positioned children */
+      display: flex;                       /* Flexbox layout */
+      flex-direction: column;              /* Stack children vertically */
+      justify-content: flex-start;         /* Align top vertically */
+      align-items: center;                 /* Center horizontally */
+      padding-top: 1rem;                   /* Padding to separate from nav */
     }
 
-    /* Container for centered title */
-    body.regression-page .hero-content {
-      text-align: center;              /* Center text */
-      z-index: 2;                      /* Layer above background */
-      margin-bottom: 1rem;             /* Space below title */
+    /* Container for centered title box */
+    body.missbioarch-page .hero-content {
+      text-align: center;                  /* Center text horizontally */
+      z-index: 2;                          /* Ensure above background */
+      margin-bottom: 1rem;                 /* Space below title */
     }
 
-    /* Style for the title background box */
-    body.regression-page .hero-title-box {
-      background: #dcdcdc;             /* Light gray background (gainsboro) */
-      padding: 1rem 2rem;              /* Internal spacing */
-      border-radius: 12px;             /* Rounded corners */
-      display: inline-block;           /* Fit tightly to content */
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); /* Drop shadow for depth */
-      border: 2px solid #dcdcdc;       /* Border to match background */
+    /* Title box style */
+    body.missbioarch-page .hero-title-box {
+      background: #2f4f4f;                 /* Dark Slate Gray background */
+      padding: 0.5rem 1.25rem;             /* Internal spacing */
+      border-radius: 12px;                 /* Rounded corners */
+      display: inline-block;               /* Fit tightly to text */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3); /* Drop shadow */
+      border: 3px solid #f8f8dc;           /* Bone white border */
     }
 
-    /* Main title styling */
-    body.regression-page .hero-title-box h1 {
-      margin: 0;                       /* Remove default spacing */
-      font-size: 3.3rem;               /* Set large title size */
-      color: #2c2c2c;                  /* Dark gray text */
-      letter-spacing: 1px;             /* Slight spacing between letters */
-      text-transform: uppercase;       /* Capital letters */
-      position: relative;              /* Anchor underline below */
+    /* Title text inside box */
+    body.missbioarch-page .hero-title-box h1 {
+      margin: 0;                           /* Remove default spacing */
+      font-size: 3.5rem;                   /* Large title size */
+      color: #f8f8dc;                      /* Bone white color */
+      letter-spacing: 2px;                 /* Letter spacing for effect */
+      text-transform: uppercase;           /* All caps title */
+      position: relative;                  /* Needed for underline (::after) */
+      text-shadow: 2px 2px #00000040;      /* Subtle dark shadow */
     }
 
-    /* Decorative underline below title */
-    body.regression-page .hero-title-box h1::after {
-      content: "";                     /* Generate line */
-      display: block;                  /* Block-level element */
-      margin: 1rem auto 0 auto;        /* Space above, centered */
-      width: 80px;                     /* Width of line */
-      height: 4px;                     /* Thickness of line */
-      background: #aa2e45;             /* Crimson/maroon color */
-      border-radius: 2px;              /* Rounded ends */
+    /* Decorative underline under the title */
+    body.missbioarch-page .hero-title-box h1::after {
+      content: "";                         /* Create a pseudo element */
+      display: block;                      /* Block element so it breaks line */
+      margin: 0.5rem auto 0 auto;          /* Space above, center horizontally */
+      width: 200px;                        /* Underline width */
+      height: 3.5px;                       /* Underline thickness */
+      background: #f8f8dc;                 /* Bone white color */
+      border-radius: 2px;                  /* Rounded ends */
     }
 
-    /* Container for vertical nav list */
-    body.regression-page .hero-nav-container {
-      position: absolute;              /* Manual placement */
-      top: 10rem;                      /* Distance from top of hero */
-      right: 2rem;                     /* Align to right margin */
-      z-index: 2;                      /* Layer above background */
-      display: flex;                   /* Stack label + nav */
-      flex-direction: column;          /* Vertical alignment */
-      align-items: center;             /* Keep nav links centered */
-    }
-
-    /* Real label above nav buttons, now left-aligned inside container */
-    body.regression-page .hero-nav-label {
-      align-self: flex-start;          /* Align just the label to the left */
-      color: #ccc;                     /* Light gray color */
-      font-size: 0.9rem;               /* Slightly smaller than normal text */
-      margin-bottom: 0.5rem;           /* Space between label and nav box */
-      padding-left: 0.25rem;           /* Soft indent */
-    }
-
-    /* Container box for nav links */
-    body.regression-page .hero-nav {
-      background-color: #2f4f4f;       /* Slate gray box */
-      padding: 1rem;                   /* Internal spacing */
-      border-radius: 6px;              /* Rounded corners */
-      border: 2px solid #2f4f4f;       /* Border same as background */
-      display: flex;                   /* Flex layout */
-      flex-direction: column;          /* Stack items vertically */
-      gap: 1rem;                       /* Space between buttons */
-    }
-
-    /* Style for each nav link button */
-    body.regression-page .hero-nav a {
-      display: block;                  /* Full-width block button */
-      background: #dcdcdc;             /* Same as title box */
-      color: #2f4f4f;                  /* Text color: dark slate */
-      font-weight: bold;              /* Bold text */
-      text-decoration: none;          /* Remove underline */
-      padding: 0.75rem 1.5rem;         /* Padding inside button */
-      border-radius: 4px;              /* Rounded corners */
-      position: relative;              /* For pseudo-elements */
-      z-index: 1;                      /* Above inner box */
-      transition: background 0.2s, transform 0.2s; /* Hover animation */
-      border: none;                    /* Remove border */
-      outline: none;                   /* Remove focus outline */
-      box-shadow: none;                /* No shadows */
-    }
-
-    /* Hover effect for buttons */
-    body.regression-page .hero-nav a:hover {
-      background: #f5f5f5;             /* Lighter gray on hover */
-      color: #000;                     /* Black text on hover */
-      transform: translateX(2px);      /* Subtle shift right */
-    }
+    
   </style>
 </head>
 
-<body class="regression-page">
-  <!-- Global Navigation Bar -->
+<body class="missbioarch-page">
+  <!-- 🔼 Top Navigation Bar -->
   <nav>
-    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo">
-    <div class="site-title">Virtual Bill Brown</div>
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo image -->
+    <div class="site-title">Virtual Bill Brown</div> <!-- Site title -->
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
@@ -143,28 +92,24 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <!-- Title Box -->
-    <div class="hero-content">
-      <div class="hero-title-box">
-        <h1>REGRESSION ANALYSES</h1>
-      </div>
+  <!-- 🦴 Hero Section with Background and Title -->
+<section class="hero">
+  <!-- 🔠 Title Content -->
+  <div class="hero-content">
+    <div class="hero-title-box">
+      <h1>MISSISSIPPIAN BIOARCHAEOLOGY</h1>
     </div>
 
-    <!-- Right-hand Vertical Nav with real label element -->
-    <div class="hero-nav-container">
-      <div class="hero-nav-label">Explore Projects:</div> <!-- Now left-aligned above nav -->
-      <nav class="hero-nav">
-        <a href="mayaisotopes/">MAYA ISOTOPES</a>
-        <a href="berncoairpol/">BERNCO AIR POLLUTION</a>
-      </nav>
+    <!-- Page under construction notice -->
+    <div style="margin-top: 1rem; font-size: 3.5rem; color: #000000; font-family: 'Oswald', sans-serif;">
+      Page Under Construction, Check Back Soon!!
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Future Content -->
+  <!-- 📄 Main Page Content Area -->
   <main>
-    <!-- Page-specific content goes here -->
+   <!-- Page-specific content goes here -->
   </main>
 </body>
 </html>
