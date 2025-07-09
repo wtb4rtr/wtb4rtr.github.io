@@ -410,25 +410,23 @@
       </p>  	  
     </section>
   </main>
-  <!-- Leaflet JS -->
+ <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-<!-- 🔧 Initialize Leaflet Map for Blue Creek -->
+<!-- Initialize Blue Creek Map -->
 <script>
   var mapBlueCreek = L.map('map-bluecreek').setView([17.955580, -89.043766], 6);
 
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg', {
-  attribution: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, via <a href="https://stadiamaps.com/">Stadia Maps</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-  maxZoom: 18
-}).addTo(mapBlueCreek);
-
-
-
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, via <a href="https://stadiamaps.com/">Stadia Maps</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(mapBlueCreek);
 
   L.marker([17.955580, -89.043766]).addTo(mapBlueCreek)
     .bindPopup('Classic Maya Residences – Blue Creek')
     .openPopup();
 </script>
+
 
 
 </body>
