@@ -494,7 +494,6 @@
   </main>
  <!-- Leaflet JS -->
 <!-- Leaflet JS -->
-<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <script>
@@ -509,9 +508,10 @@
   // 🧭 Custom Surveyor Icon for Detail Map
   var surveyorIcon = L.icon({
     iconUrl: '/assets/images/common/surveyor-icon.png',
+    iconRetinaUrl: '/assets/images/common/surveyor-icon.png',
     iconSize: [32, 32],
     iconAnchor: [16, 16],
-    shadowUrl: '' // 🧹 Removes the default white triangle shadow
+    shadowUrl: null
   });
 
   L.marker([17.955580, -89.043766], { icon: surveyorIcon }).addTo(mapDetail)
@@ -551,6 +551,7 @@
       className: "custom-label"
     });
 </script>
+
 
 
 </body>
