@@ -173,23 +173,25 @@
 	
 	.split-map-container {
   display: flex;
+  flex-direction: row;
   gap: 0;
-  position: relative;
-  margin-bottom: 2rem;
+  height: 400px;
+  margin-bottom: 1rem;
+  border: 2px solid #8B0000;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 #map-bluecreek-detail {
-  height: 400px;
-  width: 66%;
-  border: 2px solid darkred;
-  border-radius: 10px;
+  flex: 2; /* 66% */
+  height: 100%;
+  border-right: 1px solid #8B0000; /* Divider */
 }
 
 #map-bluecreek-overview {
-  height: 400px;
-  width: 33%;
-  border: 2px solid darkred;
-  border-radius: 10px;
+  flex: 1; /* 33% */
+  height: 100%;
+  position: relative; /* Allows legend/north arrow overlay */
 }
 
 
