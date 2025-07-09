@@ -5,6 +5,9 @@
   <title>Survey/Mapping – William’s GIS Portfolio</title> <!-- Page title displayed in browser tab -->
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Makes the layout responsive on mobile -->
   <link rel="stylesheet" href="/assets/css/style.css"> <!-- Links to your global stylesheet -->
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 
   <!-- Page-specific styles -->
   <style>
@@ -81,7 +84,17 @@
       margin-bottom: 1rem;               /* Space below image */
     }
 
-    /* Paragraph text under each project */
+    /* Custom Leaflet map container embedded in project blocks */
+	.map-embed {
+      height: 400px;                         /* Fixed map height */
+      width: 100%;                           /* Full width of parent */
+      border: 2px solid #8B0000;             /* Maroon border */
+      border-radius: 10px;                   /* Rounded corners */
+      margin-bottom: 1rem;                   /* Space below the map */
+	}
+
+	
+	/* Paragraph text under each project */
     .project-section p {
       font-size: 1rem;                   /* Normal text size */
       line-height: 1.6;                  /* Improves readability */
@@ -156,6 +169,7 @@
       text-transform: uppercase;               /* All caps */
       letter-spacing: 1.5px;                   /* Adds space between letters */
     }
+	
   </style>
 </head>
 
@@ -202,8 +216,9 @@
   <main>
     <!-- Project 1 -->
     <section class="project-section">
-      <h2>Classic Maya Residences | Blue Creek, Northwestern Belize (2008-2014)</h2>
-      <img src="/assets/images/survey-mapping/example-map.jpg" alt="Map of Northwestern Belize">
+      <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
+      <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
+	  <div id="map-bluecreek" class="map-embed"></div>
        <p style="text-align: justify;">
 			In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
 			in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20 
@@ -395,5 +410,21 @@
       </p>  	  
     </section>
   </main>
+  <!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- 🔧 Initialize Leaflet Map for Blue Creek -->
+<script>
+  var mapBlueCreek = L.map('map-bluecreek').setView([17.955580, -89.043766], 14);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mapBlueCreek);
+
+  L.marker([17.955580, -89.043766]).addTo(mapBlueCreek)
+    .bindPopup('Classic Maya Residences – Blue Creek')
+    .openPopup();
+</script>
+
 </body>
 </html>
