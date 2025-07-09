@@ -171,64 +171,49 @@
       letter-spacing: 1.5px;                   /* Adds space between letters */
     }
 	
-	.split-map-container {
+	/* Container for side-by-side maps */
+.split-map-container {
   display: flex;
-  flex-direction: row;
-  gap: 0;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative; /* Allows absolute-positioned children */
+}
+
+/* Individual map divs */
+.split-map {
   height: 400px;
-  margin-bottom: 1rem;
-  border: 2px solid #8B0000;
+  border: 2px solid darkred;
   border-radius: 10px;
-  overflow: hidden;
+  flex: 1;
 }
 
-#map-bluecreek-detail {
-  flex: 2; /* 66% */
-  height: 100%;
-  border-right: 1px solid #8B0000; /* Divider */
-}
-
-#map-bluecreek-overview {
-  flex: 1; /* 33% */
-  height: 100%;
-  position: relative; /* Allows legend/north arrow overlay */
-}
-
-
-#map-bluecreek-detail {
-  flex: 2; /* 66% */
-  height: 100%;
-}
-
-#map-bluecreek-overview {
-  flex: 1; /* 33% */
-  height: 100%;
-}
-
-/* Mini Legend Styling */
+/* Mini Legend */
 .mini-legend {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
-  background: rgba(255,255,255,0.85);
-  padding: 0.5rem;
-  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  font-family: sans-serif;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  z-index: 999;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* North Arrow Styling */
+/* North Arrow */
 .north-arrow {
   position: absolute;
-  top: 10px;
+  bottom: 10px;
   right: 10px;
-  width: 30px;
-  height: 30px;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Compass_rose_simple.svg/32px-Compass_rose_simple.svg.png') no-repeat center center;
+  width: 40px;
+  height: 40px;
+  background-image: url('/assets/images/north-arrow.png'); /* replace with your actual path */
   background-size: contain;
-  opacity: 0.85;
+  background-repeat: no-repeat;
+  z-index: 999;
 }
+
 
 
 	
@@ -280,20 +265,21 @@
     <section class="project-section">
       <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
       <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
-	  <div class="split-map-container">
+	 <div class="split-map-container">
   <div id="map-bluecreek-detail" class="split-map"></div>
   <div id="map-bluecreek-overview" class="split-map"></div>
+
   <!-- North Arrow -->
-<div class="north-arrow"></div>
+  <div class="north-arrow"></div>
 
-<!-- Mini Legend -->
-<div class="mini-legend">
-  <strong>Basemaps:</strong><br>
-  🟩 Detail: Stamen Terrain<br>
-  ⚪ Overview: Esri Gray Canvas
+  <!-- Mini Legend -->
+  <div class="mini-legend">
+    <strong>Basemaps:</strong><br>
+    🟩 Detail: Stamen Terrain<br>
+    ⚪ Overview: Esri Gray Canvas
+  </div>
 </div>
 
-</div>
 
        <p style="text-align: justify;">
 			In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
