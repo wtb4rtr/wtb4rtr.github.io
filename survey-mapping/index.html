@@ -20,12 +20,13 @@
     }
 	
 	
-  .leaflet-marker-icon,
-  .leaflet-marker-shadow {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
+  /* 🔧 Disable Leaflet default icon SVG fallback */
+.leaflet-marker-icon.no-default-icon {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 
 
 
@@ -515,13 +516,12 @@
     maxZoom: 18
   }).addTo(mapDetail);
 
-  // 🧭 Custom Surveyor Icon for Detail Map
+  // 🧭 Custom Surveyor Icon for Detail Map (suppress fallback)
   var surveyorIcon = L.icon({
     iconUrl: '/assets/images/common/surveyor-icon.png',
-    iconRetinaUrl: '/assets/images/common/surveyor-icon.png',
     iconSize: [32, 32],
     iconAnchor: [16, 16],
-    shadowUrl: null
+    className: 'no-default-icon' // 🛑 Prevent Leaflet fallback SVG
   });
 
   L.marker([17.955580, -89.043766], { icon: surveyorIcon }).addTo(mapDetail)
@@ -561,6 +561,7 @@
       className: "custom-label"
     });
 </script>
+
 
 
 
