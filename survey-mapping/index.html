@@ -417,9 +417,9 @@
 <script>
   var mapBlueCreek = L.map('map-bluecreek').setView([17.955580, -89.043766], 6);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(mapBlueCreek);
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg', {
+  attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap'
+}).addTo(mapBlueCreek);
 
   L.marker([17.955580, -89.043766]).addTo(mapBlueCreek)
     .bindPopup('Classic Maya Residences – Blue Creek')
