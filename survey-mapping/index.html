@@ -173,7 +173,6 @@
 	.split-map-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 1rem;
   height: 400px;
   margin-bottom: 1rem;
@@ -182,8 +181,13 @@
   overflow: hidden;
 }
 
-.split-map {
-  flex: 1;
+#map-bluecreek-detail {
+  flex: 2; /* 66% */
+  height: 100%;
+}
+
+#map-bluecreek-overview {
+  flex: 1; /* 33% */
   height: 100%;
 }
 
@@ -434,21 +438,21 @@
   </main>
  <!-- Leaflet JS -->
 <!-- Leaflet JS -->
+<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <!-- 📍 Dual Map Initialization -->
 <script>
-  // Zoomed-in detail map
+  // 🟩 Detail Map (Left Side)
   var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
+
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg', {
+    attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap'
   }).addTo(mapDetail);
 
-  L.marker([17.955580, -89.043766]).addTo(mapDetail)
-    .bindPopup('Classic Maya Residences – Blue Creek')
-    .openPopup();
+  L.marker([17.955580, -89.043766]).addTo(mapDetail);
 
-  // Overview map with locked zoom level
+  // 🌍 Overview Map (Right Side) — ESRI World Gray
   var mapOverview = L.map('map-bluecreek-overview', {
     zoomControl: false,
     dragging: false,
@@ -460,13 +464,16 @@
     touchZoom: false
   }).setView([17.955580, -89.043766], 5);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri &mdash; Esri, DeLorme, NAVTEQ',
+    maxZoom: 16
   }).addTo(mapOverview);
 
-  L.marker([17.955580, -89.043766]).addTo(mapOverview);
+  // 📍 Popup on overview map
+  L.marker([17.955580, -89.043766]).addTo(mapOverview)
+    .bindPopup('Classic Maya Residences – Blue Creek')
+    .openPopup();
 </script>
-
 
 
 </body>
