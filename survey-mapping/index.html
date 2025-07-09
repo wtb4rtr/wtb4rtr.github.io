@@ -195,33 +195,31 @@
 }
 
 
-/* Mini Legend */
+/* Mini legend inside overview map */
 .mini-legend {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.9);
+  padding: 8px 12px;
   font-size: 0.9rem;
   border-radius: 6px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
   z-index: 999;
-  font-family: 'Segoe UI', sans-serif;
 }
 
-/* North Arrow */
+/* North arrow in top-right corner */
 .north-arrow {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   right: 10px;
-  width: 40px;
-  height: 40px;
-  background-image: url('/assets/images/north-arrow.png'); /* replace with your actual path */
+  width: 30px;
+  height: 30px;
+  background-image: url('/assets/images/common/north-arrow.png'); /* adjust path */
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 999;
 }
-
 
 
 	
@@ -275,18 +273,17 @@
       <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
 	 <div class="split-map-container">
   <div id="map-bluecreek-detail" class="split-map"></div>
-  <div id="map-bluecreek-overview" class="split-map"></div>
-
-  <!-- North Arrow -->
-  <div class="north-arrow"></div>
-
-  <!-- Mini Legend -->
+  <div id="map-bluecreek-overview" class="split-map">
   <div class="mini-legend">
     <strong>Basemaps:</strong><br>
     🟩 Detail: Stamen Terrain<br>
     ⚪ Overview: Esri Gray Canvas
   </div>
+  <div class="north-arrow"></div>
 </div>
+
+
+  
 
 
        <p style="text-align: justify;">
