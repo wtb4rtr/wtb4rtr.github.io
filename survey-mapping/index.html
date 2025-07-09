@@ -171,21 +171,28 @@
       letter-spacing: 1.5px;                   /* Adds space between letters */
     }
 	
-	/* Container for side-by-side maps */
-.split-map-container {
+	.split-map-container {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  position: relative; /* Allows absolute-positioned children */
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-/* Individual map divs */
-.split-map {
+#map-bluecreek-detail {
   height: 400px;
+  width: 66%;
   border: 2px solid darkred;
   border-radius: 10px;
-  flex: 1;
 }
+
+#map-bluecreek-overview {
+  height: 400px;
+  width: 33%;
+  border: 2px solid darkred;
+  border-radius: 10px;
+}
+
 
 /* Mini Legend */
 .mini-legend {
