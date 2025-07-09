@@ -518,7 +518,15 @@ L.marker([17.955580, -89.043766]).addTo(mapDetail)
   }).addTo(mapOverview);
 
   // 📍 Popup on overview map
-  L.marker([17.955580, -89.043766]).addTo(mapOverview);
+  // Create custom circle marker for overview
+L.circleMarker([17.955580, -89.043766], {
+  radius: 8,
+  color: '#a32638',
+  fillColor: '#a32638',
+  fillOpacity: 1
+}).addTo(mapBlueCreekOverview)
+  .bindTooltip("PROJECT AREA", { permanent: true, direction: "top", className: "custom-label" });
+
 </script>
 
 
