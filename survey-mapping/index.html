@@ -208,18 +208,18 @@
   z-index: 999;
 }
 
-/* North arrow in top-right corner */
 .north-arrow {
   position: absolute;
-  bottom: 10px;
+  bottom: 10px;     /* ⬅️ This places it at bottom-left */
   left: 10px;
-  width: 100px;
-  height: 1000px;
-  background-image: url('/assets/images/common/north-arrow.png'); /* adjust path */
+  width: 50px;      /* reasonable width */
+  height: 50px;     /* reasonable height */
+  background-image: url('/assets/images/common/north-arrow.png');
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: 999;
+  z-index: 999;     /* Keeps it on top of map tiles */
 }
+
 
 
 	
