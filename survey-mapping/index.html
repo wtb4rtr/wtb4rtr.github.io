@@ -173,7 +173,7 @@
 	.split-map-container {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
+  gap: 0;
   height: 400px;
   margin-bottom: 1rem;
   border: 2px solid #8B0000;
@@ -184,12 +184,51 @@
 #map-bluecreek-detail {
   flex: 2; /* 66% */
   height: 100%;
+  border-right: 1px solid #8B0000; /* Divider */
+}
+
+#map-bluecreek-overview {
+  flex: 1; /* 33% */
+  height: 100%;
+  position: relative; /* Allows legend/north arrow overlay */
+}
+
+
+#map-bluecreek-detail {
+  flex: 2; /* 66% */
+  height: 100%;
 }
 
 #map-bluecreek-overview {
   flex: 1; /* 33% */
   height: 100%;
 }
+
+/* Mini Legend Styling */
+.mini-legend {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255,255,255,0.85);
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+}
+
+/* North Arrow Styling */
+.north-arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Compass_rose_simple.svg/32px-Compass_rose_simple.svg.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.85;
+}
+
 
 	
   </style>
@@ -243,6 +282,16 @@
 	  <div class="split-map-container">
   <div id="map-bluecreek-detail" class="split-map"></div>
   <div id="map-bluecreek-overview" class="split-map"></div>
+  <!-- North Arrow -->
+<div class="north-arrow"></div>
+
+<!-- Mini Legend -->
+<div class="mini-legend">
+  <strong>Basemaps:</strong><br>
+  🟩 Detail: Stamen Terrain<br>
+  ⚪ Overview: Esri Gray Canvas
+</div>
+
 </div>
 
        <p style="text-align: justify;">
@@ -451,7 +500,10 @@
     maxZoom: 18
   }).addTo(mapDetail);
 
-  L.marker([17.955580, -89.043766]).addTo(mapDetail);
+  // DETAIL MAP (with caption)
+L.marker([17.955580, -89.043766]).addTo(mapDetail)
+  .bindPopup('PROJECT AREA')
+  .openPopup();
 
   // 🌍 Overview Map (Right Side) — ESRI World Gray
   var mapOverview = L.map('map-bluecreek-overview', {
@@ -471,9 +523,7 @@
   }).addTo(mapOverview);
 
   // 📍 Popup on overview map
-  L.marker([17.955580, -89.043766]).addTo(mapOverview)
-    .bindPopup('Classic Maya Residences – Blue Creek')
-    .openPopup();
+  L.marker([17.955580, -89.043766]).addTo(mapOverview);
 </script>
 
 
