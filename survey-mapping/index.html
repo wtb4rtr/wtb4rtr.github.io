@@ -520,20 +520,22 @@
     maxZoom: 18
   }).addTo(mapDetail);
 
-  // 🧭 Custom Surveyor Icon for Detail Map (suppress fallback)
   var surveyorIcon = L.icon({
-    iconUrl: '/assets/images/common/surveyor-icon.png',
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
-    className: 'no-default-icon' // 🛑 Prevent Leaflet fallback SVG
+  iconUrl: '/assets/images/common/surveyor-icon.png',
+  iconSize:   [32, 32],
+  iconAnchor: [16, 16],
+  // ↓ this is the magic bit ↓
+  className: 'no-default-icon'
+});
+
+L.marker([17.955580, -89.043766], { icon: surveyorIcon })
+  .addTo(mapDetail)
+  .bindTooltip("PROJECT AREA", {
+    permanent: true,
+    direction: "top",
+    className: "custom-label"
   });
 
-  L.marker([17.955580, -89.043766], { icon: surveyorIcon }).addTo(mapDetail)
-    .bindTooltip("PROJECT AREA", {
-      permanent: true,
-      direction: "top",
-      className: "custom-label"
-    });
 
   // 🌍 Overview Map (Right Side)
   var mapOverview = L.map('map-bluecreek-overview', {
