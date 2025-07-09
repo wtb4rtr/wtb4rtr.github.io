@@ -414,17 +414,22 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <!-- 🔧 Initialize Leaflet Map for Blue Creek -->
+<!-- 🔧 Initialize Leaflet Map for Blue Creek -->
 <script>
   var mapBlueCreek = L.map('map-bluecreek').setView([17.955580, -89.043766], 6);
 
   L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg', {
-  attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap'
-}).addTo(mapBlueCreek);
+    attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap',
+    subdomains: ['a', 'b', 'c', 'd'],
+    minZoom: 0,
+    maxZoom: 18
+  }).addTo(mapBlueCreek);
 
   L.marker([17.955580, -89.043766]).addTo(mapBlueCreek)
     .bindPopup('Classic Maya Residences – Blue Creek')
     .openPopup();
 </script>
+
 
 </body>
 </html>
