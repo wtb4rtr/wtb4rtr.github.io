@@ -193,7 +193,7 @@
 .split-map-container {
   display: flex;
   flex-direction: row;
-  gap: 0;
+  gap: 1rem;
   height: 600px;
   margin-bottom: 1rem;
   /* Remove this line ↓ */
@@ -204,22 +204,38 @@
 
 
 #map-bluecreek-detail {
-  flex: 1.5; /* 66% */
+  #map-bluecreek-detail {
+  flex-basis: 66%;
   height: 100%;
-  border-right: 4px solid #a32638; /* Divider */
-  border: 6px solid #a32638;     /* ⬅️ Add this */
-  border-radius: 10px 0 0 10px;  /* ⬅️ Round only left side */
+  border: 6px solid #a32638;
+  border-radius: 10px 0 0 10px;
+  margin-right: 1rem; /* ➕ Adds gap between maps */
 }
 
 #map-bluecreek-overview {
-  border: none !important;
-  width: 260px;
-  height: 260px;
+  #map-bluecreek-overview {
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
+  border: 1px solid black;         /* ⬅️ Thin black outline */
   overflow: hidden;
-  position: relative; /* Allows legend/north arrow overlay */
-  flex-shrink: 0;      /* Prevents the circle from shrinking in flexbox */
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);  /* Optional soft glow */
 }
+
+
+#map-bluecreek-overview .leaflet-control-attribution {
+  position: absolute;
+  bottom: -1.5rem;  /* Pulls it down below the map */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  background: rgba(255,255,255,0.85);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
 
 
 
