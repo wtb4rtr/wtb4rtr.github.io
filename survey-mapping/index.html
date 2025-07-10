@@ -176,22 +176,24 @@
 
   /* Overview (right) map. Now absolutely positioned to right edge with 1rem gap. */
   #map-bluecreek-overview {
-    width: 460px;                        /* Set overview map width */
-    height: 460px;                       /* Set overview map height */
-    border-radius: 50%;                  /* Circular map */
-    border: 2px solid black;             /* Thin border */
-    overflow: hidden;                    /* Hide overhanging tiles */
-    position: absolute;                  /* Take out of normal flow, overlay in split-map-container */
-    right: 0;                            /* Stick to right edge */
-    top: 0;                              /* Align with top of container */
-    margin-right: 1rem;                  /* Gap from right edge of window */
-    background: #fff;                    /* White background behind overview map */
-    box-shadow: 0 0 16px rgba(0,0,0,0.35); /* Soft shadow */
-    flex-shrink: 0;                      /* Prevent shrinking */
-    z-index: 2;                          /* Above main map */
-    display: flex;                       /* Flex for centering children if needed */
-    align-items: center;                 /* Vertical center (for markers/legend if wanted) */
-    justify-content: center;             /* Horizontal center */
+    width: 460px;                       		 /* Set overview map width */
+    height: 460px;                       		/* Set overview map height */
+    border-radius: 50%;                  		/* Circular map */
+    border: 4px solid rgba(30, 30, 30, 0.18);   /* Semi-transparent dark border */
+    overflow: hidden;                    		/* Hide overhanging tiles */
+    position: absolute;                 		/* Take out of normal flow, overlay in split-map-container */
+    right: 36px;                           		/* Stick to right edge */
+    top: 10px;                              	/* Align with top of container */
+    margin-right: 1rem;                  		/* Gap from right edge of window */
+    background: #fff;                    		/* White background behind overview map */
+    box-shadow: 
+	0 4px 36px 8px rgba(30, 30, 30, 0.22),      /* Outer soft glow */
+    0 1.5px 6px 0px rgba(0,0,0,0.18);           /* Subtle “floating” effect */
+    flex-shrink: 0;                      		/* Prevent shrinking */
+    z-index: 5;                          		/* Above main map */
+    display: flex;                       		/* Flex for centering children if needed */
+    align-items: center;                 		/* Vertical center (for markers/legend if wanted) */
+    justify-content: center;            		 /* Horizontal center */
   }
 
   /* Mini legend inside main map (for basemap info) */
