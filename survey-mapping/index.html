@@ -30,7 +30,11 @@
 
 	.leaflet-tile {
   border: none !important;
+  image-rendering: auto !important;
+  background: none !important;
+  box-shadow: none !important;
 }
+
 
 
 
@@ -572,21 +576,26 @@ L.marker([17.955580, -89.043766], { icon: surveyorIcon })
 
 
   // 🌍 Overview Map (Right Side)
-  var mapOverview = L.map('map-bluecreek-overview', {
-    zoomControl: false,
-    dragging: false,
-    scrollWheelZoom: false,
-    doubleClickZoom: false,
-    boxZoom: false,
-    keyboard: false,
-    tap: false,
-    touchZoom: false
-  }).setView([17.955580, -89.043766], 5);
+var mapOverview = L.map('map-bluecreek-overview', {
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  boxZoom: false,
+  keyboard: false,
+  tap: false,
+  touchZoom: false
+}).setView([17.955580, -89.043766], 5);
 
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri &mdash; Esri, DeLorme, NAVTEQ',
-    maxZoom: 16
-  }).addTo(mapOverview);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles © Esri &mdash; Esri, DeLorme, NAVTEQ',
+  maxZoom: 16,
+  tileSize: 256,         // 🔧 Match standard tile size
+  updateWhenIdle: true,  // 🔧 Avoid excess re-rendering
+  keepBuffer: 3,         // 🔧 Prevent edge artifacts
+  reuseTiles: true       // 🔧 Reduce redraw flicker
+}).addTo(mapOverview);
+
 
   // 🔴 Circle Marker + Label for Overview Map
   L.circleMarker([17.955580, -89.043766], {
