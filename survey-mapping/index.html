@@ -542,30 +542,70 @@ body.survey-page .map-section .map-embed {
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
   // 🟩 Detail Map (Left Side)
-  var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 10);
+  var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
 
-  L.tileLayer(
+  // Define base layers
+  var stamenTerrain = L.tileLayer(
     'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
     {
-      attribution: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, via <a href="https://stadiamaps.com/">Stadia Maps</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+      attribution: 'Stamen Terrain',
       maxZoom: 18,
-      tileSize: 512,       // 🔧 retina‐style tiles so zoom stays consistent
-      zoomOffset: -1,      // 🔧 retina‐style tiles so zoom stays consistent
+      tileSize: 512,
+      zoomOffset: -1,
       updateWhenIdle: true,
-      keepBuffer:     3,
-      reuseTiles:     true
+      keepBuffer: 3,
+      reuseTiles: true
     }
-  ).addTo(mapDetail);
+  );
 
-  // Custom “surveyor” icon
+  var esriGray = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: 'Esri Gray Canvas',
+      maxZoom: 16,
+      tileSize: 256,
+      updateWhenIdle: true,
+      keepBuffer: 3,
+      reuseTiles: true
+    }
+  );
+
+  var openStreetMap = L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19
+    }
+  );
+
+  var cartoDB = L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19
+    }
+  );
+
+  // Add default layer
+  stamenTerrain.addTo(mapDetail);
+
+  // Add basemap switcher control
+  var baseMaps = {
+    "🟩 Stamen Terrain": stamenTerrain,
+    "🟪 Esri Gray Canvas": esriGray,
+    "🟦 OpenStreetMap": openStreetMap,
+    "🟫 CartoDB Positron": cartoDB
+  };
+  L.control.layers(baseMaps).addTo(mapDetail);
+
+  // Your marker/tooltip code below this as before…
   var surveyorIcon = L.icon({
-    iconUrl:    '/assets/images/common/surveyor-icon.png',
+    iconUrl: '/assets/images/common/surveyor-icon.png',
     iconSize:   [32, 32],
     iconAnchor: [16, 16],
     className:  'no-default-icon'
   });
 
-  // Marker + permanent tooltip
   L.marker([17.955580, -89.043766], { icon: surveyorIcon })
     .addTo(mapDetail)
     .bindTooltip("PROJECT AREA", {
@@ -585,7 +625,7 @@ body.survey-page .map-section .map-embed {
     keyboard:         false,
     tap:              false,
     touchZoom:        false
-  }).setView([17.955580, -89.043766], 3);
+  }).setView([17.955580, -89.043766], 4);
 
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
@@ -600,7 +640,7 @@ body.survey-page .map-section .map-embed {
   ).addTo(mapOverview);
 
   L.circleMarker([17.955580, -89.043766], {
-    radius:    6,
+    radius:    4,
     color:     '#a32638',
     fillColor: '#a32638',
     fillOpacity: 1
