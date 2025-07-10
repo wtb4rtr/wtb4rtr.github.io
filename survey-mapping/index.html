@@ -7,221 +7,236 @@
   <link rel="stylesheet" href="/assets/css/style.css"> <!-- Links to your global stylesheet -->
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+/* Removes default margins and prevents horizontal scrollbars on page */
+html, body {
+  margin: 0;                            /* No browser default margin */
+  padding: 0;                           /* No browser default padding */
+  overflow-x: hidden;                   /* Prevents horizontal scroll */
+  background-color: #1b1b1b;            /* Makes page background "Eerie Black" */
+}
 
-
-  <!-- Page-specific styles -->
-  <style>
-    /* Removes default margins and prevents horizontal scrollbars on page */
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-	  background-color: #1b1b1b; /* Makes page background "Eerie Black" */
-    }
-	
-	/* ──────────────────────────────────────────────────────────────────────
-   Remove Leaflet’s little white “arrow” from ALL tooltips with 
-   your custom‐label class 
-────────────────────────────────────────────────────────────────────── */
+/* Remove Leaflet’s white “arrow” from all tooltips using your custom-label class */
 .leaflet-tooltip.custom-label::before,
 .leaflet-tooltip.custom-label::after {
-  display: none !important;
+  display: none !important;             /* Hides the default Leaflet tooltip arrows */
 }
 
-	.leaflet-tile {
-  border: none !important;
+/* Remove border from all Leaflet map tiles */
+.leaflet-tile {
+  border: none !important;              /* Prevents tile borders */
 }
 
+/* ---- LEAFLET MAP TILE ARTIFACT FIXES ---- */
 
-    /* HERO SECTION at top with background image and centered title */
-    body.survey-page .hero {
-      background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Background image */
-      background-size: cover;              /* Stretch image to fill container */
-      background-repeat: no-repeat;        /* No tiling */
-      background-position: center;         /* Center the image */
-      background-attachment: fixed;        /* Enables parallax effect */
-      height: 60vh;                        /* Takes up 60% of viewport height */
-      display: flex;                       /* Enables Flexbox layout */
-      flex-direction: column;             /* Stack child elements vertically */
-      justify-content: flex-start;        /* Align children to the top */
-      align-items: center;                /* Center children horizontally */
-      text-align: center;                 /* Center text inside */
-      padding-top: 4.5rem;                /* Space above title */
-    }
+/* Force pixel rendering on all Leaflet containers for seamless tiles */
+.leaflet-container {
+  image-rendering: pixelated !important;       /* Removes anti-aliasing to hide seams/diamonds */
+  backface-visibility: hidden !important;      /* Improves rendering reliability in Chrome */
+  will-change: transform !important;           /* Tells browser to optimize for transforms */
+}
 
-    /* Styling for title box inside hero */
-    body.survey-page .hero-title-box {
-      background: #5d89ba;                /* Background color: Silver Lake Blue */
-      padding: 0.5rem 0.5rem;             /* Internal spacing */
-      border-radius: 12px;                /* Rounded corners */
-      border: 2px solid #f8f8ff;          /* Thin white border for definition */
-    }
+/* Ensure map tiles also use pixel rendering and set background color */
+.leaflet-tile {
+  image-rendering: pixelated !important;       /* Fixes subpixel seams between tiles */
+  background: #f4f0ec !important;              /* Sets tile bg to match page bg, hides tile seams */
+}
 
-    /* H1 title text inside title box */
-    body.survey-page .hero-title-box h1 {
-      margin: 0;                          /* Removes default margin */
-      font-size: 3.5rem;                  /* Large title font */
-      color: #ffffff;                     /* White text */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle drop shadow */
-    }
+/* ---- HERO IMAGE AND PAGE LAYOUT ---- */
+body.survey-page .hero {
+  background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Background image */
+  background-size: cover;              /* Stretch image to fill container */
+  background-repeat: no-repeat;        /* No tiling */
+  background-position: center;         /* Center the image */
+  background-attachment: fixed;        /* Enables parallax effect */
+  height: 60vh;                        /* Takes up 60% of viewport height */
+  display: flex;                       /* Enables Flexbox layout */
+  flex-direction: column;              /* Stack child elements vertically */
+  justify-content: flex-start;         /* Align children to the top */
+  align-items: center;                 /* Center children horizontally */
+  text-align: center;                  /* Center text inside */
+  padding-top: 4.5rem;                 /* Space above title */
+}
 
-    /* Main content container for mapping projects */
-    body.survey-page main {
-      padding: 4rem 2rem;                 /* Padding around content */
-      max-width: 1500px;                  /* Maximum width for text block */
-      margin: 0 auto;                     /* Centers the main block */
-    }
+/* Styling for title box inside hero */
+body.survey-page .hero-title-box {
+  background: #5d89ba;                 /* Background color: Silver Lake Blue */
+  padding: 0.5rem 0.5rem;              /* Internal spacing */
+  border-radius: 12px;                 /* Rounded corners */
+  border: 2px solid #f8f8ff;           /* Thin white border for definition */
+}
 
-    /* Individual mapping project blocks */
-	.project-section {
-	  margin-bottom: 4rem;                     /* Space below each section */
-	  border-bottom: 1px solid #ccc;           /* Light gray divider line */
-	  background-color: #f4f0ec;               /* Isabelline */
-	  border-radius: 8px;                      /* Optional: rounded corners */
-	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Optional: subtle depth */
-	  padding: 2rem;                           /* Uniform internal spacing */
-	}
+/* H1 title text inside title box */
+body.survey-page .hero-title-box h1 {
+  margin: 0;                           /* Removes default margin */
+  font-size: 3.5rem;                   /* Large title font */
+  color: #ffffff;                      /* White text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle drop shadow */
+}
 
-    /* Title for each project */
-    .project-section h2 {
-      font-size: 1.75rem;                /* Medium-large text */
-      color: #000000;                    /* Black */
-      margin-bottom: 1rem;               /* Space below title */
-    }
+/* Main content container for mapping projects */
+body.survey-page main {
+  padding: 4rem 2rem;                  /* Padding around content */
+  max-width: 1500px;                   /* Maximum width for text block */
+  margin: 0 auto;                      /* Centers the main block */
+}
 
-    /* Embedded project map or image */
-    .project-section img {
-      width: 100%;                       /* Take up full width of container */
-      max-width: 800px;                  /* Limit image width */
-      height: auto;                      /* Maintain aspect ratio */
-      border: 2px solid #ccc;            /* Light gray border */
-      border-radius: 8px;                /* Rounded corners */
-      margin-bottom: 1rem;               /* Space below image */
-    }
+/* Individual mapping project blocks */
+.project-section {
+  margin-bottom: 4rem;                 /* Space below each section */
+  border-bottom: 1px solid #ccc;       /* Light gray divider line */
+  background-color: #f4f0ec;           /* Isabelline */
+  border-radius: 8px;                  /* Optional: rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Optional: subtle depth */
+  padding: 2rem;                       /* Uniform internal spacing */
+}
 
-    /* Custom Leaflet map container embedded in project blocks */
-	.map-embed {
-      height: 400px;                         /* Fixed map height */
-      width: 100%;                           /* Full width of parent */
-      border: 2px solid #8B0000;             /* Maroon border */
-      border-radius: 10px;                   /* Rounded corners */
-      margin-bottom: 1rem;                   /* Space below the map */
-	}
+/* Title for each project */
+.project-section h2 {
+  font-size: 1.75rem;                  /* Medium-large text */
+  color: #000000;                      /* Black */
+  margin-bottom: 1rem;                 /* Space below title */
+}
 
-	
-	/* Paragraph text under each project */
-    .project-section p {
-      font-size: 1rem;                   /* Normal text size */
-      line-height: 1.6;                  /* Improves readability */
-      color: #333;                       /* Dark gray text */
-    }
+/* Embedded project map or image */
+.project-section img {
+  width: 100%;                         /* Take up full width of container */
+  max-width: 800px;                    /* Limit image width */
+  height: auto;                        /* Maintain aspect ratio */
+  border: 2px solid #ccc;              /* Light gray border */
+  border-radius: 8px;                  /* Rounded corners */
+  margin-bottom: 1rem;                 /* Space below image */
+}
 
-    /* Google Map Background Section */
-    body.survey-page .map-section {
-      background-image: url("/assets/images/survey-mapping/oldmap2.jpg"); /* Background image */
-      background-repeat: no-repeat;          /* No tiling */
-      background-position: center center;    /* Center both horizontally and vertically */
-      background-size: cover;                /* Fill section */
-      width: 100%;                           /* Full width */
-      height: 700px;                         /* Fixed height */
-      display: flex;                         /* Flex layout */
-      justify-content: center;               /* Center iframe horizontally */
-      align-items: center;                   /* Center iframe vertically */
-    }
+/* Custom Leaflet map container embedded in project blocks */
+.map-embed {
+  height: 400px;                       /* Fixed map height */
+  width: 100%;                         /* Full width of parent */
+  border: 2px solid #8B0000;           /* Maroon border */
+  border-radius: 10px;                 /* Rounded corners */
+  margin-bottom: 1rem;                 /* Space below the map */
+}
 
-    /* Embedded Google Map iframe */
-    body.survey-page .map-section .map-embed {
-      width: 90%;                            /* Slight margin on sides */
-      max-width: 960px;                      /* Cap the width */
-      height: 600px;                         /* Set height */
-      border: 2px solid #8B0000;             /* Dark red border */
-      border-radius: 10px;                   /* Rounded corners */
-      display: block;                        /* Treat like block element */
-    }
+/* Paragraph text under each project */
+.project-section p {
+  font-size: 1rem;                     /* Normal text size */
+  line-height: 1.6;                    /* Improves readability */
+  color: #333;                         /* Dark gray text */
+}
 
-    /* Optional block wrapper for iframe if needed elsewhere */
-    .map-container {
-      background: rgba(255, 255, 255, 0.95); /* Slightly translucent white background */
-      padding: 1.5rem;                       /* Internal spacing */
-      border-radius: 10px;                   /* Rounded corners */
-      box-shadow: 0 0 30px rgba(0,0,0,0.25); /* Soft glow around block */
-      width: 90%;                            /* Responsive width */
-      max-width: 960px;                      /* Don't exceed 960px */
-      margin: 0 auto;                        /* Center container */
-      text-align: center;                    /* Center contents */
-    }
+/* Google Map Background Section */
+body.survey-page .map-section {
+  background-image: url("/assets/images/survey-mapping/oldmap2.jpg"); /* Background image */
+  background-repeat: no-repeat;        /* No tiling */
+  background-position: center center;  /* Center both horizontally and vertically */
+  background-size: cover;              /* Fill section */
+  width: 100%;                         /* Full width */
+  height: 700px;                       /* Fixed height */
+  display: flex;                       /* Flex layout */
+  justify-content: center;             /* Center iframe horizontally */
+  align-items: center;                 /* Center iframe vertically */
+}
 
-    /* Styling for embedded iframe (used if not in map-section) */
-    .map-container iframe {
-      display: block;                        /* Ensures iframe behaves like a block */
-      width: 100%;                           /* Take full width */
-      height: 480px;                         /* Fixed height */
-      border: 2px solid #8B0000;             /* Maroon border */
-      border-radius: 10px;                   /* Rounded edges */
-    }
+/* Embedded Google Map iframe */
+body.survey-page .map-section .map-embed {
+  width: 90%;                          /* Slight margin on sides */
+  max-width: 960px;                    /* Cap the width */
+  height: 600px;                       /* Set height */
+  border: 2px solid #8B0000;           /* Dark red border */
+  border-radius: 10px;                 /* Rounded corners */
+  display: block;                      /* Treat like block element */
+}
 
-    /* Divider banner between sections using parchment texture */
-    .divider {
-      width: 100%;                           /* Full page width */
-      height: 100px;                         /* Fixed height */
-      background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center; /* Background image */
-      background-size: cover;                /* Scale image to fit */
-      display: flex;                         /* Flex layout */
-      align-items: center;                   /* Center text vertically */
-      justify-content: center;               /* Center text horizontally */
-      margin: 0;                             /* No margin */
-      padding: 0;                            /* No padding */
-      border-top: 2px solid #8B0000;         /* Thin top border */
-      border-bottom: 2px solid #8B0000;      /* Thin bottom border */
-    }
+/* Optional block wrapper for iframe if needed elsewhere */
+.map-container {
+  background: rgba(255, 255, 255, 0.95); /* Slightly translucent white background */
+  padding: 1.5rem;                       /* Internal spacing */
+  border-radius: 10px;                   /* Rounded corners */
+  box-shadow: 0 0 30px rgba(0,0,0,0.25); /* Soft glow around block */
+  width: 90%;                            /* Responsive width */
+  max-width: 960px;                      /* Don't exceed 960px */
+  margin: 0 auto;                        /* Center container */
+  text-align: center;                    /* Center contents */
+}
 
-    /* Styling for the text inside the divider banner */
-    .divider-text {
-      font-family: 'Playfair Display', serif;  /* Decorative serif font */
-      font-size: 2.75rem;                      /* Large font */
-      font-weight: bold;                       /* Bold text */
-      color: #8B0000;                          /* Maroon text */
-      text-transform: uppercase;               /* All caps */
-      letter-spacing: 1.5px;                   /* Adds space between letters */
-    }
-	
+/* Styling for embedded iframe (used if not in map-section) */
+.map-container iframe {
+  display: block;                        /* Ensures iframe behaves like a block */
+  width: 100%;                           /* Take full width */
+  height: 480px;                         /* Fixed height */
+  border: 2px solid #8B0000;             /* Maroon border */
+  border-radius: 10px;                   /* Rounded edges */
+}
+
+/* Divider banner between sections using parchment texture */
+.divider {
+  width: 100%;                           /* Full page width */
+  height: 100px;                         /* Fixed height */
+  background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center; /* Background image */
+  background-size: cover;                /* Scale image to fit */
+  display: flex;                         /* Flex layout */
+  align-items: center;                   /* Center text vertically */
+  justify-content: center;               /* Center text horizontally */
+  margin: 0;                             /* No margin */
+  padding: 0;                            /* No padding */
+  border-top: 2px solid #8B0000;         /* Thin top border */
+  border-bottom: 2px solid #8B0000;      /* Thin bottom border */
+}
+
+/* Styling for the text inside the divider banner */
+.divider-text {
+  font-family: 'Playfair Display', serif;  /* Decorative serif font */
+  font-size: 2.75rem;                      /* Large font */
+  font-weight: bold;                       /* Bold text */
+  color: #8B0000;                          /* Maroon text */
+  text-transform: uppercase;               /* All caps */
+  letter-spacing: 1.5px;                   /* Adds space between letters */
+}
+
+/* ----- MAP GRID CONTAINERS (EDITED) ----- */
+
+/* OUTER frame div for main map—apply border-radius/overflow here only! */
+.map-frame {
+  border: 6px solid #a32638;           /* Maroon border for the frame */
+  border-radius: 10px;                 /* Rounded corners (outer div only) */
+  overflow: hidden;                    /* Hide any tile overflows or seams */
+  width: 800px;                        /* Integer pixel width for best results */
+  height: 600px;                       /* Integer pixel height for best results */
+  margin-bottom: 1rem;                 /* Space below the frame */
+}
+
+/* Split container for detail/overview maps—NO border-radius here! */
 .split-map-container {
-  display: flex;
+  display: flex;                       /* Layout maps side by side */
   flex-direction: row;
-  gap: 1rem;
-  height: 600px;
+  gap: 1rem;                           /* Space between maps */
+  height: 600px;                       /* Match .map-frame height for integer size */
   margin-bottom: 1rem;
-  /* Remove this line ↓ */
-  /* border: 6px solid #a32638; */
-  border-radius: 10px;
-  overflow: hidden;
+  /* REMOVE border-radius here—apply only to outer .map-frame */
+  /* border-radius: 10px; */
+  overflow: visible;
 }
 
-
-  #map-bluecreek-detail {
+/* Main detail map—NO border-radius here! */
+#map-bluecreek-detail {
   flex-basis: 66%;
   height: 100%;
-  border: 6px solid #a32638;
-  border-radius: 10px 0 0 10px;
-  margin-right: 1rem; /* ➕ Adds gap between maps */
+  /* REMOVE border-radius: 10px 0 0 10px; */
+  /* REMOVE border here (use outer frame instead) */
+  margin-right: 1rem;
 }
 
-
-  #map-bluecreek-overview {
+/* Overview map styles (you can keep the circle for this one) */
+#map-bluecreek-overview {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  border: 1px solid black;         /* ⬅️ Thin black outline */
+  border: 1px solid black;
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);  /* Optional soft glow */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
 }
-
-
-
-
-
 
 /* Mini legend inside overview map */
 .mini-legend {
@@ -236,6 +251,7 @@
   z-index: 999;
 }
 
+/* North arrow for the map */
 .north-arrow {
   position: absolute;
   top: 10px;
@@ -248,7 +264,7 @@
   z-index: 999;
 }
 
-
+/* Custom tooltip label styles */
 .custom-label {
   background: none;
   color: #000;
@@ -260,11 +276,7 @@
   box-shadow: none;
 }
 
-
-
-
-	
-  </style>
+</style>
 </head>
 
 <body class="survey-page">
@@ -308,38 +320,43 @@
 
   <!-- ==== PROJECT LISTING SECTION ==== -->
   <main>
-    <!-- Project 1 -->
-    <section class="project-section">
-      <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
-      <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
-<div class="split-map-container">
-  <div id="map-bluecreek-detail" class="split-map">
-    <div class="mini-legend">
-      <strong>Basemaps:</strong><br>
-      🟩 Detail: Stamen Terrain<br>
-      ⚪ Overview: Esri Gray Canvas
+  <!-- Project 1 -->
+  <section class="project-section">
+    <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
+    <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
+    <div class="split-map-container">
+      <!-- 🟩 Main detail map wrapped in map-frame for border/rounding artifact fix -->
+      <div class="map-frame">
+        <div id="map-bluecreek-detail" class="split-map">
+          <div class="mini-legend">
+            <strong>Basemaps:</strong><br>
+            🟩 Detail: Stamen Terrain<br>
+            ⚪ Overview: Esri Gray Canvas
+          </div>
+          <div class="north-arrow"></div>
+        </div>
+      </div>
+      <!-- 🌍 Overview map as before (can remain circular if you want) -->
+      <div id="map-bluecreek-overview" class="split-map">
+        <!-- Map will render here; no need for mini-legend here anymore -->
+      </div>
     </div>
-    <div class="north-arrow"></div>
-  </div>
 
-  <div id="map-bluecreek-overview" class="split-map">
-    <!-- Map will render here; no need for mini-legend here anymore -->
-  </div>
-</div>
+    <p style="text-align: justify;">
+      In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
+      in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20 
+      sites. Using a Topcon GTS-2R EDM theodolite, I mapped architecture, excavation units, key 
+      landscape features, and generated topographic maps. I trained both professional archaeologists and students in total station operation and field 
+      drafting techniques for plan and profile recording. I also managed all spatial data using Esri ArcGIS and ArcMap, 
+      ensuring accurate integration with the broader site maps and research goals. I assisted Bob Warden of Texas 
+      A&amp;M University in LiDAR-based mapping to support topographic and architectural analysis.
+    </p>
+    <img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
+    <img src="/assets/images/survey-mapping/lidar2.jpg" alt="Using Lidar at Nojol Nah">
+    <img src="/assets/images/survey-mapping/lidar3.jpg" alt="Lidar in the Chultun">
+  </section>
+</main>
 
-      <p style="text-align: justify;">
-			In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
-			in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20 
-			sites. Using a Topcon GTS-2R EDM theodolite, I mapped architecture, excavation units, key 
-			landscape features, and generated topographic maps I trained both professional archaeologists and students in total station operation and field 
-			drafting techniques for plan and profile recording. I also managed all spatial data using Esri ArcGIS and ArcMap, 
-			ensuring accurate integration with the broader site maps and research goals. I assisted Bob Warden of Texas 
-			A&amp;M University in LiDAR-based mapping to support topographic and architectural analysis.
-	   </p>
-	   <img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
-	   <img src="/assets/images/survey-mapping/lidar2.jpg" alt="Using Lidar at Nojol Nah">
-	   <img src="/assets/images/survey-mapping/lidar3.jpg" alt="Lidar in the Chultun">
-    </section>
 
     <!-- Project 2 -->
     <section class="project-section">
