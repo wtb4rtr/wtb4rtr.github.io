@@ -1,289 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"> <!-- Sets character encoding to UTF-8 for proper text rendering -->
-  <title>Survey/Cartography – William’s GIS Portfolio</title> <!-- Page title displayed in browser tab -->
-  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Makes the layout responsive on mobile -->
-  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Links to your global stylesheet -->
-  <!-- Leaflet CSS -->
+  <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+  <title>Survey/Cartography – William’s GIS Portfolio</title> <!-- Sets the title in browser tab -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Responsive design for all devices -->
+  <link rel="stylesheet" href="/assets/css/style.css"> <!-- Global stylesheet (may include fonts, nav, etc) -->
+  <!-- Leaflet CSS for interactive maps -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<style>
-/* Removes default margins and prevents horizontal scrollbars on page */
-html, body {
-  margin: 0;                            /* No browser default margin */
-  padding: 0;                           /* No browser default padding */
-  overflow-x: hidden;                   /* Prevents horizontal scroll */
-  background-color: #1b1b1b;            /* Makes page background "Eerie Black" */
-}
+  <style>
+  /* ======= PAGE & MAP GENERAL CSS ======= */
 
-/* Remove Leaflet’s white “arrow” from all tooltips using your custom-label class */
-.leaflet-tooltip.custom-label::before,
-.leaflet-tooltip.custom-label::after {
-  display: none !important;             /* Hides the default Leaflet tooltip arrows */
-}
+  html, body {
+    margin: 0;                            /* No default margin from browser */
+    padding: 0;                           /* No default padding from browser */
+    overflow-x: hidden;                   /* Prevent horizontal scrolling */
+    background-color: #1b1b1b;            /* Page background: "Eerie Black" */
+  }
 
-/* Remove border from all Leaflet map tiles */
-.leaflet-tile {
-  border: none !important;              /* Prevents tile borders */
-}
+  /* Hide white tooltip "arrows" for custom labels in Leaflet maps */
+  .leaflet-tooltip.custom-label::before,
+  .leaflet-tooltip.custom-label::after {
+    display: none !important;             /* Ensures tooltips are rectangles only */
+  }
 
-/* ---- LEAFLET MAP TILE ARTIFACT FIXES ---- */
+  .leaflet-tile {
+    border: none !important;              /* Removes visible seams/borders on tiles */
+    image-rendering: pixelated !important;/* Helps hide subtle tile edges */
+    background: #f4f0ec !important;       /* Matches the 'project-section' background */
+  }
 
-/* Force pixel rendering on all Leaflet containers for seamless tiles */
-.leaflet-container {
-  image-rendering: pixelated !important;       /* Removes anti-aliasing to hide seams/diamonds */
-  backface-visibility: hidden !important;      /* Improves rendering reliability in Chrome */
-  will-change: transform !important;           /* Tells browser to optimize for transforms */
-}
+  .leaflet-container {
+    image-rendering: pixelated !important;       /* Removes anti-aliasing, better tile joins */
+    backface-visibility: hidden !important;      /* Helps rendering in Chrome */
+    will-change: transform !important;           /* Hints browser for optimizations */
+  }
 
-/* Ensure map tiles also use pixel rendering and set background color */
-.leaflet-tile {
-  image-rendering: pixelated !important;       /* Fixes subpixel seams between tiles */
-  background: #f4f0ec !important;              /* Sets tile bg to match page bg, hides tile seams */
-}
+  /* ==== HERO / PAGE HEADER SECTION ==== */
 
-/* ---- HERO IMAGE AND PAGE LAYOUT ---- */
-body.survey-page .hero {
-  background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Background image */
-  background-size: cover;              /* Stretch image to fill container */
-  background-repeat: no-repeat;        /* No tiling */
-  background-position: center;         /* Center the image */
-  background-attachment: fixed;        /* Enables parallax effect */
-  height: 60vh;                        /* Takes up 60% of viewport height */
-  display: flex;                       /* Enables Flexbox layout */
-  flex-direction: column;              /* Stack child elements vertically */
-  justify-content: flex-start;         /* Align children to the top */
-  align-items: center;                 /* Center children horizontally */
-  text-align: center;                  /* Center text inside */
-  padding-top: 4.5rem;                 /* Space above title */
-}
+  body.survey-page .hero {
+    background-image: url("/assets/images/survey-mapping/mapcover.jpg"); /* Top banner image */
+    background-size: cover;              /* Stretches image to cover */
+    background-repeat: no-repeat;        /* No repeating */
+    background-position: center;         /* Center image */
+    background-attachment: fixed;        /* Parallax scrolling effect */
+    height: 60vh;                        /* Takes up 60% of browser height */
+    display: flex;                       /* Flexbox layout */
+    flex-direction: column;              /* Stack items vertically */
+    justify-content: flex-start;         /* Align children at the top */
+    align-items: center;                 /* Center horizontally */
+    text-align: center;                  /* Center text */
+    padding-top: 4.5rem;                 /* Space above main title */
+  }
 
-/* Styling for title box inside hero */
-body.survey-page .hero-title-box {
-  background: #5d89ba;                 /* Background color: Silver Lake Blue */
-  padding: 0.5rem 0.5rem;              /* Internal spacing */
-  border-radius: 12px;                 /* Rounded corners */
-  border: 2px solid #f8f8ff;           /* Thin white border for definition */
-}
+  body.survey-page .hero-title-box {
+    background: #5d89ba;                 /* Colored box behind title */
+    padding: 0.5rem 0.5rem;              /* Space around title */
+    border-radius: 12px;                 /* Rounded corners */
+    border: 2px solid #f8f8ff;           /* Thin white border */
+  }
 
-/* H1 title text inside title box */
-body.survey-page .hero-title-box h1 {
-  margin: 0;                           /* Removes default margin */
-  font-size: 3.5rem;                   /* Large title font */
-  color: #ffffff;                      /* White text */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Subtle drop shadow */
-}
+  body.survey-page .hero-title-box h1 {
+    margin: 0;                           /* Remove default h1 margin */
+    font-size: 3.5rem;                   /* Large headline */
+    color: #ffffff;                      /* White text */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Subtle drop shadow */
+  }
 
-/* Main content container for mapping projects */
-body.survey-page main {
-  padding: 4rem 2rem;                  /* Padding around content */
-  max-width: 1500px;                   /* Maximum width for text block */
-  margin: 0 auto;                      /* Centers the main block */
-}
+  /* ==== MAIN PAGE LAYOUT ==== */
 
-/* Individual mapping project blocks */
-.project-section {
-  margin-bottom: 4rem;                 /* Space below each section */
-  border-bottom: 1px solid #ccc;       /* Light gray divider line */
-  background-color: #f4f0ec;           /* Isabelline */
-  border-radius: 8px;                  /* Optional: rounded corners */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Optional: subtle depth */
-  padding: 2rem;                       /* Uniform internal spacing */
-}
+  body.survey-page main {
+    padding: 4rem 2rem;                  /* Top/bottom and side padding */
+    max-width: 1500px;                   /* Content won't exceed this width */
+    margin: 0 auto;                      /* Centered in browser */
+  }
 
-/* Title for each project */
-.project-section h2 {
-  font-size: 1.75rem;                  /* Medium-large text */
-  color: #000000;                      /* Black */
-  margin-bottom: 1rem;                 /* Space below title */
-}
+  /* Each mapping project section */
+  .project-section {
+    margin-bottom: 4rem;                 /* Spacing below section */
+    border-bottom: 1px solid #ccc;       /* Light gray divider */
+    background-color: #f4f0ec;           /* "Isabelline" background */
+    border-radius: 8px;                  /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0,0,0,0.05); /* Soft shadow for depth */
+    padding: 2rem;                       /* Internal section padding */
+  }
 
-/* Embedded project map or image */
-.project-section img {
-  width: 100%;                         /* Take up full width of container */
-  max-width: 800px;                    /* Limit image width */
-  height: auto;                        /* Maintain aspect ratio */
-  border: 2px solid #ccc;              /* Light gray border */
-  border-radius: 8px;                  /* Rounded corners */
-  margin-bottom: 1rem;                 /* Space below image */
-}
+  .project-section h2 {
+    font-size: 1.75rem;                  /* Project title size */
+    color: #000000;                      /* Black */
+    margin-bottom: 1rem;                 /* Space below title */
+  }
 
-/* Custom Leaflet map container embedded in project blocks */
-.map-embed {
-  height: 400px;                       /* Fixed map height */
-  width: 100%;                         /* Full width of parent */
-  border: 2px solid #8B0000;           /* Maroon border */
-  border-radius: 10px;                 /* Rounded corners */
-  margin-bottom: 1rem;                 /* Space below the map */
-}
+  .project-section img {
+    width: 100%;                         /* Responsive image */
+    max-width: 800px;                    /* Never bigger than 800px */
+    height: auto;                        /* Keep aspect ratio */
+    border: 2px solid #ccc;              /* Thin border */
+    border-radius: 8px;                  /* Rounded corners */
+    margin-bottom: 1rem;                 /* Space below images */
+  }
 
-/* Paragraph text under each project */
-.project-section p {
-  font-size: 1rem;                     /* Normal text size */
-  line-height: 1.6;                    /* Improves readability */
-  color: #333;                         /* Dark gray text */
-}
+  .map-embed {
+    height: 400px;                       /* Fixed map height */
+    width: 100%;                         /* Full width of block */
+    border: 2px solid #8B0000;           /* Maroon border */
+    border-radius: 10px;                 /* Rounded corners */
+    margin-bottom: 1rem;                 /* Space below map */
+  }
 
-/* Google Map Background Section */
-body.survey-page .map-section {
-  background-image: url("/assets/images/survey-mapping/oldmap2.jpg"); /* Background image */
-  background-repeat: no-repeat;        /* No tiling */
-  background-position: center center;  /* Center both horizontally and vertically */
-  background-size: cover;              /* Fill section */
-  width: 100%;                         /* Full width */
-  height: 700px;                       /* Fixed height */
-  display: flex;                       /* Flex layout */
-  justify-content: center;             /* Center iframe horizontally */
-  align-items: center;                 /* Center iframe vertically */
-}
+  .project-section p {
+    font-size: 1rem;                     /* Body text size */
+    line-height: 1.6;                    /* Spacing for readability */
+    color: #333;                         /* Dark gray text */
+  }
 
-/* Embedded Google Map iframe */
-body.survey-page .map-section .map-embed {
-  width: 90%;                          /* Slight margin on sides */
-  max-width: 960px;                    /* Cap the width */
-  height: 600px;                       /* Set height */
-  border: 2px solid #8B0000;           /* Dark red border */
-  border-radius: 10px;                 /* Rounded corners */
-  display: block;                      /* Treat like block element */
-}
+  /* ==== SECTION DIVIDER ==== */
 
-/* Optional block wrapper for iframe if needed elsewhere */
-.map-container {
-  background: rgba(255, 255, 255, 0.95); /* Slightly translucent white background */
-  padding: 1.5rem;                       /* Internal spacing */
-  border-radius: 10px;                   /* Rounded corners */
-  box-shadow: 0 0 30px rgba(0,0,0,0.25); /* Soft glow around block */
-  width: 90%;                            /* Responsive width */
-  max-width: 960px;                      /* Don't exceed 960px */
-  margin: 0 auto;                        /* Center container */
-  text-align: center;                    /* Center contents */
-}
+  .divider {
+    width: 100%;                         /* Full width banner */
+    height: 100px;                       /* Banner height */
+    background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center; /* Banner texture */
+    background-size: cover;              /* Fill banner */
+    display: flex;                       /* Flex for centering */
+    align-items: center;                 /* Center text vertically */
+    justify-content: center;             /* Center text horizontally */
+    margin: 0;                           /* No extra space */
+    padding: 0;                          /* No extra space */
+    border-top: 2px solid #8B0000;       /* Top border */
+    border-bottom: 2px solid #8B0000;    /* Bottom border */
+  }
 
-/* Styling for embedded iframe (used if not in map-section) */
-.map-container iframe {
-  display: block;                        /* Ensures iframe behaves like a block */
-  width: 100%;                           /* Take full width */
-  height: 480px;                         /* Fixed height */
-  border: 2px solid #8B0000;             /* Maroon border */
-  border-radius: 10px;                   /* Rounded edges */
-}
+  .divider-text {
+    font-family: 'Playfair Display', serif;  /* Fancy font */
+    font-size: 2.75rem;                      /* Large font */
+    font-weight: bold;                       /* Bold */
+    color: #8B0000;                          /* Maroon color */
+    text-transform: uppercase;               /* All caps */
+    letter-spacing: 1.5px;                   /* Spaced out letters */
+  }
 
-/* Divider banner between sections using parchment texture */
-.divider {
-  width: 100%;                           /* Full page width */
-  height: 100px;                         /* Fixed height */
-  background: url("/assets/images/survey-mapping/parchment.jpg") no-repeat center center; /* Background image */
-  background-size: cover;                /* Scale image to fit */
-  display: flex;                         /* Flex layout */
-  align-items: center;                   /* Center text vertically */
-  justify-content: center;               /* Center text horizontally */
-  margin: 0;                             /* No margin */
-  padding: 0;                            /* No padding */
-  border-top: 2px solid #8B0000;         /* Thin top border */
-  border-bottom: 2px solid #8B0000;      /* Thin bottom border */
-}
+  /* ====== CUSTOM MAP GRID LAYOUT ====== */
 
-/* Styling for the text inside the divider banner */
-.divider-text {
-  font-family: 'Playfair Display', serif;  /* Decorative serif font */
-  font-size: 2.75rem;                      /* Large font */
-  font-weight: bold;                       /* Bold text */
-  color: #8B0000;                          /* Maroon text */
-  text-transform: uppercase;               /* All caps */
-  letter-spacing: 1.5px;                   /* Adds space between letters */
-}
+  /* Outer frame for main detail map (Left map) */
+  .map-frame {
+    border: 6px solid #a32638;           /* Crimson border */
+    border-radius: 10px;                 /* Rounded corners */
+    overflow: hidden;                    /* Tiles never overflow */
+    width: calc(100vw - 540px);          /* Make detail map as wide as possible, minus overview and gaps */
+    max-width: 1100px;                   /* Limit for very large screens */
+    height: 600px;                       /* Height of main map */
+    margin-bottom: 1rem;                 /* Gap below */
+    flex-shrink: 1;                      /* Shrink on small screens */
+  }
 
-/* ----- MAP GRID CONTAINERS (EDITED) ----- */
+  /* Container holding both maps (flex row) */
+  .split-map-container {
+    display: flex;                       /* Layout maps side by side */
+    flex-direction: row;                 /* Row layout */
+    gap: 1rem;                           /* 1rem gap between maps */
+    height: 600px;                       /* Match main map height */
+    margin-bottom: 1rem;                 /* Space below container */
+    justify-content: flex-start;         /* Left-align contents */
+    align-items: flex-start;             /* Align tops */
+    width: 100%;                         /* Full width of parent */
+    box-sizing: border-box;              /* Include padding/border in width */
+    position: relative;                  /* For absolutely positioning overview map if needed */
+  }
 
-/* OUTER frame div for main map—apply border-radius/overflow here only! */
-.map-frame {
-  border: 6px solid #a32638;           /* Maroon border for the frame */
-  border-radius: 10px;                 /* Rounded corners (outer div only) */
-  overflow: hidden;                    /* Hide any tile overflows or seams */
-  width: 800px;                        /* Integer pixel width for best results */
-  height: 600px;                       /* Integer pixel height for best results */
-  margin-bottom: 1rem;                 /* Space below the frame */
-}
+  /* The main (left) detail map container. No margin-right (handled by gap above). */
+  #map-bluecreek-detail {
+    width: 100%;                         /* Fill map-frame horizontally */
+    height: 100%;                        /* Fill map-frame vertically */
+    margin: 0;                           /* Remove extra margin */
+    padding: 0;                          /* Remove extra padding */
+  }
 
-/* Split container for detail/overview maps—NO border-radius here! */
-.split-map-container {
-  display: flex;                       /* Layout maps side by side */
-  flex-direction: row;
-  gap: 1rem;                           /* Space between maps */
-  height: 600px;                       /* Match .map-frame height for integer size */
-  margin-bottom: 1rem;
-  /* REMOVE border-radius here—apply only to outer .map-frame */
-  /* border-radius: 10px; */
-  overflow: visible;
-}
+  /* Overview (right) map. Now absolutely positioned to right edge with 1rem gap. */
+  #map-bluecreek-overview {
+    width: 460px;                        /* Set overview map width */
+    height: 460px;                       /* Set overview map height */
+    border-radius: 50%;                  /* Circular map */
+    border: 2px solid black;             /* Thin border */
+    overflow: hidden;                    /* Hide overhanging tiles */
+    position: absolute;                  /* Take out of normal flow, overlay in split-map-container */
+    right: 0;                            /* Stick to right edge */
+    top: 0;                              /* Align with top of container */
+    margin-right: 1rem;                  /* Gap from right edge of window */
+    background: #fff;                    /* White background behind overview map */
+    box-shadow: 0 0 16px rgba(0,0,0,0.35); /* Soft shadow */
+    flex-shrink: 0;                      /* Prevent shrinking */
+    z-index: 2;                          /* Above main map */
+    display: flex;                       /* Flex for centering children if needed */
+    align-items: center;                 /* Vertical center (for markers/legend if wanted) */
+    justify-content: center;             /* Horizontal center */
+  }
 
-/* Main detail map—NO border-radius here! */
-#map-bluecreek-detail {
-  flex-basis: 66%;
-  height: 100%;
-  /* REMOVE border-radius: 10px 0 0 10px; */
-  /* REMOVE border here (use outer frame instead) */
-  margin-right: 1rem;
-}
+  /* Mini legend inside main map (for basemap info) */
+  .mini-legend {
+    position: absolute;                  /* Position relative to map */
+    bottom: 10px;                        /* 10px from bottom */
+    left: 10px;                          /* 10px from left */
+    background: rgba(255,255,255,0.9);   /* White, almost opaque */
+    padding: 8px 12px;                   /* Padding inside legend */
+    font-size: 0.5rem;                   /* Small text */
+    border-radius: 4px;                  /* Rounded corners */
+    box-shadow: 0 0 2px rgba(0,0,0,0.2); /* Light shadow */
+    z-index: 999;                        /* Stay above most map stuff */
+  }
 
-/* Overview map styles (you can keep the circle for this one) */
-#map-bluecreek-overview {
-  width: 460px;
-  height: 460px;
-  border-radius: 50%;
-  border: 2px solid black;
-  overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.35);
-}
+  /* North arrow for the map */
+  .north-arrow {
+    position: absolute;                  /* Relative to map */
+    bottom: 70px;                        /* 70px from bottom */
+    left: 60px;                          /* 60px from left */
+    width: 90px;                         /* 90px wide */
+    height: 90px;                        /* 90px high */
+    background-image: url('/assets/images/common/northarrow_clean.png'); /* Arrow image */
+    background-size: contain;            /* Fit image inside box */
+    background-repeat: no-repeat;        /* Don't tile image */
+    z-index: 999;                        /* Stay above map tiles */
+  }
 
-/* Mini legend inside overview map */
-.mini-legend {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(255,255,255,0.9);
-  padding: 8px 12px;
-  font-size: 0.5rem;
-  border-radius: 4px;
-  box-shadow: 0 0 2px rgba(0,0,0,0.2);
-  z-index: 999;
-}
+  /* Styles for the tooltip label on the map marker */
+  .custom-label {
+    background: none;                    /* No background */
+    color: #000;                         /* Black text */
+    font-weight: bold;                   /* Bold label */
+    text-transform: uppercase;           /* All caps */
+    font-size: 0.85rem;                  /* Small label */
+    text-shadow: 1px 1px 2px white;      /* Subtle white glow */
+    border: none;                        /* No border */
+    box-shadow: none;                    /* No shadow */
+  }
 
-/* North arrow for the map */
-.north-arrow {
-  position: absolute;
-  bottom: 70px;
-  left: 60px;
-  width: 90px;
-  height: 90px;
-  background-image: url('/assets/images/common/northarrow_clean.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 999;
-}
-
-/* Custom tooltip label styles */
-.custom-label {
-  background: none;
-  color: #000;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  text-shadow: 1px 1px 2px white;
-  border: none;
-  box-shadow: none;
-}
-
-</style>
+  </style>
 </head>
 
 <body class="survey-page">
-  <!-- ==== GLOBAL NAVIGATION BAR test==== -->
+  <!-- === NAVIGATION BAR (links to other portfolio sections) === -->
   <nav>
-    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Logo image -->
-    <div class="site-title">Virtual Bill Brown</div> <!-- Site name text -->
+    <img src="/assets/images/common/surveyor.gif" alt="Surveyor Logo"> <!-- Site logo image -->
+    <div class="site-title">Virtual Bill Brown</div> <!-- Site title text -->
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/gis-portfolio/">GIS Portfolio</a></li>
@@ -295,21 +251,21 @@ body.survey-page .map-section .map-embed {
     </ul>
   </nav>
 
-  <!-- ==== HERO SECTION WITH PAGE TITLE ==== -->
+  <!-- === PAGE HERO BANNER === -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
-        <h1>SURVEY AND CARTOGRAPHY</h1> <!-- Main title -->
+        <h1>SURVEY AND CARTOGRAPHY</h1> <!-- Main heading for page -->
       </div>
     </div>
   </section>
 
-  <!-- ==== SECTION DIVIDER (PARCHMENT) ==== -->
+  <!-- === SECTION DIVIDER (decorative parchment banner) === -->
   <div class="divider">
     <div class="divider-text">MAPPING PROJECTS</div>
   </div>
 
-  <!-- ==== EMBEDDED GOOGLE MAP SECTION ==== -->
+  <!-- === GOOGLE MAP EMBED (not Leaflet) === -->
   <section class="map-section">
     <iframe
       class="map-embed"
@@ -318,243 +274,66 @@ body.survey-page .map-section .map-embed {
     </iframe>
   </section>
 
-  <!-- ==== PROJECT LISTING SECTION ==== -->
+  <!-- === MAIN PORTFOLIO CONTENT === -->
   <main>
-  <!-- Project 1 -->
-  <section class="project-section">
-    <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
-    <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
-    <div class="split-map-container">
-      <!-- 🟩 Main detail map wrapped in map-frame for border/rounding artifact fix -->
-      <div class="map-frame">
-        <div id="map-bluecreek-detail" class="split-map">
-          <div class="mini-legend">
-            <strong>Basemaps:</strong><br>
-            🟩 Close Up: Stamen Terrain<br>
-            ⚪ Overview: Esri Gray Canvas
+    <!-- === FIRST PROJECT WITH SPLIT MAPS === -->
+    <section class="project-section">
+      <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
+      <!-- === Two-map layout container === -->
+      <div class="split-map-container">
+        <!-- === Main detail map on left (framed and resizable) === -->
+        <div class="map-frame">
+          <div id="map-bluecreek-detail" class="split-map">
+            <div class="mini-legend">
+              <strong>Basemaps:</strong><br>
+              🟩 Close Up: Stamen Terrain<br>
+              ⚪ Overview: Esri Gray Canvas
+            </div>
+            <div class="north-arrow"></div>
           </div>
-          <div class="north-arrow"></div>
+        </div>
+        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+        <div id="map-bluecreek-overview" class="split-map">
+          <!-- Map will render here; no need for mini-legend -->
         </div>
       </div>
-      <!-- 🌍 Overview map as before (can remain circular if you want) -->
-      <div id="map-bluecreek-overview" class="split-map">
-        <!-- Map will render here; no need for mini-legend here anymore -->
-      </div>
-    </div>
 
-    <p style="text-align: justify;">
-      In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
-      in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20 
-      sites. Using a Topcon GTS-2R EDM theodolite, I mapped architecture, excavation units, key 
-      landscape features, and generated topographic maps. I trained both professional archaeologists and students in total station operation and field 
-      drafting techniques for plan and profile recording. I also managed all spatial data using Esri ArcGIS and ArcMap, 
-      ensuring accurate integration with the broader site maps and research goals. I assisted Bob Warden of Texas 
-      A&amp;M University in LiDAR-based mapping to support topographic and architectural analysis.
-    </p>
-    <img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
-    <img src="/assets/images/survey-mapping/lidar2.jpg" alt="Using Lidar at Nojol Nah">
-    <img src="/assets/images/survey-mapping/lidar3.jpg" alt="Lidar in the Chultun">
-  </section>
-</main>
-
-
-    <!-- Project 2 -->
-    <section class="project-section">
-      <h2>Pueblo III-IV Pit House Village | El Morro, NM (2007)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="El Morro Valley Map">
-       <p style="text-align: justify;">
-			While serving as crew chief for SWCA during the excavation of a late prehistoric Pueblo III–IV village near 
-			El Morro National Monument in New Mexico, I was responsible for total station mapping using a Nikon DTM 
-			332 EDM. The site included three pit structures and approximately 50-75 features. 
-			I provided instruction in total station operation to professional archaeologists and oversaw all spatial data 
-			management in Esri ArcGIS and ArcMap, ensuring the accuracy and consistency of field records and 
-			site maps throughout the project.
-	   </p>
-	</section>
-	
-	<!-- Project 3 -->
-    <section class="project-section">
-      <h2>Multiple Ancestral Pueblo Sites near Albuquerque, NM (2007)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Bernalillo County Map">
-       <p style="text-align: justify;">
-			During the Mid-America Pipeline Loop (MAPL) data recovery project conducted by the Office of Contract Archeology (OCA), 
-			I led total station mapping efforts at two significant sites: a late Pueblo agricultural settlement on Albuquerque’s West Mesa 
-			and an expansive Basketmaker III - Pueblo I hamlet on the Santa Ana Reservation. Mapping was performed using a Topcon GTS-226 EDM 
-			equipped with SurveyPro 2.0 software to ensure precise spatial documentation.
-	   </p>
-	</section> 
-	  
-	<!-- Project 4 -->
-    <section class="project-section">
-      <h2>Terminal Solutrean/Early Magdalenian Cave Deposits | Northern Spain (2006)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Northern Spain Map">
+      <!-- === Project description and photos === -->
       <p style="text-align: justify;">
-			As instrument man on the El Mirón Archaeological Project—directed by Dr. Lawrence Straus (University of 
-			New Mexico) and Dr. Manuel González Morales (University of Cantabria)—I was responsible for total station 
-			mapping in a cave site in Ramales de la Victoria, northern Spain. Using both a Leica TCRM 1105 and a Leica TCR 407 EDM, 
-			I mapped approximately 2,000 in situ artifacts located at the terminal Solutrean and initial Magdalenian 
-			interface, contributing to the high-resolution spatial documentation of Upper Paleolithic occupation levels.
-	  </p>
-	</section>
-	  
-	<!-- Project 5 -->
-    <section class="project-section">
-      <h2>Pueblo Bonito | Chaco Canyon, NM (2005)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Pueblo Bonito Map">
-      <p>
-			Leading mapping efforts for the University of New Mexico’s Chaco Stratigraphy Program, I created a detailed topographic 
-			map of the mounds surrounding Pueblo Bonito and carried out a supplemental mapping initiative at Pueblo del Arroyo. 
-			I also established the excavation grid north of the Pueblo Bonito mounds during the program’s inaugural field season. 
-			Responsibilities included training both professional archaeologists and graduate students in the use of a Topcon GTS-226 EDM 
-			with SurveyPro 2.0 software and managing all spatial data using QGIS.
+        In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences
+        in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20
+        sites. Using a Topcon GTS-2R EDM theodolite, I mapped architecture, excavation units, key
+        landscape features, and generated topographic maps. I trained both professional archaeologists and students in total station operation and field
+        drafting techniques for plan and profile recording. I also managed all spatial data using Esri ArcGIS and ArcMap,
+        ensuring accurate integration with the broader site maps and research goals. I assisted Bob Warden of Texas
+        A&amp;M University in LiDAR-based mapping to support topographic and architectural analysis.
       </p>
-	</section>
-	
-	<!-- Project 6 -->
-    <section class="project-section">
-      <h2>Old Alameda Plaza | Albuquerque, NM (2003-2004)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Alameda, NM Map">
-      <p>
-			During the Alameda Area D Data Recovery Project in northwest Albuquerque, New Mexico, I directed total station 
-			mapping for the Office of Contract Archeology (OCA). My responsibilities included mapping over 100 archaeological 
-			features and approximately 90 human burials associated with the historic occupation of the Alameda Plaza (1710–1903), a very large site spanning over 500 meters in length. 
-			I also mapped Alameda Pueblo, an expansive Pueblo IV village under the modern-day elementary school in Alameda, NM. 
-			I managed all locational data using QGIS and provided field-based training in total station operation 
-			to 5–10 graduate students, using a Topcon GTS-2R EDM with SurveyPro 2.0 software.
-      </p>
-	</section>
-	  
-	 <!-- Project 7 -->
-    <section class="project-section">
-      <h2>Middle Archaic - El Paso Phase Jornada Mogollon Village | Alamogordo, NM (2004)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Alamogordo, NM Map">
-      <p>
-			As crew chief for the Office of Contract Archeology (OCA) on the Alamogordo Flood Control Project, 
-			I conducted total station mapping of an extensive Middle Archaic–El Paso phase Mogollon village in Alamogordo, New Mexico. 
-			Mapping was performed using a Topcon GTS-2R EDM with SurveyPro 2.0 software. In addition to overseeing all spatial data collection, 
-			I provided training to several professional archaeologists in the operation of the total station.
-      </p>
-	</section>
-	  
-	<!-- Project 8 -->
-    <section class="project-section">
-      <h2>Pueblo IV Agricultural Sites | Santa Fe, NM (2003-2004)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Santa Fe Map">
-      <p>
-			Over the course of two years, I conducted a series of arcaheological mapping projects for the 
-			Office of Contract Archeology (OCA) across central and northern New Mexico. These included the 
-			MAPL data recovery and auger testing programs, where I supervised total station mapping at 
-			18 distinct archaeological sites using a Topcon GTS-2R EDM with SurveyPro 2.0 software. 
-			I also directed mapping efforts for the continuation of the Camel Tracks data recovery project, 
-			overseeing spatial documentation of ten Pueblo IV field house sites outside Santa Fe. 
-			In earlier phases of the Camel Tracks project, I served as instrument man, assisting in the mapping 
-			of ten additional sites in the La Cienega area. Across these assignments, I was responsible for all 
-			locational data and regularly trained students and professionals in the operation of the total station system, 
-			and managed all field data in QGIS.
-      </p>
-	</section>
-
-	<!-- Project 9 -->
-    <section class="project-section">
-      <h2>Maness and Associates | Cortez, CO (2003)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Cortez, CO Map">
-      <p>
-			While working as instrument man for Maness and Associates in Cortez, Colorado, I operated a total station 
-			on a range of professional land surveying projects under the mentorship of Ernest Maness, PLS. 
-			My work included conducting land title surveys, right-of-way stakeouts, and other cadastral mapping tasks 
-			across Montezuma County. This experience provided a valuable foundation in professional surveying methods 
-			and deepened my technical understanding of total station workflows beyond archaeological contexts.
-      </p>
-	</section>
-
-	<!-- Project 10 -->
-    <section class="project-section">
-      <h2>Pueblo I Villages | Ridges Basin and Blue Mesa, Durango, CO (2002)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Lake Nighthorse Map">
-      <p>
-			As crew chief for SWCA on the Animas–La Plata (A–LP) Archaeological Project near Durango, Colorado, 
-			I oversaw total station mapping of eight Pueblo I sites in Ridges Basin—mostly in the Eastern Cluster—
-			and additional pit house villages in Blue Mesa. These excavations were conducted in advance of the 
-			construction of Lake Nighthorse. My responsibilities included supervising all mapping operations using 
-			a Nikon/TDS total station and providing instruction in total station use to Native American participants 
-			from the Ute Mountain Ute and Navajo tribes.
-      </p>
-	</section>
-
-	<!-- Project 11 -->
-    <section class="project-section">
-      <h2>Archaic and Ancestral Pueblo Sites | NW New Mexico/SW Colorado (1999)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Aztec, NM Map">
-      <p>
-			During the MAPL natural gas pipeline expansion project across northwest New Mexico and southwest Colorado, 
-			I served as Instrument Man for Woods Canyon Archaeological Consultants. I was responsible for mapping five 
-			archaeological sites ranging in age from Middle Archaic-Pueblo II using a Nikon/TDS total station, contributing high-precision spatial data to the 
-			project’s mitigation and documentation efforts.
-      </p>
-	</section>
-
-	<!-- Project 12 -->
-    <section class="project-section">
-      <h2>CAJE Engineering | Montezuma County, CO (1998)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Cortez, CO Map">
-      <p>
-			While working for CAJE Engineering across southwest Colorado, I served as instrument man under Party Chief Rich Feit. 
-			My duties included running a Sokkia/TDS total station, performing slope staking, and completing bench loops. 
-			One of the principal assignments involved establishing a traffic intersection at County Road G in Cortez.
-      </p> 
-	</section>
-	  
-	<!-- Project 13 -->
-    <section class="project-section">
-      <h2>Pueblo I and Gobernador Phase Navajo Sites | Navajo Reservoir, NM (1997-1998)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Navajo Reservoir Map">
-      <p>
-			During my time with La Plata Archaeological Consultants, I worked as instrument man on the Alison CO<sub>2</sub> pipeline expansion project. 
-			I was responsible for total station mapping of nine archaeological sites—ranging from Pueblo I occupations to Gobernador Phase Navajo components—
-			impacted by pipeline construction in the Navajo Reservoir area of northern New Mexico.
-      </p> 
-	</section>
-
-   	<!-- Project 14 -->
-    <section class="project-section">
-      <h2>Pueblo II-III Villages | Cowboy Wash, CO (1995)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Cowboy Wash Map">
-      <p>
-			While working on the Ute Mountain Ute Irrigated Lands Archaeological Project in Cowboy Wash, Colorado (near Towaoc), 
-			I served as instrument man for Soil Systems Inc. My responsibilities included overseeing total station mapping 
-			of seven large Pueblo II-III villages, contributing to a broader cultural resource management initiative 
-			for the Ute Mountain Ute Tribe.
-      </p> 
-	</section>
-
-	<!-- Project 15 -->
-    <section class="project-section">
-      <h2>Late Prehistoric Buffalo Jump | Gillette, WY (1991)</h2>
-      <img src="/assets/images/survey-mapping/sanpedro-map.jpg" alt="Gillette, WY Map">
-      <p>
-			While working with Larson/Tibesar and Associates, I was responsible for total station mapping at two significant sites: 
-			a Late Prehistoric bison jump near Gillette, Wyoming, and portions of Fort Abraham Lincoln in Mandan, North Dakota. 
-			These projects supported archaeological documentation and heritage management efforts across the northern Plains.
-      </p>  	  
+      <img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
+      <img src="/assets/images/survey-mapping/lidar2.jpg" alt="Using Lidar at Nojol Nah">
+      <img src="/assets/images/survey-mapping/lidar3.jpg" alt="Lidar in the Chultun">
     </section>
+    <!-- ...rest of your project sections as before... -->
   </main>
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-  // 🟩 Detail Map (Left Side)
-  var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 8);
 
-  // Define base layers
+  <!-- === LEAFLET JS LIBRARY FOR MAPS === -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+  // === MAIN (DETAIL) MAP SETUP ===
+
+  // Create the Leaflet map in the left "detail" div
+  var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
+
+  // Define several base map layers to allow toggling by the user
   var stamenTerrain = L.tileLayer(
     'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
     {
-      attribution: 'Stamen Terrain',
-      maxZoom: 18,
-      tileSize: 512,
-      zoomOffset: -1,
-      updateWhenIdle: true,
-      keepBuffer: 3,
-      reuseTiles: true
+      attribution: 'Stamen Terrain',    // Credit string
+      maxZoom: 18,                      // Maximum zoom for this tile layer
+      tileSize: 512,                    // Tile size in pixels
+      zoomOffset: -1,                   // Adjusts zoom math for retina
+      updateWhenIdle: true,             // Avoids loading tiles when not needed
+      keepBuffer: 3,                    // Keeps 3 tile rings for smoother panning
+      reuseTiles: true                  // Re-uses existing tiles where possible
     }
   );
 
@@ -586,10 +365,10 @@ body.survey-page .map-section .map-embed {
     }
   );
 
-  // Add default layer
+  // Add default base map (Stamen Terrain)
   stamenTerrain.addTo(mapDetail);
 
-  // Add basemap switcher control
+  // Add a control to toggle base maps
   var baseMaps = {
     "🟩 Stamen Terrain": stamenTerrain,
     "🟪 Esri Gray Canvas": esriGray,
@@ -598,14 +377,15 @@ body.survey-page .map-section .map-embed {
   };
   L.control.layers(baseMaps).addTo(mapDetail);
 
-  // Your marker/tooltip code below this as before…
+  // Add custom surveyor marker with a permanent tooltip label
   var surveyorIcon = L.icon({
-    iconUrl: '/assets/images/common/surveyor-icon.png',
-    iconSize:   [32, 32],
-    iconAnchor: [16, 16],
-    className:  'no-default-icon'
+    iconUrl: '/assets/images/common/surveyor-icon.png', // Custom icon image
+    iconSize:   [32, 32],           // Icon size
+    iconAnchor: [16, 16],           // Anchor point (center of icon)
+    className:  'no-default-icon'   // Optional extra CSS class
   });
 
+  // Add marker to map at project area with label
   L.marker([17.955580, -89.043766], { icon: surveyorIcon })
     .addTo(mapDetail)
     .bindTooltip("PROJECT AREA", {
@@ -614,19 +394,21 @@ body.survey-page .map-section .map-embed {
       className: "custom-label"
     });
 
+  // === OVERVIEW MAP (RIGHT SIDE) SETUP ===
 
-  // 🌍 Overview Map (Right Side)
+  // Create the map in the overview/circle div
   var mapOverview = L.map('map-bluecreek-overview', {
-    zoomControl:      false,
-    dragging:         false,
-    scrollWheelZoom:  false,
-    doubleClickZoom:  false,
-    boxZoom:          false,
-    keyboard:         false,
-    tap:              false,
-    touchZoom:        false
-  }).setView([17.955580, -89.043766], 3.5);
+    zoomControl:      false,    // Hide zoom UI
+    dragging:         false,    // User cannot pan
+    scrollWheelZoom:  false,    // No scroll zoom
+    doubleClickZoom:  false,    // No double-click zoom
+    boxZoom:          false,    // No box zoom
+    keyboard:         false,    // No keyboard controls
+    tap:              false,    // No mobile tap zoom
+    touchZoom:        false     // No touch zoom
+  }).setView([17.955580, -89.043766], 4);
 
+  // Add a single base map to overview
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
     {
@@ -639,11 +421,12 @@ body.survey-page .map-section .map-embed {
     }
   ).addTo(mapOverview);
 
+  // Add a red circle marker for the project area
   L.circleMarker([17.955580, -89.043766], {
     radius:    4,
-    color:     '#a32638',
-    fillColor: '#a32638',
-    fillOpacity: 1
+    color:     '#a32638',   // Crimson outline
+    fillColor: '#a32638',   // Crimson fill
+    fillOpacity: 1          // Fully opaque
   })
   .addTo(mapOverview)
   .bindTooltip("PROJECT AREA", {
@@ -651,12 +434,6 @@ body.survey-page .map-section .map-embed {
     direction: "top",
     className: "custom-label"
   });
-</script>
-
-
-
-
-
-
+  </script>
 </body>
 </html>
