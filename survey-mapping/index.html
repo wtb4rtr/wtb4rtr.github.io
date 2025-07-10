@@ -209,8 +209,8 @@
 
 #map-bluecreek-overview {
   border: none !important;
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   overflow: hidden;
   position: relative; /* Allows legend/north arrow overlay */
@@ -308,20 +308,21 @@
     <section class="project-section">
       <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
       <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
-	 <div class="split-map-container">
+<div class="split-map-container">
   <div id="map-bluecreek-detail" class="split-map">
-  <div class="mini-legend">
+    <div class="mini-legend">
       <strong>Basemaps:</strong><br>
       🟩 Detail: Stamen Terrain<br>
       ⚪ Overview: Esri Gray Canvas
     </div>
     <div class="north-arrow"></div>
-	</div>
-	</div>
+  </div>
+
   <div id="map-bluecreek-overview" class="split-map">
-    <div class="mini-legend"></div>
-     
+    <!-- Map will render here; no need for mini-legend here anymore -->
+  </div>
 </div>
+
       <p style="text-align: justify;">
 			In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
 			in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20 
