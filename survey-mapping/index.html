@@ -485,7 +485,7 @@
   );
 
   // Add Stadia Alidade Smooth Dark as the overview map basemap
- var L.tileLayer(
+ var stamenAlidade = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
   {
     attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
@@ -519,7 +519,7 @@
   // Add a control to toggle base maps
   var baseMaps = {
     "🟩 Stamen Terrain": stamenTerrain,
-    "🟪 Esri Gray Canvas": esriGray,
+    "🟪 Stamen Dark Alidade": stamenAlidade,
     "🟦 OpenStreetMap": openStreetMap,
     "🟫 CartoDB Positron": cartoDB
   };
