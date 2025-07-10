@@ -233,15 +233,16 @@
 
 .north-arrow {
   position: absolute;
-  bottom: 10px;     /* ⬅️ This places it at bottom-left */
-  left: 10px;
-  width: 90px;      /* reasonable width */
-  height: 90px;     /* reasonable height */
+  top: 10px;
+  right: 10px;
+  width: 90px;
+  height: 90px;
   background-image: url('/assets/images/common/northarrow_clean.png');
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: 999;     /* Keeps it on top of map tiles */
+  z-index: 999;
 }
+
 
 .custom-label {
   background: none;
@@ -307,16 +308,18 @@
       <h2>Classic Maya Residences | Alacranes Bajo/Blue Creek, Northwestern Belize (2008-2014)</h2>
       <!-- 🔁 Embedded Leaflet Map for Blue Creek -->
 	 <div class="split-map-container">
-  <div id="map-bluecreek-detail" class="split-map"></div>
-
-  <div id="map-bluecreek-overview" class="split-map">
-    <div class="mini-legend">
+  <div id="map-bluecreek-detail" class="split-map">
+  <div class="mini-legend">
       <strong>Basemaps:</strong><br>
       🟩 Detail: Stamen Terrain<br>
       ⚪ Overview: Esri Gray Canvas
     </div>
     <div class="north-arrow"></div>
-  </div>
+	</div>
+
+  <div id="map-bluecreek-overview" class="split-map">
+    <div class="mini-legend"></div>
+     
 </div>
       <p style="text-align: justify;">
 			In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences 
