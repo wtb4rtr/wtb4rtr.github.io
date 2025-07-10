@@ -190,21 +190,25 @@
       letter-spacing: 1.5px;                   /* Adds space between letters */
     }
 	
-	.split-map-container {
+.split-map-container {
   display: flex;
   flex-direction: row;
   gap: 0;
   height: 400px;
   margin-bottom: 1rem;
-  border: 6px solid #a32638;
+  /* Remove this line ↓ */
+  /* border: 6px solid #a32638; */
   border-radius: 10px;
   overflow: hidden;
 }
+
 
 #map-bluecreek-detail {
   flex: 1.5; /* 66% */
   height: 100%;
   border-right: 4px solid #a32638; /* Divider */
+  border: 6px solid #a32638;     /* ⬅️ Add this */
+  border-radius: 10px 0 0 10px;  /* ⬅️ Round only left side */
 }
 
 #map-bluecreek-overview {
