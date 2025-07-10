@@ -329,6 +329,21 @@
   text-align: center;                /* Centered above grid */
 }
 
+.project-description {
+  font-family: 'Montserrat', 'Lato', 'Segoe UI', Arial, sans-serif; /* Modern, readable font */
+  font-size: 1.25rem;                /* Larger than regular body text */
+  font-weight: bold;                 /* Bold for emphasis */
+  color: #181818;                    /* Strong, dark color for visibility */
+  margin: 2rem auto 2.2rem auto;     /* Space above and below */
+  max-width: 1200px;                 /* Optional: limits width for easier reading */
+  line-height: 1.7;                  /* More vertical space for readability */
+  letter-spacing: 0.02em;            /* Subtle spacing for polish */
+  text-align: justify;               /* Keep justification as in your design */
+  background: rgba(255,255,255,0.00);/* No background so it blends with page */
+  border-radius: 0.35em;             /* Optional: slightly rounded edges if you want a background */
+  /* box-shadow: 0 1.5px 8px rgba(0,0,0,0.03); */ /* Optional: soft shadow if background added */
+  /* padding: 1.1rem 2rem;  */        /* Optional: if you want a background color */
+}
 
 
   </style>
@@ -398,7 +413,7 @@
       </div>
 
       <!-- === Project description and photos === -->
-      <p style="text-align: justify;">
+      <p class="project-description">
         In addition to serving as an archaeological crew chief on the excavation of several Classic Maya elite residences
         in northwestern Belize, I was also responsible for overseeing the total station mapping of approximately 20
         sites. Using a Topcon GTS-2R EDM theodolite, I mapped architecture, excavation units, key
