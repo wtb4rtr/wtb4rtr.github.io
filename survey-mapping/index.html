@@ -208,10 +208,14 @@
 }
 
 #map-bluecreek-overview {
-  flex: 1; /* 33% */
-  height: 100%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
   position: relative; /* Allows legend/north arrow overlay */
+  flex-shrink: 0;      /* Prevents the circle from shrinking in flexbox */
 }
+
 
 
 /* Mini legend inside overview map */
