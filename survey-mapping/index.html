@@ -308,6 +308,9 @@
   border: 2px solid #bbb;                    /* Subtle border */
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);   /* Slightly larger shadow for bigger image */
   background: #fff;                          /* Prevent flicker during load */
+  display: block;   						 /* Remove bottom whitespace from inline images */
+  margin: 0 auto;                            /* Center image in container */
+  padding: 0;                                /* No padding */
 }
 
 .image-grid figcaption {
