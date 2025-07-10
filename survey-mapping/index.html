@@ -528,23 +528,27 @@
   var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
 
   L.tileLayer(
-    'https://tiles.stadiamaps.com/tiles/stamen_terrain-background/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
+    'https://tiles.stadiamaps.com/tiles/stamen_terrain_background/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
     {
       attribution: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, via <a href="https://stadiamaps.com/">Stadia Maps</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
       maxZoom: 18,
-      updateWhenIdle: true,  // 🔧 Prevent over-fetching when not moving
-      keepBuffer: 3,         // 🔧 Reduces likelihood of tile seams
-      reuseTiles: true       // 🔧 Reuses old tiles to reduce flicker
+      tileSize: 512,       // 🔧 retina‐style tiles so zoom stays consistent
+      zoomOffset: -1,      // 🔧 retina‐style tiles so zoom stays consistent
+      updateWhenIdle: true,
+      keepBuffer:     3,
+      reuseTiles:     true
     }
   ).addTo(mapDetail);
 
+  // Custom “surveyor” icon
   var surveyorIcon = L.icon({
-    iconUrl: '/assets/images/common/surveyor-icon.png',
+    iconUrl:    '/assets/images/common/surveyor-icon.png',
     iconSize:   [32, 32],
     iconAnchor: [16, 16],
     className:  'no-default-icon'
   });
 
+  // Marker + permanent tooltip
   L.marker([17.955580, -89.043766], { icon: surveyorIcon })
     .addTo(mapDetail)
     .bindTooltip("PROJECT AREA", {
@@ -556,31 +560,31 @@
 
   // 🌍 Overview Map (Right Side)
   var mapOverview = L.map('map-bluecreek-overview', {
-    zoomControl: false,
-    dragging: false,
-    scrollWheelZoom: false,
-    doubleClickZoom: false,
-    boxZoom: false,
-    keyboard: false,
-    tap: false,
-    touchZoom: false
+    zoomControl:      false,
+    dragging:         false,
+    scrollWheelZoom:  false,
+    doubleClickZoom:  false,
+    boxZoom:          false,
+    keyboard:         false,
+    tap:              false,
+    touchZoom:        false
   }).setView([17.955580, -89.043766], 5);
 
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
     {
-      attribution: 'Tiles © Esri &mdash; Esri, DeLorme, NAVTEQ',
-      maxZoom: 16,
-      tileSize: 256,
+      attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
+      maxZoom:    16,
+      tileSize:   256,
       updateWhenIdle: true,
-      keepBuffer: 3,
-      reuseTiles: true
+      keepBuffer:     3,
+      reuseTiles:     true
     }
   ).addTo(mapOverview);
 
   L.circleMarker([17.955580, -89.043766], {
-    radius: 8,
-    color: '#a32638',
+    radius:    8,
+    color:     '#a32638',
     fillColor: '#a32638',
     fillOpacity: 1
   })
@@ -591,6 +595,7 @@
     className: "custom-label"
   });
 </script>
+
 
 
 
