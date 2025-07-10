@@ -283,36 +283,41 @@
   
   /* ==== Responsive 2x2 Image Grid ==== */
  .image-grid {
-   display: grid;                       /* Use CSS Grid layout */
-   grid-template-columns: 1fr 1fr;      /* Two columns of equal width */
-   grid-gap: 1.5rem;                    /* Gap between images */
-   margin: 2rem 0;                      /* Space above and below grid */
- }
+  display: grid;                             /* Use CSS Grid for gallery */
+  grid-template-columns: 1fr 1fr;            /* Two equal-width columns */
+  column-gap: 1.5rem;                        /* Smaller gap between columns (brings images closer) */
+  row-gap: 2.75rem;                          /* Larger gap between rows (more vertical space between rows) */
+  justify-content: center;                   /* Center grid in container */
+  margin: 2.5rem 0;                          /* Margin above and below grid */
+}
 
- .image-grid figure {
-  margin: 0;                           /* Remove default figure margin */
-  display: flex;                       /* Stack image and caption vertically */
-  flex-direction: column;
-  align-items: center;                 /* Center items horizontally */
- }
+.image-grid figure {
+  margin: 0;                                 /* Remove default figure margin */
+  display: flex;                             /* Stack image and caption */
+  flex-direction: column;                    /* Vertical layout */
+  align-items: center;                       /* Center in column */
+}
 
- .image-grid img {
-  width: 100%;                         /* Images fill grid cell */
-  max-width: 320px;                    /* Set maximum image width */
-  height: 200px;                       /* Fixed height for all images */
-  object-fit: cover;                   /* Crop images to fill box without distortion */
-  border-radius: 8px;                  /* Rounded corners */
-  border: 2px solid #bbb;              /* Subtle border */
-  box-shadow: 0 2px 12px rgba(0,0,0,0.09); /* Soft shadow */
-  background: #fff;                    /* Prevent image flicker during load */
- }
+.image-grid img {
+  width: 100%;                               /* Take full width of grid cell */
+  max-width: 480px;                          /* 50% bigger: increase from 320px to 480px */
+  height: 300px;                             /* 50% bigger: increase from 200px to 300px */
+  object-fit: cover;                         /* Crop image as needed */
+  border-radius: 10px;                       /* Slightly larger rounded corners */
+  border: 2px solid #bbb;                    /* Subtle border */
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);   /* Slightly larger shadow for bigger image */
+  background: #fff;                          /* Prevent flicker during load */
+}
 
- .image-grid figcaption {
-  margin-top: 0.5rem;                  /* Space above caption */
-  font-size: 1rem;                     /* Caption size */
-  color: #444;                         /* Caption color */
-  text-align: center;                  /* Center caption */
- }
+.image-grid figcaption {
+  margin-top: 0.3rem;                        /* Closer to image (was 0.5rem) */
+  font-size: 1.08rem;                        /* Slightly larger font */
+  font-weight: bold;                         /* Make captions bold */
+  color: #444;                               /* Same color as before */
+  text-align: center;                        /* Center text under image */
+  font-family: 'Lato', 'Segoe UI', Arial, sans-serif; /* Consistent with body text if using Lato or similar */
+}
+
 
   </style>
 </head>
