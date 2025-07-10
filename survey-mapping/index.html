@@ -30,10 +30,7 @@
 
 	.leaflet-tile {
   border: none !important;
-  image-rendering: auto !important;
-  background: none !important;
-  box-shadow: none !important;
-  }
+}
 
 
     /* HERO SECTION at top with background image and centered title */
@@ -535,7 +532,8 @@
   L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
   attribution: 'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, via <a href="https://stadiamaps.com/">Stadia Maps</a> | Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
   maxZoom: 18,
-  tileSize: 256,         // 🔧 Make sure the tile size matches the server’s
+  tileSize: 512,         // 🔧 Make sure the tile size matches the server’s
+  zoomOffset: -1,   		// because you just doubled the tileSize
   updateWhenIdle: true,  // 🔧 Prevent over-fetching when not moving
   keepBuffer: 3,         // 🔧 Reduces likelihood of tile seams
   reuseTiles: true       // 🔧 Reuses old tiles to reduce flicker
