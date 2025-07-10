@@ -424,7 +424,7 @@
     "🟦 OpenStreetMap": openStreetMap,
     "🟫 CartoDB Positron": cartoDB
   };
-  L.control.layers(baseMaps).addTo(mapDetail);
+  L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(mapDetail);
 
   // Add custom surveyor marker with a permanent tooltip label
   var surveyorIcon = L.icon({
