@@ -484,17 +484,18 @@
     }
   );
 
-  var esriGray = L.tileLayer(
-    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-    {
-      attribution: 'Esri Gray Canvas',
-      maxZoom: 16,
-      tileSize: 256,
-      updateWhenIdle: true,
-      keepBuffer: 3,
-      reuseTiles: true
-    }
-  );
+  // Add Stadia Alidade Smooth Dark as the overview map basemap
+ var L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
+  {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
+    maxZoom: 20,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+ );
 
   var openStreetMap = L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
