@@ -673,6 +673,57 @@ var thunderforestAtlas = L.tileLayer(
     direction: "top",
     className: "custom-label"
   });
+  
+  // Define marker styling function based on BWRANK
+function getMarkerStyle(feature) {
+  const rank = feature.properties.BWRANK;
+  const size = 6; // default radius
+
+  let color = "#000"; // fallback
+  switch (rank) {
+    case 1:
+      color = "#d73027"; // Red (largest)
+      break;
+    case 2:
+      color = "#fc8d59"; // Orange
+      break;
+    case 3:
+      color = "#fee08b"; // Yellow
+      break;
+    case 4:
+      color = "#d9ef8b"; // Light Green
+      break;
+    case 5:
+      color = "#91cf60"; // Green (smallest)
+      break;
+  }
+
+  return {
+    radius: size,
+    fillColor: color,
+    color: "#333",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.9
+  };
+}
+
+// Add the GeoJSON layer
+fetch('/assets/data/mayasites.geojson')
+  .then(response => response.json())
+  .then(data => {
+    L.geoJSON(data, {
+      pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, getMarkerStyle(feature));
+      },
+      onEachFeature: function (feature, layer) {
+        const name = feature.properties.BWNAME;
+        if (name) {
+          layer.bindTooltip(name, { permanent: false, direction: 'top' });
+        }
+      }
+    }).addTo(mapDetail);
+  });
   </script>
 </body>
 </html>
