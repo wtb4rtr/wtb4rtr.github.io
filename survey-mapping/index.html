@@ -602,6 +602,7 @@ var thunderforestAtlas = L.tileLayer(
 
   // Add a control to toggle base maps
   var baseMaps = {
+  "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
   "🛰️ Esri Satellite": esriWorldImagery,
   "🟩 Stamen Terrain": stamenTerrain,
   "🗺️ Thunderforest Atlas": thunderforestAtlas,
@@ -609,8 +610,7 @@ var thunderforestAtlas = L.tileLayer(
   "🌳 Thunderforest Landscape": thunderforestLandscape, 
   "🟦 Stadia Outdoors": stadiaOut,
   "🟫 CartoDB Positron": cartoDB,
-  "⬜️ OSM Bright": osmBright,
-  "🏞️ Thunderforest Outdoors": thunderforestOutdoor
+  "⬜️ OSM Bright": osmBright
 };
 
   L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(mapDetail);
