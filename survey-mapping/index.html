@@ -569,22 +569,91 @@ var thunderforestLandscape = L.tileLayer(
   }
 );
 
+// Thunderforest Outdoors basemap (replace with your actual API key)
+var thunderforestOutdoor = L.tileLayer(
+  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
+  {
+    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
+    maxZoom: 22,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+);
 
+
+// Thunderforest Atlas basemap (replace with your actual API key)
+var thunderforestAtlas = L.tileLayer(
+  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
+  {
+    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
+    maxZoom: 22,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+);
+
+// Thunderforest Transport basemap (replace with your actual API key)
+var thunderforestTransport = L.tileLayer(
+  'https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
+  {
+    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
+    maxZoom: 22,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+);
+
+// Thunderforest Transport-Dark basemap (replace with your actual API key)
+var thunderforestTransdark = L.tileLayer(
+  'https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
+  {
+    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
+    maxZoom: 22,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+);
+
+// Thunderforest Pioneer basemap (replace with your actual API key)
+var thunderforestPioneer = L.tileLayer(
+  'https://tile.thunderforest.com/pioneer/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
+  {
+    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
+    maxZoom: 22,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+);
 
   // Add default base map (Stamen Terrain)
   stamenTerrain.addTo(mapDetail);
 
   // Add a control to toggle base maps
   var baseMaps = {
-    "🟩 Stamen Terrain": stamenTerrain,
-	"🌳 Thunderforest Landscape": thunderforestLandscape,   // <--- NEW!
-	"🗺️ Esri Topo": esriTopo,
-	"⬜️ OSM Bright": osmBright, 
-	"🛰️ Esri Satellite": esriWorldImagery, // Satellite!  TEST
-    "🟪 Stadia Dark Alidade": stadiaAlidade,
-    "🟦 Stadia Outdoors": stadiaOut, 
-    "🟫 CartoDB Positron": cartoDB
-  };
+  "🟩 Stamen Terrain": stamenTerrain,
+  "🌳 Thunderforest Landscape": thunderforestLandscape,
+  "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
+  "🗺️ Thunderforest Atlas": thunderforestAtlas,
+  "🚉 Thunderforest Transport": thunderforestTransport,
+  "🌚 Thunderforest Transport Dark": thunderforestTransdark,
+  "🧭 Thunderforest Pioneer": thunderforestPioneer,
+  "🛰️ Esri Satellite": esriWorldImagery,
+  "🟪 Stadia Dark Alidade": stadiaAlidade,
+  "🟦 Stadia Outdoors": stadiaOut,
+  "🟫 CartoDB Positron": cartoDB,
+  "⬜️ OSM Bright": osmBright
+};
+
   L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(mapDetail);
 
   // Add custom surveyor marker with a permanent tooltip label
