@@ -472,19 +472,7 @@
     border-bottom:16px solid gray;     /* Gray for minor */
   }
 
-  /* legend container */
-  .map-legend {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;            /* lower‐left */
-    padding: 8px;
-    background: white;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    font-size: 0.9rem;
-    line-height: 1.4em;
-    z-index: 999;
-  }
+ 
   .map-legend ul {
     list-style: none;
     margin: 0;
@@ -554,72 +542,62 @@
     box-shadow: none !important;
   }
   
-  /* 1) Turn the zoom buttons horizontal */
-.leaflet-top.leaflet-left .leaflet-control-zoom {
-  display: flex;
-  flex-direction: row;      /* side-by-side */
-}
-.leaflet-control-zoom a {
-  margin: 0 2px;            /* small gap between buttons */
-  width: 30px; height: 30px;/* square hits for click/tap */
-}
-
-/* 2) Enforce our legend in the bottom-left and give it room */
+ /* ──────── LEGEND (bottom‐left) ──────── */
 .leaflet-control.map-legend {
-  bottom: 10px !important;
-  left:   10px !important;
-  right:  auto   !important;
-  top:    auto   !important;
-  min-width: 140px;         /* make it wide enough not to clip */
-  padding: 8px 12px;        /* a bit more breathing room */
-}
-
-/* 3) Tweak the legend list items so nothing wraps awkwardly */
-.map-legend ul li {
-  white-space: nowrap;      /* keep icon + label on one line */
-}
-
-/* finally, nudge the map-legend into the bottom-left corner properly */
-  .leaflet-bottom.leaflet-left .leaflet-control.map-legend {
-    left: 10px !important;
-    bottom: 10px !important;
-    right: auto !important;
-    top:   auto !important;
-    min-width: 140px;
-    padding: 8px 12px;
-  }
-  
-  /* target the bottom-left control container, not just the inner box */
-.leaflet-bottom.leaflet-left {
-  /* force the whole bottom-left corner 10px in from left
-     (Leaflet normally uses left:0;bottom:0;) */
-  left: 10px !important;
-  bottom: 10px !important;
-  right: auto !important;
-  top:   auto !important;
-}
-
-/* now your legend box inside it can just size itself normally */
-.map-legend {
-  /* no need to re-position here */
-  padding:   8px 12px;
-  min-width: 140px;
-  background: white;
-  border-radius: 6px;
+  position: absolute !important;  /* necessary to override Leaflet defaults */
+  left:     10px      !important;  /* 10px from the map’s left edge */
+  bottom:   10px      !important;  /* 10px from the map’s bottom edge */
+  min-width: 140px;                /* wide enough so text won’t wrap */
+  padding:   8px 12px;             /* breathing room inside the box */
+  background: white;               /* white background */
+  border-radius: 6px;              /* rounded corners */
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   font-size:  0.9rem;
   line-height:1.4em;
+  z-index:    999;                 /* on top of everything */
 }
 
-/* ------------------------------------------------------------------
-   LEGEND: nudge it over so its left edge lines up with the other
-   bottom-left controls (zoom, layers, mini-legend, etc.)
-   ------------------------------------------------------------------ */
-.leaflet-control.map-legend {
-  /* push the legend rightward */
-  left:  80px !important;
-  /* keep it 10px from the bottom edge */
-  bottom: 10px !important;
+/* keep icons + labels on one line */
+.leaflet-control.map-legend ul li {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.leaflet-control.map-legend ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* triangle and circle swatches */
+.leaflet-control.map-legend .legend-swatch {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+/* big red triangle (Major Centers) */
+.leaflet-control.map-legend .legend-major {
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom:16px solid #af002a;
+}
+/* gray triangle (Minor Centers) */
+.leaflet-control.map-legend .legend-minor {
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom:12px solid gray;
+}
+/* orange circle (Regional Centers) */
+.leaflet-control.map-legend .legend-regional {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: orange;
+}
+/* black circle (Courtyards) */
+.leaflet-control.map-legend .legend-courtyard {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: black;
 }
 
 
