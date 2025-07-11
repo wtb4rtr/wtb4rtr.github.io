@@ -484,6 +484,16 @@
     }
   );
 
+   // Add Esri satellite imagery
+  var esriWorldImagery = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+  {
+    attribution: 'Tiles © Esri &mdash; Source: Esri, Earthstar Geographics',
+    maxZoom: 19
+  }
+);
+
+  
   // Add Stadia Alidade Smooth Dark as the overview map basemap
  var stadiaAlidade = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
@@ -539,6 +549,7 @@
   var baseMaps = {
     "🟩 Stamen Terrain": stamenTerrain,
 	"⬜️ OSM Bright": osmBright, 
+	"🛰️ Esri Satellite": esriWorldImagery // Satellite!
     "🟪 Stadia Dark Alidade": stadiaAlidade,
     "🟦 Stadia Outdoors": stadiaOut, 
     "🟫 CartoDB Positron": cartoDB
