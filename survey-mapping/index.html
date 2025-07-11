@@ -260,9 +260,10 @@
 .north-arrow {
   position: absolute;                  /* keep it absolutely placed over the map */
   top:    auto   !important;           /* unset any top positioning */
-  bottom: 10px   !important;           /* 10px up from the real bottom edge */
-  right:  -6px   !important;           /* negative to push into the padding/border */
-  left:    auto   !important;          /* unset any left positioning */
+  bottom: 50px   !important;           /* 10px up from the real bottom edge */
+  right: 0;             			   /* anchor at the right edge */
+  transform: translateX(10px); 		   /* slide 10px further right */
+  
 
   width:  90px;
   height: 90px;
