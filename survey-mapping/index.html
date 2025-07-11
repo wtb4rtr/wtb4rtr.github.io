@@ -757,7 +757,7 @@ fetch('/assets/data/mayasites.json')
         // 3 → Regional Centers (orange circle)
         else if (rank === 3) {
           return L.circleMarker(latlng, {
-            radius:      8,
+            radius:      6,
             fillColor:   'orange',
             color:       '#333',
             weight:      1,
@@ -768,7 +768,7 @@ fetch('/assets/data/mayasites.json')
         // 4 or 5 → Courtyard Groups (small black circle)
         else {
           return L.circleMarker(latlng, {
-            radius:      4,
+            radius:      2,
             fillColor:   '#000',
             color:       '#333',
             weight:      1,
