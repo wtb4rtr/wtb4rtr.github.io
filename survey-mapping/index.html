@@ -257,17 +257,21 @@
   }
 
   /* North arrow for the map */
-  .north-arrow {
-    position: absolute;                  /* Relative to map */
-    bottom: 40px;                        /* 40px from bottom */
-    right: 0px;                          /* 0px from right */
-    width: 90px;                         /* 90px wide */
-    height: 90px;                        /* 90px high */
-    background-image: url('/assets/images/common/northarrow_clean.png'); /* Arrow image */
-    background-size: contain;            /* Fit image inside box */
-    background-repeat: no-repeat;        /* Don't tile image */
-    z-index: 999;                        /* Stay above map tiles */
-  }
+.north-arrow {
+  position: absolute;                  /* keep it absolutely placed over the map */
+  top:    auto   !important;           /* unset any top positioning */
+  bottom: 10px   !important;           /* 10px up from the real bottom edge */
+  right:  -6px   !important;           /* negative to push into the padding/border */
+  left:    auto   !important;          /* unset any left positioning */
+
+  width:  90px;
+  height: 90px;
+  background-image: url('/assets/images/common/northarrow_clean.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 999;
+}
+
 
   /* Styles for the tooltip label on the map marker */
   .custom-label {
