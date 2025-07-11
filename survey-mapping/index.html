@@ -709,7 +709,7 @@ function getMarkerStyle(feature) {
 }
 
 // Add the GeoJSON layer
-fetch('/assets/data/mayasites.geojson')
+fetch('/assets/data/mayasites.json')
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
