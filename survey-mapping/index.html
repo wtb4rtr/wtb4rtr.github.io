@@ -596,58 +596,17 @@ var thunderforestAtlas = L.tileLayer(
   }
 );
 
-// Thunderforest Transport basemap (replace with your actual API key)
-var thunderforestTransport = L.tileLayer(
-  'https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
-  {
-    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
-    maxZoom: 22,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
-
-// Thunderforest Transport-Dark basemap (replace with your actual API key)
-var thunderforestTransdark = L.tileLayer(
-  'https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
-  {
-    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
-    maxZoom: 22,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
-
-// Thunderforest Pioneer basemap (replace with your actual API key)
-var thunderforestPioneer = L.tileLayer(
-  'https://tile.thunderforest.com/pioneer/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
-  {
-    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
-    maxZoom: 22,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
 
   // Add default base map (Stamen Terrain)
   thunderforestOutdoor.addTo(mapDetail);
 
   // Add a control to toggle base maps
   var baseMaps = {
+  "🛰️ Esri Satellite": esriWorldImagery,
   "🟩 Stamen Terrain": stamenTerrain,
   "🌳 Thunderforest Landscape": thunderforestLandscape,
   "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
   "🗺️ Thunderforest Atlas": thunderforestAtlas,
-  "🚉 Thunderforest Transport": thunderforestTransport,
-  "🌚 Thunderforest Transport Dark": thunderforestTransdark,
-  "🧭 Thunderforest Pioneer": thunderforestPioneer,
-  "🛰️ Esri Satellite": esriWorldImagery,
   "🟪 Stadia Dark Alidade": stadiaAlidade,
   "🟦 Stadia Outdoors": stadiaOut,
   "🟫 CartoDB Positron": cartoDB,
