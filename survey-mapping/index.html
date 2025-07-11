@@ -361,6 +361,25 @@
   /* padding: 1.1rem 2rem;  */        /* Optional: if you want a background color */
 }
 
+/* MAYA SITES STYLES */
+.triangle-marker {
+  width: 0;
+  height: 0;
+}
+
+.triangle-marker.major-center {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #000;    /* black */
+}
+
+.triangle-marker.minor-center {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid gray;    /* gray */
+}
+
+
 
   </style>
 </head>
@@ -705,20 +724,67 @@ function getMarkerStyle(feature) {
   };
 }
 
-// Add the GeoJSON layer
+// ── 1) DEFINE TRIANGLE ICONS ────────────────────────────────
+// Major Centers (BWRANK=1) → big black triangle
+var majorCenterIcon = L.divIcon({
+  className: 'triangle-marker major-center',
+  iconSize:   [20, 20],
+  iconAnchor: [10, 10]
+});
+
+// Minor Centers (BWRANK=2) → smaller gray triangle
+var minorCenterIcon = L.divIcon({
+  className: 'triangle-marker minor-center',
+  iconSize:   [16, 16],
+  iconAnchor: [8, 8]
+});
+
+// ── 2) LOAD GEOJSON & STYLE POINTS ───────────────────────────
 fetch('/assets/data/mayasites.json')
   .then(r => r.json())
   .then(data => {
     L.geoJSON(data, {
-      pointToLayer: (feature, latlng) =>
-        L.circleMarker(latlng, getMarkerStyle(feature)),
-      onEachFeature: (feature, layer) => {
+      pointToLayer: function(feature, latlng) {
+        const rank = Number(feature.properties.BWRANK);
+        // 1 → Major Centers
+        if (rank === 1) {
+          return L.marker(latlng, { icon: majorCenterIcon });
+        }
+        // 2 → Minor Centers
+        else if (rank === 2) {
+          return L.marker(latlng, { icon: minorCenterIcon });
+        }
+        // 3 → Regional Centers (orange circle)
+        else if (rank === 3) {
+          return L.circleMarker(latlng, {
+            radius:      8,
+            fillColor:   'orange',
+            color:       '#333',
+            weight:      1,
+            opacity:     1,
+            fillOpacity: 0.9
+          });
+        }
+        // 4 or 5 → Courtyard Groups (small black circle)
+        else {
+          return L.circleMarker(latlng, {
+            radius:      4,
+            fillColor:   '#000',
+            color:       '#333',
+            weight:      1,
+            opacity:     1,
+            fillOpacity: 0.9
+          });
+        }
+      },
+      onEachFeature: function(feature, layer) {
         const name = feature.properties.BWNAME;
-        if (name) layer.bindTooltip(name, { direction: 'top', sticky: true });
+        if (name) {
+          layer.bindTooltip(name, { direction: 'top', sticky: true });
+        }
       }
     }).addTo(mapDetail);
   });
-
   </script>
 </body>
 </html>
