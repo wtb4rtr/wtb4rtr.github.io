@@ -573,6 +573,15 @@
   white-space: nowrap;      /* keep icon + label on one line */
 }
 
+/* finally, nudge the map-legend into the bottom-left corner properly */
+  .leaflet-bottom.leaflet-left .leaflet-control.map-legend {
+    left: 10px !important;
+    bottom: 10px !important;
+    right: auto !important;
+    top:   auto !important;
+    min-width: 140px;
+    padding: 8px 12px;
+  }
 
   </style>
 </head>
