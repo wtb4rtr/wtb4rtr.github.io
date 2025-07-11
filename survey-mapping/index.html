@@ -582,6 +582,29 @@
     min-width: 140px;
     padding: 8px 12px;
   }
+  
+  /* target the bottom-left control container, not just the inner box */
+.leaflet-bottom.leaflet-left {
+  /* force the whole bottom-left corner 10px in from left
+     (Leaflet normally uses left:0;bottom:0;) */
+  left: 10px !important;
+  bottom: 10px !important;
+  right: auto !important;
+  top:   auto !important;
+}
+
+/* now your legend box inside it can just size itself normally */
+.map-legend {
+  /* no need to re-position here */
+  padding:   8px 12px;
+  min-width: 140px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-size:  0.9rem;
+  line-height:1.4em;
+}
+
 
   </style>
 </head>
