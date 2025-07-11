@@ -675,55 +675,50 @@ var thunderforestAtlas = L.tileLayer(
   });
   
   // Define marker styling function based on BWRANK
+// Define marker styling function based on BWRANK
 function getMarkerStyle(feature) {
-  const rank = feature.properties.BWRANK;
-  const size = 6; // default radius
+  // 1) coerce the incoming BWRANK (string) into a Number
+  const rank = Number(feature.properties.BWRANK);
 
-  let color = "#000"; // fallback
-  switch (rank) {
-    case 1:
-      color = "#d73027"; // Red (largest)
-      break;
-    case 2:
-      color = "#fc8d59"; // Orange
-      break;
-    case 3:
-      color = "#fee08b"; // Yellow
-      break;
-    case 4:
-      color = "#d9ef8b"; // Light Green
-      break;
-    case 5:
-      color = "#91cf60"; // Green (smallest)
-      break;
-  }
+  // 2) you can even size them dynamically if you like:
+  //    e.g. larger circles for “1” and smaller for “5”
+  const radius = 8 + (6 - rank);  // adjust these math constants as you see fit
+
+  // 3) lookup table for colors by rank
+  const colors = {
+    1: "#d73027", // red
+    2: "#fc8d59", // orange
+    3: "#fee08b", // yellow
+    4: "#d9ef8b", // light green
+    5: "#91cf60"  // green
+  };
+
+  const fillColor = colors[rank] || "#000"; // fallback to black
 
   return {
-    radius: size,
-    fillColor: color,
-    color: "#333",
-    weight: 1,
-    opacity: 1,
+    radius:      radius,
+    fillColor:   fillColor,
+    color:       "#333",
+    weight:      1,
+    opacity:     1,
     fillOpacity: 0.9
   };
 }
 
 // Add the GeoJSON layer
 fetch('/assets/data/mayasites.json')
-  .then(response => response.json())
+  .then(r => r.json())
   .then(data => {
     L.geoJSON(data, {
-      pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, getMarkerStyle(feature));
-      },
-      onEachFeature: function (feature, layer) {
+      pointToLayer: (feature, latlng) =>
+        L.circleMarker(latlng, getMarkerStyle(feature)),
+      onEachFeature: (feature, layer) => {
         const name = feature.properties.BWNAME;
-        if (name) {
-          layer.bindTooltip(name, { permanent: false, direction: 'top' });
-        }
+        if (name) layer.bindTooltip(name, { direction: 'top', sticky: true });
       }
     }).addTo(mapDetail);
   });
+
   </script>
 </body>
 </html>
