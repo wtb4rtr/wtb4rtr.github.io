@@ -535,306 +535,154 @@
     </section>
     <!-- ...rest of your project sections as before... -->
   </main>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // ───────────────────────────────────────────────────────
+  // 1) Placeholder for our overlay layer (Maya sites)
+  // ───────────────────────────────────────────────────────
+  var mayaSites = L.geoJSON(null);
 
-  <!-- === LEAFLET JS LIBRARY FOR MAPS === -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script>
-  // === MAIN (DETAIL) MAP SETUP ===
-
-  // Create the Leaflet map in the left "detail" div
+  // ───────────────────────────────────────────────────────
+  // 2) DETAIL MAP SETUP
+  // ───────────────────────────────────────────────────────
   var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
 
-  // Define several base map layers to allow toggling by the user
-  var stamenTerrain = L.tileLayer(
-    'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
-    {
-      attribution: 'Stamen Terrain',    // Credit string
-      maxZoom: 18,                      // Maximum zoom for this tile layer
-      tileSize: 512,                    // Tile size in pixels
-      zoomOffset: -1,                   // Adjusts zoom math for retina
-      updateWhenIdle: true,             // Avoids loading tiles when not needed
-      keepBuffer: 3,                    // Keeps 3 tile rings for smoother panning
-      reuseTiles: true                  // Re-uses existing tiles where possible
-    }
-  );
+  // 2a) Base layers
+  var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1,
+    updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
-   // Add Esri satellite imagery
-  var esriWorldImagery = L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-  {
-    attribution: 'Tiles © Esri &mdash; Source: Esri, Earthstar Geographics',
-    maxZoom: 19,
-	tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
+  var esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Source: Esri, Earthstar Geographics',
+    maxZoom: 19, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
-  
-  // Add Stadia Alidade Smooth Dark as the overview map basemap
- var stadiaAlidade = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
-  {
-    attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
-    maxZoom: 20,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
- );
+  var thunderforestOutdoor = L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors',
+    maxZoom: 22, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
-// Add Stadia Outdoors as the overview map basemap
- var stadiaOut = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
-  {
-    attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
-    maxZoom: 20,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
- );
+  var thunderforestAtlas = L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors',
+    maxZoom: 22, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
- 
- // Add OSM Bright as the overview map basemap
- var osmBright = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
-  {
-    attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
-    maxZoom: 20,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
- );
+  var thunderforestLandscape = L.tileLayer('https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors',
+    maxZoom: 22, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
-  var cartoDB = L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    {
-      attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-      maxZoom: 19
-    }
-  );
+  var stadiaAlidade = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors',
+    maxZoom: 20, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
+  var stadiaOut = L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors',
+    maxZoom: 20, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
-var esriTopo = L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-  {
-    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
-    maxZoom: 19
-  }
-);
+  var cartoDB = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO', maxZoom: 19
+  });
 
+  var osmBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors',
+    maxZoom: 20, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
 
-// Thunderforest Landscape basemap (replace with your actual API key)
-var thunderforestLandscape = L.tileLayer(
-  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
-  {
-    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
-    maxZoom: 22,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
-
-// Thunderforest Outdoors basemap (replace with your actual API key)
-var thunderforestOutdoor = L.tileLayer(
-  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
-  {
-    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
-    maxZoom: 22,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
-
-
-// Thunderforest Atlas basemap (replace with your actual API key)
-var thunderforestAtlas = L.tileLayer(
-  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512',
-  {
-    attribution: 'Maps © <a href="https://www.thunderforest.com/">Thunderforest</a>, Data © <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>',
-    maxZoom: 22,
-    tileSize: 256,
-    updateWhenIdle: true,
-    keepBuffer: 3,
-    reuseTiles: true
-  }
-);
-
-// Create overlay group for Maya Sites (but don’t add to map yet)
-var mayaSites = L.geoJSON(null); // Placeholder
-
-  // Add default base map (Stamen Terrain)
+  // 2b) Add default layer
   thunderforestOutdoor.addTo(mapDetail);
 
-  // Add a control to toggle base maps
-  var baseMaps = {
-  "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
-  "🛰️ Esri Satellite": esriWorldImagery,
-  "🟩 Stamen Terrain": stamenTerrain,
-  "🗺️ Thunderforest Atlas": thunderforestAtlas,
-  "🟪 Stadia Dark Alidade": stadiaAlidade,
-  "🌳 Thunderforest Landscape": thunderforestLandscape, 
-  "🟦 Stadia Outdoors": stadiaOut,
-  "🟫 CartoDB Positron": cartoDB,
-  "⬜️ OSM Bright": osmBright
-};
-
-  L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(mapDetail);
-
-  // Add custom surveyor marker with a permanent tooltip label
+  // ───────────────────────────────────────────────────────
+  // 3) CUSTOM SURVEYOR MARKER
+  // ───────────────────────────────────────────────────────
   var surveyorIcon = L.icon({
-    iconUrl: '/assets/images/common/surveyor-icon.png', // Custom icon image
-    iconSize:   [32, 32],           // Icon size
-    iconAnchor: [16, 16],           // Anchor point (center of icon)
-    className:  'no-default-icon'   // Optional extra CSS class
+    iconUrl: '/assets/images/common/surveyor-icon.png',
+    iconSize: [32,32], iconAnchor: [16,16], className: 'no-default-icon'
   });
-
-  // Add marker to map at project area with label
   L.marker([17.955580, -89.043766], { icon: surveyorIcon })
     .addTo(mapDetail)
-    .bindTooltip("NOJOL NAH", {
-      permanent: true,
-      direction: "top",
-      className: "custom-label"
-    });
+    .bindTooltip("NOJOL NAH", { permanent: true, direction: "top", className: "custom-label" });
 
-  // === OVERVIEW MAP (RIGHT SIDE) SETUP ===
-
-  // Create the map in the overview/circle div
+  // ───────────────────────────────────────────────────────
+  // 4) OVERVIEW MAP (RIGHT CIRCLE)
+  // ───────────────────────────────────────────────────────
   var mapOverview = L.map('map-bluecreek-overview', {
-    zoomControl:      false,    // Hide zoom UI
-    dragging:         false,    // User cannot pan
-    scrollWheelZoom:  false,    // No scroll zoom
-    doubleClickZoom:  false,    // No double-click zoom
-    boxZoom:          false,    // No box zoom
-    keyboard:         false,    // No keyboard controls
-    tap:              false,    // No mobile tap zoom
-    touchZoom:        false     // No touch zoom
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false
   }).setView([17.955580, -89.043766], 4);
 
- // Add a single base map to overview
-  L.tileLayer(
-    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-    {
-      attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
-      maxZoom:    16,
-      tileSize:   256,
-      updateWhenIdle: true,
-      keepBuffer:     3,
-      reuseTiles:     true
-    }
-  ).addTo(mapOverview);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
+    maxZoom: 16, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  }).addTo(mapOverview);
 
-
-  // Add a red circle marker for the project area
   L.circleMarker([17.955580, -89.043766], {
-    radius:    4,
-    color:     '#a32638',   // Crimson outline
-    fillColor: '#a32638',   // Crimson fill
-    fillOpacity: 1          // Fully opaque
-  })
-  .addTo(mapOverview)
-  .bindTooltip("PROJECT AREA", {
-    permanent: true,
-    direction: "top",
-    className: "custom-label"
-  });
-  
-  // Define marker styling function based on BWRANK
-// Define marker styling function based on BWRANK
-function getMarkerStyle(feature) {
-  // 1) coerce the incoming BWRANK (string) into a Number
-  const rank = Number(feature.properties.BWRANK);
+    radius: 4, color: '#a32638', fillColor: '#a32638', fillOpacity: 1
+  }).addTo(mapOverview)
+    .bindTooltip("PROJECT AREA", { permanent: true, direction: "top", className: "custom-label" });
 
-  // 2) you can even size them dynamically if you like:
-  //    e.g. larger circles for “1” and smaller for “5”
-  const radius = 8 + (6 - rank);  // adjust these math constants as you see fit
+  // ───────────────────────────────────────────────────────
+  // 5) TRIANGLE ICONS + STYLE FUNCTION
+  // ───────────────────────────────────────────────────────
+  var majorCenterIcon = L.divIcon({ className: 'triangle-marker major-center', iconSize: [20,20], iconAnchor: [10,10] });
+  var minorCenterIcon = L.divIcon({ className: 'triangle-marker minor-center', iconSize: [16,16], iconAnchor: [8,8] });
 
-  // 3) lookup table for colors by rank
-  const colors = {
-    1: "#d73027", // red
-    2: "#fc8d59", // orange
-    3: "#fee08b", // yellow
-    4: "#d9ef8b", // light green
-    5: "#91cf60"  // green
-  };
+  function getMarkerStyle(feature) {
+    var rank = Number(feature.properties.BWRANK);
+    var radius = 8 + (6 - rank);
+    var colors = {1:"#d73027",2:"#fc8d59",3:"#fee08b",4:"#d9ef8b",5:"#91cf60"};
+    return {
+      radius: radius,
+      fillColor: colors[rank]||"#000",
+      color: "#333", weight:1, opacity:1, fillOpacity:0.9
+    };
+  }
 
-  const fillColor = colors[rank] || "#000"; // fallback to black
-
-  return {
-    radius:      radius,
-    fillColor:   fillColor,
-    color:       "#333",
-    weight:      1,
-    opacity:     1,
-    fillOpacity: 0.9
-  };
-}
-
-// ── 1) DEFINE TRIANGLE ICONS ────────────────────────────────
-// Major Centers (BWRANK=1) → big black triangle
-var majorCenterIcon = L.divIcon({
-  className: 'triangle-marker major-center',
-  iconSize:   [20, 20],
-  iconAnchor: [10, 10]
-});
-
-// Minor Centers (BWRANK=2) → smaller gray triangle
-var minorCenterIcon = L.divIcon({
-  className: 'triangle-marker minor-center',
-  iconSize:   [16, 16],
-  iconAnchor: [8, 8]
-});
-
-// ── 2) LOAD GEOJSON & STYLE POINTS ───────────────────────────
-fetch('/assets/data/mayasites.json')
-  .then(r => r.json())
-  .then(data => {
-    mayaSites = L.geoJSON(data, {
-      pointToLayer: function(feature, latlng) {
-        const rank = Number(feature.properties.BWRANK);
-        if (rank === 1) {
-          return L.marker(latlng, { icon: majorCenterIcon });
-        } else if (rank === 2) {
-          return L.marker(latlng, { icon: minorCenterIcon });
-        } else if (rank === 3) {
-          return L.circleMarker(latlng, {
-            radius: 8,
-            fillColor: 'orange',
-            color: '#333',
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.9
-          });
-        } else {
-          return L.circleMarker(latlng, {
-            radius: 4,
-            fillColor: '#000',
-            color: '#333',
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.9
-          });
+  // ───────────────────────────────────────────────────────
+  // 6) LOAD GEOJSON & STYLE POINTS
+  // ───────────────────────────────────────────────────────
+  fetch('/assets/data/mayasites.json')
+    .then(r => r.json())
+    .then(data => {
+      mayaSites = L.geoJSON(data, {
+        pointToLayer: function(f, latlng) {
+          var r = Number(f.properties.BWRANK);
+          if (r===1)      return L.marker(latlng, {icon: majorCenterIcon});
+          else if (r===2) return L.marker(latlng, {icon: minorCenterIcon});
+          else if (r===3) return L.circleMarker(latlng, {radius:8, fillColor:'orange', color:'#333', weight:1, opacity:1, fillOpacity:0.9});
+          else             return L.circleMarker(latlng, {radius:4, fillColor:'#000', color:'#333', weight:1, opacity:1, fillOpacity:0.9});
+        },
+        onEachFeature: function(f, layer) {
+          var name = f.properties.BWNAME;
+          if (name) layer.bindTooltip(name, {direction:'top', sticky:true});
         }
-      },
-      onEachFeature: function(feature, layer) {
-        const name = feature.properties.BWNAME;
-        if (name) {
-          layer.bindTooltip(name, { direction: 'top', sticky: true });
-        }
-      }
+      }).addTo(mapDetail);
+
+      // ─────────────────────────────────────────────────────
+      // 7) LAYERS CONTROL (default basemaps + Maya overlay)
+      //    with collapsed:false so the overlay is visible
+      // ─────────────────────────────────────────────────────
+      L.control.layers({
+          "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
+          "🛰️ Esri Satellite": esriWorldImagery,
+          "🟩 Stamen Terrain": stamenTerrain,
+          "🗺️ Thunderforest Atlas": thunderforestAtlas,
+          "🟪 Stadia Dark Alidade": stadiaAlidade,
+          "🌳 Thunderforest Landscape": thunderforestLandscape,
+          "🟦 Stadia Outdoors": stadiaOut,
+          "🟫 CartoDB Positron": cartoDB,
+          "⬜️ OSM Bright": osmBright
+        },
+        {
+          "🏛️ Maya Sites (by BWRANK)": mayaSites
+        },
+        { position:'topleft', collapsed:false }
+      ).addTo(mapDetail);
     });
-
-  </script>
+</script>
 </body>
 </html>
