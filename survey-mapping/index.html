@@ -511,6 +511,18 @@
  );
 
  
+ // Add OSM Bright as the overview map basemap
+ var osmBright = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
+  {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
+    maxZoom: 20,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+ );
 
   var cartoDB = L.tileLayer(
     'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -528,6 +540,7 @@
     "🟩 Stamen Terrain": stamenTerrain,
     "🟪 Stadia Dark Alidade": stadiaAlidade,
     "🟦 Stadia Outdoors": stadiaOut,
+	"⬜️ OSM Bright": osmBright,  
     "🟫 CartoDB Positron": cartoDB
   };
   L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(mapDetail);
