@@ -548,6 +548,32 @@
     background: transparent !important;
     box-shadow: none !important;
   }
+  
+  /* 1) Turn the zoom buttons horizontal */
+.leaflet-top.leaflet-left .leaflet-control-zoom {
+  display: flex;
+  flex-direction: row;      /* side-by-side */
+}
+.leaflet-control-zoom a {
+  margin: 0 2px;            /* small gap between buttons */
+  width: 30px; height: 30px;/* square hits for click/tap */
+}
+
+/* 2) Enforce our legend in the bottom-left and give it room */
+.leaflet-control.map-legend {
+  bottom: 10px !important;
+  left:   10px !important;
+  right:  auto   !important;
+  top:    auto   !important;
+  min-width: 140px;         /* make it wide enough not to clip */
+  padding: 8px 12px;        /* a bit more breathing room */
+}
+
+/* 3) Tweak the legend list items so nothing wraps awkwardly */
+.map-legend ul li {
+  white-space: nowrap;      /* keep icon + label on one line */
+}
+
 
   </style>
 </head>
