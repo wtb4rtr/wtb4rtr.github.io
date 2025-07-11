@@ -542,20 +542,7 @@
     box-shadow: none !important;
   }
   
- /* ──────── LEGEND (bottom‐left) ──────── */
-.leaflet-control.map-legend {
-  position: absolute !important;  /* necessary to override Leaflet defaults */
-  left:     10px      !important;  /* 10px from the map’s left edge */
-  bottom:   10px      !important;  /* 10px from the map’s bottom edge */
-  min-width: 140px;                /* wide enough so text won’t wrap */
-  padding:   8px 12px;             /* breathing room inside the box */
-  background: white;               /* white background */
-  border-radius: 6px;              /* rounded corners */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  font-size:  0.9rem;
-  line-height:1.4em;
-  z-index:    999;                 /* on top of everything */
-}
+ 
 
 /* keep icons + labels on one line */
 .leaflet-control.map-legend ul li {
@@ -600,6 +587,18 @@
   background: black;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   FINAL, ONLY LEGEND POSITIONING RULE
+   Pins your legend 10px from left and 10px from bottom
+   ───────────────────────────────────────────────────────────── */
+.leaflet-control.map-legend {
+  position: absolute !important;   /* override Leaflet’s default container rules */
+  left:     10px      !important;  /* exactly 10px from the map’s left edge */
+  bottom:   10px      !important;  /* exactly 10px from the map’s bottom edge */
+  top:      auto      !important;  /* unset any top value */
+  right:    auto      !important;  /* unset any right value */
+  z-index:  1000      !important;  /* above everything else */
+}
 
 
   </style>
