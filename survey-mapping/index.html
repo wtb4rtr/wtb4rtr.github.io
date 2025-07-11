@@ -439,7 +439,7 @@
   background: black;
 }
 
-<style>
+
   /* -------------------
      YOUR EXISTING CSS 
      ------------------- */
@@ -543,7 +543,6 @@
     background: transparent !important;
     box-shadow: none !important;
   }
-</style>
 
   </style>
 </head>
@@ -792,6 +791,21 @@
         { position:'topleft', collapsed:false }
       ).addTo(mapDetail);
     });
+	
+	 // 5) ADD THE MAP LEGEND
+  var legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function(map) {
+    var div = L.DomUtil.create('div','map-legend');
+    div.innerHTML = 
+      '<ul>' +
+        '<li><span class="legend-swatch legend-major"></span>Major Centers (BWRANK=1)</li>' +
+        '<li><span class="legend-swatch legend-minor"></span>Minor Centers (BWRANK=2)</li>' +
+        '<li><span class="legend-regional"></span>Regional Centers (BWRANK=3)</li>' +
+        '<li><span class="legend-courtyard"></span>Courtyard Groups (BWRANK=4–5)</li>' +
+      '</ul>';
+    return div;
+  };
+  legend.addTo(mapDetail);
 </script>
 </body>
 </html>
