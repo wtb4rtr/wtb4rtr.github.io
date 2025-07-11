@@ -546,12 +546,23 @@
     }
   );
 
+
+var esriTopo = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+  {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
+    maxZoom: 19
+  }
+);
+
+
   // Add default base map (Stamen Terrain)
   stamenTerrain.addTo(mapDetail);
 
   // Add a control to toggle base maps
   var baseMaps = {
     "🟩 Stamen Terrain": stamenTerrain,
+	"🗺️ Esri Topo": esriTopo,
 	"⬜️ OSM Bright": osmBright, 
 	"🛰️ Esri Satellite": esriWorldImagery, // Satellite!
     "🟪 Stadia Dark Alidade": stadiaAlidade,
