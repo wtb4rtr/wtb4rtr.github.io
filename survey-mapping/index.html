@@ -485,7 +485,7 @@
   );
 
   // Add Stadia Alidade Smooth Dark as the overview map basemap
- var stamenAlidade = L.tileLayer(
+ var stadiaAlidade = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
   {
     attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
@@ -497,13 +497,20 @@
   }
  );
 
-  var openStreetMap = L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-      attribution: '© OpenStreetMap contributors',
-      maxZoom: 19
-    }
-  );
+// Add Stadia Outdoors as the overview map basemap
+ var stadiaOut = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6',
+  {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OpenStreetMap contributors',
+    maxZoom: 20,
+    tileSize: 256,
+    updateWhenIdle: true,
+    keepBuffer: 3,
+    reuseTiles: true
+  }
+ );
+
+ 
 
   var cartoDB = L.tileLayer(
     'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
@@ -519,8 +526,8 @@
   // Add a control to toggle base maps
   var baseMaps = {
     "🟩 Stamen Terrain": stamenTerrain,
-    "🟪 Stamen Dark Alidade": stamenAlidade,
-    "🟦 OpenStreetMap": openStreetMap,
+    "🟪 Stadia Dark Alidade": stadiaAlidade,
+    "🟦 Stadia Outdoors": stadiaOut,
     "🟫 CartoDB Positron": cartoDB
   };
   L.control.layers(baseMaps, null, {position: 'topleft'}).addTo(mapDetail);
