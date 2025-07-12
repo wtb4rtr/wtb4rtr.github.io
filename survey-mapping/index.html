@@ -386,6 +386,25 @@
    FINAL, CONSOLIDATED LEGEND CSS
    ───────────────────────────────────────────────────────────── */
 
+/* MAYA SITES STYLES */
+.triangle-marker {
+  width: 0;
+  height: 0;
+}
+
+.triangle-marker.major-center {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid #af002a;    /* Alabama Crimson*/
+}
+
+.triangle-marker.minor-center {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 16px solid gray;    /* gray */
+}
+
+
 /* Target the bottom-left Leaflet control container that holds our legend */
 .leaflet-bottom.leaflet-left > .leaflet-control.map-legend {
   /*  absolutely position it within the map container  */
