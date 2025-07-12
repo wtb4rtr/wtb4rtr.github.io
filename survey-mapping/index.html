@@ -519,9 +519,6 @@
   margin: 0 !important;             /* we’re using gap now */
 }
 
-
-
-
   </style>
 </head>
 
@@ -619,7 +616,60 @@
 	</figure>
   </div>
     </section>
-    <!-- ...rest of your project sections as before... -->
+    <!-- === MAIN PORTFOLIO CONTENT === -->
+  <main>
+    <!-- === SECOND PROJECT WITH SPLIT MAPS === -->
+    <section class="project-section">
+      <h2>Pueblo III - IV Pit House Village | El Morro Valley, New Mexico (2007)</h2>
+      <!-- === Two-map layout container === -->
+      <div class="split-map-container">
+        <!-- === Main detail map on left (framed and resizable) === -->
+        <div class="map-frame">
+          <div id="map-elmorro-detail" class="split-map">
+            <div class="mini-legend">
+              <strong>Basemaps:</strong><br>
+              🟩 Close Up: Thunderforest Outdoors<br>
+              ⚪ Overview: Esri Gray Canvas
+            </div>
+            <div class="north-arrow"></div>
+          </div>
+        </div>
+        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+        <div id="map-elmorro-overview" class="split-map">
+          <!-- Map will render here; no need for mini-legend -->
+        </div>
+      </div>
+
+      <!-- === Project description and photos === -->
+      <p class="project-description">
+        Between March and August of 2007, I was the crew chief in charge of excavation and mapping on SWCA Environmental Consultants’ data recovery at Hokona Pueblo (LA 153714), located near El Morro National Monument in the El Morro Valley of Cibola County, New Mexico. The site, positioned on the northeast-facing slope of a low basalt rise, was determined to be a multi-component Pueblo III–IV habitation, occupied between A.D. 1275 and 1350. Excavations revealed 45 cultural features, including three pit structures, a masonry room block, masonry storage features, external hearths, pits, rock alignments, and three human burials.
+
+		Mapping and spatial data collection at Hokona combined a sub-meter Trimble GeoXT GPS unit and a Nikon DTM-332 Total Station with data collector. These data were integrated in GIS to create accurate site maps and determine spatial relationships between features and artifacts. A new site datum was established and a 1×1 meter grid was laid out using actual UTM coordinates, allowing for precise horizontal and vertical control. All surface artifacts were pin-flagged, individually point-provenienced, and recorded in UTM space due to the moderately dense artifact scatter.
+
+		Excavation included shovel-scrape units, midden units, test units, hand units, and trenching strategies, all tied into the grid system. The final mapped site area was expanded from an original survey estimate of 360 m² to 632.9 m² (0.12 acres), based on subsurface features and surface artifact distribution. Total station data were used in conjunction with hand-drawn maps to ensure accuracy and to provide redundancy in field documentation.
+      </p>
+	  <div class="grid-intro">
+		MAPPING AT HOKONA PUEBLO
+      </div>
+  <div class="image-grid">
+	<figure>
+		<img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
+		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar2.JPG" alt="Using Lidar at Nojol Nah">
+		<figcaption>Bob Warden, Julie, and TAMU Students Preparing for LiDAR Scanning.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar3.JPG" alt="Lidar in the Chultun">
+		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar5.JPG" alt="3D Laser scanning">
+		<figcaption>3D Laser Scanning, Toucan House.</figcaption>
+	</figure>
+  </div>
+    </section>
   </main>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
@@ -787,5 +837,112 @@
   legend.addTo(mapDetail);
 </script>
 
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  
+  // ───────────────────────────────────────────────────────
+  // 2) DETAIL MAP SETUP
+  // ───────────────────────────────────────────────────────
+  var mapDetail = L.map('map-elmorro-detail').setView([17.955580, -89.043766], 9);
+
+  // 2a) Base layers
+  var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1,
+    updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Source: Esri, Earthstar Geographics',
+    maxZoom: 19, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var thunderforestOutdoor = L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors',
+    maxZoom: 22, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var thunderforestAtlas = L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors',
+    maxZoom: 22, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var thunderforestLandscape = L.tileLayer('https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors',
+    maxZoom: 22, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var stadiaAlidade = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors',
+    maxZoom: 20, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var stadiaOut = L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors',
+    maxZoom: 20, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  var cartoDB = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO', maxZoom: 19
+  });
+
+  var osmBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors',
+    maxZoom: 20, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  });
+
+  // 2b) Add default layer
+  thunderforestOutdoor.addTo(mapDetail);
+
+  // ───────────────────────────────────────────────────────
+  // 3) CUSTOM SURVEYOR MARKER
+  // ───────────────────────────────────────────────────────
+  var surveyorIcon = L.icon({
+    iconUrl: '/assets/images/common/surveyor-icon.png',
+    iconSize: [32,32], iconAnchor: [16,16], className: 'no-default-icon'
+  });
+  L.marker([35.043044, -108.290564], { icon: surveyorIcon })
+    .addTo(mapDetail)
+    .bindTooltip("HOKONA PUEBLO/LA 153714", { permanent: true, direction: "top", className: "custom-label" });
+
+  // ───────────────────────────────────────────────────────
+  // 4) OVERVIEW MAP (RIGHT CIRCLE)
+  // ───────────────────────────────────────────────────────
+  var mapOverview = L.map('map-elmorro-overview', {
+    zoomControl: false, dragging: false, scrollWheelZoom: false,
+    doubleClickZoom: false, boxZoom: false, keyboard: false,
+    tap: false, touchZoom: false
+  }).setView([35.043044, -108.290564], 4);
+
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
+    maxZoom: 16, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
+  }).addTo(mapOverview);
+
+  L.circleMarker([35.043044, -108.290564], {
+    radius: 4, color: '#a32638', fillColor: '#a32638', fillOpacity: 1
+  }).addTo(mapOverview)
+    .bindTooltip("PROJECT AREA", { permanent: true, direction: "top", className: "custom-label2" });
+
+  
+// ─────────────────────────────────────────────────────
+      // 7) LAYERS CONTROL (default basemaps + Maya overlay)
+      //    with collapsed:false so the overlay is visible
+      // ─────────────────────────────────────────────────────
+      L.control.layers({
+          "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
+          "🛰️ Esri Satellite": esriWorldImagery,
+          "🟩 Stamen Terrain": stamenTerrain,
+          "🗺️ Thunderforest Atlas": thunderforestAtlas,
+          "🟪 Stadia Dark Alidade": stadiaAlidade,
+          "🌳 Thunderforest Landscape": thunderforestLandscape,
+          "🟦 Stadia Outdoors": stadiaOut,
+          "🟫 CartoDB Positron": cartoDB,
+          "⬜️ OSM Bright": osmBright
+        },
+        
+        { position:'topleft', collapsed:false }
+      ).addTo(mapDetail);
+    });
+	</script>
 </body>
 </html>
