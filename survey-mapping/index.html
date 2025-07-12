@@ -834,16 +834,14 @@
   legend.addTo(mapBlue);
 </script>
 
-
-<script>
-  
-  //_______________________________________________________
+//_______________________________________________________
   // SECOND MAP EL MORRO
   //
   // --------------------------------------------------------
+<script>
   // 2) DETAIL MAP SETUP
   // ───────────────────────────────────────────────────────
-  var mapElmorro = L.map('map-elmorro-detail').setView([35.043044, -108.290564], 9);
+  var mapElm = L.map('map-elmorro-detail').setView([35.043044, -108.290564], 9);
 
   // 2a) Base layers
   var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
@@ -891,7 +889,7 @@
   });
 
   // 2b) Add default layer
-  thunderforestOutdoor.addTo(mapElmorro);
+  thunderforestOutdoor.addTo(mapElm);
 
   // ───────────────────────────────────────────────────────
   // 3) CUSTOM SURVEYOR MARKER
@@ -901,13 +899,13 @@
     iconSize: [32,32], iconAnchor: [16,16], className: 'no-default-icon'
   });
   L.marker([35.043044, -108.290564], { icon: surveyorIcon })
-    .addTo(mapElmorro)
+    .addTo(mapElm)
     .bindTooltip("HOKONA PUEBLO/LA 153714", { permanent: true, direction: "top", className: "custom-label" });
 
   // ───────────────────────────────────────────────────────
   // 4) OVERVIEW MAP (RIGHT CIRCLE)
   // ───────────────────────────────────────────────────────
-  var overviewElmorro = L.map('map-elmorro-overview', {
+  var ovElm = L.map('map-elmorro-overview', {
     zoomControl: false, dragging: false, scrollWheelZoom: false,
     doubleClickZoom: false, boxZoom: false, keyboard: false,
     tap: false, touchZoom: false
@@ -941,7 +939,7 @@
         },
         
         { position:'topleft', collapsed:false }
-      ).addTo(mapElmorro);
+      ).addTo(mapElm);
 	</script>
 </body>
 </html>
