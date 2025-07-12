@@ -22,6 +22,12 @@
   .leaflet-tooltip.custom-label::after {
     display: none !important;             /* Ensures tooltips are rectangles only */
   }
+  
+  /* Hide white tooltip "arrows" for custom labels in Leaflet maps */
+  .leaflet-tooltip.custom-label2::before,
+  .leaflet-tooltip.custom-label2::after {
+    display: none !important;             /* Ensures tooltips are rectangles only */
+  }
 
   .leaflet-tile {
     border: none !important;              /* Removes visible seams/borders on tiles */
