@@ -465,6 +465,14 @@
   background: black                    !important;
 }
 
+/* ── Align the circle swatches with the triangle swatches ── */
+.leaflet-control.map-legend .legend-regional,
+.leaflet-control.map-legend .legend-courtyard {
+  display: inline-block;  /* ensure margin applies */
+  margin-right: 8px;      /* same spacing as your triangle swatches */
+}
+
+
 /* ───────── Horizontal Zoom Controls ───────── */
 
 /* 1) Make the zoom control container a flex row */
