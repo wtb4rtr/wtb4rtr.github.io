@@ -365,76 +365,86 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   MANUAL MAP LEGEND – POSITIONED INSIDE .leaflet-container
-───────────────────────────────────────────────────────────── */
+   FINAL, CONSOLIDATED LEGEND CSS
+   ───────────────────────────────────────────────────────────── */
 
-/* Legend container */
-.map-legend {
-  position: absolute;              /* absolutely position within map */
-  left: 10px;                      /* 10px from left edge of map */
-  bottom: 10px;                    /* 10px from bottom edge of map */
-  background: white;               /* solid white background */
-  padding: 8px 12px;               /* internal breathing room */
-  border-radius: 6px;              /* rounded corners */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* subtle drop shadow */
-  font-size: 0.9rem;               /* base font size */
-  line-height: 1.4em;              /* comfortable line spacing */
-  min-width: 150px;                /* ensure labels do not wrap */
-  z-index: 1000;                   /* atop all other map elements */
+/* Target the bottom-left Leaflet control container that holds our legend */
+.leaflet-bottom.leaflet-left > .leaflet-control.map-legend {
+  /*  absolutely position it within the map container  */
+  position: absolute !important;
+
+  /*  pull it in 10px from left & bottom of the map  */
+  left:   10px !important;
+  bottom: 10px !important;
+
+  /*  ensure no other top/right/margin is interfering  */
+  top:    auto    !important;
+  right:  auto    !important;
+  margin: 0       !important;
+
+  /*  give it breathing room + minimum width  */
+  padding:    8px 12px        !important;  /* inside padding */
+  min-width:  150px           !important;  /* prevents wrapping */
+  background: white           !important;  /* solid background */
+  border-radius: 6px          !important;  /* rounded corners */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important; /* subtle drop shadow */
+  font-size:  0.9rem          !important;  /* base font size */
+  line-height:1.4em           !important;  /* comfortable line height */
+  z-index:    1000            !important;  /* above every other map control */
 }
 
-/* Unstyled list inside legend */
-.map-legend ul {
-  list-style: none;                /* remove default bullets */
-  margin: 0;                       /* reset default margin */
-  padding: 0;                      /* reset default padding */
+/* Make sure the legend’s inner list is clean */
+.leaflet-control.map-legend ul {
+  list-style: none;  /* no default bullets */
+  margin: 0;         /* reset margin */
+  padding: 0;        /* reset padding */
 }
 
-/* Each legend item */
-.map-legend li {
-  display: flex;                   /* align swatch + text horizontally */
-  align-items: center;             /* vertical centering */
-  white-space: nowrap;             /* prevent text wrapping */
-  margin-bottom: 6px;              /* space below each item */
+/* Style each legend item */
+.leaflet-control.map-legend li {
+  display:        flex    !important; /* horizontally align icon + text */
+  align-items:    center  !important; /* vertical centering */
+  white-space:    nowrap  !important; /* prevent line-breaks */
+  margin-bottom:  6px     !important; /* spacing between items */
 }
-.map-legend li:last-child {
-  margin-bottom: 0;                /* no extra space after last item */
-}
-
-/* Common swatch styling */
-.map-legend .legend-swatch {
-  flex-shrink: 0;                  /* never shrink swatch */
-  margin-right: 8px;               /* gap between swatch and label */
+.leaflet-control.map-legend li:last-child {
+  margin-bottom: 0 !important; /* no extra gap after the last item */
 }
 
-/* ► Major Centers – big red triangle */
-.map-legend .legend-major {
-  width: 0; height: 0;                                 /* no box, only borders */
-  border-left:  8px solid transparent;                 /* invisible left side */
-  border-right: 8px solid transparent;                 /* invisible right side */
-  border-bottom:16px solid #af002a;                    /* red triangle pointing up */
+/* Swatches (triangles & circles) */
+.leaflet-control.map-legend .legend-swatch {
+  flex-shrink: 0      !important; /* never shrink */
+  margin-right: 8px   !important; /* gap between swatch & label */
 }
 
-/* ► Minor Centers – smaller gray triangle */
-.map-legend .legend-minor {
-  width: 0; height: 0;                                 /* no box, only borders */
-  border-left:  6px solid transparent;                 /* invisible left side */
-  border-right: 6px solid transparent;                 /* invisible right side */
-  border-bottom:12px solid gray;                       /* gray triangle pointing up */
+/* Major Centers: big crimson triangle */
+.leaflet-control.map-legend .legend-major {
+  width: 0; height: 0;
+  border-left:  8px solid transparent  !important;
+  border-right: 8px solid transparent  !important;
+  border-bottom: 16px solid #af002a    !important;
 }
 
-/* ► Regional Centers – orange circle */
-.map-legend .legend-regional {
-  width: 12px; height: 12px;                           /* set circle size */
-  border-radius: 50%;                                  /* make it round */
-  background: orange;                                  /* orange fill */
+/* Minor Centers: smaller gray triangle */
+.leaflet-control.map-legend .legend-minor {
+  width: 0; height: 0;
+  border-left:  6px solid transparent  !important;
+  border-right: 6px solid transparent  !important;
+  border-bottom: 12px solid gray       !important;
 }
 
-/* ► Courtyard Groups – black circle */
-.map-legend .legend-courtyard {
-  width:  8px; height:  8px;                          /* set circle size */
-  border-radius: 50%;                                  /* make it round */
-  background: black;                                   /* black fill */
+/* Regional Centers: orange circle */
+.leaflet-control.map-legend .legend-regional {
+  width: 12px; height: 12px             !important;
+  border-radius: 50%                   !important;
+  background: orange                   !important;
+}
+
+/* Courtyard Groups: black circle */
+.leaflet-control.map-legend .legend-courtyard {
+  width: 8px; height: 8px               !important;
+  border-radius: 50%                   !important;
+  background: black                    !important;
 }
 
 
@@ -702,5 +712,6 @@
   };
   legend.addTo(mapDetail);
 </script>
+
 </body>
 </html>
