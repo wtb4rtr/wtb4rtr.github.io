@@ -465,6 +465,26 @@
   background: black                    !important;
 }
 
+/* ───────── Horizontal Zoom Controls ───────── */
+
+/* 1) Make the zoom control container a flex row */
+.leaflet-top.leaflet-left .leaflet-control-zoom.leaflet-bar {
+  display: flex !important;         /* turn on flexbox */
+  flex-direction: row !important;   /* arrange children in a row */
+  gap: 4px;                         /* small gap between buttons */
+}
+
+/* 2) Tweak each button’s hit-area & centering */
+.leaflet-control-zoom.leaflet-bar a {
+  display: block !important;        /* ensure block for sizing */
+  width: 32px !important;           /* square buttons */
+  height: 32px !important;
+  line-height: 32px !important;     /* vertically center the “+”/“–” */
+  text-align: center !important;    /* horizontally center */
+  margin: 0 !important;             /* we’re using gap now */
+}
+
+
 
 
   </style>
