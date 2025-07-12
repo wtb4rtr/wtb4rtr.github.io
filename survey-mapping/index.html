@@ -680,7 +680,7 @@
   // ───────────────────────────────────────────────────────
   // 2) DETAIL MAP SETUP
   // ───────────────────────────────────────────────────────
-  var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
+  var mapBlue = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
 
   // 2a) Base layers
   var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
@@ -728,7 +728,7 @@
   });
 
   // 2b) Add default layer
-  thunderforestOutdoor.addTo(mapDetail);
+  thunderforestOutdoor.addTo(mapBlue);
 
   // ───────────────────────────────────────────────────────
   // 3) CUSTOM SURVEYOR MARKER
@@ -738,13 +738,13 @@
     iconSize: [32,32], iconAnchor: [16,16], className: 'no-default-icon'
   });
   L.marker([17.955580, -89.043766], { icon: surveyorIcon })
-    .addTo(mapDetail)
+    .addTo(mapBlue)
     .bindTooltip("NOJOL NAH", { permanent: true, direction: "top", className: "custom-label" });
 
   // ───────────────────────────────────────────────────────
   // 4) OVERVIEW MAP (RIGHT CIRCLE)
   // ───────────────────────────────────────────────────────
-  var mapOverview = L.map('map-bluecreek-overview', {
+  var overBlue = L.map('map-bluecreek-overview', {
     zoomControl: false, dragging: false, scrollWheelZoom: false,
     doubleClickZoom: false, boxZoom: false, keyboard: false,
     tap: false, touchZoom: false
@@ -753,11 +753,11 @@
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
     maxZoom: 16, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
-  }).addTo(mapOverview);
+  }).addTo(overBlue);
 
   L.circleMarker([17.955580, -89.043766], {
     radius: 4, color: '#a32638', fillColor: '#a32638', fillOpacity: 1
-  }).addTo(mapOverview)
+  }).addTo(overBlue)
     .bindTooltip("PROJECT AREA", { permanent: true, direction: "top", className: "custom-label2" });
 
   // ───────────────────────────────────────────────────────
@@ -795,7 +795,7 @@
           var name = f.properties.BWNAME;
           if (name) layer.bindTooltip(name, {direction:'top', sticky:true});
         }
-      }).addTo(mapDetail);
+      }).addTo(mapBlue);
 
       // ─────────────────────────────────────────────────────
       // 7) LAYERS CONTROL (default basemaps + Maya overlay)
@@ -816,7 +816,7 @@
           "🏛️ Maya Sites": mayaSites
         },
         { position:'topleft', collapsed:false }
-      ).addTo(mapDetail);
+      ).addTo(mapBlue);
     });
 	
 	 // 5) ADD THE MAP LEGEND
@@ -833,7 +833,7 @@
       '</ul>';
     return div;
   };
-  legend.addTo(mapDetail);
+  legend.addTo(mapBlue);
 </script>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -845,7 +845,7 @@
   // --------------------------------------------------------
   // 2) DETAIL MAP SETUP
   // ───────────────────────────────────────────────────────
-  var mapDetail = L.map('map-elmorro-detail').setView([35.043044, -108.290564], 9);
+  var mapElmorro = L.map('map-elmorro-detail').setView([35.043044, -108.290564], 9);
 
   // 2a) Base layers
   var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
@@ -893,7 +893,7 @@
   });
 
   // 2b) Add default layer
-  thunderforestOutdoor.addTo(mapDetail);
+  thunderforestOutdoor.addTo(mapElmorro);
 
   // ───────────────────────────────────────────────────────
   // 3) CUSTOM SURVEYOR MARKER
@@ -903,13 +903,13 @@
     iconSize: [32,32], iconAnchor: [16,16], className: 'no-default-icon'
   });
   L.marker([35.043044, -108.290564], { icon: surveyorIcon })
-    .addTo(mapDetail)
+    .addTo(mapElmorro)
     .bindTooltip("HOKONA PUEBLO/LA 153714", { permanent: true, direction: "top", className: "custom-label" });
 
   // ───────────────────────────────────────────────────────
   // 4) OVERVIEW MAP (RIGHT CIRCLE)
   // ───────────────────────────────────────────────────────
-  var mapOverview = L.map('map-elmorro-overview', {
+  var overviewElmorro = L.map('map-elmorro-overview', {
     zoomControl: false, dragging: false, scrollWheelZoom: false,
     doubleClickZoom: false, boxZoom: false, keyboard: false,
     tap: false, touchZoom: false
@@ -918,11 +918,11 @@
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ',
     maxZoom: 16, tileSize: 256, updateWhenIdle: true, keepBuffer: 3, reuseTiles: true
-  }).addTo(mapOverview);
+  }).addTo(overviewElmorro);
 
   L.circleMarker([35.043044, -108.290564], {
     radius: 4, color: '#a32638', fillColor: '#a32638', fillOpacity: 1
-  }).addTo(mapOverview)
+  }).addTo(overviewElmorro)
     .bindTooltip("PROJECT AREA", { permanent: true, direction: "top", className: "custom-label2" });
 
   
@@ -943,8 +943,7 @@
         },
         
         { position:'topleft', collapsed:false }
-      ).addTo(mapDetail);
-    });
+      ).addTo(mapElmorro);
 	</script>
 </body>
 </html>
