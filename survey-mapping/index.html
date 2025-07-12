@@ -664,15 +664,14 @@
 		<img src="/assets/images/survey-mapping/lidar3.JPG" alt="Lidar in the Chultun">
 		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
 	</figure>
-	<figure>
-		<img src="/assets/images/survey-mapping/lidar5.JPG" alt="3D Laser scanning">
-		<figcaption>3D Laser Scanning, Toucan House.</figcaption>
-	</figure>
+	
   </div>
     </section>
   </main>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
+  
+  // FIRST MAP NOJOL NAH //
   // ───────────────────────────────────────────────────────
   // 1) Placeholder for our overlay layer (Maya sites)
   // ───────────────────────────────────────────────────────
@@ -681,7 +680,7 @@
   // ───────────────────────────────────────────────────────
   // 2) DETAIL MAP SETUP
   // ───────────────────────────────────────────────────────
-  var mapDetail = L.map('map-elmorro-detail').setView([17.955580, -89.043766], 9);
+  var mapDetail = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 9);
 
   // 2a) Base layers
   var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
@@ -840,10 +839,13 @@
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
   
-  // ───────────────────────────────────────────────────────
+  //_______________________________________________________
+  // SECOND MAP EL MORRO
+  //
+  // --------------------------------------------------------
   // 2) DETAIL MAP SETUP
   // ───────────────────────────────────────────────────────
-  var mapDetail = L.map('map-elmorro-detail').setView([17.955580, -89.043766], 9);
+  var mapDetail = L.map('map-elmorro-detail').setView([35.043044, -108.290564], 9);
 
   // 2a) Base layers
   var stamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
@@ -925,8 +927,8 @@
 
   
 // ─────────────────────────────────────────────────────
-      // 7) LAYERS CONTROL (default basemaps + Maya overlay)
-      //    with collapsed:false so the overlay is visible
+      // 7) LAYERS CONTROL 
+      //    
       // ─────────────────────────────────────────────────────
       L.control.layers({
           "🏞️ Thunderforest Outdoors": thunderforestOutdoor,
