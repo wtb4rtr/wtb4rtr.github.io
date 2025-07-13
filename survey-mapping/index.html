@@ -580,6 +580,37 @@
       0 2px 12px 0 rgba(0,0,0,0.32);      /* floating effect */
     z-index: 5;           /* sit above the detail map */
   }
+  
+  /* ─────────────────────────────────────────────────────────────
+     EL MIRÓN MAP HEIGHT FIX
+     These rules give your West Mesa map DIVs an explicit size,
+     exactly mirroring what you already have for Blue Creek.
+     ───────────────────────────────────────────────────────────── */
+  
+  /* 1) Fill the .map-frame container (height:600px) so detail map appears */
+  #map-elmir-detail {
+    width: 100%;          /* same as its parent .map-frame width */
+    height: 100%;         /* fill the 600px height of .map-frame */
+    margin: 0;            /* remove any default margin */
+    padding: 0;           /* remove any default padding */
+  }
+
+  /* 2) Match your circular overview styling for West Mesa */
+  #map-elmir-overview {
+    width: 400px;         /* exactly the same width as Blue Creek overview */
+    height: 400px;        /* exactly the same height as Blue Creek overview */
+    border-radius: 50%;   /* make it circular */
+    border: 2px solid #080808cc;  /* semi-transparent black border */
+    overflow: hidden;     /* hide tile overflow */
+    position: absolute;   /* same positioning inside .split-map-container */
+    right: 36px;          /* same right offset as Blue Creek */
+    top: 10px;            /* same top offset as Blue Creek */
+    background: #fff;     /* white background */
+    box-shadow:
+      0 8px 48px 12px rgba(8,8,8,0.36),   /* outer glow */
+      0 2px 12px 0 rgba(0,0,0,0.32);      /* floating effect */
+    z-index: 5;           /* sit above the detail map */
+  }
 
   </style>
 </head>
@@ -755,6 +786,51 @@
       </p>
 	  <div class="grid-intro">
 		MAPPING AT WEST MESA, ALBUQUERQUE AND SANTA ANA PUEBLO, NM
+      </div>
+  <div class="image-grid">
+	<figure>
+		<img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
+		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar2.JPG" alt="Using Lidar at Nojol Nah">
+		<figcaption>Bob Warden, Julie, and TAMU Students Preparing for LiDAR Scanning.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar3.JPG" alt="Lidar in the Chultun">
+		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
+	</figure>
+  </div>
+    </section>
+	
+	<!-- === FOURTH PROJECT WITH SPLIT MAPS === -->
+    <section class="project-section">
+      <h2>El Mirón, Solutrean/Magdalenian Cave Deposits | Ramales de la Victoria, Cantabria, Spain 2006</h2>
+      <!-- === Two-map layout container === -->
+      <div class="split-map-container">
+        <!-- === Main detail map on left (framed and resizable) === -->
+        <div class="map-frame">
+          <div id="map-elmir-detail" class="split-map">
+            <div class="mini-legend">
+              <strong>Basemaps:</strong><br>
+              🟩 Close Up: Thunderforest Outdoors<br>
+              ⚪ Overview: Esri Gray Canvas
+            </div>
+            <div class="north-arrow"></div>
+          </div>
+        </div>
+        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+        <div id="map-elmir-overview" class="split-map">
+          <!-- Map will render here; no need for mini-legend -->
+        </div>
+      </div>
+
+      <!-- === Project description and photos === -->
+      <p class="project-description">
+        
+      </p>
+	  <div class="grid-intro">
+		MAPPING SOLUTREAN AND MAGDALENIAN DEPOSITS, EL MIRÓN, SPAIN
       </div>
   <div class="image-grid">
 	<figure>
@@ -1195,6 +1271,134 @@ L.control.layers(
   null,                // no overlays for El Morro
   { position: 'topleft', collapsed: false }
 ).addTo(mapWmdetail);
+
+// ─────────────────────────────────────────────────────────────
+//  EL MIRON DETAIL MAP
+// ─────────────────────────────────────────────────────────────
+
+// 1) Initialize the detail map in the left pane
+var mapElmir = L.map('map-elmir-detail')
+  .setView([43.245588, -3.452146], 9);  // center on Santa Ana
+
+// 2) Define all the base layers (give them Wm suffix so nothing collides)
+var stamenTerrainElmir = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
+  }
+);
+var esriWorldImageryElmir = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
+  }
+);
+var thunderforestOutdoorElmir = L.tileLayer(
+  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
+  }
+);
+var thunderforestAtlasElmir = L.tileLayer(
+  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var thunderforestLandscapeElmir = L.tileLayer(
+  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var stadiaAlidadeElmir = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
+  }
+);
+var stadiaOutElmir = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
+  }
+);
+var cartoDBElmir = L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO', maxZoom: 19
+  }
+);
+var osmBrightElmir = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
+  }
+);
+
+// 3) Add your chosen default layer to the detail map
+thunderforestOutdoorWm.addTo(mapElmir);
+
+// 4) Place the custom surveyor icon marker at the site center
+var surveyorIconElmir = L.icon({
+  iconUrl: '/assets/images/common/surveyor-icon.png',
+  iconSize: [32,32],
+  iconAnchor: [16,16],
+  className: 'no-default-icon'
+});
+L.marker([43.245588, -3.452146], { icon: surveyorIconWm })
+  .addTo(mapElmir)
+  .bindTooltip(
+    "EL MIRÓN",
+    { permanent: true, direction: 'top', className: 'custom-label' }
+  );
+
+// ─────────────────────────────────────────────────────────────
+//  EL MIRÓN OVERVIEW MAP (small circle in the right pane)
+// ─────────────────────────────────────────────────────────────
+
+// 5) Initialize the overview map with all interactions off
+var mapElMover = L.map('map-elmir-overview', {
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  boxZoom: false,
+  keyboard: false,
+  tap: false,
+  touchZoom: false
+})
+  .setView([43.245588, -3.452146], 4);  // zoomed-out view
+
+// 6) Add a simple gray‐canvas basemap for the overview
+L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
+  }
+).addTo(mapElMover);
+
+// 7) Plot a circle marker showing the project area in the overview
+L.circleMarker([43.245588, -3.452146], {
+  radius: 4,
+  color: '#a32638',
+  fillColor: '#a32638',
+  fillOpacity: 1
+})
+  .addTo(mapElMover)
+  .bindTooltip(
+    "PROJECT AREA",
+    { permanent: true, direction: 'top', className: 'custom-label2' }
+  );
+
+// ─────────────────────────────────────────────────────────────
+//  LAYERS CONTROL for the detail map
+// ─────────────────────────────────────────────────────────────
+L.control.layers(
+  {
+    "🏞️ Thunderforest Outdoors": thunderforestOutdoorElmir,
+    "🛰️ Esri Satellite": esriWorldImageryElmir,
+    "🟩 Stamen Terrain": stamenTerrainElmir,
+    "🗺️ Thunderforest Atlas": thunderforestAtlasElmir,
+    "🌳 Thunderforest Landscape": thunderforestLandscapeElmir,
+    "🟪 Stadia Dark Alidade": stadiaAlidadeElmir,
+    "🟦 Stadia Outdoors": stadiaOutElmir,
+    "🟫 CartoDB Positron": cartoDBElmir,
+    "⬜️ OSM Bright": osmBrightElmir
+  },
+  null,                // no overlays for El Morro
+  { position: 'topleft', collapsed: false }
+).addTo(mapElmir);
 </script>
 
 </body>
