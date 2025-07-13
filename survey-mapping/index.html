@@ -1518,7 +1518,7 @@ L.control.layers(
 
 // 1) Initialize the detail map in the left pane
 var mapGilwy = L.map('map-gilwy-detail')
-  .setView([44.340369, -105.405736], 12);  // center on Gillette, WY
+  .setView([44.37698, -105.32076], 12);  // center on Gillette, WY
   
   // 2) Add lat/long tracker
 mapGilwy.on('mousemove', function(e) {
@@ -1583,7 +1583,7 @@ var surveyorIconGilwy = L.icon({
   iconAnchor: [16,16],
   className: 'no-default-icon'
 });
-L.marker([44.340369, -105.405736], { icon: surveyorIconGilwy })
+L.marker([44.37698, -105.32076], { icon: surveyorIconGilwy })
   .addTo(mapGilwy)
   .bindTooltip(
     "BUFFALO JUMP/BONE BED",
@@ -1605,7 +1605,7 @@ var mapGilwyover = L.map('map-gilwy-overview', {
   tap: false,
   touchZoom: false
 })
-  .setView([44.340369, -105.405736], 3);  // zoomed-out view
+  .setView([44.37698, -105.32076], 3);  // zoomed-out view
 
 // 6) Add a simple gray‐canvas basemap for the overview
 L.tileLayer(
@@ -1615,7 +1615,7 @@ L.tileLayer(
 ).addTo(mapGilwyover);
 
 // 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([44.340369, -105.405736], {
+L.circleMarker([44.37698, -105.32076], {
   radius: 4,
   color: '#a32638',
   fillColor: '#a32638',
