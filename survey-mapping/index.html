@@ -622,6 +622,37 @@
       0 2px 12px 0 rgba(0,0,0,0.32);      /* floating effect */
     z-index: 5;           /* sit above the detail map */
   }
+  
+  /* ─────────────────────────────────────────────────────────────
+     GILLETTE MAP HEIGHT FIX
+     These rules give your West Mesa map DIVs an explicit size,
+     exactly mirroring what you already have for Blue Creek.
+     ───────────────────────────────────────────────────────────── */
+  
+  /* 1) Fill the .map-frame container (height:600px) so detail map appears */
+  #map-gilwy-detail {
+    width: 100%;          /* same as its parent .map-frame width */
+    height: 100%;         /* fill the 600px height of .map-frame */
+    margin: 0;            /* remove any default margin */
+    padding: 0;           /* remove any default padding */
+  }
+
+  /* 2) Match your circular overview styling for West Mesa */
+  #map-gilwy-overview {
+    width: 400px;         /* exactly the same width as Blue Creek overview */
+    height: 400px;        /* exactly the same height as Blue Creek overview */
+    border-radius: 50%;   /* make it circular */
+    border: 2px solid #080808cc;  /* semi-transparent black border */
+    overflow: hidden;     /* hide tile overflow */
+    position: absolute;   /* same positioning inside .split-map-container */
+    right: 36px;          /* same right offset as Blue Creek */
+    top: 10px;            /* same top offset as Blue Creek */
+    background: #fff;     /* white background */
+    box-shadow:
+      0 8px 48px 12px rgba(8,8,8,0.36),   /* outer glow */
+      0 2px 12px 0 rgba(0,0,0,0.32);      /* floating effect */
+    z-index: 5;           /* sit above the detail map */
+  }
 
   </style>
 </head>
@@ -848,6 +879,50 @@
 		<img src="/assets/images/survey-mapping/spainmapping.JPG" alt="Mapping El Mirón" class="portrait-img">
 		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
 	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar2.JPG" alt="Using Lidar at Nojol Nah">
+		<figcaption>Bob Warden, Julie, and TAMU Students Preparing for LiDAR Scanning.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar3.JPG" alt="Lidar in the Chultun">
+		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
+	</figure>
+  </div>
+    </section>
+	
+	<!-- === LAST PROJECT WITH SPLIT MAPS === -->
+    <section class="project-section">
+      <h2>Late Prehistoric Buffalo Jump/Bison Bone Bed | Gillette, Wyoming
+      <div class="split-map-container">
+        <!-- === Main detail map on left (framed and resizable) === -->
+        <div class="map-frame">
+          <div id="map-gilwy-detail" class="split-map">
+            <div class="mini-legend">
+              <strong>Basemaps:</strong><br>
+              🟩 Close Up: Thunderforest Outdoors<br>
+              ⚪ Overview: Esri Gray Canvas
+            </div>
+            <div class="north-arrow"></div>
+          </div>
+        </div>
+        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+        <div id="map-gilwy-overview" class="split-map">
+          <!-- Map will render here; no need for mini-legend -->
+        </div>
+      </div>
+
+      <!-- === Project description and photos === -->
+      <p class="project-description">
+        
+      </p>
+	  <div class="grid-intro">
+		MAPPING THE BONE BED
+      </div>
+  <div class="image-grid">
+	<figure>
+		<img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
+		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
+	</figure>-
 	<figure>
 		<img src="/assets/images/survey-mapping/lidar2.JPG" alt="Using Lidar at Nojol Nah">
 		<figcaption>Bob Warden, Julie, and TAMU Students Preparing for LiDAR Scanning.</figcaption>
