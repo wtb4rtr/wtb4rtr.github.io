@@ -1520,10 +1520,11 @@ L.control.layers(
 var mapGilwy = L.map('map-gilwy-detail')
   .setView([44.340369, -105.405736], 12);  // center on Gillette, WY
   
-  // ✅ 2) Add lat/long tracker
+  // 2) Add lat/long tracker
 mapGilwy.on('mousemove', function(e) {
   document.getElementById('latlong-gilwy').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)}, Lng: ${e.latlng.lng.toFixed(5)}`;
+	});
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainGilwy = L.tileLayer(
