@@ -1494,7 +1494,7 @@ L.control.layers(
 
 // 1) Initialize the detail map in the left pane
 var mapGilwy = L.map('map-gilwy-detail')
-  .setView([43.245588, -3.452146], 12);  // center on El Miron
+  .setView([44.304811, -105.367071], 12);  // center on Gillette, WY
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainGilwy = L.tileLayer(
@@ -1553,7 +1553,7 @@ var surveyorIconGilwy = L.icon({
   iconAnchor: [16,16],
   className: 'no-default-icon'
 });
-L.marker([43.245588, -3.452146], { icon: surveyorIconElmir })
+L.marker([44.304811, -105.367071], { icon: surveyorIconElmir })
   .addTo(mapGilwy)
   .bindTooltip(
     "BUFFALO JUMP/BONE BED",
