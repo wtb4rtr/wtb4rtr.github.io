@@ -1022,7 +1022,7 @@
 
 // 1) Initialize the detail map in the left pane
 var mapElMorroDetail = L.map('map-elmorro-detail')
-  .setView([35.043044, -108.290564], 9);  // center on Hokona Pueblo
+  .setView([35.043044, -108.290564], 14);  // center on Hokona Pueblo
 
 // 2) Define all the base layers (give them El suffix so nothing collides)
 var stamenTerrainEl = L.tileLayer(
@@ -1072,7 +1072,7 @@ var osmBrightEl = L.tileLayer(
 );
 
 // 3) Add your chosen default layer to the detail map
-thunderforestOutdoorEl.addTo(mapElMorroDetail);
+thunderforestLandscapeEl.addTo(mapElMorroDetail);
 
 // 4) Place the custom surveyor icon marker at the site center
 var surveyorIconEl = L.icon({
@@ -1130,11 +1130,11 @@ L.circleMarker([35.043044, -108.290564], {
 // ─────────────────────────────────────────────────────────────
 L.control.layers(
   {
-    "🏞️ Thunderforest Outdoors": thunderforestOutdoorEl,
+   	"🌳 Thunderforest Landscape": thunderforestLandscapeEl,
     "🛰️ Esri Satellite": esriWorldImageryEl,
     "🟩 Stamen Terrain": stamenTerrainEl,
     "🗺️ Thunderforest Atlas": thunderforestAtlasEl,
-    "🌳 Thunderforest Landscape": thunderforestLandscapeEl,
+    "🏞️ Thunderforest Outdoors": thunderforestOutdoorEl,
     "🟪 Stadia Dark Alidade": stadiaAlidadeEl,
     "🟦 Stadia Outdoors": stadiaOutEl,
     "🟫 CartoDB Positron": cartoDBEl,
