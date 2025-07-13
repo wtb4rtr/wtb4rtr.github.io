@@ -342,6 +342,17 @@
   padding: 0;                                /* No padding */
 }
 
+/* Override styles for tall (portrait) images */
+.portrait-img {
+  object-fit: contain !important; /* Preserve full height and avoid cropping */
+  width: auto !important;         /* Let width adjust naturally */
+  height: 400px !important;       /* Match the grid height */
+  margin: 0 auto;                 /* Center it horizontally */
+  display: block;                 /* Prevent inline spacing issues */
+  background: #fff;               /* Add background to avoid transparency */
+}
+
+
 .image-grid figcaption {
   margin-top: 0rem;                          /* Closer to image (was 0.5rem) */
   font-size: 1.10rem;                        /* Slightly larger font */
@@ -834,7 +845,7 @@
       </div>
   <div class="image-grid">
 	<figure>
-		<img src="/assets/images/survey-mapping/spainmap3.JPG" alt="Mapping El Mirón">
+		<img src="/assets/images/survey-mapping/spainmap.JPG" alt="Mapping El Mirón" class="portrait-img">
 		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
 	</figure>
 	<figure>
