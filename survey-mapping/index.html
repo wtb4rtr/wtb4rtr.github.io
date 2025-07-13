@@ -1150,7 +1150,7 @@ L.control.layers(
 
 // 1) Initialize the detail map in the left pane
 var mapWmdetail = L.map('map-wmesa-detail')
-  .setView([35.339203, -106.522530], 9);  // center on Santa Ana
+  .setView([35.339203, -106.522530], 12);  // center on Santa Ana
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainWm = L.tileLayer(
@@ -1200,7 +1200,7 @@ var osmBrightWm = L.tileLayer(
 );
 
 // 3) Add your chosen default layer to the detail map
-thunderforestOutdoorWm.addTo(mapWmdetail);
+thunderforestLandscapeWm.addTo(mapWmdetail);
 
 // 4) Place the custom surveyor icon marker at the site center
 var surveyorIconWm = L.icon({
@@ -1258,11 +1258,12 @@ L.circleMarker([35.339203, -106.522503], {
 // ─────────────────────────────────────────────────────────────
 L.control.layers(
   {
-    "🏞️ Thunderforest Outdoors": thunderforestOutdoorWm,
+    "🌳 Thunderforest Landscape": thunderforestLandscapeWm,
+	"🏞️ Thunderforest Outdoors": thunderforestOutdoorWm,
     "🛰️ Esri Satellite": esriWorldImageryWm,
     "🟩 Stamen Terrain": stamenTerrainWm,
     "🗺️ Thunderforest Atlas": thunderforestAtlasWm,
-    "🌳 Thunderforest Landscape": thunderforestLandscapeWm,
+    "🏞️ Thunderforest Outdoors": thunderforestOutdoorWm,
     "🟪 Stadia Dark Alidade": stadiaAlidadeWm,
     "🟦 Stadia Outdoors": stadiaOutWm,
     "🟫 CartoDB Positron": cartoDBWm,
