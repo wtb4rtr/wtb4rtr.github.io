@@ -1553,7 +1553,7 @@ var surveyorIconGilwy = L.icon({
   iconAnchor: [16,16],
   className: 'no-default-icon'
 });
-L.marker([44.304811, -105.367071], { icon: surveyorIconElmir })
+L.marker([44.304811, -105.367071], { icon: surveyorIconGilwy })
   .addTo(mapGilwy)
   .bindTooltip(
     "BUFFALO JUMP/BONE BED",
@@ -1582,7 +1582,7 @@ L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
   }
-).addTo(madpGilwyover);
+).addTo(mapGilwyover);
 
 // 7) Plot a circle marker showing the project area in the overview
 L.circleMarker([44.304811, -105.367071], {
@@ -1603,7 +1603,6 @@ L.circleMarker([44.304811, -105.367071], {
 L.control.layers(
   {
     "🌳 Thunderforest Landscape": thunderforestLandscapeGilwy,
-	"🏞️ Thunderforest Outdoors": thunderforestOutdoorGilwy,
     "🛰️ Esri Satellite": esriWorldImageryGilwy,
     "🟩 Stamen Terrain": stamenTerrainGilwy,
     "🗺️ Thunderforest Atlas": thunderforestAtlasGilwy,
