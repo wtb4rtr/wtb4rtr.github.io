@@ -891,25 +891,33 @@
     </section>
 	
 	<!-- === LAST PROJECT WITH SPLIT MAPS === -->
-    <section class="project-section">
-      <h2>Late Prehistoric Buffalo Jump/Bison Bone Bed | Gillette, Wyoming
-      <div class="split-map-container">
-        <!-- === Main detail map on left (framed and resizable) === -->
-        <div class="map-frame">
-          <div id="map-gilwy-detail" class="split-map">
-            <div class="mini-legend">
-              <strong>Basemaps:</strong><br>
-              🟩 Close Up: Thunderforest Outdoors<br>
-              ⚪ Overview: Esri Gray Canvas
-            </div>
-            <div class="north-arrow"></div>
-          </div>
+<section class="project-section">
+  <h2>Late Prehistoric Buffalo Jump/Bison Bone Bed | Gillette, Wyoming</h2>
+  <div class="split-map-container">
+    
+    <!-- === Main detail map on left (framed and resizable) === -->
+    <div class="map-frame">
+      <div id="map-gilwy-detail" class="split-map">
+        
+        <!-- Lat/Long Display Box -->
+        <div id="latlong-gilwy" class="latlong-box"></div>
+
+        <div class="mini-legend">
+          <strong>Basemaps:</strong><br>
+          🟩 Close Up: Thunderforest Outdoors<br>
+          ⚪ Overview: Esri Gray Canvas
         </div>
-        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
-        <div id="map-gilwy-overview" class="split-map">
-          <!-- Map will render here; no need for mini-legend -->
-        </div>
+        <div class="north-arrow"></div>
       </div>
+    </div>
+
+    <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+    <div id="map-gilwy-overview" class="split-map">
+      <!-- Map will render here; no need for mini-legend -->
+    </div>
+  </div>
+</section>
+
 
       <!-- === Project description and photos === -->
       <p class="project-description">
