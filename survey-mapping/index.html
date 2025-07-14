@@ -284,7 +284,7 @@
   color: #080808;                      /* Vampire Black fill color */
   font-weight: bold;                   /* Bold font weight */
   text-transform: uppercase;           /* Uppercase letters */
-  font-size: 1.75rem;                  /* Prominent text size */
+  font-size: 1.5rem;                  /* Prominent text size */
 
   /* Four offset shadows to create a solid white outline (“halo”) */
   text-shadow:
@@ -1140,7 +1140,7 @@
 
 // 1) Initialize the detail map in the left pane
 var mapElMorroDetail = L.map('map-elmorro-detail')
-  .setView([35.043044, -108.290564], 12);  // center on Hokona Pueblo
+  .setView([35.043044, -108.290564], 12);  
   
   // 2) Add lat/long tracker
 mapElMorroDetail.on('mousemove', function(e) {
@@ -1208,7 +1208,7 @@ var surveyorIconEl = L.icon({
 L.marker([35.043044, -108.290564], { icon: surveyorIconEl })
   .addTo(mapElMorroDetail)
   .bindTooltip(
-    "HOKONA PUEBLO / LA 153714",
+    "HOKONA PUEBLO",
     { permanent: true, direction: 'top', className: 'custom-label' }
   );
 
