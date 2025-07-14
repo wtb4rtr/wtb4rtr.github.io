@@ -1141,6 +1141,12 @@
 // 1) Initialize the detail map in the left pane
 var mapElMorroDetail = L.map('map-elmorro-detail')
   .setView([35.043044, -108.290564], 12);  // center on Hokona Pueblo
+  
+  // 2) Add lat/long tracker
+mapElMorroDetail.on('mousemove', function(e) {
+  document.getElementById('latlong-elmorro').innerHTML =
+    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
+	});
 
 // 2) Define all the base layers (give them El suffix so nothing collides)
 var stamenTerrainEl = L.tileLayer(
@@ -1269,6 +1275,12 @@ L.control.layers(
 // 1) Initialize the detail map in the left pane
 var mapWmdetail = L.map('map-wmesa-detail')
   .setView([35.339203, -106.522530], 12);  // center on Santa Ana
+  
+  // 2) Add lat/long tracker
+mapWmdetail.on('mousemove', function(e) {
+  document.getElementById('latlong-wmesa').innerHTML =
+    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
+	});
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainWm = L.tileLayer(
@@ -1401,7 +1413,7 @@ var mapElmir = L.map('map-elmir-detail')
   
   // 2) Add lat/long tracker
 mapElmir.on('mousemove', function(e) {
-  document.getElementById('latlong-gilwy').innerHTML =
+  document.getElementById('latlong-elmir').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
