@@ -277,8 +277,26 @@
   z-index: 999;
 }
 
-/* --- SIDE-BY-SIDE SCALE BARS (Flex) --- */
-.leaflet-bottom.leaflet-right .leaflet-control-scale {
+/* --- SIDE-BY-SIDE SCALE BARS (Flex, Centered) --- */
+
+/* Center the Leaflet control bar container at the bottom of each map */
+.leaflet-bottom.leaflet-center {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  right: auto !important;
+  /* Make sure other controls don't crowd the center */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  pointer-events: none; /* So map events pass through unless overridden */
+}
+
+/* Let the controls themselves remain clickable */
+.leaflet-bottom.leaflet-center .leaflet-control-scale {
+  pointer-events: auto;
+}
+
+.leaflet-bottom.leaflet-center .leaflet-control-scale {
   display: inline-block !important;
   min-width: 75px;
   vertical-align: top;
@@ -287,7 +305,7 @@
 }
 
 /* Style the metric bar: crimson */
-.leaflet-bottom.leaflet-right .leaflet-control-scale:first-child .leaflet-control-scale-line {
+.leaflet-bottom.leaflet-center .leaflet-control-scale:first-child .leaflet-control-scale-line {
   background: #a32638 !important;
   border: 1px solid #800000 !important;
   color: #fff !important;
@@ -297,7 +315,7 @@
 }
 
 /* Style the imperial bar: white */
-.leaflet-bottom.leaflet-right .leaflet-control-scale:last-child .leaflet-control-scale-line {
+.leaflet-bottom.leaflet-center .leaflet-control-scale:last-child .leaflet-control-scale-line {
   background: #fff !important;
   border: 1px solid #888 !important;
   color: #333 !important;
@@ -316,7 +334,7 @@
 }
 
 /* Grouped flex container for side-by-side scales */
-.leaflet-bottom.leaflet-right .leaflet-control-scale.flex-row {
+.leaflet-bottom.leaflet-center .leaflet-control-scale.flex-row {
   display: flex !important;
   flex-direction: row !important;
   gap: 8px !important;
@@ -328,7 +346,7 @@
 }
 
 /* Each scale bar: allow them to shrink to content width */
-.leaflet-bottom.leaflet-right .leaflet-control-scale.flex-row .leaflet-control-scale {
+.leaflet-bottom.leaflet-center .leaflet-control-scale.flex-row .leaflet-control-scale {
   display: inline-block !important;
   width: auto !important;
   min-width: 50px !important;
