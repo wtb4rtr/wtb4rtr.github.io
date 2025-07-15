@@ -278,7 +278,7 @@
 }
 
 /* ──────────────────────────────────────────────────────────────
-   CUSTOM LEAFLET SCALE BAR STYLE (UPDATED WITH LABEL FIX)
+   CUSTOM LEAFLET SCALE BAR STYLE (THICKER BARS FOR LABEL FIT)
 ────────────────────────────────────────────────────────────── */
 
 /* 1) Container for the scale control */
@@ -305,23 +305,24 @@
   overflow:    visible       !important;  /* allow pseudo-label to show */
   box-sizing:  border-box    !important;  /* include padding/border in width */
   white-space: nowrap        !important;  /* prevent label wrapping */
-  height:      6px           !important;  /* consistent bar thickness */
   margin:      0             !important;  /* reset default margins */
 }
 
-/* 3) Metric bar */
+/* 3) Thicker metric bar */
 .leaflet-control-scale-line:first-child {
-  background:     #a32638             !important;  /* crimson fill */
-  border:         1px solid #800000  !important;  /* darker red outline */
-  border-radius:  3px 3px 0 0        !important;  /* round top corners */
+  height:       20px           !important; /* increase thickness for label room */
+  background:   #a32638         !important; /* crimson fill */
+  border:       1px solid #800000 !important; /* darker red outline */
+  border-radius:3px 3px 0 0      !important; /* round top corners */
 }
 
-/* 4) Imperial bar */
+/* 4) Thicker imperial bar */
 .leaflet-control-scale-line:last-child {
-  background:     #ffffff        !important;  /* white fill */
-  border:         1px solid #888 !important;  /* medium gray */
-  border-radius:  0 0 3px 3px    !important;  /* round bottom corners */
-  margin-top:     -1px           !important;  /* overlap borders for seamless join */
+  height:        20px           !important; /* match metric bar thickness */
+  background:    #ffffff        !important; /* white fill */
+  border:        1px solid #888 !important; /* medium gray */
+  border-radius: 0 0 3px 3px    !important; /* round bottom corners */
+  margin-top:    -2px           !important; /* overlap borders for seamless join */
 }
 
 /* 5) Centered label overlay for both bars */
