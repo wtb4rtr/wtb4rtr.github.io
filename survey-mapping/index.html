@@ -315,6 +315,25 @@
   vertical-align: middle !important;
 }
 
+/* Grouped flex container for side-by-side scales */
+.leaflet-bottom.leaflet-right .leaflet-control-scale.flex-row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px !important;
+  align-items: flex-end !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Each scale bar: allow them to shrink to content width */
+.leaflet-bottom.leaflet-right .leaflet-control-scale.flex-row .leaflet-control-scale {
+  display: inline-block !important;
+  width: auto !important;
+  min-width: 50px !important;
+  margin: 0 !important;
+}
 
 
 
