@@ -1499,6 +1499,14 @@ mapElmir.on('mousemove', function(e) {
   document.getElementById('latlong-elmir').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
+	
+	// 2) Add a scale bar
+L.control.scale({
+  position: 'bottomright',
+  imperial: true,
+  metric: true,
+  maxWidth: 200
+}).addTo(mapElmir);
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainElmir = L.tileLayer(
