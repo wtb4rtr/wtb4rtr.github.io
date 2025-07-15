@@ -277,23 +277,50 @@
   z-index: 999;
 }
 
-/* ------------------------------
+//* ------------------------------
    Custom Leaflet Scale Bar Style
 --------------------------------- */
+/* 1) Container for the whole control */
 .leaflet-control-scale {
-  position: absolute !important;    /* take it out of normal flow */
-  bottom: 15px !important;          /* place above attribution (typically ~30px tall) */
-  right: 40px !important;          /* adjust to the left of north arrow */
-  background-color: #1b1b1b !important; /* match your site’s background */
-  color: #111 !important;          /* white text */
-  font-family: monospace !important;
-  font-size: 0.45rem !important;
-  padding: 1px 3px !important;      /* internal spacing */
-  border: 1px solid #aaa !important;
-  border-radius: 1px !important;
+  position: absolute !important;        /* take it out of normal flow */
+  bottom: 15px !important;              /* sit just above the service credits */
+  right: 40px !important;               /* left of the north arrow */
+  background-color: #1b1b1b !important; /* match page background */
+  color: #111 !important;               /* text color (unused inside bars) */
+  font-family: monospace !important;    
+  font-size: 0.45rem !important;        /* keep your font size */
+  padding: 1px 3px !important;          
+  border: 1px solid #aaa !important;    
+  border-radius: 1px !important;        
   box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
   z-index: 1001 !important;
- }
+}
+
+/* 2) Force each bar to be exactly 10px tall and center its text */
+.leaflet-control-scale-line {
+  height: 10px     !important;  /* bar thickness = 10px */
+  line-height: 10px!important;  /* vertically center label text */
+  margin: 0         !important;  /* collapse any stray margins */
+}
+
+/* 3) Top (metric) bar = crimson */
+.leaflet-control-scale-line:first-child {
+  background: #a32638 !important;      /* crimson fill */
+  border:     1px solid #800000 !important; /* darker crimson border */
+}
+
+/* 4) Bottom (imperial) bar = white */
+.leaflet-control-scale-line:last-child {
+  background: #ffffff !important;      /* white fill */
+  border:     1px solid #888    !important; /* medium gray border */
+}
+
+/* 5) Re-center the pseudo-label on both bars (shouldn’t have moved) */
+.leaflet-control-scale-line:not(:empty)::after {
+  top: 50%        !important;
+  left: 50%       !important;
+  transform: translate(-50%, -50%) !important;
+}
 
 
   /* Styles for the tooltip label on the map marker, with a white “halo” around the text */
