@@ -277,53 +277,23 @@
   z-index: 999;
 }
 
-/* ──────────────────────────────
+/* ------------------------------
    Custom Leaflet Scale Bar Style
-───────────────────────────────── */
+--------------------------------- */
 .leaflet-control-scale {
-  position: absolute !important;       /* remove from normal flow */
-  bottom: 15px !important;             /* just above service credits */
-  right: 70px !important;              /* shove it left of the north arrow */
-  background-color: #1b1b1b !important;/* match page background */
-  color: #ffffff !important;           /* white text */
-  font-family: monospace !important;   /* match your lat/long box */
-  font-size: 0.45rem !important;       /* keep your chosen font size */
-  padding: 1px 3px !important;         /* tiny internal padding */
-  border: 1px solid #aaa !important;   /* subtle border */
-  border-radius: 1px !important;       /* slight rounding */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important; /* gentle drop shadow */
-  z-index: 1001 !important;            /* above most other controls */
-}
-
-/* make the top (metric) bar crimson */
-.leaflet-control-scale-line:first-child {
-  background: #a32638 !important;      /* crimson fill */
-  border:     1px solid #800000 !important; /* dark crimson border */
-  height:     10px !important;         /* maintain your 10px thickness */
-}
-
-/* make the bottom (imperial) bar white */
-.leaflet-control-scale-line:last-child {
-  background: #ffffff !important;      /* white fill */
-  border:     1px solid #888    !important; /* medium gray border */
-  height:     10px !important;         /* maintain your 10px thickness */
-}
-
-/* center both sets of labels vertically over their bars */
-.leaflet-control-scale-line:not(:empty)::after {
-  content: attr(data-label) !important; /* pull in “5 km” or “3 mi” */
-  position: absolute !important;        /* absolute positioning inside bar */
-  top: 50% !important;                  /* vertical center */
-  left: 50% !important;                 /* horizontal center */
-  transform: translate(-50%, -50%) !important; /* perfect centering */
-  font-weight: bold !important;         /* bold for clarity */
-}
-
-/* dark text on white bar for imperial units */
-.leaflet-control-scale-line:last-child:not(:empty)::after {
-  color: #333 !important;               /* dark text on white */
-  text-shadow: none !important;         /* no halo needed */
-}
+  position: absolute !important;    /* take it out of normal flow */
+  bottom: 15px !important;          /* place above attribution (typically ~30px tall) */
+  right: 40px !important;          /* adjust to the left of north arrow */
+  background-color: #1b1b1b !important; /* match your site’s background */
+  color: #111 !important;          /* white text */
+  font-family: monospace !important;
+  font-size: 0.45rem !important;
+  padding: 1px 3px !important;      /* internal spacing */
+  border: 1px solid #aaa !important;
+  border-radius: 1px !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+  z-index: 1001 !important;
+ }
 
 
 
