@@ -1212,7 +1212,13 @@ mapElMorroDetail.on('mousemove', function(e) {
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 	
- 
+// 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapElMorroDetail) 
 
 // 2) Define all the base layers (give them El suffix so nothing collides)
 var stamenTerrainEl = L.tileLayer(
@@ -1348,7 +1354,13 @@ mapWmdetail.on('mousemove', function(e) {
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 	
- 
+ // 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapWmdetail)
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainWm = L.tileLayer(
@@ -1484,7 +1496,14 @@ mapElmir.on('mousemove', function(e) {
   document.getElementById('latlong-elmir').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
-	
+
+// 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapElmir)	
 	 
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
@@ -1622,7 +1641,13 @@ mapGilwy.on('mousemove', function(e) {
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
-
+// 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapGilwy)
 
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
