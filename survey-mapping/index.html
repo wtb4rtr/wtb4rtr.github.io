@@ -277,65 +277,44 @@
   z-index: 999;
 }
 
-/* ------------------------------
-   Custom Leaflet Scale Bar Style - FINAL FIX
---------------------------------- */
-.leaflet-control-scale {
-  position: absolute !important;
-  bottom: 15px !important;
-  right: 40px !important;
-  background-color: #1b1b1b !important;
-  font-family: monospace !important;
-  font-size: 0.45rem !important;
-  padding: 1px 3px !important;
-  border: 1px solid #aaa !important;
-  border-radius: 1px !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
-  z-index: 1001 !important;
+/* --- SIDE-BY-SIDE SCALE BARS (Flex) --- */
+.leaflet-bottom.leaflet-right .leaflet-control-scale {
+  display: inline-block !important;
+  min-width: 75px;
+  vertical-align: top;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-/* Make both bars flex containers for centering */
-.leaflet-control-scale-line {
-  height: 10px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-/* Metric (top) bar */
-.leaflet-control-scale-line:first-child {
+/* Style the metric bar: crimson */
+.leaflet-bottom.leaflet-right .leaflet-control-scale:first-child .leaflet-control-scale-line {
   background: #a32638 !important;
   border: 1px solid #800000 !important;
+  color: #fff !important;
+  height: 10px !important;
+  line-height: 10px !important;
+  font-weight: bold !important;
 }
 
-/* Imperial (bottom) bar */
-.leaflet-control-scale-line:last-child {
+/* Style the imperial bar: white */
+.leaflet-bottom.leaflet-right .leaflet-control-scale:last-child .leaflet-control-scale-line {
   background: #fff !important;
   border: 1px solid #888 !important;
+  color: #333 !important;
+  height: 10px !important;
+  line-height: 10px !important;
+  font-weight: bold !important;
 }
 
-/* Label text inside bars */
-.leaflet-control-scale-line span {
-  width: 100%;
-  text-align: center;
-  font-weight: bold;
-  color: #fff; /* white text for crimson */
-  text-shadow: 0 0 2px #000;
-  line-height: 10px !important; /* vertical center */
-  font-size: 0.95em !important;
-  pointer-events: none;
-  display: block;
+/* Both: fix font and alignment */
+.leaflet-control-scale-line {
+  font-family: monospace !important;
+  font-size: 0.45rem !important;
+  text-align: center !important;
+  position: relative !important;
+  vertical-align: middle !important;
 }
 
-/* Make imperial (white bar) text dark */
-.leaflet-control-scale-line:last-child span {
-  color: #222 !important;
-  text-shadow: none !important;
-}
 
 
 
@@ -1044,7 +1023,8 @@
 		metric: true,
 		maxWidth: 200
 	}).addTo(mapBlue);
-
+	
+	
 
   // 2a) Base layers
   var stamenTerrainbc = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
