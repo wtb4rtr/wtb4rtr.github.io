@@ -1053,19 +1053,12 @@ const imperialScale = L.control.scale({
 
 // --- GROUP THE TWO SCALES INTO ONE CONTAINER FOR FLEX ROW ---
 setTimeout(() => {
-  // Select both scale bars in bottomright
   const controls = document.querySelectorAll('.leaflet-bottom.leaflet-right .leaflet-control-scale');
   if (controls.length === 2) {
-    // Create a flex container
-    const wrapper = document.createElement('div');
-    wrapper.style.display = 'flex';
-    wrapper.style.gap = '6px';
-    wrapper.style.alignItems = 'flex-end';
-    controls[0].parentNode.insertBefore(wrapper, controls[0]);
-    wrapper.appendChild(controls[0]);
-    wrapper.appendChild(controls[1]);
+    controls[0].classList.add('flex-row');
+    controls[0].appendChild(controls[1]);
   }
-}, 400); // slight delay for DOM insertion
+}, 400);
 
 	
 
