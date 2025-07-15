@@ -278,72 +278,64 @@
 }
 
 /* ──────────────────────────────────────────────────────────────
-   CUSTOM LEAFLET SCALE BAR STYLE (THICKER BARS FOR LABEL FIT)
+   CUSTOM LEAFLET SCALE BAR STYLE (LABELS CENTERED IN 10 px BARS)
 ────────────────────────────────────────────────────────────── */
 
 /* 1) Container for the scale control */
 .leaflet-control-scale {
-  position:        absolute       !important;  /* take control out of normal flow */
-  bottom:          15px           !important;  /* sit just above the service credits */
-  right:           40px           !important;  /* align left of the north arrow */
-  background-color: #1b1b1b       !important;  /* match your page background */
-  color:           #ffffff        !important;  /* white text for labels */
-  font-family:     monospace      !important;  /* match lat/long styling */
-  font-size:       0.45rem        !important;  /* preserve your chosen font size */
-  padding:         1px 3px        !important;  /* tiny internal padding */
-  border:          1px solid #aaa !important;  /* light border for definition */
-  border-radius:   1px            !important;  /* very slight rounding */
-  box-shadow:      0 2px 6px rgba(0,0,0,0.2) !important; /* subtle drop shadow */
-  z-index:         1001           !important;  /* above most map controls */
-  overflow:        visible        !important;  /* allow labels to overflow container */
+  position:        absolute           !important;  /* pull it above map controls */
+  bottom:          15px               !important;  /* just above service credits */
+  right:           40px               !important;  /* left of north arrow */
+  background-color: #1b1b1b           !important;  /* match page background */
+  color:           #ffffff            !important;  /* white text */
+  font-family:     monospace          !important;  /* same as lat/long box */
+  font-size:       0.45rem            !important;  /* unchanged */
+  padding:         1px 3px            !important;  /* unchanged */
+  border:          1px solid #aaa     !important;  /* light outline */
+  border-radius:   1px                !important;  /* very slight rounding */
+  box-shadow:      0 2px 6px rgba(0,0,0,0.2) !important; /* subtle shadow */
+  z-index:         1001               !important;  /* above most map controls */
+  overflow:        visible            !important;  /* allow labels to show */
 }
 
-/* 2) Style each bar segment (applies to both metric & imperial) */
-.leaflet-control-scale-line {
-  position:    relative      !important;  /* positioning context for label */
-  display:     inline-block  !important;  /* ensure correct sizing & overflow */
-  overflow:    visible       !important;  /* allow pseudo-label to show */
-  box-sizing:  border-box    !important;  /* include padding/border in width */
-  white-space: nowrap        !important;  /* prevent label wrapping */
-  margin:      0             !important;  /* reset default margins */
-}
-
-/* 3) Thicker metric bar */
+/* 2) Style the metric (first) bar */
 .leaflet-control-scale-line:first-child {
-  height:       10px           !important; /* increase thickness for label room */
-  background:   #a32638         !important; /* crimson fill */
-  border:       1px solid #800000 !important; /* darker red outline */
-  border-radius:3px 3px 0 0      !important; /* round top corners */
+  height:         10px                !important;  /* THINNER bars at 10 px */
+  line-height:    10px                !important;  /* center the label vertically */
+  background:     #a32638             !important;  /* crimson fill */
+  border-radius:  3px 3px 0 0         !important;  /* round top corners */
+  border:         1px solid #800000   !important;  /* darker red outline */
+  margin:         0                   !important;  /* reset defaults */
 }
 
-/* 4) Thicker imperial bar */
+/* 3) Style the imperial (second) bar */
 .leaflet-control-scale-line:last-child {
-  height:        10px           !important; /* match metric bar thickness */
-  background:    #ffffff        !important; /* white fill */
-  border:        1px solid #888 !important; /* medium gray */
-  border-radius: 0 0 3px 3px    !important; /* round bottom corners */
-  margin-top:    -2px           !important; /* overlap borders for seamless join */
+  height:         10px                !important;  /* match metric bar height */
+  line-height:    10px                !important;  /* center the label vertically */
+  background:     #ffffff             !important;  /* white fill */
+  border-radius:  0 0 3px 3px         !important;  /* round bottom corners */
+  border:         1px solid #888      !important;  /* medium gray outline */
+  margin-top:     -1px                !important;  /* overlap borders cleanly */
 }
 
-/* 5) Centered label overlay for both bars */
+/* 4) Center the numeric label on both bars */
 .leaflet-control-scale-line:not(:empty)::after {
-  content:        attr(data-label)       !important;  /* pull in the label text */
-  position:       absolute              !important;  /* absolute within the bar */
-  top:            50%                   !important;  /* vertical center */
-  left:           50%                   !important;  /* horizontal center */
-  transform:      translate(-50%, -50%) !important;  /* perfect centering */
-  font-weight:    bold                  !important;  /* emphasize numbers */
-  text-shadow:    0 0 2px #000          !important;  /* halo for contrast */
-  z-index:        1002                  !important;  /* above the bar itself */
-  white-space:    nowrap                !important;  /* prevent wrapping if label is long */
+  content:        attr(data-label)          !important;  /* the “5 km” or “3 mi” */
+  position:       absolute                 !important;  /* inside each bar */
+  top:            50%                      !important;  /* vertical center */
+  left:           50%                      !important;  /* horizontal center */
+  transform:      translate(-50%, -50%)    !important;  /* exact centering */
+  font-weight:    bold                     !important;  /* emphasize text */
+  text-shadow:    0 0 2px #000             !important;  /* subtle halo */
+  white-space:    nowrap                   !important;  /* no wrapping */
+  z-index:        1002                     !important;  /* above the bar itself */
 }
 
-/* 6) Dark text on white bar (imperial) */
+/* 5) Dark text on the white (imperial) bar */
 .leaflet-control-scale-line:last-child:not(:empty)::after {
-  color:        #333               !important;  /* dark text on light background */
-  text-shadow:  none               !important;  /* halo not needed */
+  color:         #333              !important;  /* dark on light */
+  text-shadow:   none              !important;  /* no halo needed */
 }
-
 
 
 
