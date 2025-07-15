@@ -1643,6 +1643,14 @@ mapGilwy.on('mousemove', function(e) {
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
+// 2) Add a scale bar
+L.control.scale({
+  position: 'bottomright',
+  imperial: true,
+  metric: true,
+  maxWidth: 200
+}).addTo(mapGilwy);
+
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainGilwy = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
