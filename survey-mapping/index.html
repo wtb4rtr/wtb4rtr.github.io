@@ -278,22 +278,65 @@
 }
 
 /* ------------------------------
-   Custom Leaflet Scale Bar Style
+   Custom Leaflet Scale Bar Style - FINAL FIX
 --------------------------------- */
 .leaflet-control-scale {
-  position: absolute !important;    /* take it out of normal flow */
-  bottom: 15px !important;          /* place above attribution (typically ~30px tall) */
-  right: 40px !important;          /* adjust to the left of north arrow */
-  background-color: #1b1b1b !important; /* match your site’s background */
-  color: #111 !important;          /* white text */
+  position: absolute !important;
+  bottom: 15px !important;
+  right: 70px !important;
+  background-color: #1b1b1b !important;
   font-family: monospace !important;
   font-size: 0.45rem !important;
-  padding: 1px 3px !important;      /* internal spacing */
+  padding: 1px 3px !important;
   border: 1px solid #aaa !important;
   border-radius: 1px !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
   z-index: 1001 !important;
- }
+}
+
+/* Make both bars flex containers for centering */
+.leaflet-control-scale-line {
+  height: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Metric (top) bar */
+.leaflet-control-scale-line:first-child {
+  background: #a32638 !important;
+  border: 1px solid #800000 !important;
+}
+
+/* Imperial (bottom) bar */
+.leaflet-control-scale-line:last-child {
+  background: #fff !important;
+  border: 1px solid #888 !important;
+}
+
+/* Label text inside bars */
+.leaflet-control-scale-line span {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: #fff; /* white text for crimson */
+  text-shadow: 0 0 2px #000;
+  line-height: 10px !important; /* vertical center */
+  font-size: 0.95em !important;
+  pointer-events: none;
+  display: block;
+}
+
+/* Make imperial (white bar) text dark */
+.leaflet-control-scale-line:last-child span {
+  color: #222 !important;
+  text-shadow: none !important;
+}
+
 
 
   /* Styles for the tooltip label on the map marker, with a white “halo” around the text */
