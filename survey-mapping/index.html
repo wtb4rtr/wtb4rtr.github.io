@@ -1016,14 +1016,38 @@
   // ───────────────────────────────────────────────────────
   var mapBlue = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 11);
   
-  // 2) Add a scale bar
-	L.control.scale({
-		position: 'bottomright',
-		imperial: true,
-		metric: true,
-		maxWidth: 200
-	}).addTo(mapBlue);
-	
+  // Add metric-only scale (left, crimson)
+const metricScale = L.control.scale({
+  position: 'bottomright',
+  metric: true,
+  imperial: false,
+  maxWidth: 110
+}).addTo(map);
+
+// Add imperial-only scale (right, white)
+const imperialScale = L.control.scale({
+  position: 'bottomright',
+  metric: false,
+  imperial: true,
+  maxWidth: 110
+}).addTo(map);
+
+// --- GROUP THE TWO SCALES INTO ONE CONTAINER FOR FLEX ROW ---
+setTimeout(() => {
+  // Select both scale bars in bottomright
+  const controls = document.querySelectorAll('.leaflet-bottom.leaflet-right .leaflet-control-scale');
+  if (controls.length === 2) {
+    // Create a flex container
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.gap = '6px';
+    wrapper.style.alignItems = 'flex-end';
+    controls[0].parentNode.insertBefore(wrapper, controls[0]);
+    wrapper.appendChild(controls[0]);
+    wrapper.appendChild(controls[1]);
+  }
+}, 400); // slight delay for DOM insertion
+
 	
 
   // 2a) Base layers
