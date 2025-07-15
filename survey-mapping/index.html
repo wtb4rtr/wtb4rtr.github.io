@@ -280,20 +280,58 @@
 /* ------------------------------
    Custom Leaflet Scale Bar Style
 --------------------------------- */
+/* container */
 .leaflet-control-scale {
-  position: absolute !important;    /* take it out of normal flow */
-  bottom: 15px !important;          /* place above attribution (typically ~30px tall) */
-  right: 40px !important;          /* adjust to the left of north arrow */
-  background-color: #1b1b1b !important; /* match your site’s background */
-  color: #111 !important;          /* white text */
+  position: absolute !important;    /* remove from normal flow */
+  bottom: 15px !important;          /* sit just above attribution */
+  right: 70px !important;           /* clear of north arrow */
+  background-color: #1b1b1b !important;
   font-family: monospace !important;
   font-size: 0.45rem !important;
-  padding: 1px 3px !important;      /* internal spacing */
+  padding: 1px 3px !important;
   border: 1px solid #aaa !important;
   border-radius: 1px !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
   z-index: 1001 !important;
- }
+}
+
+/* metric bar */
+.leaflet-control-scale-line:first-child {
+  background: #a32638 !important;   /* crimson fill */
+  border:     1px solid #800000 !important;
+  height:     10px !important;      /* keep your 10px thickness */
+  margin:     0 !important;         /* no extra margins */
+  position:   relative !important;  /* establish positioning for ::after */
+}
+
+/* imperial bar */
+.leaflet-control-scale-line:last-child {
+  background: #ffffff !important;   /* white fill */
+  border:     1px solid #888    !important;
+  height:     10px !important;
+  margin:     0 !important;
+  position:   relative !important;
+}
+
+/* centered labels */
+.leaflet-control-scale-line:not(:empty)::after {
+  content:       attr(data-label) !important; /* “5 km” or “3 mi” */
+  position:      absolute !important;         /* absolute inside each bar */
+  left:          0 !important;                /* span full width */
+  width:         100% !important;
+  height:        10px !important;             /* match bar height */
+  line-height:   10px !important;             /* vertically center text */
+  text-align:    center !important;           /* horizontally center */
+  font-weight:   bold !important;             /* bold labels */
+  color:         inherit !important;           /* metric inherits white, imperial adjusts below */
+  text-shadow:   0 0 2px #000 !important;     /* halo for contrast */
+}
+
+/* override imperial label color */
+.leaflet-control-scale-line:last-child:not(:empty)::after {
+  color:        #333 !important;    /* dark on white */
+  text-shadow:  none !important;
+}
 
 
 
