@@ -1022,7 +1022,7 @@ const metricScale = L.control.scale({
   metric: true,
   imperial: false,
   maxWidth: 110
-}).addTo(map);
+}).addTo(mapBlue);
 
 // Add imperial-only scale (right, white)
 const imperialScale = L.control.scale({
@@ -1030,7 +1030,7 @@ const imperialScale = L.control.scale({
   metric: false,
   imperial: true,
   maxWidth: 110
-}).addTo(map);
+}).addTo(mapBlue);
 
 // --- GROUP THE TWO SCALES INTO ONE CONTAINER FOR FLEX ROW ---
 setTimeout(() => {
