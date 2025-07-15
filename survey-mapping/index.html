@@ -787,6 +787,8 @@
         <!-- === Main detail map on left (framed and resizable) === -->
         <div class="map-frame">
           <div id="map-bluecreek-detail" class="split-map">
+		  <!-- Lat/Long Display Box -->
+			<div id="latlong-blue" class="latlong-box"></div>
             <div class="mini-legend">
               <strong>Basemaps:</strong><br>
               🟩 Close Up: Thunderforest Outdoors<br>
@@ -1035,6 +1037,12 @@
   // 2) DETAIL MAP SETUP
   // ───────────────────────────────────────────────────────
   var mapBlue = L.map('map-bluecreek-detail').setView([17.955580, -89.043766], 11);
+  
+   // 2) Add lat/long tracker
+mapBlue.on('mousemove', function(e) {
+  document.getElementById('latlong-blue').innerHTML =
+    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
+	});
   
   // 2) Add a scale bar
 	L.control.scale({
