@@ -1516,42 +1516,7 @@ mapElmir.on('mousemove', function(e) {
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 	
-	 // Add metric-only scale (left, crimson)
-const metricScale = L.control.scale({
-  position: 'bottomright',
-  metric: true,
-  imperial: false,
-  maxWidth: 110
-}).addTo(mapElmir);
-
-// Add imperial-only scale (right, white)
-const imperialScale = L.control.scale({
-  position: 'bottomright',
-  metric: false,
-  imperial: true,
-  maxWidth: 110
-}).addTo(mapElmir);
-
-// --- GROUP THE TWO SCALES INTO ONE CONTAINER FOR FLEX ROW ---
-setTimeout(() => {
-  // Get the parent of the scale bars
-  const parent = document.querySelector('.leaflet-bottom.leaflet-right');
-  if (!parent) return;
-  // Find both scales
-  const scales = parent.querySelectorAll('.leaflet-control-scale');
-  if (scales.length === 2) {
-    // Make a flex wrapper
-    const flex = document.createElement('div');
-    flex.style.display = 'flex';
-    flex.style.gap = '10px';
-    flex.style.alignItems = 'flex-end';
-    // Insert wrapper before the first scale
-    parent.insertBefore(flex, scales[0]);
-    // Move both scales into wrapper
-    flex.appendChild(scales[0]);
-    flex.appendChild(scales[1]);
-  }
-}, 500);  // Wait a half second for DOM
+	 
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
 var stamenTerrainElmir = L.tileLayer(
