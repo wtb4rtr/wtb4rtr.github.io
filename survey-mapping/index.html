@@ -371,6 +371,25 @@
     box-shadow: none;                    /* No shadow */
   }
   
+  
+   /* ─────────────────────────
+   LAT/LONG BOX
+   ───────────────────────── */
+.latlong-box {
+  position: absolute;             /* Positions the box absolutely within its container */
+  bottom: 1px;                  /* Anchors the box 1.5px from the bottom */
+  left: 10px;                   /* Anchors the box 195px from the right */
+  padding: 0.25px 1px;               /* Minimal padding inside the box (top/bottom, left/right) */
+  background: #1b1b1b;            /* Dark background ("Eerie Black") */
+  border: 1px solid #888;         /* Light gray border around the box */
+  border-radius: 0.25px;             /* Slightly rounded corners */
+  font-size: 0.55rem;             /* Small, compact text size */
+  font-family: monospace;         /* Monospaced font for numerical clarity */
+  z-index: 999;                   /* Ensures it appears above map elements */
+  pointer-events: none;          /* Prevents mouse interaction (click-through) */
+  color: white;                   /* Sets text color to white for contrast */
+}
+  
   /* ==== Responsive 2x2 Image Grid ==== */
  .image-grid {
   display: grid;                             /* Use CSS Grid for gallery */
@@ -718,23 +737,7 @@
   }
   
   
- /* ─────────────────────────
-   LAT/LONG BOX
-   ───────────────────────── */
-.latlong-box {
-  position: absolute;             /* Positions the box absolutely within its container */
-  bottom: 1px;                  /* Anchors the box 1.5px from the bottom */
-  left: 10px;                   /* Anchors the box 195px from the right */
-  padding: 0.25px 1px;               /* Minimal padding inside the box (top/bottom, left/right) */
-  background: #1b1b1b;            /* Dark background ("Eerie Black") */
-  border: 1px solid #888;         /* Light gray border around the box */
-  border-radius: 0.25px;             /* Slightly rounded corners */
-  font-size: 0.55rem;             /* Small, compact text size */
-  font-family: monospace;         /* Monospaced font for numerical clarity */
-  z-index: 999;                   /* Ensures it appears above map elements */
-  pointer-events: none;          /* Prevents mouse interaction (click-through) */
-  color: white;                   /* Sets text color to white for contrast */
-}
+ 
 
 
 
