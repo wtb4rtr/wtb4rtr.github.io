@@ -3238,7 +3238,7 @@ var mapMancaje = L.map('map-mancaje-detail')
   
   // 2) Add lat/long tracker
 mapMancaje.on('mousemove', function(e) {
-  document.getElementById('latlong-ctdr').innerHTML =
+  document.getElementById('latlong-mancaje').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
