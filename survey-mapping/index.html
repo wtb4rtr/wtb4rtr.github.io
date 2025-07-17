@@ -2423,7 +2423,7 @@ var mapMapl = L.map('map-mapl-detail')
   
   // 2) Add lat/long tracker
 mapMapl.on('mousemove', function(e) {
-  document.getElementById('latlong-ctdr').innerHTML =
+  document.getElementById('latlong-mapl').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
