@@ -1815,6 +1815,52 @@
   </div>
     </section>
 	
+	<!-- ===  PROJECT WITH SPLIT MAPS === -->
+    <section class="project-section">
+      <h2>GOBERNADOR PHASE NAVAJO HOGANS  |  LA MANGA CANYON, NEW MEXICO (1998-1999)</h2>
+      <!-- === Two-map layout container === -->
+      <div class="split-map-container">
+        <!-- === Main detail map on left (framed and resizable) === -->
+        <div class="map-frame">
+          <div id="map-lac-detail" class="split-map">
+		  <!-- Lat/Long Display Box -->
+			<div id="latlong-lac" class="latlong-box"></div>
+            <div class="mini-legend">
+              <strong>Basemaps:</strong><br>
+              🟩 Close Up: Thunderforest Outdoors<br>
+              ⚪ Overview: Esri Gray Canvas
+            </div>
+            <div class="north-arrow"></div>
+          </div>
+        </div>
+        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+        <div id="map-lac-overview" class="split-map">
+          <!-- Map will render here; no need for mini-legend -->
+        </div>
+      </div>
+
+      <!-- === Project description and photos === -->
+      <p class="project-description">
+        
+      </p>
+	  <div class="grid-intro">
+		MAPPING THE GOBERNADOR HOGANS
+      </div>
+  <div class="image-grid">
+	<figure>
+		<img src="/assets/images/survey-mapping/spainmapping.JPG" alt="Mapping El Mirón" class="portrait-img">
+		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar2.JPG" alt="Using Lidar at Nojol Nah">
+		<figcaption>Bob Warden, Julie, and TAMU Students Preparing for LiDAR Scanning.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar3.JPG" alt="Lidar in the Chultun">
+		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
+	</figure>
+  </div>
+    </section>
 	
 	<!-- ===  PROJECT WITH SPLIT MAPS === -->
     <section class="project-section">
@@ -4010,6 +4056,8 @@ L.control.layers(
   null,                // no overlays for MANCAJE
   { position: 'topleft', collapsed: false }
 ).addTo(mapMancaje);
+
+
 
 
 // ─────────────────────────────────────────────────────────────
