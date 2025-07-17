@@ -1,13 +1,13 @@
 <!-- ===  PROJECT WITH SPLIT MAPS === -->
     <section class="project-section">
-      <h2>PUEBLO IV FIELD HOUSES  |  CAJA DEL RIO PLATEAU/SANTA FE, NEW MEXICO (2003-2004)</h2>
+      <h2>PUEBLO I VILLAGES  |  BLUE MESA, COLORADO (1999)</h2>
       <!-- === Two-map layout container === -->
       <div class="split-map-container">
         <!-- === Main detail map on left (framed and resizable) === -->
         <div class="map-frame">
-          <div id="map-ctdr-detail" class="split-map">
+          <div id="map-wcac-detail" class="split-map">
 		  <!-- Lat/Long Display Box -->
-			<div id="latlong-ctdr" class="latlong-box"></div>
+			<div id="latlong-wcac" class="latlong-box"></div>
             <div class="mini-legend">
               <strong>Basemaps:</strong><br>
               🟩 Close Up: Thunderforest Outdoors<br>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
-        <div id="map-ctdr-overview" class="split-map">
+        <div id="map-wcac-overview" class="split-map">
           <!-- Map will render here; no need for mini-legend -->
         </div>
       </div>
@@ -27,7 +27,7 @@
         
       </p>
 	  <div class="grid-intro">
-		MAPPING THE FIELD HOUSES
+		MAPPING THE EARLY PUEBLO VILLAGES
       </div>
   <div class="image-grid">
 	<figure>
@@ -52,16 +52,16 @@
 	
 
 // ─────────────────────────────────────────────────────────────
-//  CTDR DETAIL MAP
+//  WCAC DETAIL MAP
 // ─────────────────────────────────────────────────────────────
 
 // 1) Initialize the detail map in the left pane
-var mapCtdr = L.map('map-ctdr-detail')
-  .setView([35.730646, -106.036273], 12);  // center on CTDR
+var mapWcac = L.map('map-wcac-detail')
+  .setView([37.218408, -107.847949], 12);  // center on BLUE MESA
   
   // 2) Add lat/long tracker
-mapCtdr.on('mousemove', function(e) {
-  document.getElementById('latlong-ctdr').innerHTML =
+mapWcac.on('mousemove', function(e) {
+  document.getElementById('latlong-wcac').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
@@ -71,79 +71,79 @@ mapCtdr.on('mousemove', function(e) {
 		imperial: true,
 		metric: true,
 		maxWidth: 200
-	}).addTo(mapCtdr)	
+	}).addTo(mapWcac)	
 	 
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)
-var stamenTerrainCt = L.tileLayer(
+var stamenTerrainWc = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
     attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
   }
 );
-var esriWorldImageryCt = L.tileLayer(
+var esriWorldImageryWc = L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
   }
 );
-var thunderforestOutdoorCt = L.tileLayer(
+var thunderforestOutdoorWc = L.tileLayer(
   'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
     attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
   }
 );
-var thunderforestAtlasCt = L.tileLayer(
+var thunderforestAtlasWc = L.tileLayer(
   'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
     attribution: 'Maps © Thunderforest', maxZoom: 22
   }
 );
-var thunderforestLandscapeCt = L.tileLayer(
+var thunderforestLandscapeWc = L.tileLayer(
   'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
     attribution: 'Maps © Thunderforest', maxZoom: 22
   }
 );
-var stadiaAlidadeCt = L.tileLayer(
+var stadiaAlidadeWc = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
     attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
   }
 );
-var stadiaOutCt = L.tileLayer(
+var stadiaOutWc = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
     attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
   }
 );
-var cartoDBCt = L.tileLayer(
+var cartoDBWc = L.tileLayer(
   'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; CARTO', maxZoom: 19
   }
 );
-var osmBrightCt = L.tileLayer(
+var osmBrightWc = L.tileLayer(
   'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
     attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
   }
 );
 
 // 3) Add your chosen default layer to the detail map
-thunderforestLandscapeCt.addTo(mapCtdr);
+thunderforestLandscapeWc.addTo(mapWcac);
 
 // 4) Place the custom surveyor icon marker at the site center
-var surveyorIconCtdr = L.icon({
+var surveyorIconWcac = L.icon({
   iconUrl: '/assets/images/common/surveyor-icon.png',
   iconSize: [32,32],
   iconAnchor: [16,16],
   className: 'no-default-icon'
 });
-L.marker([35.730646, -106.036273], { icon: surveyorIconCtdr })
-  .addTo(mapCtdr)
+L.marker([37.218408, -107.847949], { icon: surveyorIconWcac })
+  .addTo(mapWcac)
   .bindTooltip(
-    "CAJA DEL RIO PLATEAU",
+    "PUEBLO I COMMUNITY ON BLUE MESA, CO",
     { permanent: true, direction: 'bottom', className: 'custom-label' }
   );
   
   // ─────────────────────────────────────────────────────────────
-//  CTDR OVERVIEW MAP (small circle in the right pane)
+//  BLUE MESA OVERVIEW MAP (small circle in the right pane)
 // ─────────────────────────────────────────────────────────────
 
 // 5) Initialize the overview map with all interactions off
-var mapCtover = L.map('map-ctdr-overview', {
+var mapWcover = L.map('map-wcac-overview', {
   zoomControl: false,
   dragging: false,
   scrollWheelZoom: false,
@@ -153,23 +153,23 @@ var mapCtover = L.map('map-ctdr-overview', {
   tap: false,
   touchZoom: false
 })
-  .setView([35.730646, -106.036273], 3);  // zoomed-out view
+  .setView([37.218408, -107.847949], 3);  // zoomed-out view
 
 // 6) Add a simple gray‐canvas basemap for the overview
 L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
   }
-).addTo(mapCtover);
+).addTo(mapWcover);
 
 // 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([35.730646, -106.036273], {
+L.circleMarker([37.218408, -107.847949], {
   radius: 4,
   color: '#a32638',
   fillColor: '#a32638',
   fillOpacity: 1
 })
-  .addTo(mapCtover)
+  .addTo(mapWcover)
   .bindTooltip(
     "PROJECT AREA",
     { permanent: true, direction: 'top', className: 'custom-label2' }
@@ -180,19 +180,19 @@ L.circleMarker([35.730646, -106.036273], {
 // ─────────────────────────────────────────────────────────────
 L.control.layers(
   {
-    "🌳 Thunderforest Landscape": thunderforestLandscapeCt,
-    "🛰️ Esri Satellite": esriWorldImageryCt,
-    "🟩 Stamen Terrain": stamenTerrainCt,
-    "🗺️ Thunderforest Atlas": thunderforestAtlasCt,
-	"🏞️ Thunderforest Outdoors": thunderforestOutdoorCt,
-    "🟪 Stadia Dark Alidade": stadiaAlidadeCt,
-    "🟦 Stadia Outdoors": stadiaOutCt,
-    "🟫 CartoDB Positron": cartoDBCt,
-    "⬜️ OSM Bright": osmBrightCt
+    "🌳 Thunderforest Landscape": thunderforestLandscapeWc,
+    "🛰️ Esri Satellite": esriWorldImageryWc,
+    "🟩 Stamen Terrain": stamenTerrainWc,
+    "🗺️ Thunderforest Atlas": thunderforestAtlasWc,
+	"🏞️ Thunderforest Outdoors": thunderforestOutdoorWc,
+    "🟪 Stadia Dark Alidade": stadiaAlidadeWc,
+    "🟦 Stadia Outdoors": stadiaOutWc,
+    "🟫 CartoDB Positron": cartoDBWc,
+    "⬜️ OSM Bright": osmBrightWc
   },
-  null,                // no overlays for CTDR
+  null,                // no overlays for BLUE MEsa
   { position: 'topleft', collapsed: false }
-).addTo(mapCtdr);
+).addTo(mapWcac);
   
  
 
