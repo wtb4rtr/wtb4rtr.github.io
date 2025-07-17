@@ -1425,8 +1425,6 @@
   </div>
     </section>
 	
-	
-	
 	<!-- === LAST PROJECT WITH SPLIT MAPS === -->
 <section class="project-section">
   <h2>LATE PREHISTORIC BUFFALO JUMP/BISON BONE BED | GILLETTE, WYOMING (1991)</h2>
@@ -2381,7 +2379,7 @@ L.control.layers(
 // ─────────────────────────────────────────────────────────────
 
 // 5) Initialize the overview map with all interactions off
-var mapAlpover = L.map('map-alp-overview', {
+var mapCabover = L.map('map-cab-overview', {
   zoomControl: false,
   dragging: false,
   scrollWheelZoom: false,
@@ -2391,23 +2389,23 @@ var mapAlpover = L.map('map-alp-overview', {
   tap: false,
   touchZoom: false
 })
-  .setView([37.229674, -107.932781], 3);  // zoomed-out view
+  .setView([35.589907, -107.105078], 3);  // zoomed-out view
 
 // 6) Add a simple gray‐canvas basemap for the overview
 L.tileLayer(
   'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
   }
-).addTo(mapAlpover);
+).addTo(mapCabover);
 
 // 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([37.229674, -107.932781], {
+L.circleMarker([35.589907, -107.105078], {
   radius: 4,
   color: '#a32638',
   fillColor: '#a32638',
   fillOpacity: 1
 })
-  .addTo(mapAlpover)
+  .addTo(mapCabover)
   .bindTooltip(
     "PROJECT AREA",
     { permanent: true, direction: 'top', className: 'custom-label2' }
@@ -2418,162 +2416,21 @@ L.circleMarker([37.229674, -107.932781], {
 // ─────────────────────────────────────────────────────────────
 L.control.layers(
   {
-    "🌳 Thunderforest Landscape": thunderforestLandscapeAlp,
-    "🛰️ Esri Satellite": esriWorldImageryAlp,
-    "🟩 Stamen Terrain": stamenTerrainAlp,
-    "🗺️ Thunderforest Atlas": thunderforestAtlasAlp,
-    "🏞️ Thunderforest Outdoors": thunderforestOutdoorAlp,
-    "🟪 Stadia Dark Alidade": stadiaAlidadeAlp,
-    "🟦 Stadia Outdoors": stadiaOutAlp,
-    "🟫 CartoDB Positron": cartoDBAlp,
-    "⬜️ OSM Bright": osmBrightAlp
+    "🌳 Thunderforest Landscape": thunderforestLandscapeCab,
+    "🛰️ Esri Satellite": esriWorldImageryCab,
+    "🟩 Stamen Terrain": stamenTerrainCab,
+    "🗺️ Thunderforest Atlas": thunderforestAtlasCab,
+    "🏞️ Thunderforest Outdoors": thunderforestOutdoorCab,
+    "🟪 Stadia Dark Alidade": stadiaAlidadeCab,
+    "🟦 Stadia Outdoors": stadiaOutCab,
+    "🟫 CartoDB Positron": cartoDBCab,
+    "⬜️ OSM Bright": osmBrightCab
   },
   null,                // no overlays for ALP
   { position: 'topleft', collapsed: false }
-).addTo(mapAlp);
-
-// ─────────────────────────────────────────────────────────────
-//  GILLETTE DETAIL MAP
-// ─────────────────────────────────────────────────────────────
-
-// 1) Initialize the detail map in the left pane
-var mapGilwy = L.map('map-gilwy-detail')
-  .setView([44.37698, -105.32076], 12);  // center on Gillette, WY
-  
-  // 2) Add lat/long tracker
-mapGilwy.on('mousemove', function(e) {
-  document.getElementById('latlong-gilwy').innerHTML =
-    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
-	});
-
-// 3) Add a scale bar
-	L.control.scale({
-		position: 'bottomright',
-		imperial: true,
-		metric: true,
-		maxWidth: 200
-	}).addTo(mapGilwy)
+).addTo(mapCab);
 
 
-// 2) Define all the base layers (give them Wm suffix so nothing collides)
-var stamenTerrainGilwy = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
-  }
-);
-var esriWorldImageryGilwy = L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
-  }
-);
-var thunderforestOutdoorGilwy = L.tileLayer(
-  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
-    attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
-  }
-);
-var thunderforestAtlasGilwy = L.tileLayer(
-  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
-    attribution: 'Maps © Thunderforest', maxZoom: 22
-  }
-);
-var thunderforestLandscapeGilwy = L.tileLayer(
-  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
-    attribution: 'Maps © Thunderforest', maxZoom: 22
-  }
-);
-var stadiaAlidadeGilwy = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
-  }
-);
-var stadiaOutGilwy = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
-  }
-);
-var cartoDBGilwy = L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; CARTO', maxZoom: 19
-  }
-);
-var osmBrightGilwy = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
-  }
-);
-
-// 3) Add your chosen default layer to the detail map
-thunderforestLandscapeGilwy.addTo(mapGilwy);
-
-// 4) Place the custom surveyor icon marker at the site center
-var surveyorIconGilwy = L.icon({
-  iconUrl: '/assets/images/common/surveyor-icon.png',
-  iconSize: [32,32],
-  iconAnchor: [16,16],
-  className: 'no-default-icon'
-});
-L.marker([44.37698, -105.32076], { icon: surveyorIconGilwy })
-  .addTo(mapGilwy)
-  .bindTooltip(
-    "BUFFALO JUMP/BONE BED",
-    { permanent: true, direction: 'bottom', className: 'custom-label' }
-  );
-
-// ─────────────────────────────────────────────────────────────
-//  GILLETTE OVERVIEW MAP (small circle in the right pane)
-// ─────────────────────────────────────────────────────────────
-
-// 5) Initialize the overview map with all interactions off
-var mapGilwyover = L.map('map-gilwy-overview', {
-  zoomControl: false,
-  dragging: false,
-  scrollWheelZoom: false,
-  doubleClickZoom: false,
-  boxZoom: false,
-  keyboard: false,
-  tap: false,
-  touchZoom: false
-})
-  .setView([44.37698, -105.32076], 3);  // zoomed-out view
-
-// 6) Add a simple gray‐canvas basemap for the overview
-L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
-  }
-).addTo(mapGilwyover);
-
-// 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([44.37698, -105.32076], {
-  radius: 4,
-  color: '#a32638',
-  fillColor: '#a32638',
-  fillOpacity: 1
-})
-  .addTo(mapGilwyover)
-  .bindTooltip(
-    "PROJECT AREA",
-    { permanent: true, direction: 'top', className: 'custom-label2' }
-  );
-
-// ─────────────────────────────────────────────────────────────
-//  LAYERS CONTROL for the detail map
-// ─────────────────────────────────────────────────────────────
-L.control.layers(
-  {
-    "🌳 Thunderforest Landscape": thunderforestLandscapeGilwy,
-    "🛰️ Esri Satellite": esriWorldImageryGilwy,
-    "🟩 Stamen Terrain": stamenTerrainGilwy,
-    "🗺️ Thunderforest Atlas": thunderforestAtlasGilwy,
-	"🏞️ Thunderforest Outdoors": thunderforestOutdoorGilwy,
-    "🟪 Stadia Dark Alidade": stadiaAlidadeGilwy,
-    "🟦 Stadia Outdoors": stadiaOutGilwy,
-    "🟫 CartoDB Positron": cartoDBGilwy,
-    "⬜️ OSM Bright": osmBrightGilwy
-  },
-  null,                // no overlays for Gillette 
-  { position: 'topleft', collapsed: false }
-).addTo(mapGilwy);
 </script>
 
 </body>
