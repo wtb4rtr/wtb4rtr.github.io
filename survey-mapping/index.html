@@ -2901,11 +2901,11 @@ L.control.layers(
 // ─────────────────────────────────────────────────────────────
 
 // 1) Initialize the detail map in the left pane
-var mapCtdr = L.map('map-ctdr-detail)
+var mapCtdr = L.map('map-ctdr-detail')
   .setView([35.730646, -106.036273], 12);  // center on CTDR
   
   // 2) Add lat/long tracker
-mapAread.on('mousemove', function(e) {
+mapCtdr.on('mousemove', function(e) {
   document.getElementById('latlong-ctdr').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
