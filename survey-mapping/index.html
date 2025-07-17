@@ -2902,7 +2902,7 @@ L.control.layers(
 
 // 1) Initialize the detail map in the left pane
 var mapCtdr = L.map('map-ctdr-detail')
-  .setView([35.730646, -106.036273], 12);  // center on CTDR
+  .setView([35.74649, -106.10108], 12);  // center on CTDR
   
   // 2) Add lat/long tracker
 mapCtdr.on('mousemove', function(e) {
@@ -2976,7 +2976,7 @@ var surveyorIconCtdr = L.icon({
   iconAnchor: [16,16],
   className: 'no-default-icon'
 });
-L.marker([35.730646, -106.036273], { icon: surveyorIconCtdr })
+L.marker([35.74649, -106.10108], { icon: surveyorIconCtdr })
   .addTo(mapCtdr)
   .bindTooltip(
     "CAJA DEL RIO PLATEAU",
@@ -2998,7 +2998,7 @@ var mapCtover = L.map('map-ctdr-overview', {
   tap: false,
   touchZoom: false
 })
-  .setView([35.730646, -106.036273], 3);  // zoomed-out view
+  .setView([35.74649, -106.10108], 3);  // zoomed-out view
 
 // 6) Add a simple gray‐canvas basemap for the overview
 L.tileLayer(
@@ -3008,7 +3008,7 @@ L.tileLayer(
 ).addTo(mapCtover);
 
 // 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([35.730646, -106.036273], {
+L.circleMarker([35.74649, -106.10108], {
   radius: 4,
   color: '#a32638',
   fillColor: '#a32638',
