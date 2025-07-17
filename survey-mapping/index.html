@@ -3915,6 +3915,150 @@ L.control.layers(
 
 
 // ─────────────────────────────────────────────────────────────
+//  LAC DETAIL MAP
+// ─────────────────────────────────────────────────────────────
+
+// 1) Initialize the detail map in the left pane
+var mapLac = L.map('map-lac-detail')
+  .setView([36.807761, -107.847764], 12);  // center on LA MANGA
+  
+  // 2) Add lat/long tracker
+mapLac.on('mousemove', function(e) {
+  document.getElementById('latlong-lac').innerHTML =
+    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
+	});
+
+// 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapLac)	
+	 
+
+// 2) Define all the base layers (give them Wm suffix so nothing collides)
+var stamenTerrainLac = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
+  }
+);
+var esriWorldImageryLac = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
+  }
+);
+var thunderforestOutdoorLac = L.tileLayer(
+  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
+  }
+);
+var thunderforestAtlasLac = L.tileLayer(
+  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var thunderforestLandscapeLac = L.tileLayer(
+  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var stadiaAlidadeLac = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
+  }
+);
+var stadiaOutLac = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
+  }
+);
+var cartoDBLac = L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO', maxZoom: 19
+  }
+);
+var osmBrightLac = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
+  }
+);
+
+// 3) Add your chosen default layer to the detail map
+thunderforestLandscapeLac.addTo(mapLac);
+
+// 4) Place the custom surveyor icon marker at the site center
+var surveyorIconLac = L.icon({
+  iconUrl: '/assets/images/common/surveyor-icon.png',
+  iconSize: [32,32],
+  iconAnchor: [16,16],
+  className: 'no-default-icon'
+});
+L.marker([36.807761, -107.847764], { icon: surveyorIconLac })
+  .addTo(mapLac)
+  .bindTooltip(
+    "GOBERNADOR HOGANS",
+    { permanent: true, direction: 'bottom', className: 'custom-label' }
+  );
+  
+  // ─────────────────────────────────────────────────────────────
+//  LAC OVERVIEW MAP (small circle in the right pane)
+// ─────────────────────────────────────────────────────────────
+
+// 5) Initialize the overview map with all interactions off
+var mapLacover = L.map('map-lac-overview', {
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  boxZoom: false,
+  keyboard: false,
+  tap: false,
+  touchZoom: false
+})
+  .setView([36.807761, -107.847764], 3);  // zoomed-out view
+
+// 6) Add a simple gray‐canvas basemap for the overview
+L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
+  }
+).addTo(mapLacover);
+
+// 7) Plot a circle marker showing the project area in the overview
+L.circleMarker([36.807761, -107.847764], {
+  radius: 4,
+  color: '#a32638',
+  fillColor: '#a32638',
+  fillOpacity: 1
+})
+  .addTo(mapLacover)
+  .bindTooltip(
+    "PROJECT AREA",
+    { permanent: true, direction: 'top', className: 'custom-label2' }
+  );
+
+// ─────────────────────────────────────────────────────────────
+//  LAYERS CONTROL for the detail map
+// ─────────────────────────────────────────────────────────────
+L.control.layers(
+  {
+    "🌳 Thunderforest Landscape": thunderforestLandscapeLac,
+    "🛰️ Esri Satellite": esriWorldImageryLac,
+    "🟩 Stamen Terrain": stamenTerrainLac,
+    "🗺️ Thunderforest Atlas": thunderforestAtlasLac,
+	"🏞️ Thunderforest Outdoors": thunderforestOutdoorLac,
+    "🟪 Stadia Dark Alidade": stadiaAlidadeLac,
+    "🟦 Stadia Outdoors": stadiaOutLac,
+    "🟫 CartoDB Positron": cartoDBLac,
+    "⬜️ OSM Bright": osmBrightLac
+  },
+  null,                // no overlays for LAC
+  { position: 'topleft', collapsed: false }
+).addTo(mapLac);
+
+
+// ─────────────────────────────────────────────────────────────
 //  MANCAJE DETAIL MAP
 // ─────────────────────────────────────────────────────────────
 
