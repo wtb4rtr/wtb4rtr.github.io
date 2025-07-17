@@ -1565,8 +1565,7 @@
 	</figure>
   </div>
     </section>
-	
-	
+		
 	
 	<!-- === LAST PROJECT WITH SPLIT MAPS === -->
 <section class="project-section">
@@ -2801,6 +2800,150 @@ L.control.layers(
   null,                // no overlays for ALP 
   { position: 'topleft', collapsed: false }
 ).addTo(mapAlp);
+
+
+// ─────────────────────────────────────────────────────────────
+//  COWBOY WASH DETAIL MAP
+// ─────────────────────────────────────────────────────────────
+
+// 1) Initialize the detail map in the left pane
+var mapSsi = L.map('map-ssi-detail')
+  .setView([37.178857, -108.879917], 12);  // center on COWBOY WASH
+  
+  // 2) Add lat/long tracker
+mapSsi.on('mousemove', function(e) {
+  document.getElementById('latlong-ssi').innerHTML =
+    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
+	});
+
+// 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapSsi)	
+	 
+
+// 2) Define all the base layers (give them Wm suffix so nothing collides)
+var stamenTerrainSsi = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
+  }
+);
+var esriWorldImagerySsi = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
+  }
+);
+var thunderforestOutdoorSsi = L.tileLayer(
+  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
+  }
+);
+var thunderforestAtlasSsi = L.tileLayer(
+  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var thunderforestLandscapeSsi = L.tileLayer(
+  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var stadiaAlidadeSsi = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
+  }
+);
+var stadiaOutSsi = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
+  }
+);
+var cartoDBSsi = L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO', maxZoom: 19
+  }
+);
+var osmBrightSsi = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
+  }
+);
+
+// 3) Add your chosen default layer to the detail map
+thunderforestLandscapeSsi.addTo(mapSsi);
+
+// 4) Place the custom surveyor icon marker at the site center
+var surveyorIconSsi = L.icon({
+  iconUrl: '/assets/images/common/surveyor-icon.png',
+  iconSize: [32,32],
+  iconAnchor: [16,16],
+  className: 'no-default-icon'
+});
+L.marker([37.178857, -108.879917], { icon: surveyorIconAlp })
+  .addTo(mapSsi)
+  .bindTooltip(
+    "COWBOY WASH",
+    { permanent: true, direction: 'bottom', className: 'custom-label' }
+  );
+  
+  // ─────────────────────────────────────────────────────────────
+//  COWBOY WASH OVERVIEW MAP (small circle in the right pane)
+// ─────────────────────────────────────────────────────────────
+
+// 5) Initialize the overview map with all interactions off
+var mapSsiover = L.map('map-ssi-overview', {
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  boxZoom: false,
+  keyboard: false,
+  tap: false,
+  touchZoom: false
+})
+  .setView([37.178857, -108.879917], 3);  // zoomed-out view
+
+// 6) Add a simple gray‐canvas basemap for the overview
+L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
+  }
+).addTo(mapSsiover);
+
+// 7) Plot a circle marker showing the project area in the overview
+L.circleMarker([37.178857, -108.879917], {
+  radius: 4,
+  color: '#a32638',
+  fillColor: '#a32638',
+  fillOpacity: 1
+})
+  .addTo(mapSsiover)
+  .bindTooltip(
+    "PROJECT AREA",
+    { permanent: true, direction: 'top', className: 'custom-label2' }
+  );
+
+// ─────────────────────────────────────────────────────────────
+//  LAYERS CONTROL for the detail map
+// ─────────────────────────────────────────────────────────────
+L.control.layers(
+  {
+    "🌳 Thunderforest Landscape": thunderforestLandscapeSsi,
+    "🛰️ Esri Satellite": esriWorldImagerySsi,
+    "🟩 Stamen Terrain": stamenTerrainSsi,
+    "🗺️ Thunderforest Atlas": thunderforestAtlasSsi,
+	"🏞️ Thunderforest Outdoors": thunderforestOutdoorSsi,
+    "🟪 Stadia Dark Alidade": stadiaAlidadeSsi,
+    "🟦 Stadia Outdoors": stadiaOutSsi,
+    "🟫 CartoDB Positron": cartoDBSsi,
+    "⬜️ OSM Bright": osmBrightSsi
+  },
+  null,                // no overlays for SSI 
+  { position: 'topleft', collapsed: false }
+).addTo(mapSsi);
 
 // ─────────────────────────────────────────────────────────────
 //  GILLETTE DETAIL MAP
