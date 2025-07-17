@@ -2375,62 +2375,6 @@ L.control.layers(
 
 
 // ─────────────────────────────────────────────────────────────
-// CABEZON TESTING OVERVIEW MAP (small circle in the right pane)
-// ─────────────────────────────────────────────────────────────
-
-// 5) Initialize the overview map with all interactions off
-var mapCabover = L.map('map-cab-overview', {
-  zoomControl: false,
-  dragging: false,
-  scrollWheelZoom: false,
-  doubleClickZoom: false,
-  boxZoom: false,
-  keyboard: false,
-  tap: false,
-  touchZoom: false
-})
-  .setView([35.589907, -107.105078], 3);  // zoomed-out view
-
-// 6) Add a simple gray‐canvas basemap for the overview
-L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
-  }
-).addTo(mapCabover);
-
-// 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([35.589907, -107.105078], {
-  radius: 4,
-  color: '#a32638',
-  fillColor: '#a32638',
-  fillOpacity: 1
-})
-  .addTo(mapCabover)
-  .bindTooltip(
-    "PROJECT AREA",
-    { permanent: true, direction: 'top', className: 'custom-label2' }
-  );
-
-// ─────────────────────────────────────────────────────────────
-//  LAYERS CONTROL for the detail map
-// ─────────────────────────────────────────────────────────────
-L.control.layers(
-  {
-    "🌳 Thunderforest Landscape": thunderforestLandscapeCab,
-    "🛰️ Esri Satellite": esriWorldImageryCab,
-    "🟩 Stamen Terrain": stamenTerrainCab,
-    "🗺️ Thunderforest Atlas": thunderforestAtlasCab,
-    "🏞️ Thunderforest Outdoors": thunderforestOutdoorCab,
-    "🟪 Stadia Dark Alidade": stadiaAlidadeCab,
-    "🟦 Stadia Outdoors": stadiaOutCab,
-    "🟫 CartoDB Positron": cartoDBCab,
-    "⬜️ OSM Bright": osmBrightCab
-  },
-  null,                // no overlays for ALP
-  { position: 'topleft', collapsed: false }
-).addTo(mapCab);
-
-// ─────────────────────────────────────────────────────────────
 //  GILLETTE DETAIL MAP
 // ─────────────────────────────────────────────────────────────
 
