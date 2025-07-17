@@ -1,13 +1,13 @@
 <!-- ===  PROJECT WITH SPLIT MAPS === -->
     <section class="project-section">
-      <h2>PUEBLO I VILLAGES  |  BLUE MESA, COLORADO (1999)</h2>
+      <h2>MIDDLE ARCHAIC/PUEBLO I VILLAGES  |  LA MANGA CANYON, NEW MEXICO (1999)</h2>
       <!-- === Two-map layout container === -->
       <div class="split-map-container">
         <!-- === Main detail map on left (framed and resizable) === -->
         <div class="map-frame">
-          <div id="map-wcac-detail" class="split-map">
+          <div id="map-wcac2-detail" class="split-map">
 		  <!-- Lat/Long Display Box -->
-			<div id="latlong-wcac" class="latlong-box"></div>
+			<div id="latlong-wcac2" class="latlong-box"></div>
             <div class="mini-legend">
               <strong>Basemaps:</strong><br>
               🟩 Close Up: Thunderforest Outdoors<br>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
-        <div id="map-wcac-overview" class="split-map">
+        <div id="map-wcac2-overview" class="split-map">
           <!-- Map will render here; no need for mini-legend -->
         </div>
       </div>
@@ -27,7 +27,7 @@
         
       </p>
 	  <div class="grid-intro">
-		MAPPING THE EARLY PUEBLO VILLAGES
+		MAPPING THE ARCHAIC AND EARLY PUEBLO VILLAGES
       </div>
   <div class="image-grid">
 	<figure>
@@ -52,16 +52,16 @@
 	
 
 // ─────────────────────────────────────────────────────────────
-//  WCAC DETAIL MAP
+//  WCAC2 DETAIL MAP
 // ─────────────────────────────────────────────────────────────
 
 // 1) Initialize the detail map in the left pane
-var mapWcac = L.map('map-wcac-detail')
-  .setView([37.218408, -107.847949], 12);  // center on BLUE MESA
+var mapWcac2 = L.map('map-wcac2-detail')
+  .setView([36.853726, -107.804702], 12);  // center on LA MANGA
   
   // 2) Add lat/long tracker
-mapWcac.on('mousemove', function(e) {
-  document.getElementById('latlong-wcac').innerHTML =
+mapWcac2.on('mousemove', function(e) {
+  document.getElementById('latlong-wcac2').innerHTML =
     `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
 	});
 
@@ -71,7 +71,7 @@ mapWcac.on('mousemove', function(e) {
 		imperial: true,
 		metric: true,
 		maxWidth: 200
-	}).addTo(mapWcac)	
+	}).addTo(mapWcac2)	
 	 
 
 // 2) Define all the base layers (give them Wm suffix so nothing collides)

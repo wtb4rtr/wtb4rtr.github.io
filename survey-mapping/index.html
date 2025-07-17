@@ -1738,6 +1738,54 @@
 	
 	<!-- ===  PROJECT WITH SPLIT MAPS === -->
     <section class="project-section">
+      <h2>MIDDLE ARCHAIC/PUEBLO I VILLAGES  |  LA MANGA CANYON, NEW MEXICO (1999)</h2>
+      <!-- === Two-map layout container === -->
+      <div class="split-map-container">
+        <!-- === Main detail map on left (framed and resizable) === -->
+        <div class="map-frame">
+          <div id="map-wcac2-detail" class="split-map">
+		  <!-- Lat/Long Display Box -->
+			<div id="latlong-wcac2" class="latlong-box"></div>
+            <div class="mini-legend">
+              <strong>Basemaps:</strong><br>
+              🟩 Close Up: Thunderforest Outdoors<br>
+              ⚪ Overview: Esri Gray Canvas
+            </div>
+            <div class="north-arrow"></div>
+          </div>
+        </div>
+        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
+        <div id="map-wcac2-overview" class="split-map">
+          <!-- Map will render here; no need for mini-legend -->
+        </div>
+      </div>
+
+      <!-- === Project description and photos === -->
+      <p class="project-description">
+        
+      </p>
+	  <div class="grid-intro">
+		MAPPING THE ARCHAIC AND EARLY PUEBLO VILLAGES
+      </div>
+  <div class="image-grid">
+	<figure>
+		<img src="/assets/images/survey-mapping/spainmapping.JPG" alt="Mapping El Mirón" class="portrait-img">
+		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar2.JPG" alt="Using Lidar at Nojol Nah">
+		<figcaption>Bob Warden, Julie, and TAMU Students Preparing for LiDAR Scanning.</figcaption>
+	</figure>
+	<figure>
+		<img src="/assets/images/survey-mapping/lidar3.JPG" alt="Lidar in the Chultun">
+		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
+	</figure>
+  </div>
+    </section>
+	
+	
+	<!-- ===  PROJECT WITH SPLIT MAPS === -->
+    <section class="project-section">
       <h2>LAND SURVEYING  |  MONTEZUMA AND LA PLATA COUNTIES, COLORADO (1998/2003)</h2>
       <!-- === Two-map layout container === -->
       <div class="split-map-container">
@@ -3586,7 +3634,7 @@ L.marker([37.218408, -107.847949], { icon: surveyorIconWcac })
   );
   
   // ─────────────────────────────────────────────────────────────
-//  BLUE MESA OVERVIEW MAP (small circle in the right pane)
+//  WCAC OVERVIEW MAP (small circle in the right pane)
 // ─────────────────────────────────────────────────────────────
 
 // 5) Initialize the overview map with all interactions off
