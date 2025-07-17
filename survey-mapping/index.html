@@ -2418,6 +2418,149 @@ L.control.layers(
 ).addTo(mapPbon);
 
 
+
+// ─────────────────────────────────────────────────────────────
+//  AREA D DETAIL MAP
+// ─────────────────────────────────────────────────────────────
+
+// 1) Initialize the detail map in the left pane
+var mapAread = L.map('map-aread-detail)
+  .setView([35.195061, -106.633440], 12);  // center on COWBOY WASH
+  
+  // 2) Add lat/long tracker
+mapAread.on('mousemove', function(e) {
+  document.getElementById('latlong-aread').innerHTML =
+    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
+	});
+
+// 3) Add a scale bar
+	L.control.scale({
+		position: 'bottomright',
+		imperial: true,
+		metric: true,
+		maxWidth: 200
+	}).addTo(mapAread)	
+	 
+
+// 2) Define all the base layers (give them Wm suffix so nothing collides)
+var stamenTerrainAd = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
+  }
+);
+var esriWorldImageryAd = L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
+  }
+);
+var thunderforestOutdoorAd = L.tileLayer(
+  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
+  }
+);
+var thunderforestAtlasAd = L.tileLayer(
+  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var thunderforestLandscapeAd = L.tileLayer(
+  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
+    attribution: 'Maps © Thunderforest', maxZoom: 22
+  }
+);
+var stadiaAlidadeAd = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
+  }
+);
+var stadiaOutAd = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
+  }
+);
+var cartoDBAd = L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; CARTO', maxZoom: 19
+  }
+);
+var osmBrightAd = L.tileLayer(
+  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
+    attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
+  }
+);
+
+// 3) Add your chosen default layer to the detail map
+thunderforestLandscapeAd.addTo(mapAread);
+
+// 4) Place the custom surveyor icon marker at the site center
+var surveyorIconAread = L.icon({
+  iconUrl: '/assets/images/common/surveyor-icon.png',
+  iconSize: [32,32],
+  iconAnchor: [16,16],
+  className: 'no-default-icon'
+});
+L.marker([35.195061, -106.633440], { icon: surveyorIconAlp })
+  .addTo(mapAread)
+  .bindTooltip(
+    "OLD ALAMEDA",
+    { permanent: true, direction: 'bottom', className: 'custom-label' }
+  );
+  
+  // ─────────────────────────────────────────────────────────────
+//  AREA D OVERVIEW MAP (small circle in the right pane)
+// ─────────────────────────────────────────────────────────────
+
+// 5) Initialize the overview map with all interactions off
+var mapAdover = L.map('map-aread-overview', {
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  boxZoom: false,
+  keyboard: false,
+  tap: false,
+  touchZoom: false
+})
+  .setView([35.195061, -106.633440], 3);  // zoomed-out view
+
+// 6) Add a simple gray‐canvas basemap for the overview
+L.tileLayer(
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
+  }
+).addTo(mapAdover);
+
+// 7) Plot a circle marker showing the project area in the overview
+L.circleMarker([35.195061, -106.633440], {
+  radius: 4,
+  color: '#a32638',
+  fillColor: '#a32638',
+  fillOpacity: 1
+})
+  .addTo(mapAdover)
+  .bindTooltip(
+    "PROJECT AREA",
+    { permanent: true, direction: 'top', className: 'custom-label2' }
+  );
+
+// ─────────────────────────────────────────────────────────────
+//  LAYERS CONTROL for the detail map
+// ─────────────────────────────────────────────────────────────
+L.control.layers(
+  {
+    "🌳 Thunderforest Landscape": thunderforestLandscapeAd,
+    "🛰️ Esri Satellite": esriWorldImageryAd,
+    "🟩 Stamen Terrain": stamenTerrainAd,
+    "🗺️ Thunderforest Atlas": thunderforestAtlasAd,
+	"🏞️ Thunderforest Outdoors": thunderforestOutdoorAd,
+    "🟪 Stadia Dark Alidade": stadiaAlidadeAd,
+    "🟦 Stadia Outdoors": stadiaOutAd,
+    "🟫 CartoDB Positron": cartoDBAd,
+    "⬜️ OSM Bright": osmBrightAd
+  },
+  null,                // no overlays for Area D 
+  { position: 'topleft', collapsed: false }
+).addTo(mapAread);
 	
 	// ─────────────────────────────────────────────────────────────
 //  CABEZON TESTING DETAIL MAP
