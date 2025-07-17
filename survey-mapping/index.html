@@ -737,6 +737,37 @@
   }
   
   /* ─────────────────────────────────────────────────────────────
+     PALEO CAMP MAP HEIGHT FIX
+     These rules give your West Mesa map DIVs an explicit size,
+     exactly mirroring what you already have for Blue Creek.
+     ───────────────────────────────────────────────────────────── */
+  
+  /* 1) Fill the .map-frame container (height:600px) so detail map appears */
+  #map-cab-detail {
+    width: 100%;          /* same as its parent .map-frame width */
+    height: 100%;         /* fill the 600px height of .map-frame */
+    margin: 0;            /* remove any default margin */
+    padding: 0;           /* remove any default padding */
+  }
+
+  /* 2) Match your circular overview styling for West Mesa */
+  #map-cab-overview {
+    width: 400px;         /* exactly the same width as Blue Creek overview */
+    height: 400px;        /* exactly the same height as Blue Creek overview */
+    border-radius: 50%;   /* make it circular */
+    border: 2px solid #fa8072;  /* semi-transparent black border */
+    overflow: hidden;     /* hide tile overflow */
+    position: absolute;   /* same positioning inside .split-map-container */
+    right: 36px;          /* same right offset as Blue Creek */
+    top: 10px;            /* same top offset as Blue Creek */
+    background: #fff;     /* white background */
+    box-shadow:
+      0 8px 48px 12px rgba(8,8,8,0.36),   /* outer glow */
+      0 2px 12px 0 rgba(0,0,0,0.32);      /* floating effect */
+    z-index: 5;           /* sit above the detail map */
+  }
+  
+  /* ─────────────────────────────────────────────────────────────
      GILLETTE MAP HEIGHT FIX
      These rules give your West Mesa map DIVs an explicit size,
      exactly mirroring what you already have for Blue Creek.
