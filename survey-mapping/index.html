@@ -4726,9 +4726,29 @@ L.control.layers(
   null,                // no overlays for Gillette 
   { position: 'topleft', collapsed: false }
 ).addTo(mapGilwy);
-
-
 </script>
+  <!-- === Any other page content ends above here === -->
+
+  <script>
+    const introText = document.querySelector('.mapping-intro-text');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            introText.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(introText);
+  </script>
+
+</body>
+</html>
 
 </body>
 </html>
