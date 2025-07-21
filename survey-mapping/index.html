@@ -120,8 +120,7 @@
     color: #fffff0;                      /* Ivory text */
   }
 
-  /* ==== UNIFIED HEADER + INTRO TEXT SECTION ==== */
-.mapping-header {
+ .mapping-header {
   background: linear-gradient(to bottom, #fdf6e3 0%, #f0e1c0 100%),
               url('/assets/images/survey-mapping/parchment.jpg') no-repeat center center;
   background-blend-mode: multiply;
@@ -133,24 +132,20 @@
   position: relative;
 }
 
-/* Optional vintage rule above title */
 .vintage-rule {
-  width: 80px;
-  height: 6px;
+  width: 100px;
+  height: 10px;
   background: url('/assets/images/survey-mapping/trim-line.png') no-repeat center center;
   background-size: contain;
-  margin: 0 auto 12px;
+  margin: 0 auto 14px;
 }
 
-/* Compass icon left of header text */
 .inline-icon {
-  height: 34px;
+  height: 48px;
   vertical-align: middle;
-  margin-right: 12px;
-  margin-bottom: 4px;
+  margin: 0 16px;
 }
 
-/* Heading text */
 .mapping-title {
   font-family: 'Playfair Display', serif;
   font-size: 2.75rem;
@@ -158,10 +153,14 @@
   color: #8B0000;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-/* Animated intro text block */
 .mapping-intro-text {
   max-width: 1100px;
   margin: 0 auto;
@@ -181,7 +180,6 @@
   transform: translateY(0);
 }
 
-/* First sentence emphasis */
 .intro-lead {
   display: block;
   font-size: 1.4rem;
@@ -190,6 +188,7 @@
   color: #752b1f;
   text-shadow: 0.5px 0.5px 0 #f5e7d2;
 }
+
 
 
 
