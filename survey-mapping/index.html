@@ -133,13 +133,13 @@
 }
 
 .vintage-rule {
-  width: 1500px;
-  height: 500px;
-  background: url('/assets/images/survey-mapping/trim-line.png') no-repeat center center;
-  background-size: contain;
-  margin: 15px auto;
-  opacity: 0.9;
+  display: block;
+  max-width: 500px;       /* Scale up the image */
+  height: auto;           /* Maintain aspect ratio */
+  margin: 10px auto;      /* Tight top and bottom spacing */
+  opacity: 0.95;
 }
+
 
 .inline-icon {
   height: 48px;
@@ -1227,7 +1227,7 @@
   </section>
 
   <section class="mapping-header">
-  <div class="vintage-rule"></div>
+  <img src="/assets/images/survey-mapping/trim-line.png" alt="Decorative Divider" class="vintage-rule">
   <h2 class="mapping-title">
     <img src="/assets/images/survey-mapping/compass.png" alt="" class="inline-icon">
     MAPPING PROJECTS
