@@ -120,30 +120,38 @@
     color: #fffff0;                      /* Ivory text */
   }
 
- .mapping-header {
-  background: linear-gradient(to bottom, #fdf6e3 0%, #f0e1c0 100%),
-              url('/assets/images/survey-mapping/parchment.jpg') no-repeat center center;
+ /* ─── HEADER CONTAINER ───────────────────────────────────── */
+.mapping-header {
+  background: 
+    linear-gradient(to bottom, #fdf6e3 0%, #f0e1c0 100%),
+    url('/assets/images/survey-mapping/parchment.jpg') no-repeat center center;
   background-blend-mode: multiply;
   background-size: cover;
-  text-align: center;
-  padding: 5px 20px 5px;
-  border-top: 2px solid #8B0000;
+
+  /* shrink top/bottom padding */
+  padding: 8px 20px;
+
+  /* collapse any line-height gaps around inline images */
+  line-height: 0;
+
+  /* keep your thin top & bottom rules */
+  border-top:    2px solid #8B0000;
   border-bottom: 2px solid #8B0000;
+
+  text-align: center;
   position: relative;
 }
 
+/* ─── TRIM-LINE DIVIDER IMAGE ────────────────────────────── */
 .vintage-rule {
-  display: block;
-  margin: 0 auto;
-  max-width: 600px; /* or however wide you want it */
-  width: 100%;
-  height: auto;
-  opacity: 0.95;
+  display: block;        /* so margin auto works */
+  margin: 0 auto;        /* absolutely no top/bottom margin */
+  width: 80%;            /* responsive—but clamp if you like */
+  max-width: 600px;      /* don’t let it blow out too big */
+  height: auto;          /* preserve aspect ratio */
 }
 
-
-
-
+/* ─── TITLE AND ICONS ────────────────────────────────────── */
 .inline-icon {
   height: 48px;
   vertical-align: middle;
@@ -157,22 +165,21 @@
   color: #8B0000;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 12px;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  flex-wrap: wrap;
 }
 
+/* ─── INTRO TEXT ─────────────────────────────────────────── */
 .mapping-intro-text {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 12px auto 0;      /* tiny gap only above */
   font-size: 1.2rem;
   line-height: 1.5;
   color: #752b1f;
   text-shadow: 0.5px 0.5px 0 #f5e7d2;
-  padding: 0 20px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
@@ -192,6 +199,7 @@
   color: #752b1f;
   text-shadow: 0.5px 0.5px 0 #f5e7d2;
 }
+
 
 
 
