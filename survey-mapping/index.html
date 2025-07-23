@@ -58,12 +58,19 @@
     padding-top: 4.5rem;                 /* Space above main title */
   }
 
-  body.survey-page .hero-title-box {
-    background: #5d89ba;                 /* Colored box behind title */
-    padding: 0.5rem 0.5rem;              /* Space around title */
-    border-radius: 12px;                 /* Rounded corners */
-    border: 2px solid #f8f8ff;           /* Thin white border */
-  }
+ body.survey-page .hero-title-box h1 {
+  margin: 0;
+  font-size: 3.5rem;
+  color: #8B0000; /* Maroon */
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
 
   body.survey-page .hero-title-box {
   background:
@@ -76,6 +83,7 @@
   border: 2px solid #8B0000;
   text-align: center;
 }
+
 
 
   /* ==== MAIN PAGE LAYOUT ==== */
@@ -1238,7 +1246,12 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-title-box">
-        <h1>SURVEY AND CARTOGRAPHY</h1> <!-- Main heading for page -->
+        <h1>
+  <img src="/assets/images/survey-mapping/compass.png" alt="" class="inline-icon">
+  Survey and Cartography
+  <img src="/assets/images/survey-mapping/compass.png" alt="" class="inline-icon">
+</h1>
+
       </div>
     </div>
   </section>
