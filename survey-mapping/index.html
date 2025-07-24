@@ -464,17 +464,22 @@
 }
   
   
-  /* CSS */
-/* 1) Switch to a 3×3 template, with the middle cell twice as big */
+  :root {
+  /* change these to suit your design */
+  --corner-width: 600px;   /* width of each of the four corner images */
+  --center-width: 800px;   /* width of the center image */
+}
+
+/* 1) Switch to a 3×3 template, with the middle cell between the corners */
 .image-grid.five-up {
   display: grid;
   grid-template-areas:
     "tl . tr"
     ".  c  ."
     "bl . br";
-  grid-template-columns: 1.5fr 2fr 1.5fr;
-  grid-template-rows: 1fr 2fr 1fr;
-  gap: 1rem;                     /* adjust overall spacing */
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows:    auto 1fr auto;
+  gap: 1rem;                     /* adjust spacing between cells */
   justify-content: center;
   align-items: center;
   margin: 1.5rem 0;
@@ -487,17 +492,17 @@
 .image-grid.five-up figure:nth-child(4) { grid-area: bl; } /* bottom-left */
 .image-grid.five-up figure:nth-child(5) { grid-area: br; } /* bottom-right */
 
-/* 3) Generic figure styling */
+/* 3) Generic <figure> styling */
 .image-grid.five-up figure {
   margin: 0;
   padding: 0;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-/* 4) Shared img rules */
+/* 4) Shared <img> styling */
 .image-grid.five-up img {
   object-fit: cover;
   display: block;
@@ -507,15 +512,21 @@
   background: #080808;
 }
 
-/* 5) Size overrides */
-.image-grid.five-up figure:nth-child(3) img {
-  /* center image – full middle cell */
-  width: 100%;   /* span the 2fr track */
-  height: auto;      /* keep aspect ratio */
+/* 5a) Corner figures: fixed width, image fills it */
+.image-grid.five-up figure:not(:nth-child(3)) {
+  width: var(--corner-width);
 }
 .image-grid.five-up figure:not(:nth-child(3)) img {
-  /* corner images – smaller */
-  width: 600px;
+  width: 100%;
+  height: auto;
+}
+
+/* 5b) Center figure: fixed width, image fills it */
+.image-grid.five-up figure:nth-child(3) {
+  width: var(--center-width);
+}
+.image-grid.five-up figure:nth-child(3) img {
+  width: 100%;
   height: auto;
 }
 
@@ -527,6 +538,7 @@
   color: #fffff0;
   font-family: Arial, sans-serif;
 }
+
 
   
   /* ==== Responsive 2x2 Image Grid ==== */
