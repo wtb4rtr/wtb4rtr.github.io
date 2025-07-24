@@ -464,36 +464,31 @@
 }
   
   
-  :root {
-  /* change these to suit your design */
-  --corner-width: 600px;   /* width of each of the four corner images */
-  --center-width: 800px;   /* width of the center image */
+ /* ==== Variables: adjust these widths as needed ==== */
+:root {
+  --corner-width: 600px;  /* width of each top/bottom corner image */
+  --center-width: 800px;  /* width of the single center image */
+  --grid-gap: 1rem;       /* space between cells */
 }
 
-/* 1) Switch to a 3×3 template, with the middle cell between the corners */
-.image-grid.five-up {
+/* ==== 1) Set up a 2-1-2 grid ==== */
+.image-grid.simple-2-1-2 {
   display: grid;
-  grid-template-areas:
-    "tl . tr"
-    ".  c  ."
-    "bl . br";
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows:    auto 1fr auto;
-  gap: 1rem;                     /* adjust spacing between cells */
-  justify-content: center;
-  align-items: center;
+  grid-template-columns: auto auto;    /* two equal columns */
+  grid-template-rows:    auto auto auto;
+  gap: var(--grid-gap);               /* row- and column-gap */
+  justify-content: center;            /* center overall grid */
+  align-items:     start;
   margin: 1.5rem 0;
 }
 
-/* 2) Place each figure into its “pip” */
-.image-grid.five-up figure:nth-child(1) { grid-area: tl; } /* top-left */
-.image-grid.five-up figure:nth-child(2) { grid-area: tr; } /* top-right */
-.image-grid.five-up figure:nth-child(3) { grid-area: c;  } /* center */
-.image-grid.five-up figure:nth-child(4) { grid-area: bl; } /* bottom-left */
-.image-grid.five-up figure:nth-child(5) { grid-area: br; } /* bottom-right */
+/* ==== 2) Place the center figure to span both columns ==== */
+.image-grid.simple-2-1-2 figure:nth-child(3) {
+  grid-column: 1 / -1;                /* span both columns */
+}
 
-/* 3) Generic <figure> styling */
-.image-grid.five-up figure {
+/* ==== 3) Common <figure> reset ==== */
+.image-grid.simple-2-1-2 figure {
   margin: 0;
   padding: 0;
   display: flex;
@@ -502,8 +497,20 @@
   text-align: center;
 }
 
-/* 4) Shared <img> styling */
-.image-grid.five-up img {
+/* ==== 4) Size wrappers ==== */
+/* Corner figures (1,2,4,5) */
+.image-grid.simple-2-1-2 figure:not(:nth-child(3)) {
+  width: var(--corner-width);
+}
+/* Center figure (3) */
+.image-grid.simple-2-1-2 figure:nth-child(3) {
+  width: var(--center-width);
+}
+
+/* ==== 5) Image styling ==== */
+.image-grid.simple-2-1-2 img {
+  width: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
   border-radius: 10px;
@@ -512,26 +519,8 @@
   background: #080808;
 }
 
-/* 5a) Corner figures: fixed width, image fills it */
-.image-grid.five-up figure:not(:nth-child(3)) {
-  width: var(--corner-width);
-}
-.image-grid.five-up figure:not(:nth-child(3)) img {
-  width: 100%;
-  height: auto;
-}
-
-/* 5b) Center figure: fixed width, image fills it */
-.image-grid.five-up figure:nth-child(3) {
-  width: var(--center-width);
-}
-.image-grid.five-up figure:nth-child(3) img {
-  width: 100%;
-  height: auto;
-}
-
-/* 6) Caption styling */
-.image-grid.five-up figcaption {
+/* ==== 6) Caption styling ==== */
+.image-grid.simple-2-1-2 figcaption {
   margin-top: 0.5rem;
   font-size: 1.1rem;
   font-weight: bold;
