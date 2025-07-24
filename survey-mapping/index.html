@@ -499,7 +499,6 @@
 
 /* 4) Shared img rules */
 .image-grid.five-up img {
-  width: 100%;
   object-fit: cover;
   display: block;
   border-radius: 10px;
@@ -511,13 +510,13 @@
 /* 5) Size overrides */
 .image-grid.five-up figure:nth-child(3) img {
   /* center image – full middle cell */
-  max-width: none;   /* span the 2fr track */
+  max-width: 100%;   /* span the 2fr track */
   height: auto;      /* keep aspect ratio */
 }
 .image-grid.five-up figure:not(:nth-child(3)) img {
   /* corner images – smaller */
-  max-width: 900px;
-  height: 300px;
+  width: 600px;
+  height: auto;
 }
 
 /* 6) Caption styling */
