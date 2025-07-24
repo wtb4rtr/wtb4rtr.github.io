@@ -463,6 +463,73 @@
   color: white;                   /* Sets text color to white for contrast */
 }
   
+  
+  /* CSS */
+/* 1) Switch to a 3×3 template, with the middle cell twice as big */
+.image-grid.five-up {
+  display: grid;
+  grid-template-areas:
+    "tl . tr"
+    ".  c  ."
+    "bl . br";
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  gap: 1rem;                     /* adjust overall spacing */
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+/* 2) Place each figure into its “pip” */
+.image-grid.five-up figure:nth-child(1) { grid-area: tl; } /* top-left */
+.image-grid.five-up figure:nth-child(2) { grid-area: tr; } /* top-right */
+.image-grid.five-up figure:nth-child(3) { grid-area: c;  } /* center */
+.image-grid.five-up figure:nth-child(4) { grid-area: bl; } /* bottom-left */
+.image-grid.five-up figure:nth-child(5) { grid-area: br; } /* bottom-right */
+
+/* 3) Generic figure styling */
+.image-grid.five-up figure {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 4) Shared img rules */
+.image-grid.five-up img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  border: 2px solid #fa8072;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  background: #080808;
+}
+
+/* 5) Size overrides */
+.image-grid.five-up figure:nth-child(3) img {
+  /* center image – full middle cell */
+  max-width: none;   /* span the 2fr track */
+  height: auto;      /* keep aspect ratio */
+}
+.image-grid.five-up figure:not(:nth-child(3)) img {
+  /* corner images – smaller */
+  max-width: 480px;
+  height: 300px;
+}
+
+/* 6) Caption styling */
+.image-grid.five-up figcaption {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fffff0;
+  font-family: Arial, sans-serif;
+}
+
+  
   /* ==== Responsive 2x2 Image Grid ==== */
  .image-grid {
   display: grid;                             /* Use CSS Grid for gallery */
