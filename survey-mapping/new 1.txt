@@ -1,37 +1,9 @@
-<!-- ===  PROJECT WITH SPLIT MAPS === -->
-    <section class="project-section">
-      <h2>MIDDLE ARCHAIC/PUEBLO I VILLAGES  |  LA MANGA CANYON, NEW MEXICO (1999)</h2>
-      <!-- === Two-map layout container === -->
-      <div class="split-map-container">
-        <!-- === Main detail map on left (framed and resizable) === -->
-        <div class="map-frame">
-          <div id="map-wcac2-detail" class="split-map">
-		  <!-- Lat/Long Display Box -->
-			<div id="latlong-wcac2" class="latlong-box"></div>
-            <div class="mini-legend">
-              <strong>Basemaps:</strong><br>
-              🟩 Close Up: Thunderforest Outdoors<br>
-              ⚪ Overview: Esri Gray Canvas
-            </div>
-            <div class="north-arrow"></div>
-          </div>
-        </div>
-        <!-- === Overview map (now absolutely positioned to far right with a gap) === -->
-        <div id="map-wcac2-overview" class="split-map">
-          <!-- Map will render here; no need for mini-legend -->
-        </div>
-      </div>
-
-      <!-- === Project description and photos === -->
-      <p class="project-description">
-        
-      </p>
-	  <div class="grid-intro">
-		MAPPING THE ARCHAIC AND EARLY PUEBLO VILLAGES
+ <div class="grid-intro">
+		MAPPING AT SANTA ANA PUEBLO AND WEST MESA, NM
       </div>
   <div class="image-grid">
 	<figure>
-		<img src="/assets/images/survey-mapping/spainmapping.JPG" alt="Mapping El Mirón" class="portrait-img">
+		<img src="/assets/images/survey-mapping/nnmap.JPG" alt="Mapping Nojol Nah">
 		<figcaption>Instructing Students in Total Station Mapping, El Palacio.</figcaption>
 	</figure>
 	<figure>
@@ -43,156 +15,83 @@
 		<figcaption>Bob Warden LiDAR Scanning the Chultun, El Palacio.</figcaption>
 	</figure>
   </div>
-    </section>
-	
-	
-	
-	
-	
-	
-
-// ─────────────────────────────────────────────────────────────
-//  WCAC2 DETAIL MAP
-// ─────────────────────────────────────────────────────────────
-
-// 1) Initialize the detail map in the left pane
-var mapWcac2 = L.map('map-wcac2-detail')
-  .setView([36.853726, -107.804702], 12);  // center on LA MANGA
   
-  // 2) Add lat/long tracker
-mapWcac2.on('mousemove', function(e) {
-  document.getElementById('latlong-wcac2').innerHTML =
-    `Lat: ${e.latlng.lat.toFixed(5)} Long: ${e.latlng.lng.toFixed(5)}`;
-	});
-
-// 3) Add a scale bar
-	L.control.scale({
-		position: 'bottomright',
-		imperial: true,
-		metric: true,
-		maxWidth: 200
-	}).addTo(mapWcac2)	
-	 
-
-// 2) Define all the base layers (give them Wm suffix so nothing collides)
-var stamenTerrainWc = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: 'Stamen Terrain', maxZoom: 18, tileSize: 512, zoomOffset: -1
-  }
-);
-var esriWorldImageryWc = L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Esri, Earthstar Geographics', maxZoom: 19
-  }
-);
-var thunderforestOutdoorWc = L.tileLayer(
-  'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
-    attribution: 'Maps © Thunderforest, Data © OSM contributors', maxZoom: 22
-  }
-);
-var thunderforestAtlasWc = L.tileLayer(
-  'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
-    attribution: 'Maps © Thunderforest', maxZoom: 22
-  }
-);
-var thunderforestLandscapeWc = L.tileLayer(
-  'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=ff9168177a0e457dbaad796b08712512', {
-    attribution: 'Maps © Thunderforest', maxZoom: 22
-  }
-);
-var stadiaAlidadeWc = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: '© Stadia Maps, © OpenMapTiles, © OSM contributors', maxZoom: 20
-  }
-);
-var stadiaOutWc = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: '© Stadia Maps, © OpenMapTiles', maxZoom: 20
-  }
-);
-var cartoDBWc = L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; CARTO', maxZoom: 19
-  }
-);
-var osmBrightWc = L.tileLayer(
-  'https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}.png?api_key=a8a97fb6-0fdd-4f58-a626-8f8b8f7850d6', {
-    attribution: '© Stadia Maps, © OSM contributors', maxZoom: 20
-  }
-);
-
-// 3) Add your chosen default layer to the detail map
-thunderforestLandscapeWc.addTo(mapWcac);
-
-// 4) Place the custom surveyor icon marker at the site center
-var surveyorIconWcac = L.icon({
-  iconUrl: '/assets/images/common/surveyor-icon.png',
-  iconSize: [32,32],
-  iconAnchor: [16,16],
-  className: 'no-default-icon'
-});
-L.marker([37.218408, -107.847949], { icon: surveyorIconWcac })
-  .addTo(mapWcac)
-  .bindTooltip(
-    "PUEBLO I COMMUNITY ON BLUE MESA, CO",
-    { permanent: true, direction: 'bottom', className: 'custom-label' }
-  );
   
-  // ─────────────────────────────────────────────────────────────
-//  BLUE MESA OVERVIEW MAP (small circle in the right pane)
-// ─────────────────────────────────────────────────────────────
+  /* 4) Shared img rules */
+.image-grid.five-up img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  border: 2px solid #fa8072;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  background: #080808;
+}
 
-// 5) Initialize the overview map with all interactions off
-var mapWcover = L.map('map-wcac-overview', {
-  zoomControl: false,
-  dragging: false,
-  scrollWheelZoom: false,
-  doubleClickZoom: false,
-  boxZoom: false,
-  keyboard: false,
-  tap: false,
-  touchZoom: false
-})
-  .setView([37.218408, -107.847949], 3);  // zoomed-out view
 
-// 6) Add a simple gray‐canvas basemap for the overview
-L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Esri, DeLorme, NAVTEQ', maxZoom: 16
-  }
-).addTo(mapWcover);
 
-// 7) Plot a circle marker showing the project area in the overview
-L.circleMarker([37.218408, -107.847949], {
-  radius: 4,
-  color: '#a32638',
-  fillColor: '#a32638',
-  fillOpacity: 1
-})
-  .addTo(mapWcover)
-  .bindTooltip(
-    "PROJECT AREA",
-    { permanent: true, direction: 'top', className: 'custom-label2' }
-  );
+/* CSS */
+/* 1) Switch to a 3×3 template, with the middle cell twice as big */
+.image-grid.five-up {
+  display: grid;
+  grid-template-areas:
+    "tl . tr"
+    ".  c  ."
+    "bl . br";
+  grid-template-columns: 1.5fr 2fr 1.5fr;
+  grid-template-rows: 1fr 2fr 1fr;
+  gap: 1rem;                     /* adjust overall spacing */
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+}
 
-// ─────────────────────────────────────────────────────────────
-//  LAYERS CONTROL for the detail map
-// ─────────────────────────────────────────────────────────────
-L.control.layers(
-  {
-    "🌳 Thunderforest Landscape": thunderforestLandscapeWc,
-    "🛰️ Esri Satellite": esriWorldImageryWc,
-    "🟩 Stamen Terrain": stamenTerrainWc,
-    "🗺️ Thunderforest Atlas": thunderforestAtlasWc,
-	"🏞️ Thunderforest Outdoors": thunderforestOutdoorWc,
-    "🟪 Stadia Dark Alidade": stadiaAlidadeWc,
-    "🟦 Stadia Outdoors": stadiaOutWc,
-    "🟫 CartoDB Positron": cartoDBWc,
-    "⬜️ OSM Bright": osmBrightWc
-  },
-  null,                // no overlays for BLUE MEsa
-  { position: 'topleft', collapsed: false }
-).addTo(mapWcac);
+/* 2) Place each figure into its “pip” */
+.image-grid.five-up figure:nth-child(1) { grid-area: tl; } /* top-left */
+.image-grid.five-up figure:nth-child(2) { grid-area: tr; } /* top-right */
+.image-grid.five-up figure:nth-child(3) { grid-area: c;  } /* center */
+.image-grid.five-up figure:nth-child(4) { grid-area: bl; } /* bottom-left */
+.image-grid.five-up figure:nth-child(5) { grid-area: br; } /* bottom-right */
+
+/* 3) Generic figure styling */
+.image-grid.five-up figure {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 4) Shared img rules */
+.image-grid.five-up img {
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  border: 2px solid #fa8072;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  background: #080808;
+}
+
+/* 5) Size overrides */
+.image-grid.five-up figure:nth-child(3) img {
+  /* center image – full middle cell */
+  width: 100%;   /* span the 2fr track */
+  height: auto;      /* keep aspect ratio */
+}
+.image-grid.five-up figure:not(:nth-child(3)) img {
+  /* corner images – smaller */
+  width: 600px;
+  height: auto;
+}
+
+/* 6) Caption styling */
+.image-grid.five-up figcaption {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fffff0;
+  font-family: Arial, sans-serif;
+}
   
- 
-
+  
